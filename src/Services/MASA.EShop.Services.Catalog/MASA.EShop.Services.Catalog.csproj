@@ -6,8 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Application\Contracts\" />
-    <Folder Include="Domain\DomainService\CatalogTypes\Queries\" />
+    <Folder Include="Application\CatalogTypes\Queries\" />
     <Folder Include="Domain\Shared\" />
     <Folder Include="Domain\ValueObjects\" />
   </ItemGroup>

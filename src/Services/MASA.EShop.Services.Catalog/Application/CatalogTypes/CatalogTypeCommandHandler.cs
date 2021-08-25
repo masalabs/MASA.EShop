@@ -1,7 +1,5 @@
 ﻿
-using MASA.EShop.Services.Catalog.Domain.DomainService.CatalogTypes.Commands;
-
-namespace MASA.EShop.Services.Catalog.Domain.DomainService.CatalogTypes;
+namespace MASA.EShop.Services.Catalog.Application.CatalogTypes;
 public class CatalogTypeCommandHandler
 {
     private readonly ICatalogTypeRepository _repository;

@@ -1,5 +1,5 @@
 ﻿
-namespace MASA.EShop.Services.Catalog.Domain.DomainService.CatalogTypes.Commands;
+namespace MASA.EShop.Services.Catalog.Application.CatalogTypes.Commands;
 public class CreateCatalogTypeCommand : ICommand // todo add MASA.Contrib.ReadWriteSpliting.CQRS and replace to Command
 {
     public string Type { get; set; } = null!;
