@@ -1,8 +1,8 @@
 ﻿
 namespace MASA.EShop.Services.Catalog.Infrastructure.Specifications;
-public interface ISpecification<T>
+public interface ISpecification<TEntity>
 {
-    bool IsSatisfiedBy(T obj);
+    bool IsSatisfiedBy(TEntity entity);
 
-    Expression<Func<T, bool>> ToExpression();
+    Expression<Func<TEntity, bool>> ToExpression();
 }
