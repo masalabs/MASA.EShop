@@ -4,8 +4,8 @@ public class CreateCatalogTypeCommandValidator : AbstractValidator<CreateCatalog
 {
     public CreateCatalogTypeCommandValidator()
     {
-        RuleFor(x => x.Type)
-            .NotNull().NotEmpty().WithMessage("Please input name.")
+        RuleFor(cmd => cmd.Type)
+            .NotNull().NotEmpty().WithMessage("Please input catalog type.")
             .Length(2, 20);
     }
 }
