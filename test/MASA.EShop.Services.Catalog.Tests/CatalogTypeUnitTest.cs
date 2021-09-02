@@ -1,3 +1,4 @@
+using FluentValidation;
 using MASA.EShop.Services.Catalog.Application.CatalogTypes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -23,6 +24,8 @@ public class CatalogTypeUnitTest
             .Setup(e => e.PublishAsync(It.IsAny<CreateCatalogTypeCommand>()))
             .Callback<CreateCatalogTypeCommand>(async cmd =>
             {
+                var result = new CreateCatalogTypeCommandValidator().Validate(createCatalogTypeCommand);
+
                 await new CatalogTypeCommandHandler(catalogTypeRepository.Object).HandleAsync(createCatalogTypeCommand);
                 await uow.Object.CommitAsync();
             });
@@ -31,6 +34,8 @@ public class CatalogTypeUnitTest
         eventBus.Object.PublishAsync(createCatalogTypeCommand);
 
         //Assert
+        Assert.ThrowsException<ValidationException>(() => new CreateCatalogTypeCommandValidator().ValidateAndThrow(new CreateCatalogTypeCommand() { Type = "1" }));
+
         catalogTypeRepository.Verify(
             repo => repo.CreateAsync(It.Is<CatalogType>(catalogType => catalogType.Type == createCatalogTypeCommand.Type)),
             Times.Once,
