@@ -4,5 +4,11 @@ public class CatalogType
 {
     public int Id { get; set; }
 
-    public string Type { get; set; } = null!;
+    public string Type { get; private set; } = null!;
+
+    public CatalogType(int id, string type)
+    {
+        Id = id;
+        Type = type;
+    }
 }

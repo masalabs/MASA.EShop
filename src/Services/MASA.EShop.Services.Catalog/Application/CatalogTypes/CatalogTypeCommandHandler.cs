@@ -12,10 +12,7 @@ public class CatalogTypeCommandHandler
     // todo add dispatch handle attribute
     public async Task HandleAsync(CreateCatalogTypeCommand command)
     {
-        CatalogType catalogType = new()
-        {
-            Type = command.Type
-        };
+        CatalogType catalogType = new((int)DateTime.Now.Ticks, command.Type);
 
         await _repository.CreateAsync(catalogType);
     }
