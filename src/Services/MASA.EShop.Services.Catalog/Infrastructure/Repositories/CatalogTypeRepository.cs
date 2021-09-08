@@ -6,7 +6,7 @@ public class CatalogTypeRepository : ICatalogTypeRepository
 
     public CatalogTypeRepository(CatalogDbContext context) { _context = context; }
 
-    public async Task CreateAsync(CatalogType catalogType)
+    public async Task AddAsync(CatalogType catalogType)
     {
         await _context.CatalogTypes.AddAsync(catalogType);
 

@@ -2,12 +2,12 @@
 public class PaymentService : ServiceBase
 {
     private const string DAPR_PUBSUB_NAME = "pubsub";
-    private readonly IEventBus _eventBus = default!;
+    private readonly IDomainEventBus _eventBus = default!;
 
     public PaymentService(
         WebApplication app,
         IServiceCollection services,
-        IEventBus eventBus)
+        IDomainEventBus eventBus)
         : base(services)
     {
         _eventBus = eventBus;

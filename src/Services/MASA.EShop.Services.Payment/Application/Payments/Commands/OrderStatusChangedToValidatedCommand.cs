@@ -1,5 +1,5 @@
 ﻿namespace MASA.EShop.Services.Payment.Application.Payments.Commands;
-public class OrderStatusChangedToValidatedCommand : ICommand
+public class OrderStatusChangedToValidatedCommand : IDomainCommand
 {
     public Guid Id => throw new NotImplementedException();
 

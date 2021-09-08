@@ -8,7 +8,7 @@ public class PaymentRepository : IPaymentRepository
         _dbContext = dbContext;
     }
 
-    public async Task CreateAsync(Domain.Entities.Payment payment)
+    public async Task AddAsync(Domain.Entities.Payment payment)
     {
         await _dbContext.AddAsync(payment);
 

@@ -29,7 +29,7 @@ public class PaymentCommandHandler
 
         var payment = new Domain.Entities.Payment(command.OrderId, succeeded);
 
-        await _repository.CreateAsync(payment);
+        await _repository.AddAsync(payment);
 
         if (payment.Succeeded)
         {

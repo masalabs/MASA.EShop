@@ -14,6 +14,6 @@ public class CatalogTypeCommandHandler
     {
         CatalogType catalogType = new((int)DateTime.Now.Ticks, command.Type);
 
-        await _repository.CreateAsync(catalogType);
+        await _repository.AddAsync(catalogType);
     }
 }

@@ -12,7 +12,7 @@ builder.Services
     // todo refactor to MinimalAPIs
     .AddScoped<IServiceCollection>(sp => builder.Services)
     // todo refactor
-    .AddScoped<IEventBus, EventBus>()
+    .AddScoped<IDomainEventBus, DomainEventBus>()
     .AddServices();
 
 app.MapGet("/", () => "Hello World!");
@@ -20,9 +20,9 @@ app.MapGet("/", () => "Hello World!");
 app.Run();
 
 // todo remove
-public class EventBus : IEventBus
+public class DomainEventBus : IDomainEventBus
 {
-    public Task PublishAsync<TEvent>(TEvent @event) where TEvent : IEvent
+    public Task PublishAsync<TDomentEvent>(TDomentEvent @event) where TDomentEvent : IDomainEvent
     {
         throw new NotImplementedException();
     }
