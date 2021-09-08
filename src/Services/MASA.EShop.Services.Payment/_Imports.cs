@@ -1,0 +1,11 @@
+﻿global using Dapr;
+global using MASA.BuildingBlocks.DDD.Domain.Entities.Auditing;
+global using MASA.BuildingBlocks.DDD.Domain.Events;
+global using MASA.BuildingBlocks.Dispatcher.InMemory;
+global using MASA.BuildingBlocks.ReadWriteSpliting.CQRS.Commands;
+global using MASA.Contrib.Service.MinimalAPIs;
+global using MASA.EShop.Services.Payment.Application.Payments.Commands;
+global using MASA.EShop.Services.Payment.Domain.Repositories;
+global using MASA.Utils.Models.Config;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.Extensions.Options;

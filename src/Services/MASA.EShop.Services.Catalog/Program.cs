@@ -7,6 +7,8 @@ if (app.Environment.IsDevelopment())
     app.UseDeveloperExceptionPage();
 }
 
+builder.Services.AddServices();
+
 app.MapGet("/", () => "Hello World!");
 
 app.Run();

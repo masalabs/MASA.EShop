@@ -2,18 +2,14 @@
 namespace MASA.EShop.Services.Catalog.Infrastructure.Repositories;
 public class CatalogTypeRepository : ICatalogTypeRepository
 {
-    private readonly CatalogContext _context;
+    private readonly CatalogDbContext _context;
 
-    public CatalogTypeRepository(CatalogContext context) { _context = context; }
+    public CatalogTypeRepository(CatalogDbContext context) { _context = context; }
 
-    public Task<List<CatalogType>> Get(ISpecification<CatalogType> spec)
+    public async Task CreateAsync(CatalogType catalogType)
     {
-        throw new NotImplementedException();
-    }
+        await _context.CatalogTypes.AddAsync(catalogType);
 
-    public async Task CreateAsync(CatalogType catalog)
-    {
-        _context.CatalogTypes.Add(catalog);
         await _context.SaveChangesAsync();
     }
 }
