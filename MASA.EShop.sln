@@ -33,6 +33,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_", "_", "{434080A1-4D8F-47
 		nuget.config = nuget.config
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MASA.EShop.Web.Admin", "src\Web\MASA.EShop.Web.Admin\MASA.EShop.Web.Admin.csproj", "{C031856F-F34A-4613-8851-9EA3436192E1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{73DC9EA0-2761-4C24-9964-D4F582E0580F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{73DC9EA0-2761-4C24-9964-D4F582E0580F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{73DC9EA0-2761-4C24-9964-D4F582E0580F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C031856F-F34A-4613-8851-9EA3436192E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C031856F-F34A-4613-8851-9EA3436192E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C031856F-F34A-4613-8851-9EA3436192E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C031856F-F34A-4613-8851-9EA3436192E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -77,6 +83,7 @@ Global
 		{29593945-0A6F-4DD6-97A9-22B830CAF5ED} = {E99CDF1E-C951-4F4F-9483-F18F18A0BE2B}
 		{73DC9EA0-2761-4C24-9964-D4F582E0580F} = {E99CDF1E-C951-4F4F-9483-F18F18A0BE2B}
 		{141AC5A1-3845-42B5-A921-30A101BE37F7} = {A0E983C1-3F7E-4AA3-BCC8-B0298B92ACAF}
+		{C031856F-F34A-4613-8851-9EA3436192E1} = {FBA2B0C9-9C0A-4244-9D35-F33DCA354BD7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1FD6FCD1-A350-4541-A9CA-1549339C78EC}

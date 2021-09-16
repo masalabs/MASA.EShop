@@ -1,8 +1,3 @@
-using FluentValidation;
-using MASA.EShop.Services.Catalog.Application.CatalogTypes;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
-
 namespace MASA.EShop.Services.Catalog.Tests;
 [TestClass]
 public class CatalogTypeUnitTest
