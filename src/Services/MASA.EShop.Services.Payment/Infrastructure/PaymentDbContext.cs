@@ -14,6 +14,7 @@ public class PaymentDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
+        // todo apply configuration
         //builder.ApplyConfiguration(new PaymentEntityTypeConfiguration());
     }
 }

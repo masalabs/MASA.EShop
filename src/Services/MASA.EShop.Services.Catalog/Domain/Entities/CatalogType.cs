@@ -6,6 +6,8 @@ public class CatalogType
 
     public string Type { get; private set; } = null!;
 
+    private CatalogType() { }
+
     public CatalogType(int id, string type)
     {
         Id = id;
