@@ -21,7 +21,7 @@ public class PaymentService : ServiceBase
         return "Hello World";
     }
 
-    [Topic(DAPR_PUBSUB_NAME, "OrderStatusChangedToValidatedIntegrationEvent")]
+    [Topic(DAPR_PUBSUB_NAME, "OrderStatusChangedToValidatedCommand")]
     public async Task HandleAsync(OrderStatusChangedToValidatedCommand cmd)
     {
         await _eventBus.PublishAsync(cmd);
