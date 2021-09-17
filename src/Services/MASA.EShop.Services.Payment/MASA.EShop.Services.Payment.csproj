@@ -11,6 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Application\Payments\Validations\" />
     <Folder Include="Domain\ValueObjects\" />
   </ItemGroup>
 
