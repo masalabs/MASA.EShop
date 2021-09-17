@@ -37,6 +37,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{17D1CFBB-FAF
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MASA.EShop.Api.Open", "src\Api\MASA.EShop.Api.Open\MASA.EShop.Api.Open.csproj", "{FB2C9D9B-A62A-4C9E-A7AF-64CA7315B40C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dapr", "dapr", "{EC8191FD-14E5-498D-8D7A-719A2544FD68}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "components", "components", "{C13BCBB4-FBED-4A72-9826-41375E0274E4}"
+	ProjectSection(SolutionItems) = preProject
+		dapr\components\pubsub.yaml = dapr\components\pubsub.yaml
+		dapr\components\statestore.yaml = dapr\components\statestore.yaml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -95,6 +103,7 @@ Global
 		{C031856F-F34A-4613-8851-9EA3436192E1} = {FBA2B0C9-9C0A-4244-9D35-F33DCA354BD7}
 		{17D1CFBB-FAFE-4EA2-94E7-BB2ACE0ABF70} = {3EA83CF4-9F97-454A-928D-883CBCBA281B}
 		{FB2C9D9B-A62A-4C9E-A7AF-64CA7315B40C} = {17D1CFBB-FAFE-4EA2-94E7-BB2ACE0ABF70}
+		{C13BCBB4-FBED-4A72-9826-41375E0274E4} = {EC8191FD-14E5-498D-8D7A-719A2544FD68}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1FD6FCD1-A350-4541-A9CA-1549339C78EC}
