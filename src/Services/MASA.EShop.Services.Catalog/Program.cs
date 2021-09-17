@@ -1,13 +1,16 @@
 
 var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
+
+builder.Services
+    .AddLazyWebApplication(builder)
+    .AddServices();
+
+var app = builder.Services.BuildServiceProvider().GetRequiredService<WebApplication>();
 
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
 }
-
-builder.Services.AddServices();
 
 app.MapGet("/", () => "Hello World!");
 

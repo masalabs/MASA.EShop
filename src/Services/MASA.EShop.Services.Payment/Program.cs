@@ -1,19 +1,17 @@
 var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
+
+builder.Services
+    .AddLazyWebApplication(builder)
+    // todo refactor
+    .AddScoped<IDomainEventBus, DomainEventBus>()
+    .AddServices();
+
+var app = builder.Services.BuildServiceProvider().GetRequiredService<WebApplication>();
 
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
 }
-
-builder.Services
-    // todo refactor to MinimalAPIs
-    .AddSingleton(app)
-    // todo refactor to MinimalAPIs
-    .AddScoped<IServiceCollection>(sp => builder.Services)
-    // todo refactor
-    .AddScoped<IDomainEventBus, DomainEventBus>()
-    .AddServices();
 
 app.MapGet("/", () => "Hello World!");
 

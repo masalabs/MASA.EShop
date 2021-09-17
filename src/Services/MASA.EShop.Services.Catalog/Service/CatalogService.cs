@@ -1,10 +1,10 @@
-﻿
-namespace MASA.EShop.Services.Catalog.Service;
-public class CatalogService
+﻿namespace MASA.EShop.Services.Catalog.Service;
+public class CatalogService : ServiceBase
 {
-    public CatalogService(WebApplication app)
+    public CatalogService(IServiceCollection services)
+        : base(services)
     {
-        app.MapGet("/api/v1/catalog/{id}", Get);
+        App.MapGet("/api/v1/catalog/{id}", Get);
     }
 
     public Task<dynamic> Get(int id)

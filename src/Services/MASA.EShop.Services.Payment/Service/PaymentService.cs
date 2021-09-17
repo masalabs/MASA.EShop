@@ -5,16 +5,15 @@ public class PaymentService : ServiceBase
     private readonly IDomainEventBus _eventBus = default!;
 
     public PaymentService(
-        WebApplication app,
         IServiceCollection services,
         IDomainEventBus eventBus)
         : base(services)
     {
         _eventBus = eventBus;
 
-        app.Map("/api/v1/payment/OrderStatusChangedToValidated", HandleAsync);
+        App.Map("/api/v1/payment/OrderStatusChangedToValidated", HandleAsync);
         // todo remove
-        app.Map("/api/v1/payment/HelloWorld", HelloWorld);
+        App.Map("/api/v1/payment/HelloWorld", HelloWorld);
     }
 
     public string HelloWorld()
