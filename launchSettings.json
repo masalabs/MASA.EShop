@@ -1,0 +1,28 @@
+{
+  "profiles": {
+    "Docker Compose": {
+      "commandName": "DockerCompose",
+      "composeLaunchAction": "LaunchBrowser",
+      "composeLaunchServiceName": "masa.eshop.web.admin",
+      "composeLaunchUrl": "{Scheme}://localhost:{ServicePort}",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "masa.eshop.services.basket": "StartDebugging",
+        "masa.eshop.services.basket.dapr": "StartWithoutDebugging",
+        "masa.eshop.services.catalog": "StartDebugging",
+        "masa.eshop.services.catalog.dapr": "StartWithoutDebugging",
+        "masa.eshop.services.ordering": "StartDebugging",
+        "masa.eshop.services.ordering.dapr": "StartWithoutDebugging",
+        "masa.eshop.services.payment": "StartDebugging",
+        "masa.eshop.services.payment.dapr": "StartWithoutDebugging",
+        "masa.eshop.web.admin": "StartDebugging",
+        "masa.eshop.web.admin.dapr": "StartWithoutDebugging",
+        "masa.eshop.web.client": "StartDebugging",
+        "masa.eshop.api.open": "StartDebugging",
+        "masa.eshop.api.open.dapr": "StartWithoutDebugging",
+        "redis": "StartWithoutDebugging",
+        "sqldata": "StartWithoutDebugging"
+      }
+    }
+  }
+}

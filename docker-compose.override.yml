@@ -1,0 +1,169 @@
+version: '3.4'
+
+services:
+
+  redis:
+    image: redis:alpine
+
+  sqldata:
+    image: mcr.microsoft.com/mssql/server:2019-latest 
+
+
+  masa.eshop.services.basket:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+    ports:
+      - "8081:80"
+      - "9091:443"
+    volumes:
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+    depends_on:
+      - sqldata
+  masa.eshop.services.basket.dapr:
+    image: "daprio/daprd:1.4.0"
+    command: ["./daprd",
+      "-app-id", "masa-eshop-services-basket",
+      "-app-port", "80",
+      "-components-path", "/components",
+      "-placement-host-address", "placement:50006",
+      ]
+    depends_on:
+      - masa.eshop.services.basket
+    volumes:
+      - "./dapr/components/:/components"
+    network_mode: "service:masa.eshop.services.basket"
+
+
+  masa.eshop.services.catalog:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+    ports:
+      - "8082:80"
+      - "9092:443"
+    volumes:
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+    depends_on:
+      - sqldata
+  masa.eshop.services.catalog.dapr:
+    image: "daprio/daprd:1.4.0"
+    command: ["./daprd",
+      "-app-id", "masa-eshop-services-catalog",
+      "-app-port", "80",
+      "-components-path", "/components",
+      "-placement-host-address", "placement:50006",
+      ]
+    depends_on:
+      - masa.eshop.services.catalog
+    volumes:
+      - "./dapr/components/:/components"
+    network_mode: "service:masa.eshop.services.catalog"
+
+  masa.eshop.services.ordering:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+    ports:
+      - "8083:80"
+      - "9093:443"
+    volumes:
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+    depends_on:
+      - sqldata
+  masa.eshop.services.ordering.dapr:
+    image: "daprio/daprd:1.4.0"
+    command: ["./daprd",
+      "-app-id", "masa-eshop-services-ordering",
+      "-app-port", "80",
+      "-components-path", "/components",
+      "-placement-host-address", "placement:50006",
+      ]
+    depends_on:
+      - masa.eshop.services.ordering
+    volumes:
+      - "./dapr/components/:/components"
+    network_mode: "service:masa.eshop.services.ordering"
+
+  masa.eshop.services.payment:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+    ports:
+      - "8084:80"
+      - "9094:443"
+    volumes:
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+    depends_on:
+      - sqldata
+  masa.eshop.services.payment.dapr:
+    image: "daprio/daprd:1.4.0"
+    command: ["./daprd",
+      "-app-id", "masa-eshop-services-payment",
+      "-app-port", "80",
+      "-components-path", "/components",
+      "-placement-host-address", "placement:50006",
+      ]
+    depends_on:
+      - masa.eshop.services.payment
+    volumes:
+      - "./dapr/components/:/components"
+    network_mode: "service:masa.eshop.services.payment"
+
+  masa.eshop.api.open:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+    ports:
+      - "8085:80"
+      - "9095:443"
+    volumes:
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+  masa.eshop.api.open.dapr:
+    image: "daprio/daprd:1.4.0"
+    command: ["./daprd",
+      "-app-id", "masa-eshop-api-open",
+      "-app-port", "80",
+      "-components-path", "/components",
+      "-placement-host-address", "placement:50006",
+      ]
+    depends_on:
+      - masa.eshop.api.open
+    volumes:
+      - "./dapr/components/:/components"
+    network_mode: "service:masa.eshop.api.open"
+
+  masa.eshop.web.admin:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+    ports:
+      - "8080:80"
+      - "8443:443"
+    volumes:
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+  masa.eshop.web.admin.dapr:
+    image: "daprio/daprd:1.4.0"
+    command: ["./daprd",
+      "-app-id", "masa-eshop-web-admin",
+      "-app-port", "80",
+      "-components-path", "/components",
+      "-placement-host-address", "placement:50006",
+      ]
+    depends_on:
+      - masa.eshop.web.admin
+    volumes:
+      - "./dapr/components/:/components"
+    network_mode: "service:masa.eshop.web.admin"
+
+  masa.eshop.web.client:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+    ports:
+      - "80"
+      - "443"
+    volumes:
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+
+

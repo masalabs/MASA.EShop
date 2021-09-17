@@ -4,6 +4,10 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <DockerComposeProjectPath>..\..\..\docker-compose.dcproj</DockerComposeProjectPath>
+    <UserSecretsId>f2c0fe5a-35a4-452c-82a3-171c62729949</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..\..</DockerfileContext>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,6 +21,7 @@
     <PackageReference Include="MASA.Contrib.Service.MinimalAPIs" Version="0.0.6562" />
     <PackageReference Include="MASA.Utils.Models.Config" Version="0.0.5963" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.0-preview.7.21378.4" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
   </ItemGroup>
 
 </Project>
