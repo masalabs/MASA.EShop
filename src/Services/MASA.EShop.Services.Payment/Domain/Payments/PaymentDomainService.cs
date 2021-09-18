@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Services.Payment.Domain.Services;
+﻿namespace MASA.EShop.Services.Payment.Domain.Payments;
 // todo replace to DomainService implementation
 public class PaymentDomainService : IDomainService
 {
@@ -11,7 +11,7 @@ public class PaymentDomainService : IDomainService
         _appConfig = appConfig;
     }
 
-    public async Task StatusChangedAsync(Entities.Payment payment)
+    public async Task StatusChangedAsync(Payment payment)
     {
         IIntegrationDomainEvent orderPaymentIntegrationEvent;
 

@@ -25,7 +25,7 @@ public class PaymentCommandHandler
         await Task.Delay(2000); // Simulation of pay
         var succeeded = Random.Shared.Next(0, 100) >= 50; //50% random success rate
 
-        var payment = new Domain.Entities.Payment(command.OrderId, succeeded);
+        var payment = new Domain.Payments.Payment(command.OrderId, succeeded);
 
         await _repository.AddAsync(payment);
 

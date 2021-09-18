@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Services.Payment.Domain.Entities;
+﻿namespace MASA.EShop.Services.Payment.Domain.Payments;
 public class Payment : AuditAggregateRoot<Guid, Guid>
 {
     public bool Succeeded { get; protected set; }

@@ -10,7 +10,7 @@ public class PaymentDbContext : DbContext
 
     }
 
-    public DbSet<Domain.Entities.Payment> Payments { get; set; } = null!;
+    public DbSet<Domain.Payments.Payment> Payments { get; set; } = null!;
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
