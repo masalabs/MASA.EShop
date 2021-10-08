@@ -11,7 +11,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Dapr.AspNetCore" Version="1.4.0" />
+    <PackageReference Include="MASA.Contrib.Data.Uow.EF" Version="0.0.6975" />
+    <PackageReference Include="MASA.Contrib.Dispatcher.Events" Version="0.0.6975" />
+    <PackageReference Include="MASA.Contrib.Dispatcher.IntegrationEvents.Dapr" Version="0.0.6975" />
+    <PackageReference Include="MASA.Contrib.Dispatcher.IntegrationEvents.EventLogs.EF" Version="0.0.6975" />
+    <PackageReference Include="MASA.Contrib.Service.MinimalAPIs" Version="0.0.6975" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.0-rc.1.21452.10" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Newtonsoft" Version="6.2.2" />
   </ItemGroup>
 
 </Project>
