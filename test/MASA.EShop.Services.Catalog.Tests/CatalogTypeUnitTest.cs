@@ -1,3 +1,8 @@
+using FluentValidation;
+using MASA.BuildingBlocks.Dispatcher.Events;
+using MASA.EShop.Services.Catalog.Application.CatalogTypes.Commands.CreateCatalogType;
+using MASA.EShop.Services.Catalog.Domain.Repositories;
+
 namespace MASA.EShop.Services.Catalog.Tests;
 [TestClass]
 public class CatalogTypeUnitTest
@@ -21,7 +26,7 @@ public class CatalogTypeUnitTest
             {
                 var result = new CreateCatalogTypeCommandValidator().Validate(createCatalogTypeCommand);
 
-                await new CatalogTypeCommandHandler(catalogTypeRepository.Object).HandleAsync(createCatalogTypeCommand);
+                await new CatalogTypeCommandHandler(catalogTypeRepository.Object).CreateHandleAsync(createCatalogTypeCommand);
                 await uow.Object.CommitAsync();
             });
 

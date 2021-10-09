@@ -1,29 +1,34 @@
 var builder = WebApplication.CreateBuilder(args);
 
 var app = builder.Services
-    .AddLazyWebApplication(builder)
     .AddEndpointsApiExplorer() //fixed aggregatewxception
     .AddSwaggerGen(options =>
     {
         options.SwaggerDoc("v1", new OpenApiInfo
         {
-            Title = "MASA eShop - Basket HTTP API",
+            Title = "MASA EShop - Basket HTTP API",
             Version = "v1",
             Description = "The Basket Service HTTP API"
         });
-    }).AddSwaggerGenNewtonsoftSupport()
+    })
     .AddScoped<IBasketRepository, BasketRepository>()
+    .AddMasaDbContext<IntegrationEventLogContext>(options => options.UseSqlServer("Data Source=masa.eshop.services.eshop.database;uid=sa;pwd=P@ssw0rd;database=order"))
     .AddDaprEventBus<IntegrationEventLogService>(options =>
     {
-      options.UseEventBus(builder.Services, AppDomain.CurrentDomain.GetAssemblies())
-             .UseUow<IntegrationEventLogContext>(builder.Services, 
-             dbOptions => dbOptions.UseSqlServer("Data Source=localhost;Initial Catalog=IntegrationEventLog;User ID=sa;Password=sa"));
+        options.Assemblies = new Assembly[] { typeof(UserCheckoutAcceptedIntegrationEvent).Assembly, Assembly.GetExecutingAssembly() };
     })
-    .AddServices();
+    .AddServices(builder);
+
+app.UseRouting();
+app.UseCloudEvents();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapSubscribeHandler();
+});
 
 app.UseSwagger().UseSwaggerUI(c =>
 {
-    c.SwaggerEndpoint("/swagger/v1/swagger.json", "MASA eShop Service HTTP API v1");
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "MASA EShop Service HTTP API v1");
 });
 app.Run();
 

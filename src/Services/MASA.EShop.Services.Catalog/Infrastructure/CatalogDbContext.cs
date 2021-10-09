@@ -1,19 +1,23 @@
 ﻿namespace MASA.EShop.Services.Catalog.Infrastructure;
-public class CatalogDbContext : DbContext
+
+public class CatalogDbContext : IntegrationEventLogContext
 {
-    public CatalogDbContext(DbContextOptions<CatalogDbContext> options) : base(options)
-    {
-    }
     public DbSet<CatalogItem> CatalogItems { get; set; } = null!;
 
     public DbSet<CatalogBrand> CatalogBrands { get; set; } = null!;
 
     public DbSet<CatalogType> CatalogTypes { get; set; } = null!;
 
-    protected override void OnModelCreating(ModelBuilder builder)
+    public CatalogDbContext(MasaDbContextOptions<CatalogDbContext> options) : base(options)
     {
-        //builder.ApplyConfiguration(new CatalogBrandEntityTypeConfiguration());
-        //builder.ApplyConfiguration(new CatalogTypeEntityTypeConfiguration());
-        //builder.ApplyConfiguration(new CatalogItemEntityTypeConfiguration());
+
+    }
+
+    protected override void OnModelCreatingExecuting(ModelBuilder builder)
+    {
+        builder.ApplyConfiguration(new CatalogBrandEntityTypeConfiguration());
+        builder.ApplyConfiguration(new CatalogTypeEntityTypeConfiguration());
+        builder.ApplyConfiguration(new CatalogItemEntityTypeConfiguration());
+        base.OnModelCreatingExecuting(builder);
     }
 }

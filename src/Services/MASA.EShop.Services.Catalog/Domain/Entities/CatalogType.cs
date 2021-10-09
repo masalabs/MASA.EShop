@@ -1,16 +1,15 @@
-﻿
-namespace MASA.EShop.Services.Catalog.Domain.Entities;
+﻿namespace MASA.EShop.Services.Catalog.Domain.Entities;
+
 public class CatalogType
 {
     public int Id { get; set; }
 
-    public string Type { get; private set; } = null!;
+    public string Type { get; set; } = null!;
 
-    private CatalogType() { }
+    public CatalogType() { }
 
-    public CatalogType(int id, string type)
+    public CatalogType(string type)
     {
-        Id = id;
         Type = type;
     }
 }

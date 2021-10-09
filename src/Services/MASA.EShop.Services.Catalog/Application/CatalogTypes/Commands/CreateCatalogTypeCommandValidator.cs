@@ -1,8 +1,5 @@
-﻿
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using System.Security.Cryptography;
+﻿namespace MASA.EShop.Services.Catalog.Application.CatalogTypes.Commands.CreateCatalogType;
 
-namespace MASA.EShop.Services.Catalog.Application.CatalogTypes.Commands;
 public class CreateCatalogTypeCommandValidator : AbstractValidator<CreateCatalogTypeCommand>
 {
     public CreateCatalogTypeCommandValidator()

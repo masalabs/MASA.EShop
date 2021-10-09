@@ -1,19 +1,17 @@
-﻿
-namespace MASA.EShop.Services.Catalog.Application.CatalogTypes;
+﻿namespace MASA.EShop.Services.Catalog.Application.CatalogTypes;
+
 public class CatalogTypeCommandHandler
 {
-    private readonly ICatalogTypeRepository _repository;
+    private readonly ICatalogTypeRepository _catalogTypeRepository;
 
-    public CatalogTypeCommandHandler(ICatalogTypeRepository repository)
-    {
-        _repository = repository;
-    }
+    public CatalogTypeCommandHandler(ICatalogTypeRepository catalogTypeRepository)
+        => _catalogTypeRepository = catalogTypeRepository;
 
-    // todo add dispatch handle attribute
-    public async Task HandleAsync(CreateCatalogTypeCommand command)
-    {
-        CatalogType catalogType = new((int)DateTime.Now.Ticks, command.Type);
+    [EventHandler]
+    public async Task CreateHandleAsync(CreateCatalogTypeCommand @event)
+        => await _catalogTypeRepository.AddAsync(new CatalogType(@event.Type));
 
-        await _repository.AddAsync(catalogType);
-    }
+    [EventHandler]
+    public async Task DeleteHandlerAsync(DeleteCatalogTypeCommand command)
+        => await _catalogTypeRepository.DeleteAsync(command.TypeId);
 }

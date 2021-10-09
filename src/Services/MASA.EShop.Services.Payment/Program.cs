@@ -1,20 +1,52 @@
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services
-    .AddLazyWebApplication(builder)
-    // todo refactor
-    .AddScoped<IDomainEventBus, DomainEventBus>()
-    .AddServices();
+var app = builder.Services
+    .AddFluentValidation(options =>
+    {
+        options.RegisterValidatorsFromAssemblyContaining<Program>();
+    })
+    .AddTransient(typeof(IMiddleware<>), typeof(ValidatorMiddleware<>))
+    .AddEndpointsApiExplorer()
+    .AddSwaggerGen(options =>
+    {
+        options.SwaggerDoc("v1", new OpenApiInfo
+        {
+            Title = "MASA EShop - Payment HTTP API",
+            Version = "v1",
+            Description = "The Payment Service HTTP API"
+        });
+    })
+    .AddDomainEventBus(options =>
+    {
+        options.UseEventBus(Assembly.GetEntryAssembly()!,
+                            typeof(OrderPaymentFailedIntegrationEvent).Assembly)
+               .UseUoW<PaymentDbContext>(dbOptions => dbOptions.UseSqlServer("server=masa.eshop.services.eshop.database;uid=sa;pwd=P@ssw0rd;database=payment"))
+               .UseDaprEventBus<IntegrationEventLogService>()
+               .UseEventLog<PaymentDbContext>()
+               .UseRepository<PaymentDbContext>()
+               ;
+    })
+    .AddServices(builder);
 
-var app = builder.Services.BuildServiceProvider().GetRequiredService<WebApplication>();
+app.MigrateDbContext<PaymentDbContext>((context, services) =>
+{
+});
 
+app.UseSwagger().UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "MASA EShop Service HTTP API v1");
+});
+
+app.UseRouting();
+app.UseCloudEvents();
+app.UseEndpoints(endpoint =>
+{
+    endpoint.MapSubscribeHandler();
+});
 app.Run();
 
-// todo remove
-public class DomainEventBus : IDomainEventBus
+public partial class Program
 {
-    public Task PublishAsync<TDomentEvent>(TDomentEvent @event) where TDomentEvent : IDomainEvent
-    {
-        throw new NotImplementedException();
-    }
+    public static string Namespace = typeof(IntegrationEventService).Namespace!;
+    public static string AppName = Namespace.Substring(Namespace.LastIndexOf('.', Namespace.LastIndexOf('.') - 1) + 1);
 }

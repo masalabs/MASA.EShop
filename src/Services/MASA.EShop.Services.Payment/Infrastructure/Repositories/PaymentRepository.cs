@@ -1,17 +1,9 @@
 ﻿namespace MASA.EShop.Services.Payment.Infrastructure.Repositories;
-public class PaymentRepository : IPaymentRepository
+
+public class PaymentRepository : Repository<PaymentDbContext, Domain.Aggregate.Payment>, IPaymentRepository
 {
-    private readonly PaymentDbContext _dbContext = default!;
-
-    public PaymentRepository(PaymentDbContext dbContext)
+    public PaymentRepository(PaymentDbContext context, IUnitOfWork unitOfWork)
+        : base(context, unitOfWork)
     {
-        _dbContext = dbContext;
-    }
-
-    public async Task AddAsync(Domain.Payments.Payment payment)
-    {
-        await _dbContext.AddAsync(payment);
-
-        await _dbContext.SaveChangesAsync();
     }
 }

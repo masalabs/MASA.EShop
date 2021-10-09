@@ -1,5 +1,5 @@
-﻿
-namespace MASA.EShop.Services.Catalog.Domain.Entities;
+﻿namespace MASA.EShop.Services.Catalog.Domain.Entities;
+
 public class CatalogBrand
 {
     public int Id { get; set; }

@@ -1,16 +1,16 @@
-﻿
-namespace MASA.EShop.Services.Catalog.Domain.Entities;
+﻿namespace MASA.EShop.Services.Catalog.Domain.Entities;
+
 public class CatalogItem
 {
     public int Id { get; set; }
 
     public string Name { get; set; } = null!;
 
-    public string Description { get; set; } = null!;
+    public string? Description { get; set; }
 
     public decimal Price { get; set; }
 
-    public string PictureFileName { get; set; } = null!;
+    public string? PictureFileName { get; set; }
 
     public string PictureUri { get; set; } = null!;
 

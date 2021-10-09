@@ -1,6 +1,8 @@
-﻿
-namespace MASA.EShop.Services.Catalog.Domain.Repositories.Interfaces;
+﻿namespace MASA.EShop.Services.Catalog.Domain.Repositories;
+
 public interface ICatalogTypeRepository
 {
     Task AddAsync(CatalogType catalogType);
+
+    Task DeleteAsync(int catalogTypeId);
 }

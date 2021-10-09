@@ -2,7 +2,7 @@
 
 public class BasketRepository : IBasketRepository
 {
-    private const string StoreName = "statestore";
+    private const string STORE_NAME = "statestore";
 
     private readonly DaprClient _dapr;
 
@@ -13,17 +13,17 @@ public class BasketRepository : IBasketRepository
 
     public async Task DeleteBasketAsync(string id)
     {
-        await _dapr.DeleteStateAsync(StoreName, id);
+        await _dapr.DeleteStateAsync(STORE_NAME, id);
     }
 
     public async Task<CustomerBasket> GetBasketAsync(string customerId)
     {
-        return await _dapr.GetStateAsync<CustomerBasket>(StoreName, customerId);
+        return await _dapr.GetStateAsync<CustomerBasket>(STORE_NAME, customerId);
     }
 
     public async Task<CustomerBasket> UpdateBasketAsync(CustomerBasket basket)
     {
-        var state = await _dapr.GetStateEntryAsync<CustomerBasket>(StoreName, basket.BuyerId);
+        var state = await _dapr.GetStateEntryAsync<CustomerBasket>(STORE_NAME, basket.BuyerId);
         state.Value = basket;
         await state.SaveAsync();
 

@@ -1,9 +1,12 @@
 ﻿namespace MASA.EShop.Services.Payment.Application.Payments.Commands;
-public class OrderStatusChangedToValidatedCommand : IDomainCommand
+
+public class OrderStatusChangedToValidatedCommand : DomainCommand
 {
-    public Guid Id => throw new NotImplementedException();
+    public Guid OrderId { get; set; }
 
-    public DateTime CreationTime => throw new NotImplementedException();
+    public OrderStatusChangedToValidatedCommand() : this(Guid.NewGuid(), DateTime.UtcNow)
+    {
+    }
 
-    public Guid OrderId => throw new NotImplementedException();
+    public OrderStatusChangedToValidatedCommand(Guid id, DateTime creationTime) : base(id, creationTime) { }
 }

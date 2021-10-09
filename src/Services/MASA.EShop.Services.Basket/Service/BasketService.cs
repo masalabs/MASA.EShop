@@ -4,52 +4,58 @@ public class BasketService : ServiceBase
 {
     private const string DAPR_PUBSUB_NAME = "pubsub";
 
-    private readonly IBasketRepository _repository;
-    private readonly IIntegrationEventBus _eventBus = default!;
     private readonly ILogger<BasketService> _logger;
 
     public BasketService(
         IServiceCollection services,
-        IBasketRepository repository,
-        IIntegrationEventBus eventBus,
         ILogger<BasketService> logger) : base(services)
     {
-        _repository = repository;
-        _eventBus = eventBus;
         _logger = logger;
 
         App.MapGet("/api/v1/basket/{id}", GetBasketByIdAsync).WithMetadata(new EndpointNameMetadata("get_basket"));
         App.MapPost("/api/v1/basket/updatebasket", UpdateBasketAsync);
         App.MapPost("/api/v1/basket/checkout", CheckoutAsync);
         App.MapDelete("/api/v1/basket/{id}", DeleteBasketByIdAsync);
+        App.MapPost("/api/v1/basket/orderstarted", OrderStarted);
     }
 
-    public async Task<IResult> GetBasketByIdAsync(string id)
+    public async Task<IResult> GetBasketByIdAsync(string id, [FromServices] IBasketRepository repository)
     {
-        var basket = await _repository.GetBasketAsync(id);
+        var basket = await repository.GetBasketAsync(id);
         return Results.Ok(basket ?? new CustomerBasket(id));
     }
 
-    public async Task<IResult> UpdateBasketAsync([FromBody] CustomerBasket value)
+    public async Task<IResult> UpdateBasketAsync([FromBody] CustomerBasket value, [FromServices] IBasketRepository repository)
     {
-        return Results.Ok(await _repository.UpdateBasketAsync(value));
+        return Results.Ok(await repository.UpdateBasketAsync(value));
     }
 
-    public async Task<IResult> CheckoutAsync([FromBody] BasketCheckout basketCheckout, [FromHeader(Name = "x-requestid")] string requestId, HttpContext httpContext)
+    public async Task<IResult> CheckoutAsync([FromBody] BasketCheckout basketCheckout,
+        [FromHeader(Name = "x-requestid")] string requestId,
+        HttpContext httpContext,
+        [FromServices] IIntegrationEventBus integrationEventBus,
+        [FromServices] IntegrationEventLogContext logContext,
+        [FromServices] IIntegrationEventLogService integrationEventLogService,
+        [FromServices] IBasketRepository repository)
     {
-        var userId = "";
+        //todo update userId
+        var userId = "user-id";
 
         basketCheckout.RequestId = (Guid.TryParse(requestId, out Guid guid) && guid != Guid.Empty) ?
             guid : basketCheckout.RequestId;
 
-        var basket = await _repository.GetBasketAsync(userId);
+        var basket = await repository.GetBasketAsync(userId);
         if (basket == null)
         {
-            return Results.BadRequest();
+            basket = new();
+            //return Results.BadRequest();
         }
-        var userName = httpContext.User.FindFirst(x => x.Type == ClaimTypes.Name)?.Value??"";
-
-        await _eventBus.PublishAsync(new CheckoutAcceptedIntegrationEvent(userId,
+        //var userName = httpContext.User.FindFirst(x => x.Type == ClaimTypes.Name)?.Value ?? "";
+        var userName = "userName";
+        using (var transaction = logContext.Database.BeginTransaction())
+        {
+            var @event = new UserCheckoutAcceptedIntegrationEvent(
+                userId,
                 userName,
                 basketCheckout.City,
                 basketCheckout.Street,
@@ -63,23 +69,27 @@ public class BasketService : ServiceBase
                 basketCheckout.CardTypeId,
                 basketCheckout.Buyer,
                 basketCheckout.RequestId,
-                basket));
-
+                basket);
+            await integrationEventLogService.SaveEventAsync(@event, transaction.GetDbTransaction());
+            await integrationEventBus.PublishAsync(@event);
+            transaction.Commit();
+        }
+        
         _logger.LogInformation("Publish Event CheckoutAccepted");
 
         return Results.Accepted();
     }
 
-    public async Task DeleteBasketByIdAsync(string id)
+    public async Task DeleteBasketByIdAsync(string id, [FromServices] IBasketRepository repository)
     {
-        await _repository.DeleteBasketAsync(id);
+        await repository.DeleteBasketAsync(id);
     }
 
-    [Topic(DAPR_PUBSUB_NAME, "OrderStartedIntegrationEvent")]
-    public async Task OrderStarted(OrderStartedIntegrationEvent @event)
+    [Topic(DAPR_PUBSUB_NAME, nameof(OrderStatusChangedToSubmittedIntegrationEvent))]
+    public async Task OrderStarted(OrderStatusChangedToSubmittedIntegrationEvent @event, [FromServices] IBasketRepository repository)
     {
-        /*var handler = _serviceProvider.GetRequiredService<OrderStatusChangedToSubmittedIntegrationEventHandler>();
-        await handler.Handle(@event);*/
+        _logger.LogInformation("----- Handling integration event: {IntegrationEventId} at {AppName} - ({@IntegrationEvent})", @event.Id, "Basket", @event);
 
+        await repository.DeleteBasketAsync(@event.BuyerId);
     }
 }
