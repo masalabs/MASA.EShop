@@ -1,5 +1,6 @@
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddDaprClient();
 var app = builder.Services
     .AddEndpointsApiExplorer() //fixed aggregatewxception
     .AddSwaggerGen(options =>
@@ -12,11 +13,6 @@ var app = builder.Services
         });
     })
     .AddScoped<IBasketRepository, BasketRepository>()
-    .AddMasaDbContext<IntegrationEventLogContext>(options => options.UseSqlServer("Data Source=masa.eshop.services.eshop.database;uid=sa;pwd=P@ssw0rd;database=order"))
-    .AddDaprEventBus<IntegrationEventLogService>(options =>
-    {
-        options.Assemblies = new Assembly[] { typeof(UserCheckoutAcceptedIntegrationEvent).Assembly, Assembly.GetExecutingAssembly() };
-    })
     .AddServices(builder);
 
 app.UseRouting();

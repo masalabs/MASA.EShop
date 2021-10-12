@@ -18,8 +18,7 @@ var app = builder.Services
     })
     .AddDomainEventBus(options =>
     {
-        options.UseEventBus(Assembly.GetEntryAssembly()!,
-                            typeof(OrderPaymentFailedIntegrationEvent).Assembly)
+        options.UseEventBus()
                .UseUoW<PaymentDbContext>(dbOptions => dbOptions.UseSqlServer("server=masa.eshop.services.eshop.database;uid=sa;pwd=P@ssw0rd;database=payment"))
                .UseDaprEventBus<IntegrationEventLogService>()
                .UseEventLog<PaymentDbContext>()

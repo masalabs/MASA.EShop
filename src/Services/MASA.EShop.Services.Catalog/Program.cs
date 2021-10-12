@@ -20,11 +20,6 @@ var app = builder.Services
     .AddScoped<ICatalogTypeRepository, CatalogTypeRepository>()
     .AddDaprEventBus<IntegrationEventLogService>(options =>
     {
-        options.Assemblies = new Assembly[]
-        {
-            Assembly.GetEntryAssembly()!,
-            typeof(OrderStockConfirmedIntegrationEvent).Assembly,
-        };
         options.UseEventBus()
                .UseUoW<CatalogDbContext>(dbOptions => dbOptions.UseSqlServer("server=masa.eshop.services.eshop.database;uid=sa;pwd=P@ssw0rd;database=catalog"))
                .UseEventLog<CatalogDbContext>();

@@ -1,7 +1,5 @@
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers().AddDapr();
-
 builder.Services.AddActors(options =>
 {
     options.Actors.RegisterActor<OrderingProcessActor>();
@@ -21,7 +19,7 @@ var app = builder.Services
     .AddScoped<IOrderRepository, OrderRepository>()
     .AddDaprEventBus<IntegrationEventLogService>(options =>
     {
-        options.UseEventBus(AppDomain.CurrentDomain.GetAssemblies())
+        options.UseEventBus()
                .UseUoW<OrderingContext>(dbOptions => dbOptions.UseSqlServer("Data Source=masa.eshop.services.eshop.database;uid=sa;pwd=P@ssw0rd;database=order"))
                .UseEventLog<OrderingContext>();
     })

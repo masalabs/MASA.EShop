@@ -3,10 +3,8 @@ using MASA.EShop.Contracts.Basket.Model;
 
 namespace MASA.EShop.Contracts.Basket
 {
-    public class UserCheckoutAcceptedIntegrationEvent:IntegrationEvent
+    public class UserCheckoutAcceptedIntegrationEvent
     {
-        public override string Topic { get; set; } = nameof(UserCheckoutAcceptedIntegrationEvent);
-
         public string UserId { get; set; }
 
         public string UserName { get; set; }

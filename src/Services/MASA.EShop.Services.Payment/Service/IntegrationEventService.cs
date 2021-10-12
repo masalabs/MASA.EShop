@@ -8,16 +8,10 @@ public class IntegrationEventService : ServiceBase
         IServiceCollection services)
         : base(services)
     {
-        App.MapGet("/api/v1/payment/HelloWorld", HelloWorld);
         App.MapPost("/api/v1/payment/OrderStatusChangedToValidated", OrderStatusChangedToValidatedAsync);
     }
 
-    public string HelloWorld()
-    {
-        return "Hello World";
-    }
-
-    [Topic(DAPR_PUBSUB_NAME, "OrderStatusChangedToValidatedIntegrationEvent")]
+    [Topic(DAPR_PUBSUB_NAME, nameof(OrderStatusChangedToValidatedIntegrationEvent))]
     public async Task OrderStatusChangedToValidatedAsync(
         OrderStatusChangedToValidatedIntegrationEvent integrationEvent,
         [FromServices] IDomainEventBus domainEventBus,
