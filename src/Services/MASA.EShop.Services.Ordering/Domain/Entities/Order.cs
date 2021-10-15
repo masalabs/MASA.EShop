@@ -5,12 +5,12 @@
         public Guid Id { get; set; }
         public int OrderNumber { get; set; }
         public DateTime OrderDate { get; set; }
-        public string OrderStatus { get; set; }
-        public string Description { get; set; }
-        public Address Address { get; set; }
-        public string BuyerId { get; set; }
-        public string BuyerName { get; set; }
-        public List<OrderItem> OrderItems { get; set; }
+        public string OrderStatus { get; set; } = default!;
+        public string? Description { get; set; }
+        public Address Address { get; set; } = default!;
+        public string BuyerId { get; set; } = default!;
+        public string BuyerName { get; set; } = default!;
+        public List<OrderItem> OrderItems { get; set; } = new();
 
         public decimal GetTotal()
         {

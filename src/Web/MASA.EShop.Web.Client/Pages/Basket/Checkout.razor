@@ -1,0 +1,40 @@
+﻿@page "/basket/checkout"
+@using MASA.EShop.Web.Client.Data.Basket.Record
+@inherits EShopBasePage
+
+<PageTitle>Basket Check Out</PageTitle>
+<H1>Review</H1>
+<MContainer>
+    <MTable TItem="BasketItem" Headers="_headers" Loading="_loading" Items="_userBasket.Items">
+        <MTableCol Width="150">
+            <img src="@context.PictureUrl" height="100" width="150" />
+        </MTableCol>
+        <MTableCol>
+            @context.ProductName
+        </MTableCol>
+        <MTableCol>
+            @context.UnitPrice
+        </MTableCol>
+        <MTableCol>
+            @context.Quantity
+        </MTableCol>
+        <MTableCol>
+            @context.GetFormattedTotalPrice()
+        </MTableCol>
+    </MTable>
+    增加Total 数据
+@*    https://codepen.io/jairoerazo/pen/wvzYBVW*@
+    <MRow>
+        <MCol Md="1">
+            <MButton Tile Color="success" OnClick='()=>Navigation("basket")'>
+                BACK
+            </MButton>
+        </MCol>
+        <MSpacer></MSpacer>
+        <MCol Md="1">
+            <MButton Tile Color="success">
+                [PAY NOW]
+            </MButton>
+        </MCol>
+    </MRow>
+</MContainer>

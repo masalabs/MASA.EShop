@@ -1,0 +1,71 @@
+﻿@page "/catalog"
+@inherits EShopBasePage
+
+<PageTitle>Catalog</PageTitle>
+
+<MRow>
+    <MCol Xs="5" Sm="3" Md="2">
+        <MSelect Label="Brand"
+                 @bind-Value="_catalogOptinsModel.Brand"
+                 Dense
+                 Outlined
+                 Items="@_brands"
+                 ItemText="b=> b.Brand"
+                 ItemValue="b => b.Id">
+        </MSelect>
+    </MCol>
+    <MCol Xs="5" Sm="3" Md="2">
+        <MSelect Label="Type"
+                 @bind-Value="_catalogOptinsModel.Type"
+                 Dense
+                 Outlined
+                 Items="@_types"
+                 ItemText="u => u.Type"
+                 ItemValue="u => u.Id">
+        </MSelect>
+    </MCol>
+    <MCol Xs="5" Sm="3" Md="2">
+        <MButton Class="ma-2"
+                 Color="indigo"
+                 Dark>
+            <MIcon Dark>mdi-chevron-right</MIcon>
+        </MButton>
+    </MCol>
+</MRow>
+
+<MContainer>
+    @if (_catalogViewModel.Count == 0)
+    {
+        <MPagination @bind-Value="_catalogViewModel.PageIndex" Length="_catalogViewModel.PageCount"></MPagination>
+
+        <MRow>
+            @for (var i = 0; i < 10; i++)
+            @*@foreach (var item in _catalogViewModel.Items)*@
+            {
+                <MCol Md="4" style="display:flex;flex-flow: column;align-items:center;">
+            @*        <MImage MaxHeight="150"
+                    MaxWidth="250"
+                    Src="https://picsum.photos/id/11/500/300">
+                    </MImage>*@
+                    @*todo 改为MImage*@
+                    <img src="https://picsum.photos/id/11/500/300" height="200" width="300"/>
+                    <MButton Tile Color="success" OnClick="AddToCart">
+                        <MIcon Left>mdi-cart</MIcon>
+                        ADD TO CART
+                    </MButton>
+                    <div>
+                        <span>Name</span>
+                    </div>
+                    <div>
+                        <span>Price</span>
+                    </div>
+                </MCol>
+            }
+        </MRow>
+        <MPagination @bind-Value="_catalogViewModel.PageIndex" Length="_catalogViewModel.PageCount"></MPagination>
+    }
+    else
+    {
+        <h2>THERE ARE NO RESULTS THAT MATCH YOUR SEARCH</h2>
+    }
+</MContainer>

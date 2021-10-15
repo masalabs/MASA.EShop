@@ -2,33 +2,10 @@
 
 namespace MASA.EShop.Contracts.Ordering
 {
-    public class OrderStatusChangedToValidatedIntegrationEvent : IntegrationEvent
+    public record OrderStatusChangedToValidatedIntegrationEvent(Guid OrderId, string OrderStatus,
+            string Description, string BuyerName, decimal Total) : IntegrationEvent
     {
-        public Guid OrderId { get; init; }
+        public override string Topic { get; set; } = nameof(OrderStatusChangedToValidatedIntegrationEvent);
 
-        public string OrderStatus { get; init; } = default!;
-
-        public string Description { get; init; } = default!;
-
-        public string BuyerName { get; init; } = default!;
-
-        public decimal Total { get; init; }
-
-        public override string Topic { get ; set ; } = nameof(OrderStatusChangedToValidatedIntegrationEvent);
-
-        private OrderStatusChangedToValidatedIntegrationEvent()
-        {
-            
-        }
-
-        public OrderStatusChangedToValidatedIntegrationEvent(Guid orderId, string orderStatus,
-            string description, string buyerName, decimal total)
-        {
-            OrderId = orderId;
-            OrderStatus = orderStatus;
-            Description = description;
-            BuyerName = buyerName;
-            Total = total;
-        }
     }
 }

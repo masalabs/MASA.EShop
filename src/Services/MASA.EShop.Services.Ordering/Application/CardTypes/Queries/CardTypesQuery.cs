@@ -1,7 +1,7 @@
 ﻿namespace MASA.EShop.Services.Ordering.Application.CardTypes.Queries
 {
-    public class CardTypesQuery : Query<IEnumerable<CardType>>
+    public record class CardTypesQuery : Query<IEnumerable<CardType>>
     {
-        public override IEnumerable<CardType> Result { get ; set ; }
+        public override IEnumerable<CardType> Result { get; set; } = default!;
     }
 }

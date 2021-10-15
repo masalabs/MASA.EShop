@@ -1,23 +1,9 @@
 ﻿namespace MASA.EShop.Contracts.Catalog;
 
-public class OrderStockRejectedIntegrationEvent : IntegrationEvent
+public record OrderStockRejectedIntegrationEvent(Guid OrderId,
+        List<ConfirmedOrderStockItem> OrderStockItems) : IntegrationEvent
 {
     public override string Topic { get; set; } = nameof(OrderStockRejectedIntegrationEvent);
-
-    public Guid OrderId { get; init; }
-
-    public List<ConfirmedOrderStockItem> OrderStockItems { get; init; } = new();
-
-    private OrderStockRejectedIntegrationEvent()
-    {
-    }
-
-    public OrderStockRejectedIntegrationEvent(Guid orderId,
-        List<ConfirmedOrderStockItem> orderStockItems)
-    {
-        OrderId = orderId;
-        OrderStockItems = orderStockItems;
-    }
 }
 
 public class ConfirmedOrderStockItem

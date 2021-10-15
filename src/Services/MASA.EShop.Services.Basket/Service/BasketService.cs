@@ -70,7 +70,7 @@ public class BasketService : ServiceBase
                basketCheckout.RequestId,
                basket);
 
-        await _daprClient.PublishEventAsync(DAPR_PUBSUB_NAME,nameof(UserCheckoutAcceptedIntegrationEvent), @event);
+        await _daprClient.PublishEventAsync(DAPR_PUBSUB_NAME, nameof(UserCheckoutAcceptedIntegrationEvent), @event);
         _logger.LogInformation("Publish Event CheckoutAccepted");
 
         return Results.Accepted();

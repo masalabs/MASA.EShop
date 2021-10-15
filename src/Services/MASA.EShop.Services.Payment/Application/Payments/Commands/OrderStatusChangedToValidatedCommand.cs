@@ -1,6 +1,6 @@
 ﻿namespace MASA.EShop.Services.Payment.Application.Payments.Commands;
 
-public class OrderStatusChangedToValidatedCommand : DomainCommand
+public record OrderStatusChangedToValidatedCommand : DomainCommand
 {
     public Guid OrderId { get; set; }
 

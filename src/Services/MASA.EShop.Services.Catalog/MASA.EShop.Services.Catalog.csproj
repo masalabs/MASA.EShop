@@ -13,13 +13,13 @@
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.2" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="10.3.3" />
-    <PackageReference Include="MASA.BuildingBlocks.ReadWriteSpliting.CQRS" Version="0.0.7159" />
-    <PackageReference Include="MASA.Contrib.Service.MinimalAPIs" Version="0.0.7164" />
-    <PackageReference Include="MASA.Contrib.Data.Uow.EF" Version="0.0.7164" />
-    <PackageReference Include="MASA.Contrib.Dispatcher.Events" Version="0.0.7164" />
-    <PackageReference Include="MASA.Contrib.Dispatcher.IntegrationEvents.Dapr" Version="0.0.7164" />
-    <PackageReference Include="MASA.Contrib.Dispatcher.IntegrationEvents.EventLogs.EF" Version="0.0.7164" />
-    <PackageReference Include="MASA.Contrib.ReadWriteSpliting.CQRS" Version="0.0.7164" />
+    <PackageReference Include="MASA.BuildingBlocks.ReadWriteSpliting.CQRS" Version="0.0.7167" />
+    <PackageReference Include="MASA.Contrib.Service.MinimalAPIs" Version="0.0.7267" />
+    <PackageReference Include="MASA.Contrib.Data.Uow.EF" Version="0.0.7267" />
+    <PackageReference Include="MASA.Contrib.Dispatcher.Events" Version="0.0.7267" />
+    <PackageReference Include="MASA.Contrib.Dispatcher.IntegrationEvents.Dapr" Version="0.0.7267" />
+    <PackageReference Include="MASA.Contrib.Dispatcher.IntegrationEvents.EventLogs.EF" Version="0.0.7267" />
+    <PackageReference Include="MASA.Contrib.ReadWriteSpliting.CQRS" Version="0.0.7267" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.0-rc.1.21452.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.0-rc.1.21452.10">
       <PrivateAssets>all</PrivateAssets>

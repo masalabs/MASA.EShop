@@ -1,17 +1,69 @@
-﻿@inherits LayoutComponentBase
+﻿@using MASA.Blazor
+@inherits LayoutComponentBase
 
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
+<MApp>
+    <MAppBar Flat Fixed Color="white" Class="m-bar--underline">
+        <span>MASA EShop</span>
+        <MSpacer></MSpacer>
+        <AuthorizeView>
+            <NotAuthorized>
+                <MMenu OffsetX Left OffsetY>
+                    <Activator Context="_">
+                        <MButton Icon Large><MIcon>mdi-account-circle-outline</MIcon></MButton>
+                    </Activator>
+                    <ChildContent>
+                        <MList Dense>
+                            <MListItem Link Click='()=>Navigation("order")'>
+                                <MListItemIcon>
+                                    <MIcon>mdi-bell</MIcon>
+                                </MListItemIcon>
+                                <MListItemContent>
+                                    <MListItemTitle>
+                                        订单中心
+                                    </MListItemTitle>
+                                </MListItemContent>
+                            </MListItem>
+                            <MListItem Link>
+                                <MListItemIcon>
+                                    <MIcon>mdi-account</MIcon>
+                                </MListItemIcon>
+                                <MListItemContent>
+                                    <MListItemTitle>
+                                        个人中心
+                                    </MListItemTitle>
+                                </MListItemContent>
+                            </MListItem>
+                            <MListItem Link Click='()=>Navigation("logout")'>
+                                <MListItemIcon>
+                                    <MIcon>mdi-logout</MIcon>
+                                </MListItemIcon>
+                                <MListItemContent>
+                                    <MListItemTitle>
+                                        退出登录
+                                    </MListItemTitle>
+                                </MListItemContent>
+                            </MListItem>
+                        </MList>
+                    </ChildContent>
+                </MMenu>
+            </NotAuthorized>
+           @* <NotAuthorized>
+                <MMenu>
+                    <Activator>
+                    <MButton Color="primary">Login</MButton>
+                    </Activator>
+                    </MMenu>
+            </NotAuthorized>*@
+        </AuthorizeView>
+    </MAppBar>
 
-    <main>
-        <div class="top-row px-4">
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
-        </div>
+    <MMain class="pt-16">
+        <MImage Alt="example" Height="250" Src="https://picsum.photos/510/300?random" />
+        <MContainer Fluid>
+            <CascadingValue Value="this">
+                @Body
+            </CascadingValue>
+        </MContainer>
+    </MMain>
+</MApp>
 
-        <article class="content px-4">
-            @Body
-        </article>
-    </main>
-</div>

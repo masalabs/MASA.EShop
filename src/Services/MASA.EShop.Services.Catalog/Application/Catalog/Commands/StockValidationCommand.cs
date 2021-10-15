@@ -1,6 +1,6 @@
 ﻿namespace MASA.EShop.Services.Catalog.Application.Catalog.Commands;
 
-public class StockValidationCommand : Command
+public record StockValidationCommand : Command
 {
     public Guid OrderId { get; set; }
 

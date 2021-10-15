@@ -1,0 +1,32 @@
+﻿@page "/order"
+@using MASA.EShop.Web.Client.Data.Order.Record
+@inherits EShopBasePage
+
+<PageTitle>Orders</PageTitle>
+
+<MContainer>
+    <h2>My Order History</h2>
+    <MTable TItem="OrderSummary" Headers="_headers" Loading="_loading" Items="_orders">
+        <MTableCol >
+            @context.OrderNumber
+        </MTableCol>
+        <MTableCol>
+            @context.OrderDate
+        </MTableCol>
+        <MTableCol>
+            @context.Total
+        </MTableCol>
+        <MTableCol>
+            @context.OrderStatus
+        </MTableCol>
+        <MTableCol>
+            @if (context.OrderStatus == "Submitted")
+            {
+                <MButton Color="primary" Text>Cancel</MButton>
+            }
+        </MTableCol>
+        <MTableCol>
+            <MButton Color="primary" Text Click='()=>Navigation($"/order/details/{context.OrderNumber}")'>Detail</MButton>
+        </MTableCol>
+    </MTable>
+</MContainer>

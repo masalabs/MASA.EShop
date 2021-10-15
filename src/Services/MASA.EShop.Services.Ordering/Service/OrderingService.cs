@@ -74,7 +74,7 @@
         {
             var ordersQuery = new OrdersQuery
             {
-                ByuerId = ""
+                BuyerId = ""
             };
             await eventBus.PublishAsync(ordersQuery);
             return Results.Ok(ordersQuery.Result.Select(OrderSummaryDto.FromOrderSummary));

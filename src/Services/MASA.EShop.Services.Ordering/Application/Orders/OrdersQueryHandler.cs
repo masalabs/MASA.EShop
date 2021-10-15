@@ -18,7 +18,7 @@
         [EventHandler]
         public async Task OrdersQueryAsync(OrdersQuery query)
         {
-            query.Result = await _orderRepository.GetOrdersFromBuyerAsync(query.ByuerId);
+            query.Result = await _orderRepository.GetOrdersFromBuyerAsync(query.BuyerId);
         }
     }
 }

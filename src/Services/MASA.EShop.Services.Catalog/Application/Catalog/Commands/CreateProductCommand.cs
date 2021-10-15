@@ -1,6 +1,6 @@
 ﻿namespace MASA.EShop.Services.Catalog.Application.Catalog;
 
-public class CreateProductCommand : Command
+public record CreateProductCommand : Command
 {
     public string Name { get; set; } = default!;
 

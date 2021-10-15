@@ -1,9 +1,9 @@
 ﻿namespace MASA.EShop.Services.Ordering.Application.Orders.Queries
 {
-    public class OrdersQuery : Query<IEnumerable<OrderSummary>>
+    public record class OrdersQuery : Query<IEnumerable<OrderSummary>>
     {
-        public string ByuerId { get; set; }
+        public string BuyerId { get; set; } = default!;
 
-        public override IEnumerable<OrderSummary> Result { get ; set ; }
+        public override IEnumerable<OrderSummary> Result { get; set; } = default!;
     }
 }

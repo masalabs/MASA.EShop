@@ -1,6 +1,6 @@
 ﻿namespace MASA.EShop.Services.Catalog.Application.Catalog.Commands;
 
-public class RemoveStockCommand : Command
+public record RemoveStockCommand : Command
 {
     public Guid OrderId { get; set; }
 

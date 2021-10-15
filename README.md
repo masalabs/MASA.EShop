@@ -1,100 +1,100 @@
 # <center>MASA.EShop</center>
 
-# ½éÉÜ
+# ä»‹ç»
 
-## Ä¿Â¼½á¹¹
+## ç›®å½•ç»“æ„
 
 ```
 MASA.EShop
-©À©¤©¤ dapr
-©¦   ©À©¤©¤ components                           dapr±¾µØ×é¼ş¶¨ÒåÄ¿Â¼
-©¦   ©¦   ©À©¤©¤ pubsub.yaml                      ·¢²¼¶©ÔÄÅäÖÃÎÄ¼ş
-©¦   ©¦   ©¸©¤©¤ statestore.yaml                  ×´Ì¬¹ÜÀíÅäÖÃÎÄ¼ş
-©À©¤©¤ src                                      Ô´ÎÄ¼şÄ¿Â¼
-©¦   ©À©¤©¤ Api
-©¦   ©¦   ©¸©¤©¤ MASA.EShop.Api.Open              BFF²ã£¬Ìá¹©½Ó¿Ú¸øWeb.Client
-©¦   ©À©¤©¤ Contracts                            ¹«ÓÃÔªËØÌáÈ¡£¬Èç·şÎñ¼äÍ¨ĞÅµÄEvent Class
-©¦   ©¦   ©À©¤©¤ MASA.EShop.Contracts.Basket
-©¦   ©¦   ©À©¤©¤ MASA.EShop.Contracts.Catalog
-©¦   ©¦   ©À©¤©¤ MASA.EShop.Contracts.Ordering
-©¦   ©¦   ©¸©¤©¤ MASA.EShop.Contracts.Payment
-©¦   ©À©¤©¤ Services                             ·şÎñ²ğ·Ö
-©¦   ©¦   ©À©¤©¤ MASA.EShop.Services.Basket
-©¦   ©¦   ©À©¤©¤ MASA.EShop.Services.Catalog
-©¦   ©¦   ©À©¤©¤ MASA.EShop.Services.Ordering
-©¦   ©¦   ©¸©¤©¤ MASA.EShop.Services.Payment
-©¦   ©À©¤©¤ Web
-©¦   ©¦   ©À©¤©¤ MASA.EShop.Web.Admin
-©¦   ©¦   ©¸©¤©¤ MASA.EShop.Web.Client
-©À©¤©¤ test
-|   ©¸©¤©¤ MASA.EShop.Services.Catalog.Tests
-©À©¤©¤ docker-compose                          docker-compose ·şÎñÅäÖÃ
-©¦   ©À©¤©¤ MASA.EShop.Web.Admin
-©¦   ©¸©¤©¤ MASA.EShop.Web.Client
-©À©¤©¤ .gitignore                               gitÌá½»µÄºöÂÔÎÄ¼ş
-©À©¤©¤ LICENSE                                  ÏîÄ¿Ğí¿É
-©À©¤©¤ .dockerignore                            docker¹¹½¨µÄºöÂÔÎÄ¼ş
-©¸©¤©¤ README.md                                ÏîÄ¿ËµÃ÷ÎÄ¼ş
+â”œâ”€â”€ dapr
+â”‚   â”œâ”€â”€ components                           dapræœ¬åœ°ç»„ä»¶å®šä¹‰ç›®å½•
+â”‚   â”‚   â”œâ”€â”€ pubsub.yaml                      å‘å¸ƒè®¢é˜…é…ç½®æ–‡ä»¶
+â”‚   â”‚   â””â”€â”€ statestore.yaml                  çŠ¶æ€ç®¡ç†é…ç½®æ–‡ä»¶
+â”œâ”€â”€ src                                      æºæ–‡ä»¶ç›®å½•
+â”‚   â”œâ”€â”€ Api
+â”‚   â”‚   â””â”€â”€ MASA.EShop.Api.Open              BFFå±‚ï¼Œæä¾›æ¥å£ç»™Web.Client
+â”‚   â”œâ”€â”€ Contracts                            å…¬ç”¨å…ƒç´ æå–ï¼Œå¦‚æœåŠ¡é—´é€šä¿¡çš„Event Class
+â”‚   â”‚   â”œâ”€â”€ MASA.EShop.Contracts.Basket
+â”‚   â”‚   â”œâ”€â”€ MASA.EShop.Contracts.Catalog
+â”‚   â”‚   â”œâ”€â”€ MASA.EShop.Contracts.Ordering
+â”‚   â”‚   â””â”€â”€ MASA.EShop.Contracts.Payment
+â”‚   â”œâ”€â”€ Services                             æœåŠ¡æ‹†åˆ†
+â”‚   â”‚   â”œâ”€â”€ MASA.EShop.Services.Basket
+â”‚   â”‚   â”œâ”€â”€ MASA.EShop.Services.Catalog
+â”‚   â”‚   â”œâ”€â”€ MASA.EShop.Services.Ordering
+â”‚   â”‚   â””â”€â”€ MASA.EShop.Services.Payment
+â”‚   â”œâ”€â”€ Web
+â”‚   â”‚   â”œâ”€â”€ MASA.EShop.Web.Admin
+â”‚   â”‚   â””â”€â”€ MASA.EShop.Web.Client
+â”œâ”€â”€ test
+|   â””â”€â”€ MASA.EShop.Services.Catalog.Tests
+â”œâ”€â”€ docker-compose                          docker-compose æœåŠ¡é…ç½®
+â”‚   â”œâ”€â”€ MASA.EShop.Web.Admin
+â”‚   â””â”€â”€ MASA.EShop.Web.Client
+â”œâ”€â”€ .gitignore                               gitæäº¤çš„å¿½ç•¥æ–‡ä»¶
+â”œâ”€â”€ LICENSE                                  é¡¹ç›®è®¸å¯
+â”œâ”€â”€ .dockerignore                            dockeræ„å»ºçš„å¿½ç•¥æ–‡ä»¶
+â””â”€â”€ README.md                                é¡¹ç›®è¯´æ˜æ–‡ä»¶
 ```
 
-## ÏîÄ¿½á¹¹
+## é¡¹ç›®ç»“æ„
 
-![½á¹¹Í¼](img/eshop.png)
+![ç»“æ„å›¾](img/eshop.png)
 
-## ÏîÄ¿¼Ü¹¹£¨´ı¸üĞÂ£©
+## é¡¹ç›®æ¶æ„ï¼ˆå¾…æ›´æ–°ï¼‰
 
-![¼Ü¹¹Í¼](img/eshop-architectureks.png)
+![æ¶æ„å›¾](img/eshop-architectureks.png)
 
-## ¿ìËÙÈëÃÅ
+## å¿«é€Ÿå…¥é—¨
 
-- ×¼±¸¹¤×÷
+- å‡†å¤‡å·¥ä½œ
 
   - Docker
   - VS 2022
   - .Net 6.0
   - Dapr
 
-- Æô¶¯ÏîÄ¿
+- å¯åŠ¨é¡¹ç›®
 
-  - VS 2022(ÍÆ¼ö)
+  - VS 2022(æ¨è)
 
-    ÉèÖÃ docker-compose ÎªÆô¶¯ÏîÄ¿,Ctrl + F5 Æô¶¯¡£
+    è®¾ç½® docker-compose ä¸ºå¯åŠ¨é¡¹ç›®,Ctrl + F5 å¯åŠ¨ã€‚
 
     ![vs-run](img/vs_run.png)
 
-    Æô¶¯ºó¿ÉÒÔ¿´µ½ÈİÆ÷ÊÓÍ¼µÄ¶ÔÓ¦Êä³ö
+    å¯åŠ¨åå¯ä»¥çœ‹åˆ°å®¹å™¨è§†å›¾çš„å¯¹åº”è¾“å‡º
 
     ![vs-result](img/vs_result.png)
 
   - CLI
 
-    ÏîÄ¿¸ùÄ¿Â¼ÏÂÖ´ĞĞÃüÁî
+    é¡¹ç›®æ ¹ç›®å½•ä¸‹æ‰§è¡Œå‘½ä»¤
 
     ```
     docker-compose build
     docker-compose up
     ```
 
-    Æô¶¯ºóĞ§¹û
+    å¯åŠ¨åæ•ˆæœ
 
     ![cli-result](img/cli_result.png)
 
   - VS Code (Todo)
 
-- Æô¶¯Ğ§¹û
+- å¯åŠ¨æ•ˆæœ
 
   Baseket Service: http://localhost:8081/swagger/index.html  
   Catalog Service: http://localhost:8082/swagger/index.html  
   Ordering Service: http://localhost:8083/swagger/index.html  
   Payment Service: http://localhost:8084/swagger/index.html
 
-## ÌØĞÔ
+## ç‰¹æ€§
 
 #### MinimalAPI
 
-ÏîÄ¿ÖĞµÄ·şÎñÊ¹ÓÃ .Net 6.0 ĞÂÔöµÄ Minimal API ·½Ê½´úÌæÔ­ÓĞµÄ Web API ÊµÏÖ
+é¡¹ç›®ä¸­çš„æœåŠ¡ä½¿ç”¨ .Net 6.0 æ–°å¢çš„ Minimal API æ–¹å¼ä»£æ›¿åŸæœ‰çš„ Web API å®ç°
 
-> ¸ü¶à Minimal API ÄÚÈİ²Î¿¼[mvc-to-minimal-apis-aspnet-6](https://benfoster.io/blog/mvc-to-minimal-apis-aspnet-6/)
+> æ›´å¤š Minimal API å†…å®¹å‚è€ƒ[mvc-to-minimal-apis-aspnet-6](https://benfoster.io/blog/mvc-to-minimal-apis-aspnet-6/)
 
 ```C#
 var builder = WebApplication.CreateBuilder(args);
@@ -103,7 +103,7 @@ app.MapGet("/api/v1/helloworld", ()=>"Hello World");
 app.Run();
 ```
 
-`MASA.Contrib.Service.MinimalAPIs`¶Ô Minimal API ½øÒ»²½·â×°,ĞŞ¸Ä´úÂëÎª:
+`MASA.Contrib.Service.MinimalAPIs`å¯¹ Minimal API è¿›ä¸€æ­¥å°è£…,ä¿®æ”¹ä»£ç ä¸º:
 
 ```C#
 var builder = WebApplication.CreateBuilder(args);
@@ -119,15 +119,15 @@ public class HelloService : ServiceBase
 }
 ```
 
-> Ôö¼ÓÁË ServiceBase Àà£¨Ïàµ±ÓÚ ControllerBase£©£¬Ê¹ÓÃÊ±¶¨Òå×Ô¼ºµÄ Service Àà£¨Ïàµ±ÓÚ Controller£©£¬ÔÚ¹¹Ôìº¯ÊıÖĞÎ¬»¤Â·ÓÉ×¢²á¡£`AddServices(builder)`·½·¨»áÕÒµ½ËùÓĞ·şÎñÀàÍê³É×¢²á¡£¼Ì³Ğ ServiceBase ÀàÎªµ¥ÀıÄ£Ê½,¹¹Ôìº¯Êı×¢ÈëÖ»¿ÉÒÔ×¢Èëµ¥Àı£¬Èç ILogger,²Ö´¢Àà Repostory µÈÓ¦¸Ã½èÖú FromService ÊµÏÖ·½·¨×¢Èë¡£
+> å¢åŠ äº† ServiceBase ç±»ï¼ˆç›¸å½“äº ControllerBaseï¼‰ï¼Œä½¿ç”¨æ—¶å®šä¹‰è‡ªå·±çš„ Service ç±»ï¼ˆç›¸å½“äº Controllerï¼‰ï¼Œåœ¨æ„é€ å‡½æ•°ä¸­ç»´æŠ¤è·¯ç”±æ³¨å†Œã€‚`AddServices(builder)`æ–¹æ³•ä¼šæ‰¾åˆ°æ‰€æœ‰æœåŠ¡ç±»å®Œæˆæ³¨å†Œã€‚ç»§æ‰¿ ServiceBase ç±»ä¸ºå•ä¾‹æ¨¡å¼,æ„é€ å‡½æ•°æ³¨å…¥åªå¯ä»¥æ³¨å…¥å•ä¾‹ï¼Œå¦‚ ILogger,ä»“å‚¨ç±» Repostory ç­‰åº”è¯¥å€ŸåŠ© FromService å®ç°æ–¹æ³•æ³¨å…¥ã€‚
 
 #### Dapr
 
-¹Ù·½ Dapr Ê¹ÓÃ½éÉÜ£¬MASA.Contrib ·â×° Dapr ÊµÏÖÊ¹ÓÃ²Î¿¼ Event ²¿·Ö
+å®˜æ–¹ Dapr ä½¿ç”¨ä»‹ç»ï¼ŒMASA.Contrib å°è£… Dapr å®ç°ä½¿ç”¨å‚è€ƒ Event éƒ¨åˆ†
 
-¸ü¶à Dapr ÄÚÈİ²Î¿¼:https://docs.microsoft.com/zh-cn/dotnet/architecture/dapr-for-net-developers/
+æ›´å¤š Dapr å†…å®¹å‚è€ƒ:https://docs.microsoft.com/zh-cn/dotnet/architecture/dapr-for-net-developers/
 
-1. Ìí¼Ó Dapr
+1. æ·»åŠ  Dapr
 
 ```C#
 builder.Services.AddDaprClient();
@@ -140,21 +140,7 @@ app.UseEndpoints(endpoints =>
 });
 ```
 
-2. ¶©ÔÄÊÂ¼ş
-
-```C#
- [Topic("pubsub", nameof(OrderStatusChangedToValidatedIntegrationEvent)]
- public async Task OrderStatusChangedToValidatedAsync(
-     OrderStatusChangedToValidatedIntegrationEvent integrationEvent,
-     [FromServices] ILogger<IntegrationEventService> logger)
- {
-     logger.LogInformation("----- integration event: {IntegrationEventId} at {AppName} - ({@IntegrationEvent})", integrationEvent.Id, Program.AppName, integrationEvent);
- }
-```
-
-> Topic µÚÒ»¸ö²ÎÊı pubsub ÎªÅäÖÃÎÄ¼ş pubsub.yaml ÖĞÖ¸¶¨µÄ name
-
-3. ·¢²¼ÊÂ¼ş
+2. å‘å¸ƒäº‹ä»¶
 
 ```C#
 var @event = new OrderStatusChangedToValidatedIntegrationEvent();
@@ -166,26 +152,40 @@ await _daprClient.PublishEventAsync
 );
 ```
 
+3. è®¢é˜…äº‹ä»¶
+
+```C#
+ [Topic("pubsub", nameof(OrderStatusChangedToValidatedIntegrationEvent)]
+ public async Task OrderStatusChangedToValidatedAsync(
+     OrderStatusChangedToValidatedIntegrationEvent integrationEvent,
+     [FromServices] ILogger<IntegrationEventService> logger)
+ {
+     logger.LogInformation("----- integration event: {IntegrationEventId} at {AppName} - ({@IntegrationEvent})", integrationEvent.Id, Program.AppName, integrationEvent);
+ }
+```
+
+> Topic ç¬¬ä¸€ä¸ªå‚æ•° pubsub ä¸ºé…ç½®æ–‡ä»¶ pubsub.yaml ä¸­æŒ‡å®šçš„ name
+
 #### Actor
 
-1. ÏîÄ¿ÖĞÔö¼Ó Actor Ö§³Ö
+1. é¡¹ç›®ä¸­å¢åŠ  Actor æ”¯æŒ
 
 ```C#
 app.UseEndpoints(endpoint =>
 {
     ...
-    endpoint.MapActorsHandlers(); //Actor Ö§³Ö
+    endpoint.MapActorsHandlers(); //Actor æ”¯æŒ
 });
 ```
 
-2. ¶¨Òå Actor ½Ó¿Ú£¬¼Ì³Ğ IActor¡£
+2. å®šä¹‰ Actor æ¥å£ï¼Œç»§æ‰¿ IActorã€‚
 
 ```C#
 public interface IOrderingProcessActor : IActor
 {
 ```
 
-3. ÊµÏÖ`IOrderingProcessActor`£¬²¢¼Ì³Ğ`Actor`Àà¡£Ê¾ÀıÏîÄ¿»¹ÊµÏÖÁË`IRemindable`½Ó¿Ú£¬ÊµÏÖ¸Ã½Ó¿ÚºóÍ¨¹ı·½·¨`RegisterReminderAsync`Íê³É×¢²áÌáĞÑ¡£
+3. å®ç°`IOrderingProcessActor`ï¼Œå¹¶ç»§æ‰¿`Actor`ç±»ã€‚ç¤ºä¾‹é¡¹ç›®è¿˜å®ç°äº†`IRemindable`æ¥å£ï¼Œå®ç°è¯¥æ¥å£åé€šè¿‡æ–¹æ³•`RegisterReminderAsync`å®Œæˆæ³¨å†Œæé†’ã€‚
 
 ```C#
 public class OrderingProcessActor : Actor, IOrderingProcessActor, IRemindable
@@ -194,7 +194,7 @@ public class OrderingProcessActor : Actor, IOrderingProcessActor, IRemindable
 }
 ```
 
-4. ×¢²á Actor
+4. æ³¨å†Œ Actor
 
 ```C#
 builder.Services.AddActors(options =>
@@ -203,7 +203,7 @@ builder.Services.AddActors(options =>
 });
 ```
 
-5. Actor µ÷ÓÃ´úÂë
+5. Actor è°ƒç”¨ä»£ç 
 
 ```C#
 var actorId = new ActorId(order.Id.ToString());
@@ -212,35 +212,35 @@ var actor = ActorProxy.Create<IOrderingProcessActor>(actorId, nameof(OrderingPro
 
 #### EventBus
 
-½öÖ§³Ö·¢ËÍ½ø³ÌÄÚÊÂ¼ş
+ä»…æ”¯æŒå‘é€è¿›ç¨‹å†…äº‹ä»¶
 
-1. Ìí¼Ó EventBus
+1. æ·»åŠ  EventBus
 
 ```C#
 builder.Services.AddEventBus();
 ```
 
-2. ×Ô¶¨Òå Event
+2. è‡ªå®šä¹‰ Event
 
 ```C#
 public class DemoEvent : Event
 {
-    //todo ×Ô¶¨ÒåÊôĞÔÊÂ¼ş²ÎÊı
+    //todo è‡ªå®šä¹‰å±æ€§äº‹ä»¶å‚æ•°
 }
 ```
 
-3. ·¢ËÍ Event
+3. å‘é€ Event
 
 ```C#
 IEventBus eventBus;
-await eventBus.PublishAsync(new DomeEvent());
+await eventBus.PublishAsync(new DemoEvent());
 ```
 
-4. ´¦ÀíÊÂ¼ş
+4. å¤„ç†äº‹ä»¶
 
 ```C#
 [EventHandler]
-public async Task DemoHandleAsync(DomeEvent @event)
+public async Task DemoHandleAsync(DemoEvent @event)
 {
     //todo
 }
@@ -248,32 +248,32 @@ public async Task DemoHandleAsync(DomeEvent @event)
 
 #### IntegrationEventBus
 
-·¢ËÍ¿ç½ø³ÌÊÂ¼ş£¬µ«µ±Í¬Ê±Ìí¼Ó EventBus Ê±£¬Ò²Ö§³Ö½ø³ÌÄÚÊÂ¼ş
+å‘é€è·¨è¿›ç¨‹äº‹ä»¶ï¼Œä½†å½“åŒæ—¶æ·»åŠ  EventBus æ—¶ï¼Œä¹Ÿæ”¯æŒè¿›ç¨‹å†…äº‹ä»¶
 
-1. Ìí¼Ó IntegrationEventBus
+1. æ·»åŠ  IntegrationEventBus
 
 ```C#
 builder.Services
     .AddDaprEventBus<IntegrationEventLogService>();
 //   .AddDaprEventBus<IntegrationEventLogService>(options=>{
 //    	//todo
-//   	options.UseEventBus();//Ìí¼ÓEventBus
+//   	options.UseEventBus();//æ·»åŠ EventBus
 //	});
 ```
 
-2. ×Ô¶¨Òå Event
+2. è‡ªå®šä¹‰ Event
 
 ```C#
-public class DomeIntegrationEvent : IntegrationEvent
+public class DemoIntegrationEvent : IntegrationEvent
 {
-    public override string Topic { get; set; } = nameof(DomeIntegrationEvent);
-    //todo ×Ô¶¨ÒåÊôĞÔÊÂ¼ş²ÎÊı
+    public override string Topic { get; set; } = nameof(DemoIntegrationEvent);
+    //todo è‡ªå®šä¹‰å±æ€§äº‹ä»¶å‚æ•°
 }
 ```
 
-> Topic ÊôĞÔÖµÎª Dapr pub/sub Ïà¹ØÌØĞÔ TopicAttribute µÚ¶ş¸ö²ÎÊıµÄÖµ
+> Topic å±æ€§å€¼ä¸º Dapr pub/sub ç›¸å…³ç‰¹æ€§ TopicAttribute ç¬¬äºŒä¸ªå‚æ•°çš„å€¼
 
-3. ·¢ËÍ Event
+3. å‘é€ Event
 
 ```C#
 public class DemoService
@@ -290,16 +290,16 @@ public class DemoService
     public async Task DemoPublish()
     {
         //todo
-        await _eventBus.PublishAsync(new DomeIntegrationEvent());
+        await _eventBus.PublishAsync(new DemoIntegrationEvent());
     }
 }
 ```
 
-4. ´¦ÀíÊÂ¼ş
+4. å¤„ç†äº‹ä»¶
 
 ```C#
-[Topic("pubsub", nameof(DomeIntegrationEvent))]
-public async Task DomeIntegrationEventHandleAsync(DomeIntegrationEvent @event)
+[Topic("pubsub", nameof(DemoIntegrationEvent))]
+public async Task DemoIntegrationEventHandleAsync(DemoIntegrationEvent @event)
 {
     //todo
 }
@@ -307,11 +307,11 @@ public async Task DomeIntegrationEventHandleAsync(DomeIntegrationEvent @event)
 
 #### CQRS
 
-¸ü¶à¹ØÓÚ CQRS ÎÄµµÇë²Î¿¼£ºhttps://docs.microsoft.com/en-us/azure/architecture/patterns/cqrs
+æ›´å¤šå…³äº CQRS æ–‡æ¡£è¯·å‚è€ƒï¼šhttps://docs.microsoft.com/en-us/azure/architecture/patterns/cqrs
 
 ##### Query
 
-1. ¶¨Òå Query
+1. å®šä¹‰ Query
 
 ```c#
 public class CatalogItemQuery : Query<List<CatalogItem>>
@@ -322,7 +322,7 @@ public class CatalogItemQuery : Query<List<CatalogItem>>
 }
 ```
 
-2. Ìí¼Ó QueryHandler, Àı£º
+2. æ·»åŠ  QueryHandler, ä¾‹ï¼š
 
 ```c#
 public class CatalogQueryHandler
@@ -339,18 +339,18 @@ public class CatalogQueryHandler
 }
 ```
 
-3. ·¢ËÍ Query
+3. å‘é€ Query
 
 ```C#
 IEventBus eventBus;
 await eventBus.PublishAsync(new CatalogItemQuery(){
 	Name = "Rolex"
-});//½ø³ÌÄÚÊ¹ÓÃÊ¹ÓÃIEventBus
+});//è¿›ç¨‹å†…ä½¿ç”¨ä½¿ç”¨IEventBus
 ```
 
 ##### Command
 
-1. ¶¨Òå Command
+1. å®šä¹‰ Command
 
 ```c#
 public class CreateCatalogItemCommand : Command
@@ -361,7 +361,7 @@ public class CreateCatalogItemCommand : Command
 }
 ```
 
-2. Ìí¼Ó CommandHandler, Àı£º
+2. æ·»åŠ  CommandHandler, ä¾‹ï¼š
 
 ```c#
 public class CatalogCommandHandler
@@ -378,53 +378,53 @@ public class CatalogCommandHandler
 }
 ```
 
-3. ·¢ËÍ Command
+3. å‘é€ Command
 
 ```C#
 IEventBus eventBus;
-await eventBus.PublishAsync(new CreateCatalogItemCommand());//½ø³ÌÄÚÊ¹ÓÃÊ¹ÓÃIEventBus
+await eventBus.PublishAsync(new CreateCatalogItemCommand());//è¿›ç¨‹å†…ä½¿ç”¨ä½¿ç”¨IEventBus
 ```
 
 #### DDD
 
-DDD ¸ü¶àÄÚÈİ²Î¿¼:https://xie.infoq.cn/article/097316aecce39cdc5709e7d73
+DDD æ›´å¤šå†…å®¹å‚è€ƒ:https://xie.infoq.cn/article/097316aecce39cdc5709e7d73
 
-¼È¿ÉÒÔ¿É·¢ËÍ½ø³ÌÄÚÊÂ¼ş¡¢Ò²¿É·¢ËÍ¿ç½ø³ÌÊÂ¼ş
+æ—¢å¯ä»¥å¯å‘é€è¿›ç¨‹å†…äº‹ä»¶ã€ä¹Ÿå¯å‘é€è·¨è¿›ç¨‹äº‹ä»¶
 
-1. Ìí¼Ó DomainEventBus
+1. æ·»åŠ  DomainEventBus
 
 ```c#
 .AddDomainEventBus(options =>
 {
-    options.UseEventBus()//Ê¹ÓÃ½ø³ÌÄÚÊÂ¼ş
-        .UseUow<PaymentDbContext>(dbOptions => dbOptions.UseSqlServer("server=masa.eshop.services.eshop.database;uid=sa;pwd=P@ssw0rd;database=payment"))//Ê¹ÓÃ¹¤×÷µ¥Ôª
-        .UseDaprEventBus<IntegrationEventLogService>()///Ê¹ÓÃ¿ç½ø³ÌÊÂ¼ş
+    options.UseEventBus()//ä½¿ç”¨è¿›ç¨‹å†…äº‹ä»¶
+        .UseUow<PaymentDbContext>(dbOptions => dbOptions.UseSqlServer("server=masa.eshop.services.eshop.database;uid=sa;pwd=P@ssw0rd;database=payment"))//ä½¿ç”¨å·¥ä½œå•å…ƒ
+        .UseDaprEventBus<IntegrationEventLogService>()///ä½¿ç”¨è·¨è¿›ç¨‹äº‹ä»¶
         .UseEventLog<PaymentDbContext>()
-        .UseRepository<PaymentDbContext>();//Ê¹ÓÃRepositoryµÄEF°æÊµÏÖ
+        .UseRepository<PaymentDbContext>();//ä½¿ç”¨Repositoryçš„EFç‰ˆå®ç°
 })
 ```
 
-2. ¶¨Òå DomainCommand( ½ø³ÌÄÚ )
+2. å®šä¹‰ DomainCommand( è¿›ç¨‹å†… )
 
 ```C#
-//Ğ£ÑéÖ§¸¶µÄCommand, ĞèÒª¼Ì³ĞDomainCommand, Èç¹ûÊÇ²éÑ¯, ÔòĞèÒª¼Ì³ĞDomainQuery<>
+//æ ¡éªŒæ”¯ä»˜çš„Command, éœ€è¦ç»§æ‰¿DomainCommand, å¦‚æœæ˜¯æŸ¥è¯¢, åˆ™éœ€è¦ç»§æ‰¿DomainQuery<>
 public class OrderStatusChangedToValidatedCommand : DomainCommand
 {
     public Guid OrderId { get; set; }
 }
 ```
 
-3. ·¢ËÍ DomainCommand
+3. å‘é€ DomainCommand
 
 ```C#
 IDomainEventBus domainEventBus;
 await domainEventBus.PublishAsync(new OrderStatusChangedToValidatedCommand()
 {
     OrderId = "OrderId"
-});//·¢ËÍDomainCommand
+});//å‘é€DomainCommand
 ```
 
-4. Ìí¼Ó Handler
+4. æ·»åŠ  Handler
 
 ```C#
 [EventHandler]
@@ -434,7 +434,7 @@ public async Task ValidatedHandleAsync(OrderStatusChangedToValidatedCommand comm
 }
 ```
 
-5. ¶¨Òå DomainEvent£¨¿ç½ø³Ì£©
+5. å®šä¹‰ DomainEventï¼ˆè·¨è¿›ç¨‹ï¼‰
 
 ```c#
 public class OrderPaymentSucceededDomainEvent : IntegrationDomainEvent
@@ -464,7 +464,7 @@ public class OrderPaymentFailedDomainEvent : IntegrationDomainEvent
 }
 ```
 
-6. ¶¨ÒåÁìÓò·şÎñ²¢·¢ËÍ IntegrationDomainEvent£¨¿ç½ø³Ì£©
+6. å®šä¹‰é¢†åŸŸæœåŠ¡å¹¶å‘é€ IntegrationDomainEventï¼ˆè·¨è¿›ç¨‹ï¼‰
 
 ```c#
 public class PaymentDomainService : DomainService
@@ -486,39 +486,39 @@ public class PaymentDomainService : DomainService
             orderPaymentDomainEvent = new OrderPaymentFailedDomainEvent(payment.OrderId);
         }
         _logger.LogInformation("----- Publishing integration event: {IntegrationEventId} from {AppName} - ({@IntegrationEvent})", orderPaymentDomainEvent.Id, Program.AppName, orderPaymentDomainEvent);
-        await EventBus.PublishAsync(orderPaymentDomainEvent);//ÓÃÓÚ·¢ËÍDomainEvent
+        await EventBus.PublishAsync(orderPaymentDomainEvent);//ç”¨äºå‘é€DomainEvent
     }
 }
 ```
 
-## ·şÎñËµÃ÷
+## æœåŠ¡è¯´æ˜
 
 #### MASA.EShop.Services.Basket
 
-1. Ìí¼Ó[MinimalAPI](####MinimalAPI)
-2. Ìí¼Ó¡¢Ê¹ÓÃ[Dapr](####Dapr)
+1. æ·»åŠ [MinimalAPI](####MinimalAPI)
+2. æ·»åŠ ã€ä½¿ç”¨[Dapr](####Dapr)
 
 #### MASA.EShop.Services.Catalog
 
-1. Ìí¼Ó[MinimalAPI](####MinimalAPI)
-2. Ìí¼Ó[DaprEventBus](####IntegrationEventBus)
+1. æ·»åŠ [MinimalAPI](####MinimalAPI)
+2. æ·»åŠ [DaprEventBus](####IntegrationEventBus)
 
 ```c#
 builder.Services
 .AddDaprEventBus<IntegrationEventLogService>(options =>
 {
-    options.UseEventBus()//Ê¹ÓÃ½ø³ÌÄÚÊÂ¼ş
-           .UseUow<CatalogDbContext>(dbOptions => dbOptions.UseSqlServer("server=masa.eshop.services.eshop.database;uid=sa;pwd=P@ssw0rd;database=catalog"))//Ê¹ÓÃ¹¤×÷µ¥Ôª
-           .UseEventLog<CatalogDbContext>();//½«CatalogDbContextÉÏÏÂÎÄ½»ÓÚÊÂ¼şÈÕÖ¾Ê¹ÓÃ, CatalogDbContextĞèÒª¼Ì³ĞIntegrationEventLogContext
+    options.UseEventBus()//ä½¿ç”¨è¿›ç¨‹å†…äº‹ä»¶
+           .UseUow<CatalogDbContext>(dbOptions => dbOptions.UseSqlServer("server=masa.eshop.services.eshop.database;uid=sa;pwd=P@ssw0rd;database=catalog"))//ä½¿ç”¨å·¥ä½œå•å…ƒ
+           .UseEventLog<CatalogDbContext>();//å°†CatalogDbContextä¸Šä¸‹æ–‡äº¤äºäº‹ä»¶æ—¥å¿—ä½¿ç”¨, CatalogDbContextéœ€è¦ç»§æ‰¿IntegrationEventLogContext
 })
 ```
 
-3. Ê¹ÓÃ[CQRS](####CQRS)
+3. ä½¿ç”¨[CQRS](####CQRS)
 
 #### MASA.EShop.Services.Ordering
 
-1. Ìí¼Ó[MinimalAPI](####MinimalAPI)
-2. Ìí¼Ó[DaprEventBus](####IntegrationEventBus)
+1. æ·»åŠ [MinimalAPI](####MinimalAPI)
+2. æ·»åŠ [DaprEventBus](####IntegrationEventBus)
 
 ```C#
 builder.Services
@@ -530,19 +530,19 @@ builder.Services
 });
 ```
 
-3. Ê¹ÓÃ[CQRS](####CQRS)
-4. Ìí¼Ó[Actor](####Actor)
+3. ä½¿ç”¨[CQRS](####CQRS)
+4. æ·»åŠ [Actor](####Actor)
 
-ĞŞ¸Ä docker-compse ÎÄ¼ş
+ä¿®æ”¹ docker-compse æ–‡ä»¶
 
-docker-compose.yml ÖĞÔö¼Ó dapr ·şÎñ;
+docker-compose.yml ä¸­å¢åŠ  dapr æœåŠ¡;
 
 ```yaml
 dapr-placement:
   image: 'daprio/dapr:1.4.0'
 ```
 
-docker-compose.override.yml ÖĞÔö¼Ó¾ßÌåÃüÁîºÍ¶Ë¿ÚÓ³Éä
+docker-compose.override.yml ä¸­å¢åŠ å…·ä½“å‘½ä»¤å’Œç«¯å£æ˜ å°„
 
 ```yaml
 dapr-placement:
@@ -551,7 +551,7 @@ dapr-placement:
     - '50000:50000'
 ```
 
-¶ÔÓ¦µÄ ordering.dapr ·şÎñÉÏÔö¼ÓÃüÁî
+å¯¹åº”çš„ ordering.dapr æœåŠ¡ä¸Šå¢åŠ å‘½ä»¤
 
 ```yaml
 "-placement-host-address", "dapr-placement:50000"
@@ -559,57 +559,57 @@ dapr-placement:
 
 #### MASA.EShop.Services.Payment
 
-1. Ìí¼Ó[MinimalAPI](####MinimalAPI)
-2. Ìí¼Ó[DomainEventBus](####DDD)
+1. æ·»åŠ [MinimalAPI](####MinimalAPI)
+2. æ·»åŠ [DomainEventBus](####DDD)
 
 ```C#
 builder.Services
 .AddDomainEventBus(options =>
 {
-    options.UseEventBus()//Ê¹ÓÃ½ø³ÌÄÚÊÂ¼ş
+    options.UseEventBus()//ä½¿ç”¨è¿›ç¨‹å†…äº‹ä»¶
         .UseUow<PaymentDbContext>(dbOptions => dbOptions.UseSqlServer("server=masa.eshop.services.eshop.database;uid=sa;pwd=P@ssw0rd;database=payment"))
-        .UseDaprEventBus<IntegrationEventLogService>()///Ê¹ÓÃ¿ç½ø³ÌÊÂ¼ş
+        .UseDaprEventBus<IntegrationEventLogService>()///ä½¿ç”¨è·¨è¿›ç¨‹äº‹ä»¶
         .UseEventLog<PaymentDbContext>()
-        .UseRepository<PaymentDbContext>();//Ê¹ÓÃRepositoryµÄEF°æÊµÏÖ
+        .UseRepository<PaymentDbContext>();//ä½¿ç”¨Repositoryçš„EFç‰ˆå®ç°
 })
 ```
 
-3. Ê¹ÓÃ[CQRS](####CQRS)
+3. ä½¿ç”¨[CQRS](####CQRS)
 
-4. Ê¹ÓÃ[DDD](####DDD)
+4. ä½¿ç”¨[DDD](####DDD)
 
-# ¹¦ÄÜ½éÉÜ
+# åŠŸèƒ½ä»‹ç»
 
-´ı²¹³ä
+å¾…è¡¥å……
 
-# Nuget °ü½éÉÜ
+# Nuget åŒ…ä»‹ç»
 
 ```c#
-Install-Package MASA.Contrib.Service.MinimalAPIs //MinimalAPIÊ¹ÓÃ
+Install-Package MASA.Contrib.Service.MinimalAPIs //MinimalAPIä½¿ç”¨
 ```
 
 ```c#
-Install-Package MASA.Contrib.Dispatcher.Events //·¢ËÍ½ø³ÌÄÚÏûÏ¢
+Install-Package MASA.Contrib.Dispatcher.Events //å‘é€è¿›ç¨‹å†…æ¶ˆæ¯
 ```
 
 ```c#
-Install-Package MASA.Contrib.Dispatcher.IntegrationEvents.Dapr //·¢ËÍ¿ç½ø³ÌÏûÏ¢Ê¹ÓÃ
-Install-Package MASA.Contrib.Dispatcher.IntegrationEvents.EventLogs.EF //¼ÇÂ¼¿ç½ø³ÌÏûÏ¢ÈÕÖ¾
+Install-Package MASA.Contrib.Dispatcher.IntegrationEvents.Dapr //å‘é€è·¨è¿›ç¨‹æ¶ˆæ¯ä½¿ç”¨
+Install-Package MASA.Contrib.Dispatcher.IntegrationEvents.EventLogs.EF //è®°å½•è·¨è¿›ç¨‹æ¶ˆæ¯æ—¥å¿—
 ```
 
 ```c#
-Install-Package MASA.Contrib.Data.Uow.EF //¹¤×÷µ¥Ôª£¬È·±£ÊÂÎñµÄÒ»ÖÂĞÔ
+Install-Package MASA.Contrib.Data.Uow.EF //å·¥ä½œå•å…ƒï¼Œç¡®ä¿äº‹åŠ¡çš„ä¸€è‡´æ€§
 ```
 
 ```c#
-Install-Package MASA.Contrib.ReadWriteSpliting.CQRS //CQRSÊµÏÖ
+Install-Package MASA.Contrib.ReadWriteSpliting.CQRS //CQRSå®ç°
 ```
 
 ```c#
-Install-Package MASA.BuildingBlocks.DDD.Domain //DDDÏà¹ØÊµÏÖ
-Install-Package MASA.Contribs.DDD.Domain.Repository.EF //RepositoryÊµÏÖ
+Install-Package MASA.BuildingBlocks.DDD.Domain //DDDç›¸å…³å®ç°
+Install-Package MASA.Contribs.DDD.Domain.Repository.EF //Repositoryå®ç°
 ```
 
-# Ğí¿ÉÖ¤ / License
+# è®¸å¯è¯ / License
 
-MASA.EShop ²ÉÓÃ [MIT License](http://gitlab-hz.lonsid.cn/MASA-Stack/Framework/MASA.EShop/-/blob/develop/LICENSE.txt) ¿ªÔ´Ğí¿ÉÖ¤¡£
+MASA.EShop é‡‡ç”¨ [MIT License](http://gitlab-hz.lonsid.cn/MASA-Stack/Framework/MASA.EShop/-/blob/develop/LICENSE.txt) å¼€æºè®¸å¯è¯ã€‚

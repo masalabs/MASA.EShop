@@ -4,10 +4,14 @@ services:
 
   redis:
     image: redis:alpine
-
-  sqldata:
-    image: mcr.microsoft.com/mssql/server:2019-latest 
-
+    
+  masa.eshop.services.eshop.database:
+     image: mcr.microsoft.com/mssql/server:2019-latest 
+     ports:
+       - "1433:1433"
+     environment:
+      - SA_PASSWORD=P@ssw0rd
+      - ACCEPT_EULA=Y
 
   masa.eshop.services.basket:
     environment:
@@ -18,22 +22,18 @@ services:
       - "9091:443"
     volumes:
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
-    depends_on:
-      - sqldata
   masa.eshop.services.basket.dapr:
     image: "daprio/daprd:1.4.0"
     command: ["./daprd",
       "-app-id", "masa-eshop-services-basket",
       "-app-port", "80",
-      "-components-path", "/components",
-      "-placement-host-address", "placement:50006",
+      "-components-path", "/components"
       ]
     depends_on:
       - masa.eshop.services.basket
     volumes:
       - "./dapr/components/:/components"
     network_mode: "service:masa.eshop.services.basket"
-
 
   masa.eshop.services.catalog:
     environment:
@@ -45,14 +45,13 @@ services:
     volumes:
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
     depends_on:
-      - sqldata
+      - masa.eshop.services.eshop.database
   masa.eshop.services.catalog.dapr:
     image: "daprio/daprd:1.4.0"
     command: ["./daprd",
       "-app-id", "masa-eshop-services-catalog",
       "-app-port", "80",
-      "-components-path", "/components",
-      "-placement-host-address", "placement:50006",
+      "-components-path", "/components"
       ]
     depends_on:
       - masa.eshop.services.catalog
@@ -70,14 +69,15 @@ services:
     volumes:
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
     depends_on:
-      - sqldata
+      - masa.eshop.services.eshop.database
   masa.eshop.services.ordering.dapr:
     image: "daprio/daprd:1.4.0"
     command: ["./daprd",
       "-app-id", "masa-eshop-services-ordering",
       "-app-port", "80",
       "-components-path", "/components",
-      "-placement-host-address", "placement:50006",
+      "-log-level", "debug",
+      "-placement-host-address", "dapr-placement:50000"
       ]
     depends_on:
       - masa.eshop.services.ordering
@@ -95,14 +95,13 @@ services:
     volumes:
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
     depends_on:
-      - sqldata
+      - masa.eshop.services.eshop.database
   masa.eshop.services.payment.dapr:
     image: "daprio/daprd:1.4.0"
     command: ["./daprd",
       "-app-id", "masa-eshop-services-payment",
       "-app-port", "80",
-      "-components-path", "/components",
-      "-placement-host-address", "placement:50006",
+      "-components-path", "/components"
       ]
     depends_on:
       - masa.eshop.services.payment
@@ -124,8 +123,7 @@ services:
     command: ["./daprd",
       "-app-id", "masa-eshop-api-open",
       "-app-port", "80",
-      "-components-path", "/components",
-      "-placement-host-address", "placement:50006",
+      "-components-path", "/components"
       ]
     depends_on:
       - masa.eshop.api.open
@@ -147,8 +145,7 @@ services:
   #  command: ["./daprd",
   #    "-app-id", "masa-eshop-web-admin",
   #    "-app-port", "80",
-  #    "-components-path", "/components",
-  #    "-placement-host-address", "placement:50006",
+  #    "-components-path", "/components"
   #    ]
   #  depends_on:
   #    - masa.eshop.web.admin
@@ -166,4 +163,7 @@ services:
   #  volumes:
   #    - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
 
-
+  dapr-placement:
+    command: ["./placement", "-port", "50000", "-log-level", "debug"]
+    ports:
+      - "50000:50000"
