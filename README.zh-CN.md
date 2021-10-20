@@ -1,27 +1,27 @@
-[中](README.zh-CN.md) | EN
+中 | [EN](README.md)
 # <center>MASA.EShop</center>
 
-# Introduction
+# 介绍
 
-A sample `.NET Core` distributed application based on eShopOnDapr, powered by [MASA.BuildingBlocks](https://github.com/masastack/MASA.BuildingBlocks), [MASA.Contrib](https://github.com/masastack/MASA.Contrib), [MASA.Utils](https://github.com/masastack/MASA.Utils),[Dapr](https://github.com/dapr/dapr).
+基于eShopOnDapr的`.Net Core`分布式应用程序示例，由[MASA.BuildingBlocks](https://github.com/masastack/MASA.BuildingBlocks), [MASA.Contrib](https://github.com/masastack/MASA.Contrib), [MASA.Utils](https://github.com/masastack/MASA.Utils),[Dapr](https://github.com/dapr/dapr)提供支持。
 
-## Directory Structure
+## 目录结构
 
 ```
 MASA.EShop
 ├── dapr
-│   ├── components                           dapr local components directory
-│   │   ├── pubsub.yaml                      pub/sub config file
-│   │   └── statestore.yaml                  state management config file
-├── src                                      
+│   ├── components                           dapr本地组件定义目录
+│   │   ├── pubsub.yaml                      发布订阅配置文件
+│   │   └── statestore.yaml                  状态管理配置文件
+├── src                                      源文件目录
 │   ├── Api
-│   │   └── MASA.EShop.Api.Open              BFF Layer, provide API to Web.Client
-│   ├── Contracts                            Common contracts，like Event Class
+│   │   └── MASA.EShop.Api.Open              BFF层，提供接口给Web.Client
+│   ├── Contracts                            公用元素提取，如服务间通信的Event Class
 │   │   ├── MASA.EShop.Contracts.Basket
 │   │   ├── MASA.EShop.Contracts.Catalog
 │   │   ├── MASA.EShop.Contracts.Ordering
 │   │   └── MASA.EShop.Contracts.Payment
-│   ├── Services
+│   ├── Services                             服务拆分
 │   │   ├── MASA.EShop.Services.Basket
 │   │   ├── MASA.EShop.Services.Catalog
 │   │   ├── MASA.EShop.Services.Ordering
@@ -31,73 +31,73 @@ MASA.EShop
 │   │   └── MASA.EShop.Web.Client
 ├── test
 |   └── MASA.EShop.Services.Catalog.Tests
-├── docker-compose
+├── docker-compose                          docker-compose 服务配置
 │   ├── MASA.EShop.Web.Admin
 │   └── MASA.EShop.Web.Client
-├── .gitignore
-├── LICENSE
-├── .dockerignore
-└── README.md                                
+├── .gitignore                               git提交的忽略文件
+├── LICENSE                                  项目许可
+├── .dockerignore                            docker构建的忽略文件
+└── README.md                                项目说明文件
 ```
 
-## Project Structure
+## 项目结构
 
-![Project Structure](img/eshop.png)
+![结构图](img/eshop.png)
 
-## Project Architecture(Update later)
+## 项目架构（待更新）
 
 ![架构图](img/eshop-architectureks.png)
 
-## Getting started
+## 快速入门
 
-- Preparation
+- 准备工作
 
   - Docker
   - VS 2022
   - .Net 6.0
   - Dapr
 
-- Startup
+- 启动项目
 
-  - VS 2022(Recommended)
+  - VS 2022(推荐)
 
-    Set docker-compose as start project, press `Ctrl + F5` to start.
+    设置 docker-compose 为启动项目,Ctrl + F5 启动。
 
     ![vs-run](img/vs_run.png)
 
-    After startup, you can see the container view.
+    启动后可以看到容器视图的对应输出
 
     ![vs-result](img/vs_result.png)
 
   - CLI
 
-    Run the command in the project root directory.
+    项目根目录下执行命令
 
     ```
     docker-compose build
     docker-compose up
     ```
 
-    After startup, the output is as follows.
+    启动后效果
 
     ![cli-result](img/cli_result.png)
 
   - VS Code (Todo)
 
-- Display after startup(Update later)
+- 启动效果
 
   Baseket Service: http://localhost:8081/swagger/index.html  
   Catalog Service: http://localhost:8082/swagger/index.html  
   Ordering Service: http://localhost:8083/swagger/index.html  
   Payment Service: http://localhost:8084/swagger/index.html
 
-## Features
+## 特性
 
 #### MinimalAPI
 
-The service in the project uses the `Minimal API` added in .NET 6 instead of the Web API.
+项目中的服务使用 .Net 6.0 新增的 Minimal API 方式代替原有的 Web API 实现
 
-> For more Minimal API content reference [mvc-to-minimal-apis-aspnet-6](https://benfoster.io/blog/mvc-to-minimal-apis-aspnet-6/)
+> 更多 Minimal API 内容参考[mvc-to-minimal-apis-aspnet-6](https://benfoster.io/blog/mvc-to-minimal-apis-aspnet-6/)
 
 ```C#
 var builder = WebApplication.CreateBuilder(args);
@@ -106,16 +106,14 @@ app.MapGet("/api/v1/helloworld", ()=>"Hello World");
 app.Run();
 ```
 
-`MASA.Contrib.Service.MinimalAPIs` based on `MASA.BuildingBlocks`:
+`MASA.Contrib.Service.MinimalAPIs`对 Minimal API 进一步封装, 修改代码为:
 
-Program.cs
 ```C#
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Services.AddServices(builder);
 app.Run();
 ```
 
-HelloService.cs
 ```C#
 public class HelloService : ServiceBase
 {
@@ -124,15 +122,15 @@ public class HelloService : ServiceBase
 }
 ```
 
-> The `ServiceBase` class (like ControllerBase) provided by `MASA.BuildingBlocks` is used to define Service class (like Controller), maintains the route registry in the constructor. The `AddServices(builder)` method will auto register all the service classes to DI. Service inherited from ServiceBase is `similar to singleton pattern`. Such as `Repostory`, should be injected with the `FromService`.
+> 增加了 ServiceBase 类（相当于 ControllerBase），使用时定义自己的 Service 类（相当于 Controller），在构造函数中维护路由注册。`AddServices(builder)`方法会找到所有服务类完成注册。继承 ServiceBase 类为单例模式,构造函数注入只可以注入单例，如 Repostory 等应该借助 FromService 实现方法注入。
 
 #### Dapr
 
-The official Dapr implementation, MASA.Contrib references the Event section.
- 
-More Dapr content reference: https://docs.microsoft.com/zh-cn/dotnet/architecture/dapr-for-net-developers/
+官方 Dapr 使用介绍，MASA.Contrib 封装的 Dapr 实现参考了 Event 部分
 
-1. Add Dapr
+更多 Dapr 内容参考:https://docs.microsoft.com/zh-cn/dotnet/architecture/dapr-for-net-developers/
+
+1. 添加 Dapr
 
 ```C#
 builder.Services.AddDaprClient();
@@ -145,7 +143,7 @@ app.UseEndpoints(endpoints =>
 });
 ```
 
-2. Publish event
+2. 发布事件
 
 ```C#
 var @event = new OrderStatusChangedToValidatedIntegrationEvent();
@@ -157,7 +155,7 @@ await _daprClient.PublishEventAsync
 );
 ```
 
-3. Sub event
+3. 订阅事件
 
 ```C#
  [Topic("pubsub", nameof(OrderStatusChangedToValidatedIntegrationEvent)]
@@ -169,28 +167,28 @@ await _daprClient.PublishEventAsync
  }
 ```
 
-> `Topic` first parameter `pubsub` is the `name` field in the `pubsub.yaml` file.
+> Topic 的第一个参数 pubsub 为配置文件 pubsub.yaml 中的 name
 
 #### Actor
 
-1. Add Actor
+1. 项目中增加 Actor 支持
 
 ```C#
 app.UseEndpoints(endpoint =>
 {
     ...
-    endpoint.MapActorsHandlers();
+    endpoint.MapActorsHandlers(); //Actor 支持
 });
 ```
 
-2. Define actor interface and inherit IActor.
+2. 定义 Actor 接口，继承 IActor。
 
 ```C#
 public interface IOrderingProcessActor : IActor
 {
 ```
 
-3. Implement `IOrderingProcessActor` and inherit the `Actor` class. The sample project also implements the `IRemindable` interface, and 'RegisterReminderAsync' method. 
+3. 实现`IOrderingProcessActor`，并继承`Actor`类。示例项目还实现了`IRemindable`接口，实现该接口后通过方法`RegisterReminderAsync`完成注册提醒。
 
 ```C#
 public class OrderingProcessActor : Actor, IOrderingProcessActor, IRemindable
@@ -199,7 +197,7 @@ public class OrderingProcessActor : Actor, IOrderingProcessActor, IRemindable
 }
 ```
 
-4. Register Actor
+4. 注册 Actor
 
 ```C#
 builder.Services.AddActors(options =>
@@ -208,7 +206,7 @@ builder.Services.AddActors(options =>
 });
 ```
 
-5. Invoke actor
+5. Actor 调用代码
 
 ```C#
 var actorId = new ActorId(order.Id.ToString());
@@ -217,15 +215,15 @@ var actor = ActorProxy.Create<IOrderingProcessActor>(actorId, nameof(OrderingPro
 
 #### EventBus
 
-Only In-Process events.
+仅支持发送进程内事件
 
-1. Add EventBus
+1. 添加 EventBus
 
 ```C#
 builder.Services.AddEventBus();
 ```
 
-2. Define Event
+2. 自定义 Event
 
 ```C#
 public class DemoEvent : Event
@@ -234,14 +232,14 @@ public class DemoEvent : Event
 }
 ```
 
-3. Send Event
+3. 发送 Event
 
 ```C#
 IEventBus eventBus;
 await eventBus.PublishAsync(new DemoEvent());
 ```
 
-4. Hanle Event
+4. 处理事件
 
 ```C#
 [EventHandler]
@@ -253,32 +251,32 @@ public async Task DemoHandleAsync(DemoEvent @event)
 
 #### IntegrationEventBus
 
-Cross-Process event, In-Process event also supported when `EventBus` is added. 
+发送跨进程事件，但当同时添加 EventBus 时，也支持进程内事件
 
-1. Add IntegrationEventBus
+1. 添加 IntegrationEventBus
 
 ```C#
 builder.Services
     .AddDaprEventBus<IntegrationEventLogService>();
 //   .AddDaprEventBus<IntegrationEventLogService>(options=>{
 //    	//todo
-//   	options.UseEventBus();//Add EventBus
+//   	options.UseEventBus();//添加EventBus
 //	});
 ```
 
-2. Define Event
+2. 自定义 Event
 
 ```C#
 public class DemoIntegrationEvent : IntegrationEvent
 {
     public override string Topic { get; set; } = nameof(DemoIntegrationEvent);
-    //todo
+    //todo 自定义属性事件参数
 }
 ```
 
-> `Topic` property is the value of the dapr `TopicAttribute` second parameter.
+> Topic 属性值为 Dapr pub/sub 相关特性 TopicAttribute 第二个参数的值
 
-3. Send Event
+3. 发送 Event
 
 ```C#
 public class DemoService
@@ -300,7 +298,7 @@ public class DemoService
 }
 ```
 
-4. Handle Event
+4. 处理事件
 
 ```C#
 [Topic("pubsub", nameof(DemoIntegrationEvent))]
@@ -312,11 +310,11 @@ public async Task DemoIntegrationEventHandleAsync(DemoIntegrationEvent @event)
 
 #### CQRS
 
-More CQRS content reference：https://docs.microsoft.com/en-us/azure/architecture/patterns/cqrs
+更多关于 CQRS 文档请参考：https://docs.microsoft.com/en-us/azure/architecture/patterns/cqrs
 
 ##### Query
 
-1. Define Query
+1. 定义 Query
 
 ```c#
 public class CatalogItemQuery : Query<List<CatalogItem>>
@@ -327,7 +325,7 @@ public class CatalogItemQuery : Query<List<CatalogItem>>
 }
 ```
 
-2. Add QueryHandler:
+2. 添加 QueryHandler, 例：
 
 ```c#
 public class CatalogQueryHandler
@@ -344,18 +342,18 @@ public class CatalogQueryHandler
 }
 ```
 
-3. Send Query
+3. 发送 Query
 
 ```C#
-IEventBus eventBus;// DI is recommended
+IEventBus eventBus;
 await eventBus.PublishAsync(new CatalogItemQuery(){
 	Name = "Rolex"
-});
+});//进程内使用IEventBus
 ```
 
 ##### Command
 
-1. Define Command
+1. 定义 Command
 
 ```c#
 public class CreateCatalogItemCommand : Command
@@ -366,7 +364,7 @@ public class CreateCatalogItemCommand : Command
 }
 ```
 
-2. Add CommandHandler：
+2. 添加 CommandHandler, 例：
 
 ```c#
 public class CatalogCommandHandler
@@ -387,49 +385,49 @@ public class CatalogCommandHandler
 
 ```C#
 IEventBus eventBus;
-await eventBus.PublishAsync(new CreateCatalogItemCommand());
+await eventBus.PublishAsync(new CreateCatalogItemCommand());//进程内使用IEventBus
 ```
 
 #### DDD
 
-More DDD content reference:https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/ddd-oriented-microservice
+DDD 更多内容参考:https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/ddd-oriented-microservice
 
-Both In-Process and Cross-Process events are supported.
+既可以可发送进程内事件、也可发送跨进程事件
 
-1. Add DomainEventBus
+1. 添加 DomainEventBus
 
 ```c#
 .AddDomainEventBus(options =>
 {
-    options.UseEventBus()
-        .UseUow<PaymentDbContext>(dbOptions => dbOptions.UseSqlServer("server=masa.eshop.services.eshop.database;uid=sa;pwd=P@ssw0rd;database=payment"))
-        .UseDaprEventBus<IntegrationEventLogService>()
+    options.UseEventBus()//使用进程内事件
+        .UseUow<PaymentDbContext>(dbOptions => dbOptions.UseSqlServer("server=masa.eshop.services.eshop.database;uid=sa;pwd=P@ssw0rd;database=payment"))//使用工作单元
+        .UseDaprEventBus<IntegrationEventLogService>()//使用跨进程事件
         .UseEventLog<PaymentDbContext>()
         .UseRepository<PaymentDbContext>();//使用Repository的EF版实现
 })
 ```
 
-2. Define DomainCommand(In-Process)
+2. 定义 DomainCommand( 进程内 )
 
-To verify payment command, you need to inherit DomainCommand or DomainQuery<>
 ```C#
+//校验支付的Command, 需要继承DomainCommand, 如果是查询, 则需要继承DomainQuery<>
 public class OrderStatusChangedToValidatedCommand : DomainCommand
 {
     public Guid OrderId { get; set; }
 }
 ```
 
-3. Send DomainCommand
+3. 发送 DomainCommand
 
 ```C#
 IDomainEventBus domainEventBus;
 await domainEventBus.PublishAsync(new OrderStatusChangedToValidatedCommand()
 {
     OrderId = "OrderId"
-});
+});//发送DomainCommand
 ```
 
-4. Add Handler
+4. 添加 Handler
 
 ```C#
 [EventHandler]
@@ -439,7 +437,7 @@ public async Task ValidatedHandleAsync(OrderStatusChangedToValidatedCommand comm
 }
 ```
 
-5. Define DomainEvent(Cross-Process))
+5. 定义 DomainEvent（跨进程）
 
 ```c#
 public class OrderPaymentSucceededDomainEvent : IntegrationDomainEvent
@@ -469,7 +467,7 @@ public class OrderPaymentFailedDomainEvent : IntegrationDomainEvent
 }
 ```
 
-6. Define domain service and send IntegrationDomainEvent(Cross-Process)
+6. 定义领域服务并发送 IntegrationDomainEvent（跨进程）
 
 ```c#
 public class PaymentDomainService : DomainService
@@ -491,39 +489,39 @@ public class PaymentDomainService : DomainService
             orderPaymentDomainEvent = new OrderPaymentFailedDomainEvent(payment.OrderId);
         }
         _logger.LogInformation("----- Publishing integration event: {IntegrationEventId} from {AppName} - ({@IntegrationEvent})", orderPaymentDomainEvent.Id, Program.AppName, orderPaymentDomainEvent);
-        await EventBus.PublishAsync(orderPaymentDomainEvent);
+        await EventBus.PublishAsync(orderPaymentDomainEvent);//用于发送DomainEvent
     }
 }
 ```
 
-## Service Description
+## 服务说明
 
 #### MASA.EShop.Services.Basket
 
-1. Add [MinimalAPI](####MinimalAPI)
-2. Add and use [Dapr](####Dapr)
+1. 添加[MinimalAPI](####MinimalAPI)
+2. 添加、使用[Dapr](####Dapr)
 
 #### MASA.EShop.Services.Catalog
 
-1. Add [MinimalAPI](####MinimalAPI)
-2. Add [DaprEventBus](####IntegrationEventBus)
+1. 添加[MinimalAPI](####MinimalAPI)
+2. 添加[DaprEventBus](####IntegrationEventBus)
 
 ```c#
 builder.Services
 .AddDaprEventBus<IntegrationEventLogService>(options =>
 {
-    options.UseEventBus()
-           .UseUow<CatalogDbContext>(dbOptions => dbOptions.UseSqlServer("server=masa.eshop.services.eshop.database;uid=sa;pwd=P@ssw0rd;database=catalog"))
-           .UseEventLog<CatalogDbContext>();
+    options.UseEventBus()//使用进程内事件
+           .UseUow<CatalogDbContext>(dbOptions => dbOptions.UseSqlServer("server=masa.eshop.services.eshop.database;uid=sa;pwd=P@ssw0rd;database=catalog"))//使用工作单元
+           .UseEventLog<CatalogDbContext>();//将CatalogDbContext上下文交于事件日志使用, CatalogDbContext需要继承IntegrationEventLogContext
 })
 ```
 
-3. Use [CQRS](####CQRS)
+3. 使用[CQRS](####CQRS)
 
 #### MASA.EShop.Services.Ordering
 
-1. Add [MinimalAPI](####MinimalAPI)
-2. Add [DaprEventBus](####IntegrationEventBus)
+1. 添加[MinimalAPI](####MinimalAPI)
+2. 添加[DaprEventBus](####IntegrationEventBus)
 
 ```C#
 builder.Services
@@ -535,18 +533,18 @@ builder.Services
 });
 ```
 
-3. Use [CQRS](####CQRS)
-4. Add [Actor](####Actor)
-5. Modify docker-compse file
+3. 使用[CQRS](####CQRS)
+4. 添加[Actor](####Actor)
+5. 修改 docker-compse 文件
 
-`docker-compose.yml` add `dapr` service;
+docker-compose.yml 中增加 dapr 服务;
 
 ```yaml
 dapr-placement:
   image: 'daprio/dapr:1.4.0'
 ```
 
-`docker-compose.override.yml` add command and port mapping.
+docker-compose.override.yml 中增加具体命令和端口映射
 
 ```yaml
 dapr-placement:
@@ -555,7 +553,7 @@ dapr-placement:
     - '50000:50000'
 ```
 
-`ordering.dapr` service add command
+对应的 ordering.dapr 服务上增加命令
 
 ```yaml
 "-placement-host-address", "dapr-placement:50000"
@@ -563,53 +561,53 @@ dapr-placement:
 
 #### MASA.EShop.Services.Payment
 
-1. Add [MinimalAPI](####MinimalAPI)
-2. Add [DomainEventBus](####DDD)
+1. 添加[MinimalAPI](####MinimalAPI)
+2. 添加[DomainEventBus](####DDD)
 
 ```C#
 builder.Services
 .AddDomainEventBus(options =>
 {
-    options.UseEventBus()
+    options.UseEventBus()//使用进程内事件
         .UseUow<PaymentDbContext>(dbOptions => dbOptions.UseSqlServer("server=masa.eshop.services.eshop.database;uid=sa;pwd=P@ssw0rd;database=payment"))
-        .UseDaprEventBus<IntegrationEventLogService>()
+        .UseDaprEventBus<IntegrationEventLogService>()///使用跨进程事件
         .UseEventLog<PaymentDbContext>()
-        .UseRepository<PaymentDbContext>();
+        .UseRepository<PaymentDbContext>();//使用Repository的EF版实现
 })
 ```
 
-3. Use [CQRS](####CQRS)
+3. 使用[CQRS](####CQRS)
 
-4. Use [DDD](####DDD)
+4. 使用[DDD](####DDD)
 
-# Function Introduction
+# 功能介绍
 
-Update later
+待补充
 
-# Nuget Package Introduction
+# Nuget 包介绍
 
 ```c#
-Install-Package MASA.Contrib.Service.MinimalAPIs //MinimalAPI
+Install-Package MASA.Contrib.Service.MinimalAPIs //MinimalAPI使用
 ```
 
 ```c#
-Install-Package MASA.Contrib.Dispatcher.Events //In-Process event
+Install-Package MASA.Contrib.Dispatcher.Events //发送进程内消息
 ```
 
 ```c#
-Install-Package MASA.Contrib.Dispatcher.IntegrationEvents.Dapr //Cross-Process event
-Install-Package MASA.Contrib.Dispatcher.IntegrationEvents.EventLogs.EF //Local message table
+Install-Package MASA.Contrib.Dispatcher.IntegrationEvents.Dapr //发送跨进程消息使用
+Install-Package MASA.Contrib.Dispatcher.IntegrationEvents.EventLogs.EF //记录跨进程消息日志
 ```
 
 ```c#
-Install-Package MASA.Contrib.Data.UoW.EF //EF UoW
+Install-Package MASA.Contrib.Data.UoW.EF //工作单元，确保事务的一致性
 ```
 
 ```c#
-Install-Package MASA.Contrib.ReadWriteSpliting.CQRS //CQRS
+Install-Package MASA.Contrib.ReadWriteSpliting.CQRS //CQRS实现
 ```
 
 ```c#
-Install-Package MASA.BuildingBlocks.DDD.Domain //DDD
-Install-Package MASA.Contribs.DDD.Domain.Repository.EF //EF Repository
+Install-Package MASA.BuildingBlocks.DDD.Domain //DDD相关实现
+Install-Package MASA.Contribs.DDD.Domain.Repository.EF //Repository实现
 ```
