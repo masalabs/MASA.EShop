@@ -1,8 +1,10 @@
 ﻿using BlazorComponent;
 using MASA.EShop.Web.Client.Data.Basket.Record;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MASA.EShop.Web.Client.Pages.Basket
 {
+    [Authorize]
     public partial class Checkout : EShopBasePage
     {
         private readonly List<TableHeaderOptions> _headers = new List<TableHeaderOptions> { "PRODUCT", "", "PRICE", "QUANTITY", "COST" };

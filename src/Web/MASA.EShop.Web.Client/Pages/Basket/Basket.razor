@@ -23,8 +23,12 @@
             @context.GetFormattedTotalPrice()
         </MTableCol>
     </MTable>
-    增加Total 数据
+    <MRow>
+        <div class="float-right mr-10">
+        <span>$</span>@_userBasket.GetFormattedTotalPrice()
 @*    https://codepen.io/jairoerazo/pen/wvzYBVW*@
+    </div>
+    </MRow>
     <MRow>
         <MCol Md="3">
             <MButton Tile Color="success" OnClick='()=>Navigation("catalog")'>

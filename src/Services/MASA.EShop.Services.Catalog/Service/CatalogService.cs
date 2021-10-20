@@ -5,15 +5,57 @@ public class CatalogService : ServiceBase
     public CatalogService(IServiceCollection services)
         : base(services)
     {
-        App.MapGet("/api/v1/catalog/{id}", Get);
+        App.MapGet("/api/v1/catalog/{id}", GetAsync);
+        App.MapGet("/api/v1/catalog/items", GetItemsAsync);
+        App.MapGet("/api/v1/catalog/brands", CatalogBrandsAsync);
+        App.MapGet("/api/v1/catalog/types", CatalogTypesAsync);
         App.MapPost("/api/v1/catalog/createproduct", CreateProductAsync);
         App.MapPost("/api/v1/catalog/createcatalogtype", CreateCatalogTypeAsync);
     }
 
-    public Task<dynamic> Get(int id)
+    #region Query
+
+    public async Task<IResult> GetAsync([FromServices] IEventBus eventBus, int id)
     {
-        throw new NotImplementedException();
+        var query = new ProductQuery() { ProductId = id };
+        await eventBus.PublishAsync(query);
+        return Results.Ok(query.Result);
     }
+
+    public async Task<IResult> GetItemsAsync([FromServices] IEventBus eventBus,
+            [FromQuery] int typeId = -1,
+            [FromQuery] int brandId = -1,
+            [FromQuery] int pageSize = 10,
+            [FromQuery] int pageIndex = 0)
+    {
+        var query = new ProductsQuery()
+        {
+            TypeId = typeId,
+            BrandId = brandId,
+            PageIndex = pageIndex,
+            PageSize = pageSize
+        };
+        await eventBus.PublishAsync(query);
+        return Results.Ok(query.Result);
+    }
+
+    public async Task<IResult> CatalogBrandsAsync([FromServices] IEventBus eventBus)
+    {
+        var query = new CatalogBrandsQuery();
+        await eventBus.PublishAsync(query);
+        return Results.Ok(query.Result);
+    }
+
+    public async Task<IResult> CatalogTypesAsync([FromServices] IEventBus eventBus)
+    {
+        var query = new CatalogTypesQuery();
+        await eventBus.PublishAsync(query);
+        return Results.Ok(query.Result);
+    }
+
+    #endregion
+
+    #region Command
 
     public async Task<IResult> CreateProductAsync(
         CreateProductCommand command,
@@ -35,4 +77,6 @@ public class CatalogService : ServiceBase
     {
         throw new NotImplementedException();
     }
+
+    #endregion
 }

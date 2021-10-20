@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Services.Catalog.Application.Catalog;
+﻿namespace MASA.EShop.Services.Catalog.Application.Catalogs.Commands;
 
 public record CreateProductCommand : Command
 {

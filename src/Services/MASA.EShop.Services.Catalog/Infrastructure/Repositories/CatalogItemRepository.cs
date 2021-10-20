@@ -19,6 +19,11 @@ public class CatalogItemRepository : ICatalogItemRepository
         await _context.SaveChangesAsync();
     }
 
+    public IQueryable<CatalogItem> Query(Expression<Func<CatalogItem, bool>> predicate)
+    {
+        return _context.Set<CatalogItem>().Where(predicate);
+    }
+
     public async Task<CatalogItem> SingleAsync(int productionId)
     {
         return await _context.CatalogItems.SingleAsync(catalogItem => catalogItem.Id == productionId);

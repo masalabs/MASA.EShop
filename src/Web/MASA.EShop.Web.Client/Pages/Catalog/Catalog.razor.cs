@@ -1,4 +1,6 @@
-﻿using MASA.EShop.Web.Client.Data.Catalog.Record;
+﻿using MASA.EShop.Web.Client.Data.Basket;
+using MASA.EShop.Web.Client.Data.Catalog;
+using MASA.EShop.Web.Client.Data.Catalog.Record;
 using MASA.EShop.Web.Client.Pages.Catalog.ViewModel;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
@@ -8,13 +10,19 @@ namespace MASA.EShop.Web.Client.Pages.Catalog
     public partial class Catalog : EShopBasePage
     {
 
-        private CatalogViewModel _catalogViewModel = new();
+        private CatalogData _catalogViewModel = new();
         private CatalogOptinsModel _catalogOptinsModel = new() { Type = -1, Brand = -1 };
         private List<CatalogBrand> _brands = new();
         private List<CatalogType> _types = new();
 
+        [Inject] //todo :change api open
+        private ICatalogService _catalogService { get; set; } = default!;
+
+        [Inject]
+        private IBasketService _baksetService { get; set; } = default!;
+
         [CascadingParameter]
-        private Task<AuthenticationState> _authenticationStateTask { get; set; }
+        private Task<AuthenticationState> _authenticationStateTask { get; set; } = default!;
 
         protected override async Task OnInitializedAsync()
         {
@@ -37,9 +45,9 @@ namespace MASA.EShop.Web.Client.Pages.Catalog
 
             try
             {
-                //brands.AddRange(await _catalogClient.GetBrandsAsync());
+                brands.AddRange(await _catalogService.GetBrandsAsync());
             }
-            catch
+            catch (Exception e)
             {
                 // If call fails, we'll just have the 'All' selection.
             }
@@ -56,7 +64,7 @@ namespace MASA.EShop.Web.Client.Pages.Catalog
 
             try
             {
-                //types.AddRange(await _catalogClient.GetTypesAsync());
+                types.AddRange(await _catalogService.GetTypesAsync());
             }
             catch
             {
@@ -66,12 +74,17 @@ namespace MASA.EShop.Web.Client.Pages.Catalog
             _types = types;
         }
 
+        private async Task OnPageIndexChangedAsync(int newPageIndex)
+        {
+            _catalogOptinsModel.PageIndex = newPageIndex;
+            await LoadItemsAsync();
+        }
+
         private async Task LoadItemsAsync()
         {
             try
             {
-                //_catalogViewModel = await _catalogClient.GetItemsAsync(_brandId, _typeId, _pageIndex);
-                //_error = null;
+                _catalogViewModel = await _catalogService.GetCatalogItemsAsync(_catalogOptinsModel.PageIndex, 9, _catalogOptinsModel.Brand, _catalogOptinsModel.Type);
             }
             catch (Exception ex)
             {
@@ -79,9 +92,17 @@ namespace MASA.EShop.Web.Client.Pages.Catalog
             }
         }
 
-        private void AddToCart()
+        private async void AddToCart(CatalogItem item)
         {
+            if (_isAuthenticated)
+        {
+                await _baksetService.AddItemToBasketAsync("masa", item.Id);
             Navigation("basket");
+        }
+            else
+            {
+                Navigation("/");
+            }
         }
     }
 }

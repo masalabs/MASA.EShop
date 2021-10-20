@@ -15,17 +15,17 @@ public class BasketService : ServiceBase
         _logger = logger;
         _daprClient = daprClient;
 
-        App.MapGet("/api/v1/basket/{id}", GetBasketByIdAsync).WithMetadata(new EndpointNameMetadata("get_basket"));
+        App.MapGet("/api/v1/basket/{userId}", GetBasketByUserIdAsync);
         App.MapPost("/api/v1/basket/updatebasket", UpdateBasketAsync);
         App.MapPost("/api/v1/basket/checkout", CheckoutAsync);
         App.MapDelete("/api/v1/basket/{id}", DeleteBasketByIdAsync);
         App.MapPost("/api/v1/basket/orderstarted", OrderStarted);
     }
 
-    public async Task<IResult> GetBasketByIdAsync(string id, [FromServices] IBasketRepository repository)
+    public async Task<IResult> GetBasketByUserIdAsync(string userId, [FromServices] IBasketRepository repository)
     {
-        var basket = await repository.GetBasketAsync(id);
-        return Results.Ok(basket ?? new CustomerBasket(id));
+        var basket = await repository.GetBasketAsync(userId);
+        return Results.Ok(basket ?? new CustomerBasket(userId));
     }
 
     public async Task<IResult> UpdateBasketAsync([FromBody] CustomerBasket value, [FromServices] IBasketRepository repository)
@@ -47,8 +47,7 @@ public class BasketService : ServiceBase
         var basket = await repository.GetBasketAsync(userId);
         if (basket == null)
         {
-            basket = new();
-            //return Results.BadRequest();
+            return Results.BadRequest();
         }
         //var userName = httpContext.User.FindFirst(x => x.Type == ClaimTypes.Name)?.Value ?? "";
         var userName = "userName";

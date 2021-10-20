@@ -6,5 +6,8 @@
         {
             return Math.Round(Items.Sum(x => x.UnitPrice * x.Quantity), 2);
         }
+
+        public string GetFormattedTotalPrice() => Items.Sum(
+            item => item.Quantity * item.UnitPrice).ToString("0.00");
     }
 }

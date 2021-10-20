@@ -1,7 +1,8 @@
 ﻿using BlazorComponent;
 using MASA.Blazor;
-using MASA.Blazor.Presets;
+using MASA.EShop.Web.Client.Shared;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
 
 namespace MASA.EShop.Web.Client.Pages
 {
@@ -10,7 +11,13 @@ namespace MASA.EShop.Web.Client.Pages
         protected bool _isAuthenticated;
 
         [Inject]
-        protected NavigationManager NavigationManager { get; set; }
+        protected NavigationManager NavigationManager { get; set; } = default!;
+
+        [Inject]
+        protected ProtectedSessionStorage ProtectedSessionStore { get; set; } = default!;
+
+        [CascadingParameter]
+        public MainLayout App { get; set; } = default!;
 
         public void Navigation(string path)
         {
@@ -18,19 +25,9 @@ namespace MASA.EShop.Web.Client.Pages
         }
         #region Message
 
-        private Message.Model _message = new();
-
-        public void Message(string content, AlertTypes type = AlertTypes.None, int timeout = 3000)
-        {
-            _message = new Message.Model
+        public void Message(string content, AlertTypes type = default, int timeout = 3000)
             {
-                Visible = true,
-                Content = content,
-                Timeout = timeout,
-                Type = type
-            };
-
-            StateHasChanged();
+            App.Message(content, type, timeout);
         }
 
         #endregion

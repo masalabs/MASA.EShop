@@ -5,4 +5,6 @@ public interface ICatalogTypeRepository
     Task AddAsync(CatalogType catalogType);
 
     Task DeleteAsync(int catalogTypeId);
+
+    IQueryable<CatalogType> GetAll();
 }

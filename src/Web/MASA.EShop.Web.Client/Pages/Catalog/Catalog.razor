@@ -27,20 +27,19 @@
     <MCol Xs="5" Sm="3" Md="2">
         <MButton Class="ma-2"
                  Color="indigo"
-                 Dark>
+                 Dark
+                 OnClick="LoadItemsAsync">
             <MIcon Dark>mdi-chevron-right</MIcon>
         </MButton>
     </MCol>
 </MRow>
 
 <MContainer>
-    @if (_catalogViewModel.Count == 0)
+    @if (_catalogViewModel.Count > 0)
     {
-        <MPagination @bind-Value="_catalogViewModel.PageIndex" Length="_catalogViewModel.PageCount"></MPagination>
-
+        <MPagination Length="_catalogViewModel.PageCount" Value="_catalogViewModel.PageIndex" ValueChanged="(v)=>OnPageIndexChangedAsync(v)" @bind-TotalVisible="_catalogViewModel.PageSize"></MPagination>
         <MRow>
-            @for (var i = 0; i < 10; i++)
-            @*@foreach (var item in _catalogViewModel.Items)*@
+            @foreach (var item in _catalogViewModel.Items)
             {
                 <MCol Md="4" style="display:flex;flex-flow: column;align-items:center;">
             @*        <MImage MaxHeight="150"
@@ -48,21 +47,21 @@
                     Src="https://picsum.photos/id/11/500/300">
                     </MImage>*@
                     @*todo 改为MImage*@
-                    <img src="https://picsum.photos/id/11/500/300" height="200" width="300"/>
-                    <MButton Tile Color="success" OnClick="AddToCart">
+                    <img src="https://picsum.photos/id/11/500/300" height="200" width="300" />
+                    <MButton Tile Color="success" class="mt-1" OnClick="(e)=>AddToCart(item)" Disabled="@(!_isAuthenticated)">
                         <MIcon Left>mdi-cart</MIcon>
                         ADD TO CART
                     </MButton>
                     <div>
-                        <span>Name</span>
+                        <span>@item.Name</span>
                     </div>
                     <div>
-                        <span>Price</span>
+                        <span><span> $ </span> @item.Price</span>
                     </div>
                 </MCol>
             }
         </MRow>
-        <MPagination @bind-Value="_catalogViewModel.PageIndex" Length="_catalogViewModel.PageCount"></MPagination>
+        <MPagination Length="_catalogViewModel.PageCount" Value="_catalogViewModel.PageIndex" ValueChanged="(v)=>OnPageIndexChangedAsync(v)" @bind-TotalVisible="_catalogViewModel.PageSize"></MPagination>
     }
     else
     {

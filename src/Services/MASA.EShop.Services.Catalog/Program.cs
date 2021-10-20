@@ -18,6 +18,7 @@ var app = builder.Services
     })
     .AddScoped<ICatalogItemRepository, CatalogItemRepository>()
     .AddScoped<ICatalogTypeRepository, CatalogTypeRepository>()
+    .AddScoped<ICatalogBrandRepository, CatalogBrandRepository>()
     .AddDaprEventBus<IntegrationEventLogService>(options =>
     {
         options.UseEventBus()

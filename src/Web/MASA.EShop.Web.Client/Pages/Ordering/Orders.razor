@@ -1,5 +1,5 @@
 ﻿@page "/order"
-@using MASA.EShop.Web.Client.Data.Order.Record
+@using MASA.EShop.Web.Client.Data.Ordering.Record
 @inherits EShopBasePage
 
 <PageTitle>Orders</PageTitle>
@@ -22,7 +22,7 @@
         <MTableCol>
             @if (context.OrderStatus == "Submitted")
             {
-                <MButton Color="primary" Text>Cancel</MButton>
+                <MButton Color="primary" Text OnClick="()=>CancelOrder(context.OrderNumber)">Cancel</MButton>
             }
         </MTableCol>
         <MTableCol>

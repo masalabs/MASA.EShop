@@ -1,6 +1,9 @@
+using MASA.EShop.Web.Client;
 using MASA.EShop.Web.Client.Data.Basket;
 using MASA.EShop.Web.Client.Data.Catalog;
-using MASA.EShop.Web.Client.Data.Order;
+using MASA.EShop.Web.Client.Data.Ordering;
+using MASA.EShop.Web.Client.Infrastructure;
+using Microsoft.AspNetCore.Components.Authorization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,9 +12,19 @@ builder.Services.AddMasaBlazor();
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-builder.Services.AddSingleton<BasketService>();
-builder.Services.AddSingleton<CatalogService>();
-builder.Services.AddSingleton<OrderService>();
+builder.Services.AddScoped<AuthenticationStateProvider, SimulateAuthStateProvider>();
+
+builder.Services.Configure<Settings>(builder.Configuration);
+
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddTransient<HttpClientAuthorizationDelegatingHandler>();
+
+builder.Services.AddHttpClient<ICatalogService, CatalogService>()
+    .SetHandlerLifetime(TimeSpan.FromMinutes(5));
+builder.Services.AddHttpClient<IBasketService, BasketService>();
+//.AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>();
+builder.Services.AddHttpClient<IOrderService, OrderService>();
+//.AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>();
 
 var app = builder.Build();
 
@@ -29,6 +42,8 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");

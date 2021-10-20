@@ -35,11 +35,11 @@ services:
   #    dockerfile: src/Web/MASA.EShop.Web.Admin/Dockerfile
 
 
-  #masa.eshop.web.client:
-  #  image: ${DOCKER_REGISTRY-}masaeshopwebclient
-  #  build:
-  #    context: .
-  #    dockerfile: src/Web/MASA.EShop.Web.Client/Dockerfile
+  masa.eshop.web.client:
+    image: ${DOCKER_REGISTRY-}masaeshopwebclient
+    build:
+      context: .
+      dockerfile: src/Web/MASA.EShop.Web.Client/Dockerfile
 
 
   masa.eshop.api.open:

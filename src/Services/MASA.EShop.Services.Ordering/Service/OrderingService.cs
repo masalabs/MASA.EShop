@@ -4,9 +4,9 @@
     {
         public OrderingService(IServiceCollection services) : base(services)
         {
-            App.MapPut("/api/v1/orders/cancel", CancelOrderAsync);
+            App.MapPut("/api/v1/orders/cancel/{orderNumber:int}", CancelOrderAsync);
             App.MapPut("/api/v1/orders/ship", ShipOrderAsync);
-            App.MapGet("/api/v1/orders/{orderNumber:int}", ShipOrderAsync);
+            App.MapGet("/api/v1/orders/{orderNumber:int}", GetOrderAsync);
             App.MapGet("/api/v1/orders/list", GetOrdersAsync);
             App.MapGet("/api/v1/orders/cardtypes", GetCardTypesAsync);
         }
@@ -53,11 +53,12 @@
             }
         }
 
-        public async Task<IResult> GetOrderAsync(int orderNumber, [FromServices] IEventBus eventBus)
+        public async Task<IResult> GetOrderAsync(string userId, int orderNumber, [FromServices] IEventBus eventBus)
         {
             var orderQuery = new OrderQuery
             {
-                OrderNumber = orderNumber
+                OrderNumber = orderNumber,
+                UserId = userId
             };
             await eventBus.PublishAsync(orderQuery);
             if (orderQuery.Result is null)
@@ -70,11 +71,11 @@
             }
         }
 
-        public async Task<IResult> GetOrdersAsync([FromServices] IEventBus eventBus)
+        public async Task<IResult> GetOrdersAsync([FromServices] IEventBus eventBus, string userId)
         {
             var ordersQuery = new OrdersQuery
             {
-                BuyerId = ""
+                BuyerId = userId
             };
             await eventBus.PublishAsync(ordersQuery);
             return Results.Ok(ordersQuery.Result.Select(OrderSummaryDto.FromOrderSummary));

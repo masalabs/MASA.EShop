@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Web.Client.Data.Order.Record
+﻿namespace MASA.EShop.Web.Client.Data.Ordering.Record
 {
     public record OrderSummary(
         Guid Id,

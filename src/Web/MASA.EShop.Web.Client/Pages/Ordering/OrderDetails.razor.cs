@@ -1,8 +1,10 @@
-﻿using MASA.EShop.Web.Client.Data.Order.Record;
+﻿using MASA.EShop.Web.Client.Data.Ordering.Record;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 
 namespace MASA.EShop.Web.Client.Pages.Ordering
 {
+    [Authorize]
     public partial class OrderDetails : EShopBasePage
     {
         private bool _loading = false;

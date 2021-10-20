@@ -4,5 +4,6 @@
 @{
     Layout = "_Layout";
 }
-
-<component type="typeof(App)" render-mode="ServerPrerendered" />
+@*ServerPrerendered change Server fixed <InvalidOperationException: JavaScript interop calls cannot be issued at this time>.
+    when GetAuthenticationStateAsync method call ProtectedSessionStorage*@
+<component type="typeof(App)" render-mode="Server" />

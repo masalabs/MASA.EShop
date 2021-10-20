@@ -18,4 +18,9 @@ public class CatalogTypeRepository : ICatalogTypeRepository
         _context.CatalogTypes.Remove(catalogType);
         await _context.SaveChangesAsync();
     }
+
+    public IQueryable<CatalogType> GetAll()
+    {
+        return _context.Set<CatalogType>().AsQueryable();
+    }
 }

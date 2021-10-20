@@ -6,6 +6,8 @@ namespace MASA.EShop.Services.Ordering.Application.Orders.Queries
     {
         public int OrderNumber { get; set; }
 
+        public string UserId { get; set; }
+
         public override Order Result { get; set; } = default!;
     }
 }

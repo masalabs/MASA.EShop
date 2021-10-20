@@ -6,5 +6,7 @@
 
         public int Type { get; set; }
  
+        public int PageIndex { get; set; } = 1;
+
     }
 }
