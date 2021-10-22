@@ -610,6 +610,6 @@ Install-Package MASA.Contrib.ReadWriteSpliting.CQRS //CQRS
 ```
 
 ```c#
-Install-Package MASA.BuildingBlocks.DDD.Domain //DDD
-Install-Package MASA.Contribs.DDD.Domain.Repository.EF //EF Repository
+Install-Package MASA.BuildingBlocks.DDD.Domain //DDD相关实现
+Install-Package MASA.Contrib.DDD.Domain.Repository.EF //Repository实现
 ```

@@ -1,10 +1,84 @@
 ﻿@page "/basket/checkout"
-@using MASA.EShop.Web.Client.Data.Basket.Record
 @inherits EShopBasePage
 
 <PageTitle>Basket Check Out</PageTitle>
-<h1>Review</h1>
+<h1>Checkout</h1>
 <MContainer>
+    <MForm Model="_shipAddressViewModel" EnableDataAnnotationsValidation>
+        <MRow>
+            <MCol Md="1">
+                <MButton Tile Color="success" OnClick='()=>Navigation("basket")'>
+                    BACK
+                </MButton>
+            </MCol>
+            <MSpacer></MSpacer>
+            <MCol Md="1">
+                <MButton Tile Color="success" Click="()=>SubmitOrder(context)">
+                    [PAY NOW]
+                </MButton>
+            </MCol>
+        </MRow>
+        <h2 class="mb-4">Shipping Address</h2>
+        <MRow>
+            <MCol Md="6">
+                <MTextField @bind-Value="_shipAddressViewModel.Street"
+                            Label="Address"
+                            Placeholder="Address"
+                            Outlined
+                            Dense></MTextField>
+            </MCol>
+            <MCol Md="6">
+                <MTextField @bind-Value="_shipAddressViewModel.City"
+                            Label="City"
+                            Placeholder="City"
+                            Outlined
+                            Dense></MTextField>
+            </MCol>
+            <MCol Md="6">
+                <MTextField @bind-Value="_shipAddressViewModel.State"
+                            Label="State"
+                            Placeholder="State"
+                            Outlined
+                            Dense></MTextField>
+            </MCol>
+            <MCol Md="6">
+                <MTextField @bind-Value="_shipAddressViewModel.CardNumber"
+                            Label="Card number"
+                            Placeholder="000000000000000"
+                            Outlined
+                            Dense></MTextField>
+            </MCol>
+            <MCol Md="6">
+                <MTextField @bind-Value="_shipAddressViewModel.CardHolderName"
+                            Label="Cardholder name"
+                            Placeholder="Card holder"
+                            Outlined
+                            Dense></MTextField>
+            </MCol>
+            <MCol Md="6">
+                <MTextField @bind-Value="_shipAddressViewModel.CardExpiration"
+                            Label="Expiration date"
+                            Placeholder="MM/YY"
+                            Outlined
+                            Dense></MTextField>
+            </MCol>
+            <MCol Md="6">
+                <MTextField @bind-Value="_shipAddressViewModel.CardSecurityCode"
+                            Label="Security code"
+                            Placeholder="000"
+                            Outlined
+                            Dense></MTextField>
+            </MCol>
+            <MCol Md="6">
+                <MTextField @bind-Value="_shipAddressViewModel.ZipCode"
+                            Label="Zip Code"
+                            Placeholder="Zip Code"
+                            Outlined
+                            Dense></MTextField>
+            </MCol>
+        </MRow>
+    </MForm>
+    <h2 class="mt-5 mb-4">Order details</h2>
     <MTable TItem="BasketItem" Headers="_headers" Loading="_loading" Items="_userBasket.Items">
         <MTableCol Width="150">
             <img src="@context.PictureUrl" height="100" width="150" />
@@ -22,19 +96,10 @@
             @context.GetFormattedTotalPrice()
         </MTableCol>
     </MTable>
-    增加Total 数据
-@*    https://codepen.io/jairoerazo/pen/wvzYBVW*@
-    <MRow>
-        <MCol Md="1">
-            <MButton Tile Color="success" OnClick='()=>Navigation("basket")'>
-                BACK
-            </MButton>
-        </MCol>
-        <MSpacer></MSpacer>
-        <MCol Md="1">
-            <MButton Tile Color="success">
-                [PAY NOW]
-            </MButton>
+    <MRow Justify="JustifyTypes.End">
+        <MCol Md="1" class="mr-3">
+            <div>Total</div>
+            <div><span>$</span>@_userBasket.GetFormattedTotalPrice()</div>
         </MCol>
     </MRow>
 </MContainer>

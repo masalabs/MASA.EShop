@@ -1,15 +1,8 @@
-using MASA.EShop.Web.Client;
-using MASA.EShop.Web.Client.Data.Basket;
-using MASA.EShop.Web.Client.Data.Catalog;
-using MASA.EShop.Web.Client.Data.Ordering;
-using MASA.EShop.Web.Client.Infrastructure;
-using Microsoft.AspNetCore.Components.Authorization;
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddMasaBlazor();
 
-// Add services to the container.
+//Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddScoped<AuthenticationStateProvider, SimulateAuthStateProvider>();
@@ -19,12 +12,16 @@ builder.Services.Configure<Settings>(builder.Configuration);
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddTransient<HttpClientAuthorizationDelegatingHandler>();
 
-builder.Services.AddHttpClient<ICatalogService, CatalogService>()
-    .SetHandlerLifetime(TimeSpan.FromMinutes(5));
-builder.Services.AddHttpClient<IBasketService, BasketService>();
-//.AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>();
-builder.Services.AddHttpClient<IOrderService, OrderService>();
-//.AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>();
+builder.Services.AddHttpClient<ICatalogService, CatalogService>().SetHandlerLifetime(TimeSpan.FromMinutes(5));
+builder.Services.AddHttpClient<IBasketService, BasketService>().AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>();
+builder.Services.AddHttpClient<IOrderService, OrderService>().AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>();
+
+// Add Authentication services          
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddCookie(setup => setup.ExpireTimeSpan = TimeSpan.FromMinutes(60));
 
 var app = builder.Build();
 

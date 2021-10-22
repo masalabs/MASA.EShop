@@ -1,45 +1,75 @@
-﻿using BlazorComponent;
-using MASA.EShop.Web.Client.Data.Ordering;
-using MASA.EShop.Web.Client.Data.Ordering.Record;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Components;
+﻿namespace MASA.EShop.Web.Client.Pages.Ordering;
 
-namespace MASA.EShop.Web.Client.Pages.Ordering
+[Authorize]
+public partial class Orders : EShopBasePage, IAsyncDisposable
 {
-    [Authorize]
-    public partial class Orders : EShopBasePage
+
+    private HubConnection hubConnection;
+    private readonly List<TableHeaderOptions> _headers = new List<TableHeaderOptions> { "ORDER NUMBER", "DATE", "TOTAL", "STATUS", "" };
+    private bool _loading = false;
+    private List<OrderSummary> _orders = new();
+
+    [Inject]
+    private IOrderService _orderService { get; set; } = default!;
+
+    protected override async Task OnInitializedAsync()
     {
-
-        private readonly List<TableHeaderOptions> _headers = new List<TableHeaderOptions> { "ORDER NUMBER", "DATE", "TOTAL", "STATUS", "" };
-        private bool _loading = false;
-        private List<OrderSummary> _orders = new();
-
-        [Inject]
-        private IOrderService _orderService { get; set; } = default!;
-
-        protected async override Task OnInitializedAsync()
+        await base.OnInitializedAsync();
+        if (IsAuthenticated)
         {
-            try
+            await LoadOrders();
+            hubConnection = new HubConnectionBuilder()
+                .WithUrl("http://masa.eshop.services.ordering/hub/notificationhub",
+                    HttpTransportType.WebSockets | HttpTransportType.LongPolling, options =>
+                    {
+                        options.AccessTokenProvider = () =>
+                        {
+                            return Task.FromResult("masa");
+                        };
+                    }
+                )
+                .ConfigureLogging(logging =>
+                {
+                    logging.SetMinimumLevel(LogLevel.Information);
+                    logging.AddConsole();
+                })
+                .WithAutomaticReconnect()
+                .Build();
+
+            hubConnection.On<string, string>("UpdatedOrderState", (user, message) =>
             {
-                _orders = await _orderService.GetMyOrders("masa");
-            }
-            catch (Exception ex)
-            {
-                Message(ex.Message, AlertTypes.Error);
-            }
+                var encodedMsg = $"{user}: {message}";
+                StateHasChanged();
+            });
+
+            await hubConnection.StartAsync();
+
         }
+    }
 
-        private async Task CancelOrder(int orderNumber)
+    private async Task LoadOrders()
+    {
+        _orders = await _orderService.GetMyOrders(User.Identity.Name);
+    }
+
+    private async Task CancelOrder(int orderNumber)
+    {
+        try
         {
-            try
-            {
-                await _orderService.CancelOrder(orderNumber);
-            }
-            catch (Exception ex)
-        {
-                Message(ex.Message, AlertTypes.Error);
-            }
+            await _orderService.CancelOrder(orderNumber);
         }
+        catch (Exception ex)
+        {
+            Message(ex.Message, AlertTypes.Error);
+        }
+    }
 
+    public async ValueTask DisposeAsync()
+    {
+        if (hubConnection is not null)
+        {
+            await hubConnection.DisposeAsync();
+        }
     }
 }
+

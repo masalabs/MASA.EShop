@@ -48,7 +48,7 @@
                     </MImage>*@
                     @*todo 改为MImage*@
                     <img src="https://picsum.photos/id/11/500/300" height="200" width="300" />
-                    <MButton Tile Color="success" class="mt-1" OnClick="(e)=>AddToCart(item)" Disabled="@(!_isAuthenticated)">
+                    <MButton Tile Color="success" class="mt-1" OnClick="(e)=>AddToCart(item)" Disabled="@(!IsAuthenticated)">
                         <MIcon Left>mdi-cart</MIcon>
                         ADD TO CART
                     </MButton>

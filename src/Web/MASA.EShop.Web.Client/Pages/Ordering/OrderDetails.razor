@@ -1,5 +1,4 @@
 ﻿@page "/order/details/{orderNumber:int}"
-@using MASA.EShop.Web.Client.Data.Ordering.Record
 @inherits EShopBasePage
 
 <PageTitle>Order Detail</PageTitle>
@@ -31,30 +30,30 @@
             @_order.OrderNumber
         </MCol>
         <MCol Md="3">
-            @_order.OrderDate
+            @_order.Date
         </MCol>
         <MCol Md="3">
             @_order.Total
         </MCol>
         <MCol Md="3">
-            @_order.OrderStatus
+            @_order.Status
         </MCol>
     </MRow>
 
     <h2 class="mt-4">Shipping address</h2>
     <MContainer>
         <MRow>
-            <span>@_order.Address.Street</span>
+            <span>@_order.Street</span>
         </MRow>
         <MRow>
-            <span>@_order.Address.City</span>
+            <span>@_order.City</span>
         </MRow>
         <MRow>
-            <span>@_order.Address.Country</span>
+            <span>@_order.Country</span>
         </MRow>
     </MContainer>
 
-    <strong>ORDER DETAILS</strong>
+    <strong class="mt-5 mb-3">ORDER DETAILS</strong>
     <MTable TItem="OrderItem" Loading="_loading" Items="_order.OrderItems" HideDefaultHeader HideDefaultFooter>
         <MTableCol>
              <img src="@context.PictureFileName" height="100" width="150" />

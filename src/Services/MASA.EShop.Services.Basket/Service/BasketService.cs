@@ -38,8 +38,7 @@ public class BasketService : ServiceBase
         HttpContext httpContext,
         [FromServices] IBasketRepository repository)
     {
-        //todo update userId
-        var userId = "user-id";
+        var userId = basketCheckout.Buyer;
 
         basketCheckout.RequestId = (Guid.TryParse(requestId, out Guid guid) && guid != Guid.Empty) ?
             guid : basketCheckout.RequestId;
@@ -49,8 +48,7 @@ public class BasketService : ServiceBase
         {
             return Results.BadRequest();
         }
-        //var userName = httpContext.User.FindFirst(x => x.Type == ClaimTypes.Name)?.Value ?? "";
-        var userName = "userName";
+        var userName = httpContext.User.FindFirst(x => x.Type == ClaimTypes.Name)?.Value ?? userId;
 
         var @event = new UserCheckoutAcceptedIntegrationEvent(
                userId,

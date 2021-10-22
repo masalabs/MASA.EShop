@@ -1,73 +1,69 @@
-﻿using MASA.EShop.Web.Client.Data.Ordering.Record;
-using Microsoft.Extensions.Options;
-using System.Text.Json;
+﻿namespace MASA.EShop.Web.Client.Data.Ordering;
 
-namespace MASA.EShop.Web.Client.Data.Ordering
+public class OrderService : IOrderService
 {
-    public class OrderService : IOrderService
+    private readonly HttpClient _httpClient;
+    private readonly ILogger<OrderService> _logger;
+
+    private readonly string getOrdersUrl = "";
+    private readonly string cancelOrderUrl = "";
+    private readonly string shipOrderUrl = "";
+
+    private string party = "/api/v1/orders/";
+
+    public OrderService(HttpClient httpClient, IOptions<Settings> settings, ILogger<OrderService> logger)
     {
-        private readonly HttpClient _httpClient;
-        private readonly ILogger<OrderService> _logger;
+        _httpClient = httpClient;
+        _httpClient.BaseAddress = new Uri(settings.Value.OrderingUrl);
+        _logger = logger;
 
-        private readonly string getOrdersUrl = "";
-        private readonly string cancelOrderUrl = "";
-        private readonly string shipOrderUrl = "";
+        getOrdersUrl = $"{party}list";
+        cancelOrderUrl = $"{party}cancel";
+        shipOrderUrl = $"{party}ship";
+    }
 
-        private string party = "/api/v1/orders/";
+    public async Task<List<OrderSummary>> GetMyOrders(string userId)
+    {
+        return await _httpClient.GetFromJsonAsync<List<OrderSummary>>($"{getOrdersUrl}?userId={userId}") ?? new List<OrderSummary>();
+    }
 
-        public OrderService(HttpClient httpClient, IOptions<Settings> settings, ILogger<OrderService> logger)
+    public async Task<Order> GetOrder(string userId, int orderNumber)
+    {
+        return await _httpClient.GetFromJsonAsync<Order>($"{party}{userId}/{orderNumber}");
+    }
+
+    public async Task ShipOrder(int orderNumber)
+    {
+        var order = new
         {
-            _httpClient = httpClient;
-            _httpClient.BaseAddress = new Uri(settings.Value.OrderingUrl);
-            _logger = logger;
+            OrderNumber = orderNumber
+        };
 
-            getOrdersUrl = $"{party}list";
-            cancelOrderUrl = $"{party}cancel";
-            shipOrderUrl = $"{party}ship";
-        }
-
-        public async Task<List<OrderSummary>> GetMyOrders(string userId)
+        var stringContent = new FormUrlEncodedContent(new[]
         {
-            return await _httpClient.GetFromJsonAsync<List<OrderSummary>>($"{getOrdersUrl}?userId={userId}") ?? new List<OrderSummary>();
-        }
-
-        public async Task<Order> GetOrder(string userId, int orderNumber)
-        {
-            return await _httpClient.GetFromJsonAsync<Order>($"{party}{orderNumber}");
-        }
-
-        public async Task ShipOrder(int orderNumber)
-        {
-            var order = new
-            {
-                OrderNumber = orderNumber
-            };
-
-            var stringContent = new FormUrlEncodedContent(new[]
-            {
                 new KeyValuePair<string, string>("orderNumber",orderNumber.ToString())
             });
 
-            var response = await _httpClient.PutAsync(shipOrderUrl, stringContent);
+        var response = await _httpClient.PutAsync(shipOrderUrl, stringContent);
 
-            if (response.StatusCode == System.Net.HttpStatusCode.InternalServerError)
-            {
-                throw new Exception("Error cancelling order, try later.");
-            }
-
-            response.EnsureSuccessStatusCode();
-        }
-
-        public async Task CancelOrder(int orderNumber)
+        if (response.StatusCode == System.Net.HttpStatusCode.InternalServerError)
         {
-            var response = await _httpClient.PutAsync($"{cancelOrderUrl}/{orderNumber}", null);
-
-            if (response.StatusCode == System.Net.HttpStatusCode.InternalServerError)
-            {
-                throw new Exception("Error cancelling order, try later.");
-            }
-
-            response.EnsureSuccessStatusCode();
+            throw new Exception("Error cancelling order, try later.");
         }
+
+        response.EnsureSuccessStatusCode();
+    }
+
+    public async Task CancelOrder(int orderNumber)
+    {
+        var response = await _httpClient.PutAsync($"{cancelOrderUrl}/{orderNumber}", null);
+
+        if (response.StatusCode == System.Net.HttpStatusCode.InternalServerError)
+        {
+            throw new Exception("Error cancelling order, try later.");
+        }
+
+        response.EnsureSuccessStatusCode();
     }
 }
+

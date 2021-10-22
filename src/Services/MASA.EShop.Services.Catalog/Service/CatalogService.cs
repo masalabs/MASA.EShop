@@ -11,6 +11,7 @@ public class CatalogService : ServiceBase
         App.MapGet("/api/v1/catalog/types", CatalogTypesAsync);
         App.MapPost("/api/v1/catalog/createproduct", CreateProductAsync);
         App.MapPost("/api/v1/catalog/createcatalogtype", CreateCatalogTypeAsync);
+
     }
 
     #region Query

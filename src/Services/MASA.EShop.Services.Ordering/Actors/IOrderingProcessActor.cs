@@ -1,20 +1,20 @@
-﻿namespace MASA.EShop.Services.Ordering.Actors
+﻿namespace MASA.EShop.Services.Ordering.Actors;
+
+public interface IOrderingProcessActor : IActor
 {
-    public interface IOrderingProcessActor : IActor
-    {
-        Task Submit(string userId, string userName, string street, string city,
-            string zipCode, string state, string country, CustomerBasket basket);
+    Task Submit(string userId, string userName, string street, string city,
+        string zipCode, string state, string country, CustomerBasket basket);
 
-        Task<bool> Cancel();
+    Task<bool> Cancel();
 
-        Task<bool> Ship();
+    Task<bool> Ship();
 
-        Task NotifyPaymentSucceeded();
+    Task NotifyPaymentSucceeded();
 
-        Task NotifyPaymentFailed();
+    Task NotifyPaymentFailed();
 
-        Task NotifyStockConfirmed();
+    Task NotifyStockConfirmed();
 
-        Task NotifyStockRejected(List<int> rejectedProductIds);
-    }
+    Task NotifyStockRejected(List<int> rejectedProductIds);
 }
+

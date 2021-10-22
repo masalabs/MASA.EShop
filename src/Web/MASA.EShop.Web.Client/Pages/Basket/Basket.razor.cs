@@ -1,32 +1,35 @@
-﻿using BlazorComponent;
-using MASA.EShop.Web.Client.Data.Basket;
-using MASA.EShop.Web.Client.Data.Basket.Record;
+﻿namespace MASA.EShop.Web.Client.Pages.Basket;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 
-namespace MASA.EShop.Web.Client.Pages.Basket
+[Authorize]
+public partial class Basket : EShopBasePage
 {
-    [Authorize]
-    public partial class Basket : EShopBasePage
+    private readonly List<TableHeaderOptions> _headers = new List<TableHeaderOptions> { "PRODUCT", "", "PRICE", "QUANTITY", "COST" };
+    private UserBasket _userBasket = new UserBasket("", new List<BasketItem>());
+
+    private bool _loading = false;
+
+    [Inject]
+    private IBasketService _baksetService { get; set; } = default!;
+
+    protected override async Task OnInitializedAsync()
     {
-        private readonly List<TableHeaderOptions> _headers = new List<TableHeaderOptions> { "PRODUCT", "", "PRICE", "QUANTITY", "COST" };
-        private UserBasket _userBasket = default!;
+        await LoadBasketAsync();
+    }
 
-        private bool _loading = false;
-
-        [Inject]
-        private IBasketService _baksetService { get; set; } = default!;
-
-        protected async override Task OnInitializedAsync()
+    private async Task LoadBasketAsync()
+    {
+        try
         {
-            try
-            {
-                _userBasket = await _baksetService.GetBasketAsync("masa");
-            }
-            catch (Exception ex)
-            {
-                Message(ex.Message, AlertTypes.Error);
-            }
+            //User.Identity.Name
+            _userBasket = await _baksetService.GetBasketAsync("masa");
+        }
+        catch (Exception ex)
+        {
+            Message(ex.Message, AlertTypes.Error);
         }
     }
+
 }
+

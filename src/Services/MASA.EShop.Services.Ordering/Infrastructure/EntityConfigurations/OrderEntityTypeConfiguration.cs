@@ -1,24 +1,24 @@
 ﻿using Order = MASA.EShop.Services.Ordering.Entities.Order;
 
-namespace MASA.EShop.Services.Ordering.Infrastructure.EntityConfigurations
+namespace MASA.EShop.Services.Ordering.Infrastructure.EntityConfigurations;
+
+class OrderEntityTypeConfiguration : IEntityTypeConfiguration<Order>
 {
-    class OrderEntityTypeConfiguration : IEntityTypeConfiguration<Order>
+    public void Configure(EntityTypeBuilder<Order> orderConfiguration)
     {
-        public void Configure(EntityTypeBuilder<Order> orderConfiguration)
-        {
-            orderConfiguration.ToTable("orders", OrderingContext.DEFAULT_SCHEMA);
+        orderConfiguration.ToTable("orders", OrderingContext.DEFAULT_SCHEMA);
 
-            orderConfiguration.HasKey(o => o.Id);
+        orderConfiguration.HasKey(o => o.Id);
 
-            orderConfiguration.HasAlternateKey(o => o.OrderNumber);
+        orderConfiguration.HasAlternateKey(o => o.OrderNumber);
 
-            orderConfiguration.Property(o => o.OrderNumber);//.UseHiLo("orderseq", OrderingContext.DEFAULT_SCHEMA);
+        orderConfiguration.Property(o => o.OrderNumber);//.UseHiLo("orderseq", OrderingContext.DEFAULT_SCHEMA);
 
-            orderConfiguration
-                .OwnsOne(o => o.Address, a =>
-                {
-                    a.WithOwner();
-                });
-        }
+        orderConfiguration
+            .OwnsOne(o => o.Address, a =>
+            {
+                a.WithOwner();
+            });
     }
 }
+

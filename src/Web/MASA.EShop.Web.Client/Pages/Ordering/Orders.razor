@@ -1,6 +1,6 @@
-﻿@page "/order"
-@using MASA.EShop.Web.Client.Data.Ordering.Record
+﻿@page "/orders"
 @inherits EShopBasePage
+@implements IAsyncDisposable
 
 <PageTitle>Orders</PageTitle>
 
@@ -11,21 +11,23 @@
             @context.OrderNumber
         </MTableCol>
         <MTableCol>
-            @context.OrderDate
+            @context.Date
         </MTableCol>
         <MTableCol>
             @context.Total
         </MTableCol>
         <MTableCol>
-            @context.OrderStatus
+            @context.Status
         </MTableCol>
         <MTableCol>
-            @if (context.OrderStatus == "Submitted")
+            @if (context.Status == "Submitted")
             {
                 <MButton Color="primary" Text OnClick="()=>CancelOrder(context.OrderNumber)">Cancel</MButton>
             }
-        </MTableCol>
-        <MTableCol>
+            else
+            {
+                <span>@context.Status</span>
+            }
             <MButton Color="primary" Text Click='()=>Navigation($"/order/details/{context.OrderNumber}")'>Detail</MButton>
         </MTableCol>
     </MTable>

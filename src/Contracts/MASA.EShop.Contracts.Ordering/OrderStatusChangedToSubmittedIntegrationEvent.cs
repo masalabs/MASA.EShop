@@ -1,8 +1,7 @@
 ﻿using MASA.Contrib.Dispatcher.IntegrationEvents.Dapr;
 
-namespace MASA.EShop.Contracts.Basket
+namespace MASA.EShop.Contracts.Ordering
 {
-
     public record OrderStatusChangedToSubmittedIntegrationEvent(Guid OrderId, string OrderStatus,
             string BuyerId, string BuyerName) : IntegrationEvent
     {

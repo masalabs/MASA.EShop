@@ -1,7 +1,3 @@
-using MASA.EShop.Web.Client.Data.Basket.Record;
-using MASA.EShop.Web.Client.Data.Catalog;
-using Microsoft.Extensions.Options;
-
 namespace MASA.EShop.Web.Client.Data.Basket;
 
 public class BasketService : IBasketService
@@ -12,7 +8,7 @@ public class BasketService : IBasketService
 
     private string getBasketUrl;
     private readonly string updateBasketUrl;
-    private readonly string getAllTypesUrl;
+    private readonly string checkoutUrl;
 
     public BasketService(HttpClient httpClient, IOptions<Settings> settings, ILogger<BasketService> logger, ICatalogService catalogService)
     {
@@ -25,6 +21,8 @@ public class BasketService : IBasketService
 
         getBasketUrl = $"{party}";
         updateBasketUrl = $"{party}updatebasket";
+        checkoutUrl = $"{party}checkout";
+
     }
 
 
@@ -55,13 +53,19 @@ public class BasketService : IBasketService
     }
 
     public async Task<UserBasket> GetBasketAsync(string userId)
-{
-        getBasketUrl = $"{getBasketUrl}{userId}";
-        return await _httpClient.GetFromJsonAsync<UserBasket>(getBasketUrl);
+    {
+        return await _httpClient.GetFromJsonAsync<UserBasket>($"{getBasketUrl}{userId}");
     }
 
     public Task<UserBasket> UpdateBasketAsync(UserBasket basket)
     {
         throw new NotImplementedException();
+    }
+
+    public async Task CheckoutAsync(BasketCheckout basketCheckout)
+    {
+        var response = await _httpClient.PostAsJsonAsync(checkoutUrl, basketCheckout);
+
+        response.EnsureSuccessStatusCode();
     }
 }

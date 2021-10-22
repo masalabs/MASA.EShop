@@ -1,18 +1,18 @@
-﻿namespace MASA.EShop.Services.Ordering.Application.CardTypes
+﻿namespace MASA.EShop.Services.Ordering.Application.CardTypes;
+
+public class CardTypesQueryHandler
 {
-    public class CardTypesQueryHandler
+    private readonly IOrderRepository _orderRepository;
+
+    public CardTypesQueryHandler(IOrderRepository orderRepository)
     {
-        private readonly IOrderRepository _orderRepository;
+        _orderRepository = orderRepository;
+    }
 
-        public CardTypesQueryHandler(IOrderRepository orderRepository)
-        {
-            _orderRepository = orderRepository;
-        }
-
-        [EventHandler]
-        public async Task OrderQueryAsync(CardTypesQuery query)
-        {
-            query.Result = await _orderRepository.GetCardTypesAsync();
-        }
+    [EventHandler]
+    public async Task OrderQueryAsync(CardTypesQuery query)
+    {
+        query.Result = await _orderRepository.GetCardTypesAsync();
     }
 }
+

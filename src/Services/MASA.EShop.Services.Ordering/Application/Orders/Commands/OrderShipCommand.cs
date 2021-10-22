@@ -1,7 +1,7 @@
-﻿namespace MASA.EShop.Services.Ordering.Application.Orders.Commands
+﻿namespace MASA.EShop.Services.Ordering.Application.Orders.Commands;
+
+public record OrderShipCommand : Command
 {
-    public record OrderShipCommand : Command
-    {
-        public int OrderNumber { get; set; }
-    }
+    public int OrderNumber { get; set; }
 }
+

@@ -1,36 +1,33 @@
-﻿using MASA.EShop.Web.Client.Data.Ordering.Record;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Components;
+﻿namespace MASA.EShop.Web.Client.Pages.Ordering;
 
-namespace MASA.EShop.Web.Client.Pages.Ordering
+[Authorize]
+public partial class OrderDetails : EShopBasePage
 {
-    [Authorize]
-    public partial class OrderDetails : EShopBasePage
-    {
-        private bool _loading = false;
-        private Order _order;
-
-        [Parameter]
-        public int OrderNumber { get; set; }
-
-        protected override Task OnInitializedAsync()
-        {
-            _order = new Order(1, DateTime.Now, "status", "Des", new Address("Street", "City", "State", "Country"), new List<OrderItem>() {
-                new OrderItem(1,"ProductName",1,2,"https://picsum.photos/id/11/500/300")
+    private bool _loading = false;
+    private Order _order = new Order(0, DateTime.MinValue, "", "", "", "", "", "", new List<OrderItem>() {
+                new OrderItem(0,"",0,0,"")
             });
-            //try
-            //{
-            //    _order = await _orderClient.GetOrderDetailsAsync(OrderNumber);
-            //}
-            //catch (AccessTokenNotAvailableException ex)
-            //{
-            //    ex.Redirect();
-            //}
-            //catch (Exception ex)
-            //{
-            //    _error = ex.Message;
-            //}
-            return base.OnInitializedAsync();
+
+    [Parameter]
+    public int OrderNumber { get; set; }
+
+    [Inject]
+    private IOrderService _orderService { get; set; } = default!;
+
+    protected async override Task OnInitializedAsync()
+    {
+        try
+        {
+            await base.OnInitializedAsync();
+            if (IsAuthenticated)
+            {
+                _order = await _orderService.GetOrder(User.Identity.Name, OrderNumber);
+            }
+        }
+        catch (Exception ex)
+        {
+            Message(ex.Message, AlertTypes.Error);
         }
     }
 }
+

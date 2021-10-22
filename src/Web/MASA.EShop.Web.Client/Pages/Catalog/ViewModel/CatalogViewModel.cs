@@ -1,17 +1,15 @@
-﻿using MASA.EShop.Web.Client.Data.Catalog.Record;
+﻿namespace MASA.EShop.Web.Client.Pages.Catalog.ViewModel;
 
-namespace MASA.EShop.Web.Client.Pages.Catalog.ViewModel
+public class CatalogViewModel
 {
-    public class CatalogViewModel
-    {
-        public int Count { get; set; }
+    public int Count { get; set; }
 
-        public IEnumerable<CatalogItem> Items { get; set; } = Enumerable.Empty<CatalogItem>();
+    public IEnumerable<CatalogItem> Items { get; set; } = Enumerable.Empty<CatalogItem>();
 
-        public int PageIndex { get; set; }
+    public int PageIndex { get; set; }
 
-        public int PageSize { get; set; } = 1;
+    public int PageSize { get; set; } = 1;
 
-        public int PageCount => (int)Math.Ceiling(Count / (decimal)PageSize);
-    }
+    public int PageCount => (int)Math.Ceiling(Count / (decimal)PageSize);
 }
+

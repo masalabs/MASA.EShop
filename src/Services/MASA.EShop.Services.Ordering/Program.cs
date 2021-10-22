@@ -1,8 +1,18 @@
+using MASA.EShop.Services.Ordering;
+using Microsoft.AspNetCore.Http.Connections;
+using Microsoft.AspNetCore.ResponseCompression;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddActors(options =>
 {
     options.Actors.RegisterActor<OrderingProcessActor>();
+});
+
+//Add SignalR 
+builder.Services.AddSignalR().AddHubOptions<NotificationsHub>(options =>
+{
+    options.EnableDetailedErrors = true;
 });
 
 var app = builder.Services
@@ -23,12 +33,18 @@ var app = builder.Services
                .UseUoW<OrderingContext>(dbOptions => dbOptions.UseSqlServer("Data Source=masa.eshop.services.eshop.database;uid=sa;pwd=P@ssw0rd;database=order"))
                .UseEventLog<OrderingContext>();
     })
+    .AddResponseCompression(opts => //添加压缩中间件服务
+    {
+        opts.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(
+            new[] { "application/octet-stream" });
+    })
     .AddServices(builder);
+
+app.UseResponseCompression();
 
 app.UseSwagger().UseSwaggerUI(c =>
 {
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "MASA EShop Service HTTP API v1");
-    //c.IndexStream = () => System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("MASA.EShop.Services.Ordering.index.html");
 });
 
 app.MigrateDbContext<OrderingContext>((context, services) =>
@@ -57,5 +73,9 @@ app.UseEndpoints(endpoint =>
 {
     endpoint.MapSubscribeHandler();
     endpoint.MapActorsHandlers();
+    endpoint.MapHub<NotificationsHub>("/hub/notificationhub",
+                    options => options.Transports =
+                        HttpTransportType.WebSockets |
+                        HttpTransportType.LongPolling);
 });
 app.Run();

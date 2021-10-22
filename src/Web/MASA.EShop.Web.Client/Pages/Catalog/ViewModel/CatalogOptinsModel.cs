@@ -1,12 +1,11 @@
-﻿namespace MASA.EShop.Web.Client.Pages.Catalog.ViewModel
+﻿namespace MASA.EShop.Web.Client.Pages.Catalog.ViewModel;
+
+public class CatalogOptinsModel
 {
-    public class CatalogOptinsModel
-    {
-        public int Brand { get; set; }
+    public int Brand { get; set; }
 
-        public int Type { get; set; }
- 
-        public int PageIndex { get; set; } = 1;
+    public int Type { get; set; }
 
-    }
+    public int PageIndex { get; set; } = 1;
 }
+
