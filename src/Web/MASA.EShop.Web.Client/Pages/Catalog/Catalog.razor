@@ -34,37 +34,82 @@
     </MCol>
 </MRow>
 
-<MContainer>
-    @if (_catalogViewModel.Count > 0)
-    {
-        <MPagination Length="_catalogViewModel.PageCount" Value="_catalogViewModel.PageIndex" ValueChanged="(v)=>OnPageIndexChangedAsync(v)" @bind-TotalVisible="_catalogViewModel.PageSize"></MPagination>
-        <MRow>
-            @foreach (var item in _catalogViewModel.Items)
+<MRow>
+    <MCol Md="2">
+        <Mheader>Hangout notifications</Mheader>
+        <MRadioGroup @bind-Value="_catalogOptinsModel.Brand">
+            @foreach(var brand in _brands)
             {
-                <MCol Md="4" style="display:flex;flex-flow: column;align-items:center;">
-            @*        <MImage MaxHeight="150"
-                    MaxWidth="250"
-                    Src="https://picsum.photos/id/11/500/300">
-                    </MImage>*@
-                    @*todo 改为MImage*@
-                    <img src="https://picsum.photos/id/11/500/300" height="200" width="300" />
-                    <MButton Tile Color="success" class="mt-1" OnClick="(e)=>AddToCart(item)" Disabled="@(!IsAuthenticated)">
-                        <MIcon Left>mdi-cart</MIcon>
-                        ADD TO CART
-                    </MButton>
-                    <div>
-                        <span>@item.Name</span>
-                    </div>
-                    <div>
-                        <span><span> $ </span> @item.Price</span>
-                    </div>
-                </MCol>
+                <MRadio @key="brand.Id"
+                    Label="@brand.Brand"
+                    Value="@brand.Id"></MRadio>
             }
-        </MRow>
-        <MPagination Length="_catalogViewModel.PageCount" Value="_catalogViewModel.PageIndex" ValueChanged="(v)=>OnPageIndexChangedAsync(v)" @bind-TotalVisible="_catalogViewModel.PageSize"></MPagination>
-    }
-    else
-    {
-        <h2>THERE ARE NO RESULTS THAT MATCH YOUR SEARCH</h2>
-    }
-</MContainer>
+        </MRadioGroup>
+
+        <Mheader>Hangout notifications</Mheader>
+        <MRadioGroup @bind-Value="_catalogOptinsModel.Type">
+            @foreach(var type in _types)
+            {
+                <MRadio @key="type.Id"
+                    Label="@type.Type"
+                    Value="@type.Id"></MRadio>
+            }
+        </MRadioGroup>
+    </MCol>
+    <MCol>
+        <MContainer>
+            @if (_catalogViewModel.Count > 0)
+            {
+                <MRow>
+                    @foreach (var item in _catalogViewModel.Items)
+                    {
+                        <MCol Md="4" style="display:flex;flex-flow: column;align-items:center;">
+                            <MCard>
+                                <MCardText>
+                                    <MListItem>
+                                        <MRow>
+                                            <MCol Class="d-flex flex-column justify-center align-center">
+                                                <img class="card-img" src="@item.GetPictureUrl(Settings.Value.ResourceUrlExternal)" />
+                                            </MCol>
+                                        </MRow>
+                                    </MListItem>
+                                    <MListItem>
+                                        <MRow Justify="JustifyTypes.SpaceBetween">
+                                            <MCol Cols="@("auto")">
+                                                <MRating Value="3" Readonly BackgroundColor="orange lighten-3" Color="orange"></MRating>
+                                            </MCol>
+                                            <MCol Align="AlignTypes.Center" Cols="@("auto")">
+                                                <span><span> $ </span> @item.Price</span>
+                                            </MCol>
+                                        </MRow>
+                                    </MListItem>
+                                    <MListItem TwoLine>
+                                        <MListItemContent>
+                                            <MListItemTitle class="headline">
+                                                @item.Name
+                                            </MListItemTitle>
+                                            <MListItemTitle>On Retina display that never sleeps, so it’s easy to see the ti</MListItemTitle>
+                                        </MListItemContent>
+                                    </MListItem>
+                                </MCardText>
+                                <MCardActions>
+                                    <MButton Block Color="success" OnClick="(e)=>AddToCart(item)" Disabled="@(!IsAuthenticated)">
+                                        <MIcon Left>mdi-cart</MIcon>
+                                        ADD TO CART
+                                    </MButton>
+                                </MCardActions>
+                            </MCard>
+                        </MCol>
+                    }
+                </MRow>
+                <MPagination class="mt-6" Length="_catalogViewModel.PageCount" Value="_catalogViewModel.PageIndex" ValueChanged="(v)=>OnPageIndexChangedAsync(v)" @bind-TotalVisible="_catalogViewModel.PageSize"></MPagination>
+            }
+            else
+            {
+                <h2>THERE ARE NO RESULTS THAT MATCH YOUR SEARCH</h2>
+            }
+        </MContainer>
+    </MCol>
+</MRow>
+
+

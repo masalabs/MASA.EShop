@@ -17,6 +17,9 @@ public class EShopBasePage : PageBase
     [Inject]
     protected ProtectedSessionStorage ProtectedSessionStore { get; set; } = default!;
 
+    [Inject]
+    protected IOptions<Settings> Settings { get; set; } = default!;
+
     [CascadingParameter]
     protected MainLayout App { get; set; } = default!;
 

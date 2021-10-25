@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MASA.EShop.Services.Catalog.Migrations
 {
     [DbContext(typeof(CatalogDbContext))]
-    [Migration("20211008015746_init")]
+    [Migration("20211025034833_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -36,6 +36,9 @@ namespace MASA.EShop.Services.Catalog.Migrations
 
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime2");
+
+                    b.Property<Guid>("EventId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("EventTypeName")
                         .IsRequired()

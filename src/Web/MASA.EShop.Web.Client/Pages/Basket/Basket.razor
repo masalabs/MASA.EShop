@@ -6,7 +6,7 @@
 <MContainer>
     <MTable TItem="BasketItem" Headers="_headers" Loading="_loading" Items="_userBasket.Items">
         <MTableCol Width="150">
-            <img src="@context.PictureUrl" height="100" width="150" />
+            <img src="@context.GetPictureUrl(Settings.Value.ResourceUrlExternal)" height="100" width="150" />
         </MTableCol>
         <MTableCol>
             @context.ProductName

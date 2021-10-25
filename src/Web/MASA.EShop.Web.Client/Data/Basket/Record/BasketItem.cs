@@ -5,10 +5,12 @@ public record BasketItem(
         string ProductName,
         decimal UnitPrice,
         int Quantity,
-        string PictureUrl)
+        string PictureFileName)
 {
     public string GetFormattedPrice() => UnitPrice.ToString("0.00");
 
     public string GetFormattedTotalPrice() => (UnitPrice * Quantity).ToString("0.00");
+
+    public string GetPictureUrl(string basePath) => $"{basePath}/pics/{PictureFileName}";
 }
 

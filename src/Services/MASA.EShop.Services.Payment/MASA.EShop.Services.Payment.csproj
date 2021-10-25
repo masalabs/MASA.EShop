@@ -13,16 +13,16 @@
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.2" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="10.3.3" />
-    <PackageReference Include="MASA.BuildingBlocks.DDD.Domain" Version="0.0.7387" />
-    <PackageReference Include="MASA.BuildingBlocks.ReadWriteSpliting.CQRS" Version="0.0.7387" />
-    <PackageReference Include="MASA.Contrib.Data.Uow.EF" Version="0.0.7390" />
-    <PackageReference Include="MASA.Contrib.Dispatcher.Events" Version="0.0.7390" />
-    <PackageReference Include="MASA.Contrib.Dispatcher.IntegrationEvents.Dapr" Version="0.0.7390" />
-    <PackageReference Include="MASA.Contrib.Dispatcher.IntegrationEvents.EventLogs.EF" Version="0.0.7390" />
-    <PackageReference Include="MASA.Contrib.ReadWriteSpliting.CQRS" Version="0.0.7390" />
-    <PackageReference Include="MASA.Contrib.Service.MinimalAPIs" Version="0.0.7390" />
-    <PackageReference Include="MASA.Contrib.DDD.Domain" Version="0.0.7390" />
-    <PackageReference Include="MASA.Contrib.DDD.Domain.Repository.EF" Version="0.0.7390" />
+    <PackageReference Include="MASA.BuildingBlocks.DDD.Domain" Version="0.0.7409" />
+    <PackageReference Include="MASA.BuildingBlocks.ReadWriteSpliting.CQRS" Version="0.0.7409" />
+    <PackageReference Include="MASA.Contrib.Data.Uow.EF" Version="0.0.7412" />
+    <PackageReference Include="MASA.Contrib.Dispatcher.Events" Version="0.0.7412" />
+    <PackageReference Include="MASA.Contrib.Dispatcher.IntegrationEvents.Dapr" Version="0.0.7412" />
+    <PackageReference Include="MASA.Contrib.Dispatcher.IntegrationEvents.EventLogs.EF" Version="0.0.7412" />
+    <PackageReference Include="MASA.Contrib.ReadWriteSpliting.CQRS" Version="0.0.7412" />
+    <PackageReference Include="MASA.Contrib.Service.MinimalAPIs" Version="0.0.7412" />
+    <PackageReference Include="MASA.Contrib.DDD.Domain" Version="0.0.7412" />
+    <PackageReference Include="MASA.Contrib.DDD.Domain.Repository.EF" Version="0.0.7412" />
     <PackageReference Include="MASA.Utils.Models.Config" Version="0.0.7315" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.0-rc.1.21452.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.0-rc.1.21452.10" />

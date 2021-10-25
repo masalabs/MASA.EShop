@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MASA.EShop.Services.Payment.Migrations
 {
     [DbContext(typeof(PaymentDbContext))]
-    [Migration("20210930035632_init")]
+    [Migration("20211025035015_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -37,6 +37,9 @@ namespace MASA.EShop.Services.Payment.Migrations
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime2");
 
+                    b.Property<Guid>("EventId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("EventTypeName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -55,7 +58,7 @@ namespace MASA.EShop.Services.Payment.Migrations
                     b.ToTable("IntegrationEventLog", (string)null);
                 });
 
-            modelBuilder.Entity("MASA.EShop.Services.Payment.Domain.Payments.Payment", b =>
+            modelBuilder.Entity("MASA.EShop.Services.Payment.Domain.Aggregate.Payment", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()

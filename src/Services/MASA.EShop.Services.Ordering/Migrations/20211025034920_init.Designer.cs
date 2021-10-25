@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MASA.EShop.Services.Ordering.Migrations
 {
     [DbContext(typeof(OrderingContext))]
-    [Migration("20211008020002_init")]
+    [Migration("20211025034920_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -36,6 +36,9 @@ namespace MASA.EShop.Services.Ordering.Migrations
 
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime2");
+
+                    b.Property<Guid>("EventId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("EventTypeName")
                         .IsRequired()
@@ -86,7 +89,6 @@ namespace MASA.EShop.Services.Ordering.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("OrderDate")
@@ -117,7 +119,8 @@ namespace MASA.EShop.Services.Ordering.Migrations
                     b.Property<Guid>("OrderId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("PictureUrl")
+                    b.Property<string>("PictureFileName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("ProductId")

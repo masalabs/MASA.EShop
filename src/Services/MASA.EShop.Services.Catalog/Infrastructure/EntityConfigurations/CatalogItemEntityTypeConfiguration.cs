@@ -20,7 +20,7 @@ class CatalogItemEntityTypeConfiguration
         builder.Property(ci => ci.PictureFileName)
             .IsRequired(false);
 
-        builder.Ignore(ci => ci.PictureUri);
+        //builder.Ignore(ci => ci.PictureUri);
 
         builder.HasOne(ci => ci.CatalogBrand)
             .WithMany()

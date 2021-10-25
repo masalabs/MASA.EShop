@@ -118,6 +118,11 @@ services:
       - "9095:443"
     volumes:
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+    depends_on:
+      - masa.eshop.services.basket
+      - masa.eshop.services.catalog
+      - masa.eshop.services.ordering
+
   masa.eshop.api.open.dapr:
     image: "daprio/daprd:1.4.0"
     command: ["./daprd",
@@ -163,9 +168,7 @@ services:
     volumes:
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
     depends_on:
-      - masa.eshop.services.basket
-      - masa.eshop.services.catalog
-      - masa.eshop.services.ordering
+      - masa.eshop.api.open
 
   dapr-placement:
     command: ["./placement", "-port", "50000", "-log-level", "debug"]

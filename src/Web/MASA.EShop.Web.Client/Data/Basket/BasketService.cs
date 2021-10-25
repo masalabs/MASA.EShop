@@ -45,7 +45,7 @@ public class BasketService : IBasketService
         // Step 2: Get current basket status
         var currentBasket = await GetBasketAsync(userId);
         // Step 3: Merge current status with new product
-        currentBasket.Items.Add(new BasketItem(item.Id, item.Name, item.Price, newItem.Quantity, item.PictureUri));
+        currentBasket.Items.Add(new BasketItem(item.Id, item.Name, item.Price, newItem.Quantity, item.PictureFileName));
 
         // Step 4: Update basket
         var response = await _httpClient.PostAsJsonAsync(updateBasketUrl, currentBasket);

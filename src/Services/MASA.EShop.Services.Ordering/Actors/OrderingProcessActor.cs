@@ -63,7 +63,7 @@ public class OrderingProcessActor : Actor, IOrderingProcessActor, IRemindable
                     ProductName = item.ProductName,
                     UnitPrice = item.UnitPrice,
                     Units = item.Quantity,
-                    PictureUrl = item.PictureUrl
+                    PictureFileName = item.PictureFileName
                 })
                 .ToList()
         };

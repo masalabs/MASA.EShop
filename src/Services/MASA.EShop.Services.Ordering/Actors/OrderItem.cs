@@ -8,5 +8,5 @@ public class OrderItem
     public string ProductName { get; set; } = default!;
     public decimal UnitPrice { get; set; }
     public int Units { get; set; }
-    public string? PictureUrl { get; set; }
+    public string PictureFileName { get; set; } = default!;
 }

@@ -19,7 +19,7 @@ public partial class Orders : EShopBasePage, IAsyncDisposable
         {
             await LoadOrders();
             hubConnection = new HubConnectionBuilder()
-                .WithUrl("http://masa.eshop.services.ordering/hub/notificationhub",
+                .WithUrl($"{Settings.Value.OrderingUrl}/hub/notificationhub",
                     HttpTransportType.WebSockets | HttpTransportType.LongPolling, options =>
                     {
                         options.AccessTokenProvider = () =>

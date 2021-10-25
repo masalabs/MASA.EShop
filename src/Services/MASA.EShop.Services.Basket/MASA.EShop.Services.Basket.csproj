@@ -12,7 +12,7 @@
 
   <ItemGroup>
     <PackageReference Include="Dapr.AspNetCore" Version="1.4.0" />
-    <PackageReference Include="MASA.Contrib.Service.MinimalAPIs" Version="0.0.7390" />
+    <PackageReference Include="MASA.Contrib.Service.MinimalAPIs" Version="0.0.7412" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.0-rc.1.21452.10" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.2" />

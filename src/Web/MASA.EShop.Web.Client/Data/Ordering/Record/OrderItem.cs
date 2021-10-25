@@ -13,5 +13,6 @@ public record OrderItem(
 
     public string GetFormattedTotal() => Total.ToString("0.00");
 
+    public string GetPictureUrl(string baseUrl) => $"{baseUrl}/pics/{PictureFileName}";
 }
 

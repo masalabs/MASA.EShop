@@ -12,12 +12,12 @@
 
   <ItemGroup>
     <PackageReference Include="Dapr.Actors.AspNetCore" Version="1.4.0" />
-    <PackageReference Include="MASA.Contrib.Data.Uow.EF" Version="0.0.7390" />
-    <PackageReference Include="MASA.Contrib.Dispatcher.Events" Version="0.0.7390" />
-    <PackageReference Include="MASA.Contrib.Dispatcher.IntegrationEvents.Dapr" Version="0.0.7390" />
-    <PackageReference Include="MASA.Contrib.Dispatcher.IntegrationEvents.EventLogs.EF" Version="0.0.7390" />
-    <PackageReference Include="MASA.Contrib.ReadWriteSpliting.CQRS" Version="0.0.7390" />
-    <PackageReference Include="MASA.Contrib.Service.MinimalAPIs" Version="0.0.7390" />
+    <PackageReference Include="MASA.Contrib.Data.Uow.EF" Version="0.0.7412" />
+    <PackageReference Include="MASA.Contrib.Dispatcher.Events" Version="0.0.7412" />
+    <PackageReference Include="MASA.Contrib.Dispatcher.IntegrationEvents.Dapr" Version="0.0.7412" />
+    <PackageReference Include="MASA.Contrib.Dispatcher.IntegrationEvents.EventLogs.EF" Version="0.0.7412" />
+    <PackageReference Include="MASA.Contrib.ReadWriteSpliting.CQRS" Version="0.0.7412" />
+    <PackageReference Include="MASA.Contrib.Service.MinimalAPIs" Version="0.0.7412" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.0-rc.1.21452.10">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

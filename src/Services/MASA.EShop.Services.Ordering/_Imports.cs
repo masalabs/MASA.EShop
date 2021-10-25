@@ -4,7 +4,7 @@ global using Dapr.Actors.Client;
 global using Dapr.Actors.Runtime;
 global using MASA.BuildingBlocks.Dispatcher.Events;
 global using MASA.BuildingBlocks.Dispatcher.IntegrationEvents;
-global using MASA.Contrib.Data.Uow.EF;
+global using MASA.Contrib.Data.UoW.EF;
 global using MASA.Contrib.Dispatcher.Events;
 global using MASA.Contrib.Dispatcher.IntegrationEvents.Dapr;
 global using MASA.Contrib.Dispatcher.IntegrationEvents.EventLogs.EF;

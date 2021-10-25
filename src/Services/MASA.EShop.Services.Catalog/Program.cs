@@ -38,6 +38,13 @@ app.MigrateDbContext<CatalogDbContext>((context, services) =>
         .Wait();
 });
 
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(
+                    Path.Combine(app.Environment.ContentRootPath, "Pics")),
+    RequestPath = "/pics"
+});
+
 app.UseSwagger().UseSwaggerUI(c =>
 {
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "MASA EShop Service HTTP API v1");

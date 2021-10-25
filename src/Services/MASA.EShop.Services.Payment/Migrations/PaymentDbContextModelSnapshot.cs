@@ -35,6 +35,9 @@ namespace MASA.EShop.Services.Payment.Migrations
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime2");
 
+                    b.Property<Guid>("EventId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("EventTypeName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -53,7 +56,7 @@ namespace MASA.EShop.Services.Payment.Migrations
                     b.ToTable("IntegrationEventLog", (string)null);
                 });
 
-            modelBuilder.Entity("MASA.EShop.Services.Payment.Domain.Payments.Payment", b =>
+            modelBuilder.Entity("MASA.EShop.Services.Payment.Domain.Aggregate.Payment", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()

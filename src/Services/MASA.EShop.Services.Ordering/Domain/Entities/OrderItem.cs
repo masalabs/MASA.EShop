@@ -8,7 +8,7 @@ public class OrderItem
     public string ProductName { get; set; } = default!;
     public decimal UnitPrice { get; set; }
     public int Units { get; set; }
-    public string? PictureUrl { get; set; }
+    public string PictureFileName { get; set; } = default!;
 
     public static OrderItem FromActorState(Actors.OrderItem orderItem)
     {
@@ -18,7 +18,7 @@ public class OrderItem
             ProductName = orderItem.ProductName,
             UnitPrice = orderItem.UnitPrice,
             Units = orderItem.Units,
-            PictureUrl = orderItem.PictureUrl
+            PictureFileName = orderItem.PictureFileName
         };
     }
 }

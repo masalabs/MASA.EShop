@@ -1,6 +1,4 @@
 ﻿namespace MASA.EShop.Web.Client.Pages.Basket;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Components;
 
 [Authorize]
 public partial class Basket : EShopBasePage
