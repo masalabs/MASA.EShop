@@ -20,6 +20,7 @@ global using MASA.EShop.Services.Catalog.Application.CatalogTypes.Queries;
 global using MASA.EShop.Services.Catalog.Application.Middleware;
 global using MASA.EShop.Services.Catalog.Domain.Entities;
 global using MASA.EShop.Services.Catalog.Domain.Repositories;
+global using MASA.EShop.Services.Catalog.Dto;
 global using MASA.EShop.Services.Catalog.Infrastructure;
 global using MASA.EShop.Services.Catalog.Infrastructure.EntityConfigurations;
 global using MASA.EShop.Services.Catalog.Infrastructure.Extensions;

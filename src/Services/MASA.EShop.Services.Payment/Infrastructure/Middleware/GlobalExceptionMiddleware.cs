@@ -24,7 +24,7 @@ public class GlobalExceptionMiddleware
                 await context.Response.WriteAsync(ex.Message);
             }
         }
-        catch (Exception ex)
+        catch
         {
             context.Response.StatusCode = 500;
             await context.Response.WriteAsync("system error, try again later");

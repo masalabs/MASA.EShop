@@ -1,4 +1,5 @@
 ﻿global using BlazorComponent;
+global using BlazorComponent.Components;
 global using MASA.Blazor.Presets;
 global using MASA.EShop.Web.Client;
 global using MASA.EShop.Web.Client.Data.Basket;
@@ -28,4 +29,5 @@ global using System.ComponentModel.DataAnnotations;
 global using System.Diagnostics;
 global using System.Net.Http.Headers;
 global using System.Security.Claims;
+global using System.Text.Json;
 global using System.Text.RegularExpressions;

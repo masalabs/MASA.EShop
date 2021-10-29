@@ -25,6 +25,16 @@ public class BasketService : IBasketService
 
     }
 
+    public async Task RemoveItemAsync(string userId, int productId)
+    {
+        var currentBasket = await GetBasketAsync(userId);
+        var basketItem = currentBasket.Items.FirstOrDefault(x => x.ProductId == productId);
+        if (basketItem != null)
+        {
+            currentBasket.Items.Remove(basketItem);
+            var response = await _httpClient.PostAsJsonAsync(updateBasketUrl, currentBasket);
+        }
+    }
 
     public async Task AddItemToBasketAsync(string userId, int productId)
     {
@@ -39,13 +49,19 @@ public class BasketService : IBasketService
 
         // Step 1: Get the item from catalog
         var item = await _catalogService.GetCatalogById(newItem.CatalogItemId);
-
-        //item.PictureUri = 
-
         // Step 2: Get current basket status
         var currentBasket = await GetBasketAsync(userId);
         // Step 3: Merge current status with new product
-        currentBasket.Items.Add(new BasketItem(item.Id, item.Name, item.Price, newItem.Quantity, item.PictureFileName));
+        var itemIndex = currentBasket.Items.FindIndex(a => a.ProductId == item.Id);
+        if (itemIndex == -1)
+        {
+            currentBasket.Items.Add(new BasketItem(item.Id, item.Name, item.Price, newItem.Quantity, item.PictureFileName));
+        }
+        else
+        {
+            var basketItem = currentBasket.Items.ElementAt(itemIndex);
+            currentBasket.Items[itemIndex] = basketItem with { Quantity = basketItem.Quantity + 1 };
+        }
 
         // Step 4: Update basket
         var response = await _httpClient.PostAsJsonAsync(updateBasketUrl, currentBasket);

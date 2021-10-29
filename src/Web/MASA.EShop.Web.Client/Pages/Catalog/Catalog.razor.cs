@@ -1,6 +1,6 @@
 ﻿namespace MASA.EShop.Web.Client.Pages.Catalog;
 
-public partial class Catalog : EShopBasePage
+public partial class Catalog : EShopPageBase
 {
 
     private CatalogData _catalogViewModel = new();
@@ -28,7 +28,7 @@ public partial class Catalog : EShopBasePage
     {
         var brands = new List<CatalogBrand>
             {
-                new CatalogBrand(-1,"All")
+                new CatalogBrand(-1,"全部")
             };
 
         try
@@ -47,7 +47,7 @@ public partial class Catalog : EShopBasePage
     {
         var types = new List<CatalogType>
             {
-                new CatalogType(-1,"All")
+                new CatalogType(-1,"全部")
             };
 
         try

@@ -1,7 +1,7 @@
 ﻿namespace MASA.EShop.Web.Client.Pages.Ordering;
 
 [Authorize]
-public partial class Orders : EShopBasePage, IAsyncDisposable
+public partial class Orders : EShopPageBase, IAsyncDisposable
 {
 
     private HubConnection hubConnection;

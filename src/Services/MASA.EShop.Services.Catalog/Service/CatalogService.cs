@@ -20,7 +20,7 @@ public class CatalogService : ServiceBase
     {
         var query = new ProductQuery() { ProductId = id };
         await eventBus.PublishAsync(query);
-        return Results.Ok(query.Result);
+        return Results.Ok(CatalogItemDto.FromOrderItem(query.Result));
     }
 
     public async Task<IResult> GetItemsAsync([FromServices] IEventBus eventBus,

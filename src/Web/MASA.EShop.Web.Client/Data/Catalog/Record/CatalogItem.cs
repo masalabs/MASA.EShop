@@ -8,6 +8,12 @@ public record CatalogItem
     public decimal Price { get; init; }
     public string PictureFileName { get; init; } = default!;
 
-    public string GetPictureUrl(string basePath) => $"{basePath}/pics/{PictureFileName}";
+    public string Brand { get; set; } = default!;
+
+    public string Type { get; set; } = default!;
+
+    public int AvailableStock { get; set; }
+
+    public string GetPictureUrl() => $"./img/{PictureFileName}";
 }
 

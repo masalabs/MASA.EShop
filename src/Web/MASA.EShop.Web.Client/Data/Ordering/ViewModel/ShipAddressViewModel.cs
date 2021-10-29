@@ -3,33 +3,33 @@
 public class ShipAddressViewModel
 {
     [Required]
-    public string Buyer { get; set; }
+    public string Buyer { get; set; } = default!;
 
     [Required]
-    public string Street { get; set; }
+    public string Street { get; set; } = default!;
 
     [Required]
-    public string City { get; set; }
+    public string City { get; set; } = default!;
 
     [Required]
-    public string Country { get; set; }
+    public string Country { get; set; } = default!;
 
-    public string ZipCode { get; set; }
-
-    [Required]
-    public string State { get; set; }
+    public string? ZipCode { get; set; }
 
     [Required]
-    public string CardNumber { get; set; }
+    public string State { get; set; } = default!;
 
     [Required]
-    public string CardHolderName { get; set; }
+    public string CardNumber { get; set; } = default!;
+
+    [Required]
+    public string CardHolderName { get; set; } = default!;
 
     [Required]
     [CustomValidation(typeof(CardExpirationDate), "Validate")]
-    public string CardExpiration { get; set; }
+    public string CardExpiration { get; set; } = default!;
 
     [Required]
-    public string CardSecurityCode { get; set; }
+    public string CardSecurityCode { get; set; } = default!;
 }
 

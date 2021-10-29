@@ -1,79 +1,72 @@
 ﻿@page "/catalog"
-@inherits EShopBasePage
+@inherits EShopPageBase
 
 <PageTitle>Catalog</PageTitle>
 
-<MRow>
-    <MCol Xs="5" Sm="3" Md="2">
-        <MSelect Label="Brand"
-                 @bind-Value="_catalogOptinsModel.Brand"
-                 Dense
-                 Outlined
-                 Items="@_brands"
-                 ItemText="b=> b.Brand"
-                 ItemValue="b => b.Id">
-        </MSelect>
-    </MCol>
-    <MCol Xs="5" Sm="3" Md="2">
-        <MSelect Label="Type"
-                 @bind-Value="_catalogOptinsModel.Type"
-                 Dense
-                 Outlined
-                 Items="@_types"
-                 ItemText="u => u.Type"
-                 ItemValue="u => u.Id">
-        </MSelect>
-    </MCol>
-    <MCol Xs="5" Sm="3" Md="2">
-        <MButton Class="ma-2"
-                 Color="indigo"
-                 Dark
-                 OnClick="LoadItemsAsync">
-            <MIcon Dark>mdi-chevron-right</MIcon>
-        </MButton>
-    </MCol>
-</MRow>
-
-<MRow>
+<div class="head-bread">
+    <h2 class="auto-width">@T("Shop")</h2>
+    <MDivider Vertical />
+    <MBreadcrumbs Large class="auto-width">
+        <MBreadcrumbsItem Disabled="false">
+            <MIcon Large class='head-bread-icon'>mdi-home</MIcon>
+        </MBreadcrumbsItem>
+        <MBreadcrumbsItem Text="@T("Shop")"></MBreadcrumbsItem>
+    </MBreadcrumbs>
+</div>
+<MRow NoGutters>
     <MCol Md="2">
-        <Mheader>Hangout notifications</Mheader>
-        <MRadioGroup @bind-Value="_catalogOptinsModel.Brand">
-            @foreach(var brand in _brands)
-            {
-                <MRadio @key="brand.Id"
-                    Label="@brand.Brand"
-                    Value="@brand.Id"></MRadio>
-            }
-        </MRadioGroup>
+        <MContainer>
+            <div>
+                <h6 style="margin-bottom: 1.75rem;display: block!important;font-size: 1rem;font-family: inherit;font-weight: 500;color: #5e5873;">@T("Filters")</h6>
+            </div>
+            <MCard Elevation=2>
+                <MCardText>
+                    <h4>@T("Brand")</h4>
+                    <MRadioGroup @bind-Value="_catalogOptinsModel.Brand">
+                        @foreach (var brand in _brands)
+                        {
+                            <MRadio @key="brand.Id"
+                                Label="@brand.Brand"
+                                Value="@brand.Id"></MRadio>
+                        }
+                    </MRadioGroup>
 
-        <Mheader>Hangout notifications</Mheader>
-        <MRadioGroup @bind-Value="_catalogOptinsModel.Type">
-            @foreach(var type in _types)
-            {
-                <MRadio @key="type.Id"
-                    Label="@type.Type"
-                    Value="@type.Id"></MRadio>
-            }
-        </MRadioGroup>
+                    <h4>@T("Type")</h4>
+                    <MRadioGroup @bind-Value="_catalogOptinsModel.Type">
+                        @foreach (var type in _types)
+                        {
+                            <MRadio @key="type.Id"
+                                Label="@type.Type"
+                                Value="@type.Id"></MRadio>
+                        }
+                    </MRadioGroup>
+                </MCardText>
+            </MCard>
+        </MContainer>
     </MCol>
     <MCol>
         <MContainer>
+            <div style="font-weight: 500;color: rgb(94, 88, 115);font-size: 1rem;margin-bottom: 1.75rem;">
+                @_catalogViewModel.Count @T("SearchResult")
+            </div>
+            <MTextField TValue="string" Solo Label="@T("SearchProduct")" Placeholder="@T("SearchKey")" AppendIcon="search" OnAppendClick="LoadItemsAsync"></MTextField>
             @if (_catalogViewModel.Count > 0)
             {
                 <MRow>
                     @foreach (var item in _catalogViewModel.Items)
                     {
+
                         <MCol Md="4" style="display:flex;flex-flow: column;align-items:center;">
-                            <MCard>
-                                <MCardText>
-                                    <MListItem>
+                            <MHover>
+                                <MCard @attributes="context.Attrs" Class="@($"{context.Class} {(context.Hover ? "on-hover" : "")}")" Elevation="@(context.Hover ? 12 : 2)">
+                                    <MCardText class="mb-0">
                                         <MRow>
                                             <MCol Class="d-flex flex-column justify-center align-center">
-                                                <img class="card-img" src="@item.GetPictureUrl(Settings.Value.ResourceUrlExternal)" />
+                                                <a href="/catalog/details/@item.Id">
+                                                    <img class="card-img" src="@item.GetPictureUrl()" />
+                                                </a>
                                             </MCol>
                                         </MRow>
-                                    </MListItem>
-                                    <MListItem>
                                         <MRow Justify="JustifyTypes.SpaceBetween">
                                             <MCol Cols="@("auto")">
                                                 <MRating Value="3" Readonly BackgroundColor="orange lighten-3" Color="orange"></MRating>
@@ -82,34 +75,28 @@
                                                 <span><span> $ </span> @item.Price</span>
                                             </MCol>
                                         </MRow>
-                                    </MListItem>
-                                    <MListItem TwoLine>
-                                        <MListItemContent>
-                                            <MListItemTitle class="headline">
-                                                @item.Name
-                                            </MListItemTitle>
-                                            <MListItemTitle>On Retina display that never sleeps, so it’s easy to see the ti</MListItemTitle>
-                                        </MListItemContent>
-                                    </MListItem>
-                                </MCardText>
-                                <MCardActions>
-                                    <MButton Block Color="success" OnClick="(e)=>AddToCart(item)" Disabled="@(!IsAuthenticated)">
-                                        <MIcon Left>mdi-cart</MIcon>
-                                        ADD TO CART
-                                    </MButton>
-                                </MCardActions>
-                            </MCard>
+                                        <MListItem TwoLine>
+                                            <MListItemContent>
+                                                <MListItemTitle class="headline">
+                                                    @item.Name
+                                                </MListItemTitle>
+                                                <MListItemTitle style="max-width:350px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">@item.Description</MListItemTitle>
+                                            </MListItemContent>
+                                        </MListItem>
+                                    </MCardText>
+                                    <MCardActions class="pa-0">
+                                        <MButton Block Tile Depressed class="primary rounded-b-sm" OnClick="(e)=>AddToCart(item)" Disabled="@(!IsAuthenticated)">
+                                            <MIcon Left>mdi-cart</MIcon>
+                                            @T("AddToCart")
+                                        </MButton>
+                                    </MCardActions>
+                                </MCard>
+                            </MHover>
                         </MCol>
                     }
                 </MRow>
                 <MPagination class="mt-6" Length="_catalogViewModel.PageCount" Value="_catalogViewModel.PageIndex" ValueChanged="(v)=>OnPageIndexChangedAsync(v)" @bind-TotalVisible="_catalogViewModel.PageSize"></MPagination>
             }
-            else
-            {
-                <h2>THERE ARE NO RESULTS THAT MATCH YOUR SEARCH</h2>
-            }
         </MContainer>
     </MCol>
 </MRow>
-
-

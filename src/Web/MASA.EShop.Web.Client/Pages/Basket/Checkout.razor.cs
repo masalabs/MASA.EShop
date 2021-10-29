@@ -1,13 +1,8 @@
 ﻿namespace MASA.EShop.Web.Client.Pages.Basket;
 
 [Authorize]
-public partial class Checkout : EShopBasePage
+public partial class Checkout : EShopPageBase
 {
-    private readonly List<TableHeaderOptions> _headers = new List<TableHeaderOptions> { "PRODUCT", "", "PRICE", "QUANTITY", "COST" };
-    private UserBasket _userBasket = new UserBasket("", new List<BasketItem>());
-
-    private bool _loading = false;
-
     private ShipAddressViewModel _shipAddressViewModel = new();
 
     [Inject]
@@ -19,7 +14,6 @@ public partial class Checkout : EShopBasePage
 
         if (IsAuthenticated)
         {
-
             var claims = User.Claims.ToDictionary(c => c.Type, c => c.Value);
             claims.TryGetValue("address_street", out string? address_street);
             claims.TryGetValue("address_city", out string? address_city);
@@ -42,21 +36,6 @@ public partial class Checkout : EShopBasePage
                 CardExpiration = card_expiration ?? "",
                 CardSecurityCode = card_security_number ?? ""
             };
-        }
-
-        await LoadBasketAsync();
-    }
-
-    private async Task LoadBasketAsync()
-    {
-        try
-        {
-            //User.Identity.Name
-            _userBasket = await _baksetService.GetBasketAsync("masa");
-        }
-        catch (Exception ex)
-        {
-            Message(ex.Message, AlertTypes.Error);
         }
     }
 

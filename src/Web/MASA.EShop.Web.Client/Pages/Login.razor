@@ -1,21 +1,21 @@
 ﻿@page "/login"
-@inherits EShopBasePage
+@inherits EShopPageBase
 
-<PageTitle>Login</PageTitle>
+<PageTitle>@T("Login")</PageTitle>
 
 <MContainer class="justify-center align-center">
     <MRow Justify="JustifyTypes.Center">
         <MCol Md="5">
             <MCard class="mt-0 pt-0">
                 <MCardTitle class="blue darken-1">
-                    <h4 style="color:white">Login MASA EShop Account</h4>
+                    <h4 style="color:white">@T("LoginMessage")</h4>
                 </MCardTitle>
                 <MCardText class="mt-10">
                     <MTextField class="input-group--focused mr-2"
-                                Label="UserName" @bind-Value="_userName"></MTextField>
+                                Label="@T("UserName")" @bind-Value="_userName"></MTextField>
                     <MTextField class="input-group--focused mr-2"
-                                Label="password" @bind-Value="_password"></MTextField>
-                    <MButton class="pink--text" Block OnClick="LoginHandler">LOGIN</MButton>
+                                Label="@T("Password")" @bind-Value="_password"></MTextField>
+                    <MButton class="pink--text" Block OnClick="LoginHandler">@T("Login")</MButton>
                 </MCardText>
             </MCard>
         </MCol>

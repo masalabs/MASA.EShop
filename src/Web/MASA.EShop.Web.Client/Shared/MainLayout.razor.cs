@@ -1,14 +1,13 @@
 ﻿namespace MASA.EShop.Web.Client.Shared;
-using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
 
 public partial class MainLayout
 {
 
     [Inject]
-    private NavigationManager NavigationManager { get; set; }
+    private NavigationManager NavigationManager { get; set; } = default!;
 
     [Inject]
-    protected ProtectedSessionStorage ProtectedSessionStore { get; set; }
+    protected ProtectedSessionStorage ProtectedSessionStore { get; set; } = default!;
 
     public void Navigation(string path)
     {
@@ -19,6 +18,19 @@ public partial class MainLayout
     {
         await ProtectedSessionStore.DeleteAsync("user");
         Navigation("/");
+    }
+
+    private void ChangeLanguage() {
+        var changeLanguage = "";
+        if (I18n.CurrentCulture == "zh-CN")
+        {
+            changeLanguage = "en-US";
+        }
+        else
+        {
+            changeLanguage = "zh-CN";
+        }
+        I18n.SetLang(changeLanguage);
     }
 
     #region Message

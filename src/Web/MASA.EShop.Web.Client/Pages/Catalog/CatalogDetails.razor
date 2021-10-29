@@ -1,0 +1,98 @@
+﻿@page "/catalog/details/{id:int}"
+@inherits EShopPageBase
+
+<div class="head-bread">
+    <h2 class="auto-width">@T("CatalogDetails")</h2>
+    <MDivider Vertical/>
+    <MBreadcrumbs Large class="auto-width">
+        <MBreadcrumbsItem Disabled="false">
+            <MIcon Large class='head-bread-icon'>mdi-home</MIcon>
+        </MBreadcrumbsItem>
+        <MBreadcrumbsItem Href="/catalog">@T("Shop")</MBreadcrumbsItem>
+        <MBreadcrumbsItem Text="@T("CatalogDetails")"></MBreadcrumbsItem>
+    </MBreadcrumbs>
+</div>
+
+<MCard>
+    <MCardText>
+        <MRow>
+            <MCol Md="4" Align="AlignTypes.Center" Class="d-flex flex-column align-center" style="">
+                <img src="@_catalogItem.GetPictureUrl()" style="width: 460px;height:auto;" />
+            </MCol>
+            <MCol Md="8" Class="d-flex flex-column mt-6">
+                <h4 style="margin-bottom: 0.5rem;font-size: 1.286rem;font-family: inherit;font-weight: 500;line-height: 1.2;color: #5e5873;">@_catalogItem.Name</h4>
+                <p>By<span style="margin-left: 0.25rem;font-weight: 600;color: #7367f0;text-decoration: none;">@_catalogItem.Brand</span></p>
+                <div class="d-flex flex-wrap">
+                    <h4 style="font-size: 1.286rem;margin-right: 1rem;color: rgb(115, 103, 240);margin-bottom: 0.5rem;line-height: 1.82rem;">$@_catalogItem.Price</h4>
+                    <MDivider Vertical style="margin-right: 8px;"/>
+                    <MRating style="display:inline;" Readonly Value="4.5" BackgroundColor="orange lighten-3" Color="orange" Dense></MRating>
+                </div>
+                <p style="line-height: 1.5rem;">
+                    @T("Available") - <span style="color: #28c76f">@T("InStock")</span>
+                </p>
+                <p>
+                    @_catalogItem.Description
+                </p>
+                <div style="margin-bottom:1rem;"><MIcon class="details-icon">add_shopping_cart</MIcon><span class="catalog-details-span">@T("FreeShip")</span></div>
+                <div style="margin-bottom:1rem;"><MIcon class="details-icon">attach_money</MIcon><span class="catalog-details-span">@T("EMI")</span></div>
+                <MDivider class="mb-3 mt-3"></MDivider>
+                <div style="margin-bottom: 1.2rem;">
+                    <h6 style="font-size: 1rem;font-family: inherit;font-weight: 500;line-height: 1.2;color: #5e5873;">@T("Colors")</h6>
+                </div>
+                <MDivider class="mb-3 mt-3"></MDivider>
+                <div>
+                    <MButton Depressed class="btn-primary">
+                        <MIcon Left>add_shopping_cart</MIcon>
+                        @T("ViewInCart")
+                    </MButton>
+                </div>
+            </MCol>
+        </MRow>
+        <MRow style="background-color:#f8f8f8;" class="mt-3 mb-10">
+            <MCol Md="4" Align="AlignTypes.Center" Class="pa-15 d-flex flex-column align-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="35px" height="35px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="details-icon-item-feather"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+                <h4 class="mt-2 mb-1" style="line-height: 1.2;color: #5e5873;font-size: 1.286rem;"> 100% Original </h4>
+                <p class="card-text" style="line-height: 1.5rem;box-sizing: border-box;margin-block-start: 1em;margin-block-end: 1em;margin-inline-start: 0px;margin-inline-end: 0px;"> Chocolate bar candy canes ice cream toffee. Croissant pie cookie halvah. </p>
+            </MCol>
+            <MCol Md="4" Align="AlignTypes.Center" Class="pa-6 d-flex flex-column align-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="35px" height="35px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="details-icon-item-feather"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                <h4 class="mt-2 mb-1"> 10 Day Replacement </h4>
+                <p class="card-text"> Marshmallow biscuit donut dragée fruitcake. Jujubes wafer cupcake. </p>
+            </MCol>
+            <MCol Md="4" Align="AlignTypes.Center" Class="pa-6 d-flex flex-column align-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="35px" height="35px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="details-icon-item-feather"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                <h4 class="mt-2 mb-1"> 1 Year Warranty </h4>
+                <p class="card-text"> Cotton candy gingerbread cake I love sugar plum I love sweet croissant. </p>
+            </MCol>
+        </MRow>
+        <MRow>
+            <MSheet Class="mx-auto" style="width:100%;">
+                <h4 style="margin-bottom: 0.5rem;font-size: 1.286rem;text-align:center;">@T("RelatedProducts")</h4>
+                <p style="line-height: 1.5rem;margin-bottom: 0;margin-top: 0;text-align:center;">@T("RelatedMessage")</p>
+                <MSlideGroup ShowArrows="@(true)" Class="pa-4">
+                    @foreach (var item in Enumerable.Range(1, 10))
+                    {
+                        <MSlideItem>
+                            <MCard RefBack="@context.Ref" Color="@("#f8f8f8")" Class="ma-4" Height="320" Width="260" Click="@context.Toggle">
+                                <MCardText>
+                                    <div style="text-align:center;">
+                                        <h5 style="text-align:center;margin-bottom: 0!important;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;"> Apple HomePod (Space Grey) </h5>
+                                        <small style="color: #6e6b7b!important;font-size: .857rem;font-weight: 400;text-decoration: none;">by Apple</small>
+                                    </div>
+                                    <div style="display: flex;-webkit-box-align: center;align-items: center;justify-content: center;height: 200px;">
+                                        <img class="full-height" src="https://cdn.vuetifyjs.com/images/parallax/material.jpg" style="width:100%;height:auto;" />
+                                    </div>
+                                    <div style="text-align:center;">
+                                        <MRating Value="3" BackgroundColor="orange lighten-3" Color="orange" Dense></MRating>
+                                        <span style="color: #7367f0;margin-top: 0;margin-bottom: 0!important;line-height: 1.5rem;">$2449</span>
+                                    </div>
+
+                                </MCardText>
+                            </MCard>
+                        </MSlideItem>
+                    }
+                </MSlideGroup>
+            </MSheet>
+        </MRow>
+    </MCardText>
+</MCard>

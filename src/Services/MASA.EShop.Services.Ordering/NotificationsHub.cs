@@ -13,7 +13,7 @@ namespace MASA.EShop.Services.Ordering
             await base.OnConnectedAsync();
         }
 
-        public override async Task OnDisconnectedAsync(Exception ex)
+        public override async Task OnDisconnectedAsync(Exception? ex)
         {
             await Groups.RemoveFromGroupAsync(Context.ConnectionId, "masa");
             await base.OnDisconnectedAsync(ex);

@@ -1,5 +1,5 @@
 ﻿@page "/order/details/{orderNumber:int}"
-@inherits EShopBasePage
+@inherits EShopPageBase
 
 <PageTitle>Order Detail</PageTitle>
 
@@ -56,7 +56,7 @@
     <strong class="mt-5 mb-3">ORDER DETAILS</strong>
     <MTable TItem="OrderItem" Loading="_loading" Items="_order.OrderItems" HideDefaultHeader HideDefaultFooter>
         <MTableCol>
-             <img src="@context.GetPictureUrl(Settings.Value.ResourceUrlExternal)" height="100" width="150" />
+             <img src="@context.GetPictureUrl()" height="100" width="150" />
         </MTableCol>
         <MTableCol>
             @context.ProductName

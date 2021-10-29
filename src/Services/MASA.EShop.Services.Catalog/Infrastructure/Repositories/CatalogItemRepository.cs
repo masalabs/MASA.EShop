@@ -26,6 +26,10 @@ public class CatalogItemRepository : ICatalogItemRepository
 
     public async Task<CatalogItem> SingleAsync(int productionId)
     {
-        return await _context.CatalogItems.SingleAsync(catalogItem => catalogItem.Id == productionId);
+        return await _context.CatalogItems
+            .Include(catalogItem => catalogItem.CatalogType)
+            .Include(catalogItem => catalogItem.CatalogBrand)
+            .AsSplitQuery()
+            .SingleAsync(catalogItem => catalogItem.Id == productionId);
     }
 }

@@ -1,105 +1,95 @@
 ﻿@page "/basket/checkout"
-@inherits EShopBasePage
+@inherits EShopPageBase
 
 <PageTitle>Basket Check Out</PageTitle>
-<h1>Checkout</h1>
+
+<div class="head-bread">
+    <h2 class="auto-width">@T("Checkout")</h2>
+    <MDivider Vertical />
+    <MBreadcrumbs Large class="auto-width">
+        <MBreadcrumbsItem Disabled="false">
+            <MIcon Large class='head-bread-icon'>mdi-home</MIcon>
+        </MBreadcrumbsItem>
+        <MBreadcrumbsItem Text="@T("Checkout")"></MBreadcrumbsItem>
+    </MBreadcrumbs>
+</div>
+
+<MBreadcrumbs Large Divider=">">
+    <MBreadcrumbsItem Href="/basket" Disabled="false">
+        <MIcon Large Left>mdi-cart</MIcon>
+        @T("Cart")
+    </MBreadcrumbsItem>
+    <MBreadcrumbsItem Href="" Disabled="false">
+        <MIcon Large Left>mdi-domain</MIcon>
+        @T("Address")
+    </MBreadcrumbsItem>
+</MBreadcrumbs>
+
 <MContainer>
     <MForm Model="_shipAddressViewModel" EnableDataAnnotationsValidation>
-        <MRow>
-            <MCol Md="1">
-                <MButton Tile Color="success" OnClick='()=>Navigation("basket")'>
-                    BACK
-                </MButton>
-            </MCol>
-            <MSpacer></MSpacer>
-            <MCol Md="1">
-                <MButton Tile Color="success" Click="()=>SubmitOrder(context)">
-                    [PAY NOW]
-                </MButton>
-            </MCol>
-        </MRow>
-        <h2 class="mb-4">Shipping Address</h2>
+        <h2 class="mb-4"> @T("ShippingAddress")</h2>
         <MRow>
             <MCol Md="6">
                 <MTextField @bind-Value="_shipAddressViewModel.Street"
-                            Label="Address"
-                            Placeholder="Address"
+                            Label="@T("Address")"
+                            Placeholder="@T("Address")"
                             Outlined
                             Dense></MTextField>
             </MCol>
             <MCol Md="6">
                 <MTextField @bind-Value="_shipAddressViewModel.City"
-                            Label="City"
-                            Placeholder="City"
+                            Label="@T("City")"
+                            Placeholder="@T("City")"
                             Outlined
                             Dense></MTextField>
             </MCol>
             <MCol Md="6">
                 <MTextField @bind-Value="_shipAddressViewModel.State"
-                            Label="State"
-                            Placeholder="State"
+                            Label="@T("State")"
+                            Placeholder="@T("State")"
                             Outlined
                             Dense></MTextField>
             </MCol>
             <MCol Md="6">
                 <MTextField @bind-Value="_shipAddressViewModel.CardNumber"
-                            Label="Card number"
+                            Label="@T("CardNumber")"
                             Placeholder="000000000000000"
                             Outlined
                             Dense></MTextField>
             </MCol>
             <MCol Md="6">
                 <MTextField @bind-Value="_shipAddressViewModel.CardHolderName"
-                            Label="Cardholder name"
-                            Placeholder="Card holder"
+                            Label="@T("CardName")"
+                            Placeholder="@T("CardName")"
                             Outlined
                             Dense></MTextField>
             </MCol>
             <MCol Md="6">
                 <MTextField @bind-Value="_shipAddressViewModel.CardExpiration"
-                            Label="Expiration date"
+                            Label="@T("ExpirationDate")"
                             Placeholder="MM/YY"
                             Outlined
                             Dense></MTextField>
             </MCol>
             <MCol Md="6">
                 <MTextField @bind-Value="_shipAddressViewModel.CardSecurityCode"
-                            Label="Security code"
+                            Label="@T("SecurityCode")"
                             Placeholder="000"
                             Outlined
                             Dense></MTextField>
             </MCol>
             <MCol Md="6">
                 <MTextField @bind-Value="_shipAddressViewModel.ZipCode"
-                            Label="Zip Code"
-                            Placeholder="Zip Code"
+                            Label="@T("ZipCode")"
+                            Placeholder="@T("ZipCode")"
                             Outlined
                             Dense></MTextField>
             </MCol>
         </MRow>
+        <MRow Justify="JustifyTypes.End">
+            <MButton class="primary" Click="()=>SubmitOrder(context)">
+                @T("PayNow")
+            </MButton>
+        </MRow>
     </MForm>
-    <h2 class="mt-5 mb-4">Order details</h2>
-    <MTable TItem="BasketItem" Headers="_headers" Loading="_loading" Items="_userBasket.Items">
-        <MTableCol Width="150">
-            <img src="@context.GetPictureUrl(Settings.Value.ResourceUrlExternal)" height="100" width="150" />
-        </MTableCol>
-        <MTableCol>
-            @context.ProductName
-        </MTableCol>
-        <MTableCol>
-            @context.UnitPrice
-        </MTableCol>
-        <MTableCol>
-            @context.Quantity
-        </MTableCol>
-        <MTableCol>
-            @context.GetFormattedTotalPrice()
-        </MTableCol>
-    </MTable>
-    <MRow Justify="JustifyTypes.End">
-        <MCol Md="1" class="mr-3">
-            <div>Total</div>
-            <div><span>$</span>@_userBasket.GetFormattedTotalPrice()</div>
-        </MCol>
-    </MRow>
 </MContainer>

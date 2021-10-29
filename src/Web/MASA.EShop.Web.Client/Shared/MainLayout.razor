@@ -2,7 +2,7 @@
 @inherits LayoutComponentBase
 
 <MApp>
-    <MAppBar Flat Fixed Color="white" Class="m-bar--underline">
+    <MAppBar Flat Fixed Color="white" Class="m-bar--underline full-width">
         <span>MASA EShop</span>
         <MSpacer></MSpacer>
         <AuthorizeView>
@@ -50,22 +50,24 @@
             <NotAuthorized>
                 <MMenu>
                     <Activator Context="_">
-                        <MButton Color="primary" OnClick='()=>Navigation("login")'>Login</MButton>
+                        <MButton class="primary" OnClick='()=>Navigation("login")'>@I18n.T("Login")</MButton>
                     </Activator>
                 </MMenu>
             </NotAuthorized>
         </AuthorizeView>
+        <MButton Text OnClick='()=>ChangeLanguage()' class="ml-2">
+            @(I18n.CurrentCulture == "zh-CN"?"EN": "中")
+        </MButton>
     </MAppBar>
-
-    <MMain class="pt-16">
-        @*<MImage Alt="example" Height="250" Src="https://picsum.photos/510/300?random" />*@
+    <MMain class="mt-16">
         <MContainer Fluid>
             <CascadingValue Value="this">
                 @Body
             </CascadingValue>
         </MContainer>
     </MMain>
-     <Message @bind-Visible="_message.Visible" Timeout="_message.Timeout" Type="_message.Type">
+
+    <Message @bind-Visible="_message.Visible" Timeout="_message.Timeout" Type="_message.Type">
         @_message.Content
     </Message>
 </MApp>

@@ -38,10 +38,4 @@
     <ProjectReference Include="..\..\Contracts\MASA.EShop.Contracts.Ordering\MASA.EShop.Contracts.Ordering.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Content Include="Pics\*.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
 </Project>

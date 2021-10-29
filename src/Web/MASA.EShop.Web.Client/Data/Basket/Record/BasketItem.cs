@@ -11,6 +11,6 @@ public record BasketItem(
 
     public string GetFormattedTotalPrice() => (UnitPrice * Quantity).ToString("0.00");
 
-    public string GetPictureUrl(string basePath) => $"{basePath}/pics/{PictureFileName}";
+    public string GetPictureUrl() => $"./img/{PictureFileName}";
 }
 

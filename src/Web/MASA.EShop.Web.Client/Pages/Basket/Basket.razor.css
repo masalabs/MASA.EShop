@@ -1,0 +1,23 @@
+﻿.text-right {
+    text-align:right;
+}
+
+.title {
+    font-weight: 600;
+}
+
+.input-group-text {
+    padding: inherit;
+    margin-top: 4px;
+    border: none;
+    font-weight: 600;
+    font-size: .95rem;
+}
+
+.text-primary {
+    color: #7367f0 !important;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}

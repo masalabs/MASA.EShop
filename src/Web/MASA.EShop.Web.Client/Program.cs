@@ -1,6 +1,12 @@
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddMasaBlazor();
+builder.Services.AddMasaBlazor(new MASA.Blazor.MasaBlazorOptions()
+{
+    Theme = new ThemeOptions()
+    {
+        Primary = "#7367f0"
+    }
+});
 
 //Add services to the container.
 builder.Services.AddRazorPages();
@@ -44,5 +50,18 @@ app.UseAuthorization();
 
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
+
+#region I18n
+
+LocaleProvider.SetLocale("zh-CN");
+var langfileNames = new string[] { "en-US.json", "zh-CN.json" };
+langfileNames.ForEach(langFileName =>
+{
+    var path = Path.Combine(app.Environment.ContentRootPath, "Resources", langFileName);
+    var json = File.ReadAllText(path);
+    I18n.AddLang(Path.GetFileNameWithoutExtension(path), JsonSerializer.Deserialize<Dictionary<string, string>>(json));
+});
+
+#endregion 
 
 app.Run();

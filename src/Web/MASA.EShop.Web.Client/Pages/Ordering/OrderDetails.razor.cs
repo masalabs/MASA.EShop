@@ -1,7 +1,7 @@
 ﻿namespace MASA.EShop.Web.Client.Pages.Ordering;
 
 [Authorize]
-public partial class OrderDetails : EShopBasePage
+public partial class OrderDetails : EShopPageBase
 {
     private bool _loading = false;
     private Order _order = new Order(0, DateTime.MinValue, "", "", "", "", "", "", new List<OrderItem>() {
