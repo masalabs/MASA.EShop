@@ -6,24 +6,33 @@
 <div class="head-bread">
     <h2 class="auto-width">@T("Checkout")</h2>
     <MDivider Vertical />
-    <MBreadcrumbs Large class="auto-width">
-        <MBreadcrumbsItem Disabled="false">
+    <MBreadcrumbs Large class="auto-width" TItem="BreadcrumbItem">
+        <MBreadcrumbsItem Href="/catalog">
             <MIcon Large class='head-bread-icon'>mdi-home</MIcon>
         </MBreadcrumbsItem>
         <MBreadcrumbsItem Text="@T("Checkout")"></MBreadcrumbsItem>
     </MBreadcrumbs>
 </div>
 
-<MBreadcrumbs Large Divider=">">
-    <MBreadcrumbsItem Href="/basket" Disabled="false">
-        <MIcon Large Left>mdi-cart</MIcon>
-        @T("Cart")
-    </MBreadcrumbsItem>
-    <MBreadcrumbsItem Href="" Disabled="false">
-        <MIcon Large Left>mdi-domain</MIcon>
-        @T("Address")
-    </MBreadcrumbsItem>
-</MBreadcrumbs>
+<MStepper AltLabels>
+    <MStepperHeader>
+        <MStepperStep Step="1" Complete>
+            Cart
+        </MStepperStep>
+
+        <MDivider></MDivider>
+
+        <MStepperStep Step="2" Complete>
+            Address
+        </MStepperStep>
+
+        <MDivider></MDivider>
+
+        <MStepperStep Step="3">
+            End
+        </MStepperStep>
+    </MStepperHeader>
+</MStepper>
 
 <MContainer>
     <MForm Model="_shipAddressViewModel" EnableDataAnnotationsValidation>

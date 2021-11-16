@@ -4,11 +4,11 @@
 <div class="head-bread">
     <h2 class="auto-width">@T("CatalogDetails")</h2>
     <MDivider Vertical/>
-    <MBreadcrumbs Large class="auto-width">
+    <MBreadcrumbs Large class="auto-width" TItem="BreadcrumbItem">
         <MBreadcrumbsItem Disabled="false">
             <MIcon Large class='head-bread-icon'>mdi-home</MIcon>
         </MBreadcrumbsItem>
-        <MBreadcrumbsItem Href="/catalog">@T("Shop")</MBreadcrumbsItem>
+        <MBreadcrumbsItem Href="/catalog">@T("Shop","Base")</MBreadcrumbsItem>
         <MBreadcrumbsItem Text="@T("CatalogDetails")"></MBreadcrumbsItem>
     </MBreadcrumbs>
 </div>
@@ -86,7 +86,6 @@
                                         <MRating Value="3" BackgroundColor="orange lighten-3" Color="orange" Dense></MRating>
                                         <span style="color: #7367f0;margin-top: 0;margin-bottom: 0!important;line-height: 1.5rem;">$2449</span>
                                     </div>
-
                                 </MCardText>
                             </MCard>
                         </MSlideItem>

@@ -5,9 +5,23 @@ public partial class Orders : EShopPageBase, IAsyncDisposable
 {
 
     private HubConnection hubConnection;
-    private readonly List<TableHeaderOptions> _headers = new List<TableHeaderOptions> { "ORDER NUMBER", "DATE", "TOTAL", "STATUS", "" };
+    private readonly List<DataTableHeader<OrderSummary>> _headers = new List<DataTableHeader<OrderSummary>> {
+        new (){ Text= "IMAGE",Sortable= false,Value= nameof(OrderSummary.PictureName)},
+        new (){ Text= "PRODUCT NAME",Sortable= false,Align= "center",Value= nameof(OrderSummary.ProductName)},
+        new (){ Text= "ORDER NUMBER", Align= "center",Sortable= false,Value= nameof(OrderSummary.OrderNumber)},
+        new (){ Text= "TOTAL", Value= nameof(OrderSummary.Total),Align= "end"},
+        new (){ Text= "DATE", Align= "center",Value= nameof(OrderSummary.Date)},
+        new (){ Text= "STATUS",Sortable= false,Align= "center", Value= nameof(OrderSummary.Status)},
+        new (){ Text= "",Sortable= false, Value= nameof(OrderSummary.Id)}
+    };
     private bool _loading = false;
     private List<OrderSummary> _orders = new();
+    private Order _order = new Order(0, DateTime.MinValue, "", "", "", "", "", "", new List<OrderItem>() {
+                new OrderItem(0,"",0,0,"")
+            });
+    private bool _detailDialog = false;
+
+    protected override string PageName { get; set; } = "Order";
 
     [Inject]
     private IOrderService _orderService { get; set; } = default!;
@@ -71,5 +85,31 @@ public partial class Orders : EShopPageBase, IAsyncDisposable
             await hubConnection.DisposeAsync();
         }
     }
-}
 
+    private async void ShowDetails(int orderNumber)
+    {
+        _detailDialog = true;
+        _order = await _orderService.GetOrder(User.Identity.Name, orderNumber);
+    }
+
+    private string GetStatusColor(string status)
+    {
+        var color = "";
+        switch (status)
+        {
+            case "Cancelled":
+                color = "green";
+                break;
+            case "Submitted":
+                color = "blue";
+                break;
+            case "Shipped":
+                color = "orange";
+                break;
+            case "Paid":
+                color = "red";
+                break;
+        }
+        return color;
+    }
+}

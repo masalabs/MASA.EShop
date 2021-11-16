@@ -54,7 +54,9 @@ public class OrderRepository : IOrderRepository
                 OrderNumber = o.OrderNumber,
                 OrderDate = o.OrderDate,
                 OrderStatus = o.OrderStatus,
-                Total = o.GetTotal()
+                Total = o.GetTotal(),
+                ProductName = o.OrderItems.Single().ProductName,
+                PictureFileName = o.OrderItems.Single().PictureFileName
             })
             .ToListAsync();
     }

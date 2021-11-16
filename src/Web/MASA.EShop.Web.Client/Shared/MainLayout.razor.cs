@@ -9,6 +9,9 @@ public partial class MainLayout
     [Inject]
     protected ProtectedSessionStorage ProtectedSessionStore { get; set; } = default!;
 
+    [Inject]
+    protected I18n I18n { get; set; } = default!;
+
     public void Navigation(string path)
     {
         NavigationManager.NavigateTo(path, true);
@@ -20,9 +23,10 @@ public partial class MainLayout
         Navigation("/");
     }
 
-    private void ChangeLanguage() {
+    private void ChangeLanguage()
+    {
         var changeLanguage = "";
-        if (I18n.CurrentCulture == "zh-CN")
+        if (I18n.CurrentLanguage == "zh-CN")
         {
             changeLanguage = "en-US";
         }

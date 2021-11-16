@@ -8,6 +8,8 @@ public partial class Catalog : EShopPageBase
     private List<CatalogBrand> _brands = new();
     private List<CatalogType> _types = new();
 
+    protected override string PageName { get; set; } = "Catalog";
+
     [Inject] //todo :change api open
     private ICatalogService _catalogService { get; set; } = default!;
 

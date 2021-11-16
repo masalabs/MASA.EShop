@@ -5,6 +5,8 @@
 
         private CatalogItem _catalogItem = new();
 
+        protected override string PageName { get; set; } = "Catalog";
+
         [Parameter]
         public int Id { get; set; }
 

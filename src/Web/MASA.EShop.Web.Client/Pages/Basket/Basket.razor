@@ -6,7 +6,7 @@
 <div class="head-bread">
     <h2 class="auto-width">@T("Checkout")</h2>
     <MDivider Vertical />
-    <MBreadcrumbs Large class="auto-width">
+    <MBreadcrumbs Large class="auto-width" TItem="BreadcrumbItem">
         <MBreadcrumbsItem Disabled="false" Href="/catalog">
             <MIcon Large class='head-bread-icon'>mdi-home</MIcon>
         </MBreadcrumbsItem>
@@ -14,17 +14,29 @@
     </MBreadcrumbs>
 </div>
 
-<MBreadcrumbs Items="breadItems" Large>
-    <ItemContent>
-        <MBreadcrumbsItem Href="@context.Href" Disabled="context.Disabled">
-            <MIcon Large Left>@(((MyBreadcrumbItem)context).Icon)</MIcon>
-            @context.Text
-        </MBreadcrumbsItem>
-    </ItemContent>
-    <DividerContent>
-        <MIcon>mdi-chevron-right</MIcon>
-    </DividerContent>
-</MBreadcrumbs>
+<MRow>
+    <MCol Md="12">
+        <MStepper AltLabels>
+            <MStepperHeader>
+                <MStepperStep Step="1" Complete>
+                    Cart
+                </MStepperStep>
+
+                <MDivider></MDivider>
+
+                <MStepperStep Step="2">
+                    Address
+                </MStepperStep>
+
+                <MDivider></MDivider>
+
+                <MStepperStep Step="3">
+                    End
+                </MStepperStep>
+            </MStepperHeader>
+        </MStepper>
+    </MCol>
+</MRow>
 
 <MRow>
     <MCol Md="8">
@@ -60,12 +72,12 @@
                                         <h4 style="color: #7367f0;margin-bottom: 0;font-size: 1.286rem;">@item.GetFormattedTotalPrice()</h4>
                                         <p style="margin-top: 0.75rem;line-height: 1.5rem;">
                                             <span class="pa-1" style="font-size: 85%;color: #28c76f;background-color: rgba(40,199,111,.12);border-radius: 10rem;">
-                                                @T("FreeShip")
+                                                @T("FreeShip","Catalog")
                                             </span>
                                         </p>
                                         <MButton Block Depressed class="mt-2" OnClick="()=>RemoveItemAsync(item.ProductId)">
                                             <MIcon Left>mdi-close</MIcon>
-                                            @T("Remove")
+                                            @T("Remove","Base")
                                         </MButton>
                                     </MCol>
                                 </MRow>
@@ -80,7 +92,7 @@
         <MCard>
             <MSubheader>@T("Options")</MSubheader>
             <MCardText class="pb-0">
-                <MTextField TValue="string" class="coupons" Dense Label="@T("Coupons")" >
+                <MTextField TValue="string" class="coupons" Dense Label="@T("Coupons")">
                     <AppendContent>
                         <span class="input-group-text text-primary cursor-pointer">@T("Apply")</span>
                     </AppendContent>
@@ -103,10 +115,6 @@
                     <MListItem>
                         <MListItemTitle>@T("EstimatedTax")</MListItemTitle>
                         <MListItemTitle class="text-right"> $1.3 </MListItemTitle>
-                    </MListItem>
-                    <MListItem>
-                        <MListItemTitle>@T("EMI")</MListItemTitle>
-                        <MListItemTitle class="text-right"> @T("Details") </MListItemTitle>
                     </MListItem>
                     <MListItem>
                         <MListItemTitle>@T("DeliveryCharges")</MListItemTitle>

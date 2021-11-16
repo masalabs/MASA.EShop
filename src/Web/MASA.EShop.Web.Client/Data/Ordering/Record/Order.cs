@@ -12,8 +12,18 @@ public record Order(
 {
     public decimal Total => OrderItems.Sum(o => o.Units * o.UnitPrice);
 
-    public string GetFormattedOrderDate() => Date.ToString("d");
+    public string GetFormattedOrderDate() => Date.ToString("f");
 
     public string GetFormattedTotal() => Total.ToString("0.00");
+
+    public string GetPictureUrl() => OrderItems.Single().GetPictureUrl();
+
+    public string ProductName
+    {
+        get
+        {
+            return OrderItems.Single().ProductName;
+        }
+    }
 }
 

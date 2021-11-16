@@ -9,6 +9,13 @@ builder.Services.AddActors(options =>
     options.Actors.RegisterActor<OrderingProcessActor>();
 });
 
+//JsonOptions
+builder.Services.Configure<JsonOptions>(options =>
+{
+    options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
+    options.JsonSerializerOptions.WriteIndented = true;
+});
+
 //Add SignalR 
 builder.Services.AddSignalR().AddHubOptions<NotificationsHub>(options =>
 {

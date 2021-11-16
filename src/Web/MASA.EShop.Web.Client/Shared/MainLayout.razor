@@ -7,13 +7,14 @@
         <MSpacer></MSpacer>
         <AuthorizeView>
             <Authorized>
+                <MButton Icon Large OnClick='()=>Navigation("basket")'><MIcon>mdi-cart</MIcon></MButton>
                 <MMenu OffsetX Left OffsetY>
-                    <Activator Context="_">
-                        <MButton Icon Large><MIcon>mdi-account-circle-outline</MIcon></MButton>
-                    </Activator>
+                    <ActivatorContent Context="__">
+                        <MButton Icon Large @attributes="@__.Attrs"><MIcon>mdi-account-circle-outline</MIcon></MButton>
+                    </ActivatorContent>
                     <ChildContent>
                         <MList Dense>
-                            <MListItem Link Click='()=>Navigation("orders")'>
+                            <MListItem Link OnClick='()=>Navigation("orders")'>
                                 <MListItemIcon>
                                     <MIcon>mdi-bell</MIcon>
                                 </MListItemIcon>
@@ -23,17 +24,7 @@
                                     </MListItemTitle>
                                 </MListItemContent>
                             </MListItem>
-                            <MListItem Link>
-                                <MListItemIcon>
-                                    <MIcon>mdi-account</MIcon>
-                                </MListItemIcon>
-                                <MListItemContent>
-                                    <MListItemTitle>
-                                        个人中心
-                                    </MListItemTitle>
-                                </MListItemContent>
-                            </MListItem>
-                            <MListItem Link Click='Logout'>
+                            <MListItem Link OnClick='Logout'>
                                 <MListItemIcon>
                                     <MIcon>mdi-logout</MIcon>
                                 </MListItemIcon>
@@ -49,17 +40,17 @@
             </Authorized>
             <NotAuthorized>
                 <MMenu>
-                    <Activator Context="_">
-                        <MButton class="primary" OnClick='()=>Navigation("login")'>@I18n.T("Login")</MButton>
-                    </Activator>
+                    <ActivatorContent Context="_">
+                        <MButton class="primary" OnClick='()=>Navigation("login")'>@I18n.GetLang(I18n.CurrentLanguage)["Login"]["Login"]</MButton>
+                    </ActivatorContent>
                 </MMenu>
             </NotAuthorized>
         </AuthorizeView>
         <MButton Text OnClick='()=>ChangeLanguage()' class="ml-2">
-            @(I18n.CurrentCulture == "zh-CN"?"EN": "中")
+            @(I18n.CurrentLanguage == "zh-CN"?"EN": "中")
         </MButton>
     </MAppBar>
-    <MMain class="mt-16">
+    <MMain>
         <MContainer Fluid>
             <CascadingValue Value="this">
                 @Body

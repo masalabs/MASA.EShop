@@ -5,16 +5,7 @@ public partial class Basket : EShopPageBase
 {
     private UserBasket _userBasket = new UserBasket("", new List<BasketItem>());
 
-    class MyBreadcrumbItem : BreadcrumbItem
-    {
-        public string Icon { get; set; } = default!;
-    }
-
-    List<MyBreadcrumbItem> breadItems = new()
-    {
-        new MyBreadcrumbItem() { Text = "Cart", Disabled = false, Href = "/basket", Icon = "mdi-cart" },
-        new MyBreadcrumbItem() { Text = "Address", Disabled = true, Href = "/basket/checkout", Icon = "mdi-domain" }
-    };
+    protected override string PageName { get; set; } = "Basket";
 
     [Inject]
     private IBasketService _baksetService { get; set; } = default!;
@@ -38,7 +29,8 @@ public partial class Basket : EShopPageBase
         }
     }
 
-    private async Task RemoveItemAsync(int productId) {
+    private async Task RemoveItemAsync(int productId)
+    {
         try
         {
             await _baksetService.RemoveItemAsync(User.Identity.Name, productId);

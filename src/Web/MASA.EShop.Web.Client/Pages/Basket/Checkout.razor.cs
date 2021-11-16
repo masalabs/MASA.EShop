@@ -5,6 +5,8 @@ public partial class Checkout : EShopPageBase
 {
     private ShipAddressViewModel _shipAddressViewModel = new();
 
+    protected override string PageName { get; set; } = "Basket";
+
     [Inject]
     private IBasketService _baksetService { get; set; } = default!;
 

@@ -6,7 +6,7 @@ public class Payment : AuditAggregateRoot<Guid, Guid>
 
     public Guid OrderId { get; protected set; }
 
-    private Payment() { }
+    public Payment() { }
 
     public Payment(Guid orderId, bool succeeded)
     {

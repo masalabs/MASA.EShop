@@ -4,18 +4,25 @@
 <PageTitle>@T("Login")</PageTitle>
 
 <MContainer class="justify-center align-center">
-    <MRow Justify="JustifyTypes.Center">
-        <MCol Md="5">
-            <MCard class="mt-0 pt-0">
-                <MCardTitle class="blue darken-1">
-                    <h4 style="color:white">@T("LoginMessage")</h4>
-                </MCardTitle>
-                <MCardText class="mt-10">
+    <MRow Justify="JustifyTypes.Center" Align="AlignTypes.Center">
+        <MCol Md="5" Align="AlignTypes.Center" style="text-align: center;">
+            <img style="width:80%;" src="https://picsum.photos/id/11/500/300" />
+            <MCard class="mt-5 pt-0">
+                <MCardText>
                     <MTextField class="input-group--focused mr-2"
                                 Label="@T("UserName")" @bind-Value="_userName"></MTextField>
                     <MTextField class="input-group--focused mr-2"
-                                Label="@T("Password")" @bind-Value="_password"></MTextField>
-                    <MButton class="pink--text" Block OnClick="LoginHandler">@T("Login")</MButton>
+                                Label="@T("Password")" @bind-Value="_password"
+                                AppendIcon="@(_showPwd ? "mdi-eye" : "mdi-eye-off")"
+                                Type="@(_showPwd ? "text" : "password")"
+                                Hint="At least 8 characters"
+                                Counter="true"
+                                OnAppendClick="() => _showPwd = !_showPwd"></MTextField>
+                    <MButton Small Text class="float-right" OnClick="()=>{ _forgetPwdDialog = true; }">@T("ForgetPassword")</MButton>
+                    <MButton Color="primary" Block OnClick="LoginHandler">@T("Login")</MButton>
+                    <div style="display:flex;justify-content:flex-end;">
+                        <MButton Small Text OnClick="()=>{ _registerDialog = true; }">@T("ToRegister")</MButton>
+                    </div>
                 </MCardText>
             </MCard>
         </MCol>
@@ -23,3 +30,103 @@
 </MContainer>
 
 
+<MDialog @bind-Value="_forgetPwdDialog"
+         Persistent Width="500">
+    <ChildContent>
+        <MCard>
+            <MCardText>
+                <MTabs @bind-Value="_forgetPwdTabIndex"
+                       Centered>
+                    <MTab Value="0">
+                        @T("SMSRetrieve")
+                    </MTab>
+
+                    <MTab Value="1">
+                        @T("EmailRetrieve")
+                    </MTab>
+                </MTabs>
+                <MTabsItems Value="_forgetPwdTabIndex">
+                    <MTabItem Value="0">
+                        <MCard Flat>
+                            <MCardText>
+                                <MRow>
+                                    <MCol Cols="12">
+                                        <MTextField Label="@T("Phone")" Placeholder="@T("PhoneHolder")" TValue="string"></MTextField>
+                                    </MCol>
+                                    <MCol Cols="12">
+                                        <MTextField Label="@T("Code")" Placeholder="@T("CodeHolder")" TValue="string">
+                                            <AppendContent>
+                                                <MButton Block>
+                                                    @T("GetCode")
+                                                </MButton>
+                                            </AppendContent>
+                                        </MTextField>
+                                    </MCol>
+                                </MRow>
+                            </MCardText>
+                        </MCard>
+                    </MTabItem>
+                    <MTabItem Value="1">
+                        <MCard Flat>
+                            <MCardText>
+                                <MRow>
+                                    <MCol Cols="12">
+                                        <MTextField Label="@T("Email")" Placeholder="@T("EmailHolder")" TValue="string"></MTextField>
+                                    </MCol>
+                                </MRow>
+                            </MCardText>
+                        </MCard>
+                    </MTabItem>
+                </MTabsItems>
+            </MCardText>
+            <MCardActions>
+                <MButton Color="primary" Block OnClick="() => _forgetPwdDialog = false">
+                    @T("Sure","Base")
+                </MButton>
+            </MCardActions>
+        </MCard>
+    </ChildContent>
+</MDialog>
+
+<MDialog @bind-Value="_registerDialog"
+         Persistent
+         Width="660">
+    <ChildContent>
+        <MCard>
+            <MCardTitle>
+                <span class="text-h5">@T("WelcomeRegister")</span>
+            </MCardTitle>
+            <MCardSubtitle>
+                @T("LoginNow")
+            </MCardSubtitle>
+            <MCardText>
+                <MTabs @bind-Value="_registerTabIndex" Centered>
+                    <MTab Value="0">
+                        @T("SMSRegister")
+                    </MTab>
+                    <MTab Value="1">
+                        @T("EmailRegister")
+                    </MTab>
+                </MTabs>
+
+                <MTabsItems Value="_registerTabIndex">
+                    <MTabItem Value="0">
+                        <MCard Flat>
+                            <MCardText>todo</MCardText>
+                        </MCard>
+                    </MTabItem>
+                    <MTabItem Value="1">
+                        <MCard Flat>
+                            <MCardText>todo</MCardText>
+                        </MCard>
+                    </MTabItem>
+                </MTabsItems>
+            </MCardText>
+            <MCardActions>
+                <MButton Color="primary" Block OnClick="() => _registerDialog = false">
+                    @T("Register")
+                </MButton>
+            </MCardActions>
+        </MCard>
+    </ChildContent>
+</MDialog>

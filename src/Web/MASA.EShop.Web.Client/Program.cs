@@ -17,6 +17,7 @@ builder.Services.Configure<Settings>(builder.Configuration);
 
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddTransient<HttpClientAuthorizationDelegatingHandler>();
+builder.Services.AddScoped<I18n>();
 
 builder.Services.AddHttpClient<ICatalogService, CatalogService>().SetHandlerLifetime(TimeSpan.FromMinutes(5));
 builder.Services.AddHttpClient<IBasketService, BasketService>().AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>();
@@ -59,7 +60,7 @@ langfileNames.ForEach(langFileName =>
 {
     var path = Path.Combine(app.Environment.ContentRootPath, "Resources", langFileName);
     var json = File.ReadAllText(path);
-    I18n.AddLang(Path.GetFileNameWithoutExtension(path), JsonSerializer.Deserialize<Dictionary<string, string>>(json));
+    I18n.AddLang(Path.GetFileNameWithoutExtension(path), JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, string>>>(json));
 });
 
 #endregion 
