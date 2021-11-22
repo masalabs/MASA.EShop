@@ -1,4 +1,4 @@
-﻿using MASA.EShop.Contracts.Basket.Model;
+﻿using MASA.EShop.Contracts.Basket.Model.BFF;
 
 namespace MASA.EShop.Contracts.Basket
 {

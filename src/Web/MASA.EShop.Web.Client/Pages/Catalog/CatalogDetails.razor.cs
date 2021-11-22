@@ -1,4 +1,7 @@
-﻿namespace MASA.EShop.Web.Client.Pages.Catalog
+﻿using MASA.EShop.Contracts.Catalog.Model;
+using MASA.EShop.Web.Client.Services.Catalog;
+
+namespace MASA.EShop.Web.Client.Pages.Catalog
 {
     public partial class CatalogDetails : EShopPageBase
     {
@@ -11,7 +14,7 @@
         public int Id { get; set; }
 
         [Inject] //todo :change api open
-        private ICatalogService _catalogService { get; set; } = default!;
+        private CatalogService _catalogService { get; set; } = default!;
 
         protected override async Task OnInitializedAsync()
         {

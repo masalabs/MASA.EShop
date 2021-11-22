@@ -19,11 +19,9 @@ builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddTransient<HttpClientAuthorizationDelegatingHandler>();
 builder.Services.AddScoped<I18n>();
 
-builder.Services.AddHttpClient<ICatalogService, CatalogService>().SetHandlerLifetime(TimeSpan.FromMinutes(5));
-builder.Services.AddHttpClient<IBasketService, BasketService>().AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>();
-builder.Services.AddHttpClient<IOrderService, OrderService>().AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>();
+builder.Services.AddCallerService();
 
-// Add Authentication services          
+// Add Authentication services
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
@@ -41,7 +39,6 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseStaticFiles();
 
 app.UseRouting();
@@ -63,6 +60,6 @@ langfileNames.ForEach(langFileName =>
     I18n.AddLang(Path.GetFileNameWithoutExtension(path), JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, string>>>(json));
 });
 
-#endregion 
+#endregion
 
 app.Run();

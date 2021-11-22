@@ -27,4 +27,3 @@ app.UseSwagger().UseSwaggerUI(c =>
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "MASA EShop Service HTTP API v1");
 });
 app.Run();
-

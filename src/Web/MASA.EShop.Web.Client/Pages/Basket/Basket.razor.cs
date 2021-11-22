@@ -8,7 +8,7 @@ public partial class Basket : EShopPageBase
     protected override string PageName { get; set; } = "Basket";
 
     [Inject]
-    private IBasketService _baksetService { get; set; } = default!;
+    private BasketService _baksetService { get; set; } = default!;
 
     protected override async Task OnInitializedAsync()
     {
@@ -40,6 +40,16 @@ public partial class Basket : EShopPageBase
         {
             Message(ex.Message, AlertTypes.Error);
         }
+    }
+
+    private void NavToCheckout()
+    {
+        if (_userBasket.Items.Any())
+        {
+            Navigation("basket/checkout");
+            return;
+        }
+        Message("购物车中没有商品", AlertTypes.Warning);
     }
 }
 

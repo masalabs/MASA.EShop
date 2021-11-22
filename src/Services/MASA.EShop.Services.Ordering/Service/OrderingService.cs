@@ -11,14 +11,10 @@ public class OrderingService : ServiceBase
         App.MapGet("/api/v1/orders/cardtypes", GetCardTypesAsync);
     }
 
-    public async Task<IResult> CancelOrderAsync(int orderNumber, [FromHeader(Name = "x-requestid")] string requestId, [FromServices] IServiceCollection services, [FromServices] IEventBus eventBus)
+    public async Task<IResult> CancelOrderAsync(int orderNumber, [FromServices] IEventBus eventBus)
     {
         try
         {
-            if (!Guid.TryParse(requestId, out Guid guid) || guid == Guid.Empty)
-            {
-                throw new Exception("invalid requestid");
-            }
             var orderCanelCommand = new OrderCancelCommand
             {
                 OrderNumber = orderNumber
@@ -32,14 +28,10 @@ public class OrderingService : ServiceBase
         }
     }
 
-    public async Task<IResult> ShipOrderAsync(int orderNumber, [FromHeader(Name = "x-requestid")] string requestId, [FromServices] IEventBus eventBus)
+    public async Task<IResult> ShipOrderAsync(int orderNumber, [FromServices] IEventBus eventBus)
     {
         try
         {
-            if (!Guid.TryParse(requestId, out Guid guid) || guid == Guid.Empty)
-            {
-                throw new Exception("invalid requestid");
-            }
             var orderShipCommand = new OrderShipCommand
             {
                 OrderNumber = orderNumber

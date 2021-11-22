@@ -24,7 +24,7 @@ public partial class Orders : EShopPageBase, IAsyncDisposable
     protected override string PageName { get; set; } = "Order";
 
     [Inject]
-    private IOrderService _orderService { get; set; } = default!;
+    private OrderService _orderService { get; set; } = default!;
 
     protected override async Task OnInitializedAsync()
     {
@@ -33,7 +33,7 @@ public partial class Orders : EShopPageBase, IAsyncDisposable
         {
             await LoadOrders();
             hubConnection = new HubConnectionBuilder()
-                .WithUrl($"{Settings.Value.OrderingUrl}/hub/notificationhub",
+                .WithUrl($"{Settings.Value.OrderHubUrl}/hub/notificationhub",
                     HttpTransportType.WebSockets | HttpTransportType.LongPolling, options =>
                     {
                         options.AccessTokenProvider = () =>

@@ -12,10 +12,10 @@ public partial class Catalog : EShopPageBase
     protected override string PageName { get; set; } = "Catalog";
 
     [Inject] //todo :change api open
-    private ICatalogService _catalogService { get; set; } = default!;
+    private CatalogService _catalogService { get; set; } = default!;
 
     [Inject]
-    private IBasketService _baksetService { get; set; } = default!;
+    private BasketService _baksetService { get; set; } = default!;
 
     protected override async Task OnInitializedAsync()
     {

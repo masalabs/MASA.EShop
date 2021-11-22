@@ -11,7 +11,7 @@ public class GlobalExceptionMiddleware
         {
             await _next(context);
         }
-        catch (FluentValidation.ValidationException ex)
+        catch (ValidationException ex)
         {
             context.Response.StatusCode = 500;
             if (ex.Errors != null && ex.Errors.Any())

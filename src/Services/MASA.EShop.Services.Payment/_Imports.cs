@@ -14,7 +14,7 @@ global using MASA.Contrib.Dispatcher.Events;
 global using MASA.Contrib.Dispatcher.IntegrationEvents.Dapr;
 global using MASA.Contrib.Dispatcher.IntegrationEvents.EventLogs.EF;
 global using MASA.Contrib.Service.MinimalAPIs;
-global using MASA.EShop.Contracts.Ordering;
+global using MASA.EShop.Contracts.Ordering.Event;
 global using MASA.EShop.Contracts.Payment;
 global using MASA.EShop.Services.Payment.Application.Middleware;
 global using MASA.EShop.Services.Payment.Application.Payments.Commands;

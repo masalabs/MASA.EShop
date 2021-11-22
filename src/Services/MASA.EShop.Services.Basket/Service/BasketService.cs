@@ -34,14 +34,10 @@ public class BasketService : ServiceBase
     }
 
     public async Task<IResult> CheckoutAsync([FromBody] BasketCheckout basketCheckout,
-        [FromHeader(Name = "x-requestid")] string requestId,
         HttpContext httpContext,
         [FromServices] IBasketRepository repository)
     {
         var userId = basketCheckout.Buyer;
-
-        basketCheckout.RequestId = (Guid.TryParse(requestId, out Guid guid) && guid != Guid.Empty) ?
-            guid : basketCheckout.RequestId;
 
         var basket = await repository.GetBasketAsync(userId);
         if (basket == null)

@@ -8,7 +8,7 @@ public partial class Payment : EShopPageBase
     protected override string PageName { get; set; } = "Payment";
 
     [Inject]
-    private IBasketService _baksetService { get; set; } = default!;
+    private BasketService _baksetService { get; set; } = default!;
 
     protected override async Task OnInitializedAsync()
     {

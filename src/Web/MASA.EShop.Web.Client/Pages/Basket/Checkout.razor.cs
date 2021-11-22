@@ -8,7 +8,7 @@ public partial class Checkout : EShopPageBase
     protected override string PageName { get; set; } = "Basket";
 
     [Inject]
-    private IBasketService _baksetService { get; set; } = default!;
+    private BasketService _baksetService { get; set; } = default!;
 
     protected override async Task OnInitializedAsync()
     {
@@ -60,7 +60,6 @@ public partial class Checkout : EShopPageBase
                                         _shipAddressViewModel.CardSecurityCode, 1, _shipAddressViewModel.Buyer, Guid.NewGuid());
 
                 await _baksetService.CheckoutAsync(basketCheckout);
-                //Navigation("/basket/success");
                 Navigation("orders");
             }
             catch (Exception e)

@@ -1,10 +1,10 @@
-﻿namespace MASA.EShop.Services.Catalog.Application.Catalogs.Commands
+﻿namespace MASA.EShop.Services.Catalog.Application.Catalogs.Commands;
+
+public class DeleteProductCommandValidator : AbstractValidator<DeleteProductCommand>
 {
-    public class DeleteProductCommandValidator : AbstractValidator<DeleteProductCommand>
+    public DeleteProductCommandValidator()
     {
-        public DeleteProductCommandValidator()
-        {
-            RuleFor(cmd => cmd.ProductId).GreaterThan(0).WithMessage("Please enter the ProductId");
-        }
+        RuleFor(cmd => cmd.ProductId).GreaterThan(0).WithMessage("Please enter the ProductId");
     }
 }
+
