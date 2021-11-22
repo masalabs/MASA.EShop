@@ -5,9 +5,9 @@
 
 <MContainer class="justify-center align-center">
     <MRow Justify="JustifyTypes.Center" Align="AlignTypes.Center">
-        <MCol Md="5" Align="AlignTypes.Center" style="text-align: center;">
-            <img style="width:80%;" src="https://picsum.photos/id/11/500/300" />
-            <MCard class="mt-5 pt-0">
+        <MCol Md="@("auto")" class="text-center">
+            <img style="width:400px;" src="https://picsum.photos/id/11/500/300" />
+            <MCard class="mt-5 pt-0" Width="550">
                 <MTabs @bind-Value="_loginTabIndex"
                        Centered>
                     <MTab Value="0">
@@ -183,7 +183,7 @@
                                     <MCol Cols="12">
                                         <MTextField Label="@T("Code")" Placeholder="@T("CodeHolder")" TValue="string">
                                             <AppendContent>
-                                                <MImage Width="100" Height="33" Src="https://tse1-mm.cn.bing.net/th/id/R-C.79a78eba70b41c99b3000d0cf5f5352d?rik=1LJg2oJDhVBc8Q&riu=http%3a%2f%2fwww.xiaobaixitong.com%2fd%2ffile%2fhelp%2f2018-08-06%2ff15ce5d652d8da38e9e0e384f35b39d7.png&ehk=9Piy2qOJgEjmFI%2f3BdqQyrGoTM%2b8OSxmfFfnFrzQnzg%3d&risl=&pid=ImgRaw&r=0" />
+                                                <MImage Width="100" Height="33" Src="./img/code/CheckCode.jpg" />
                                             </AppendContent>
                                             <AppendOuterContent>
                                                 <MButton Outlined>

@@ -87,8 +87,8 @@
                                     <MCardActions class="pa-0">
                                         <MRow NoGutters>
                                             <MCol Lg="6" Md="12" Sm="12">
-                                                <MButton Block Tile Depressed class="rounded-b-sm" OnClick='()=>{ _wishListIcon="mdi-heart";} '>
-                                                    <MIcon Left>@(_wishListIcon)</MIcon>
+                                                <MButton Block Tile Depressed class="rounded-b-sm" OnClick='AddWishList'>
+                                                    <MIcon Left Color="@(_wishIconColor)">@(_wishListIcon)</MIcon>
                                                     @T("Wishlist")
                                                 </MButton>
                                             </MCol>

@@ -29,6 +29,10 @@
                 <MStepperStep Step="3">
                     Payment
                 </MStepperStep>
+                <MDivider></MDivider>
+                <MStepperStep Step="4">
+                    Completed
+                </MStepperStep>
             </MStepperHeader>
         </MStepper>
     </MCol>
@@ -51,11 +55,14 @@
                                     <MCol Md="6" Align="AlignTypes.Center" Class="pa-6 d-flex flex-column">
                                         <h6 class="mb-0">@item.ProductName</h6>
                                         <div style="margin: 0.3rem 0 0.5rem;font-weight: 400;font-size: .875rem;">
-                                            By <span style="margin-left: 0.25rem;color: #7367f0;">Microsoft</span>
+                                            By <span style="margin-left: 0.25rem;color: #7367f0;">Lonsid</span>
                                         </div>
-                                        <MRating style="margin-left: -10px;" Value="4" Readonly BackgroundColor="orange lighten-3" Color="orange" Small></MRating>
+                                        <MRating class="ml-n2" Value="4" Readonly BackgroundColor="orange lighten-3" Color="orange" Small></MRating>
                                         <span style="margin-bottom: 1rem!important;color: #28c76f;">@T("InStock")</span>
-                                        <div>Qty:@item.Quantity</div>
+                                        <MRow Dense>
+                                            <MCol Md="@("auto")" Class="mt-2">Qty: </MCol>
+                                            <MCol Md="@("auto")"><MTextField style="width:100px;" Label="Qty" Solo Dense Value="@item.Quantity"></MTextField></MCol>
+                                        </MRow>
                                         <span style="color: #b9b9c3;margin-top: 1.2rem;margin-bottom: 0.25rem;">
                                             Delivery by Thu, Oct 28
                                         </span>
@@ -74,6 +81,10 @@
                                         <MButton Block Depressed class="mt-2" OnClick="()=>RemoveItemAsync(item.ProductId)">
                                             <MIcon Left>mdi-close</MIcon>
                                             @T("Remove","Base")
+                                        </MButton>
+                                        <MButton Block Depressed class="primary mt-2">
+                                            <MIcon Left>mdi-heart-outline</MIcon>
+                                            @T("Wishlist","Catalog")
                                         </MButton>
                                     </MCol>
                                 </MRow>

@@ -7,7 +7,7 @@ public partial class Catalog : EShopPageBase
     private CatalogOptinsModel _catalogOptinsModel = new() { Type = -1, Brand = -1 };
     private List<CatalogBrand> _brands = new();
     private List<CatalogType> _types = new();
-    private string _wishListIcon = "mdi-heart-outline";
+    private string _wishListIcon = "mdi-heart-outline", _wishIconColor = "black";
 
     protected override string PageName { get; set; } = "Catalog";
 
@@ -93,6 +93,23 @@ public partial class Catalog : EShopPageBase
         else
         {
             Navigation("/");
+        }
+    }
+
+    /// <summary>
+    /// simulate add wishlist ui effect(bad with all element handle not specify element)
+    /// </summary>
+    private void AddWishList()
+    {
+        if (_wishIconColor == "black")
+        {
+            _wishListIcon = "mdi-heart";
+            _wishIconColor = "red";
+        }
+        else
+        {
+            _wishListIcon = "mdi-heart-outline";
+            _wishIconColor = "black";
         }
     }
 }

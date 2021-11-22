@@ -3,7 +3,7 @@
 [Authorize]
 public partial class Checkout : EShopPageBase
 {
-    private ShipAddressViewModel _shipAddressViewModel = new();
+    private ShipAddressViewModel _shipAddressViewModel = new(), _shipAddressFormModel = new();
 
     protected override string PageName { get; set; } = "Basket";
 
@@ -26,7 +26,7 @@ public partial class Checkout : EShopPageBase
             claims.TryGetValue("card_expiration", out string? card_expiration);
             claims.TryGetValue("card_security_number", out string? card_security_number);
 
-            _shipAddressViewModel = new ShipAddressViewModel
+            _shipAddressFormModel = new ShipAddressViewModel
             {
                 Buyer = User?.Identity?.Name ?? "",
                 Street = address_street ?? "",
@@ -38,34 +38,58 @@ public partial class Checkout : EShopPageBase
                 CardExpiration = card_expiration ?? "",
                 CardSecurityCode = card_security_number ?? ""
             };
+
+            _shipAddressViewModel = new ShipAddressViewModel
+            {
+                Buyer = User?.Identity?.Name ?? "",
+                Street = "Science Park Road",
+                City = "Hang Zhou",
+                ZipCode = "23333",
+                State = "Jianggan District",
+                Country = "China",
+                CardNumber = "1111-1111-22223-458",
+                CardHolderName = "Masa",
+                CardExpiration = "12/12",
+                CardSecurityCode = "314"
+            };
         }
     }
 
-    public async void SubmitOrder(EditContext context)
+    private async Task SubmitOrder(EditContext context)
     {
         var success = context.Validate();
         if (success)
         {
-            try
-            {
-                var basketCheckout = new BasketCheckout(
-                                        _shipAddressViewModel.Street,
-                                        _shipAddressViewModel.City,
-                                        _shipAddressViewModel.State,
-                                        _shipAddressViewModel.Country,
-                                        _shipAddressViewModel.ZipCode,
-                                        _shipAddressViewModel.CardNumber,
-                                        _shipAddressViewModel.CardHolderName,
-                                        CardExpirationDate.Parse(_shipAddressViewModel.CardExpiration),
-                                        _shipAddressViewModel.CardSecurityCode, 1, _shipAddressViewModel.Buyer, Guid.NewGuid());
+            await BasketCheckout(_shipAddressFormModel);
+        }
+    }
 
-                await _baksetService.CheckoutAsync(basketCheckout);
-                Navigation("orders");
-            }
-            catch (Exception e)
-            {
-                Message(e.Message, AlertTypes.Error);
-            }
+    private async Task SubmitShipedOrder()
+    {
+        await BasketCheckout(_shipAddressViewModel);
+    }
+
+    private async Task BasketCheckout(ShipAddressViewModel model)
+    {
+        try
+        {
+            var basketCheckout = new BasketCheckout(
+                                    model.Street,
+                                    model.City,
+                                    model.State,
+                                    model.Country,
+                                    model.ZipCode,
+                                    model.CardNumber,
+                                    model.CardHolderName,
+                                    CardExpirationDate.Parse(model.CardExpiration),
+                                    model.CardSecurityCode, 1, model.Buyer, Guid.NewGuid());
+
+            await _baksetService.CheckoutAsync(basketCheckout);
+            Navigation("/basket/payment");
+        }
+        catch (Exception e)
+        {
+            Message(e.Message, AlertTypes.Error);
         }
     }
 }
