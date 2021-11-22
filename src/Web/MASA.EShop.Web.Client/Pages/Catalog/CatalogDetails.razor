@@ -3,7 +3,7 @@
 
 <div class="head-bread">
     <h2 class="auto-width">@T("CatalogDetails")</h2>
-    <MDivider Vertical/>
+    <MDivider Vertical />
     <MBreadcrumbs Large class="auto-width" TItem="BreadcrumbItem">
         <MBreadcrumbsItem Disabled="false">
             <MIcon Large class='head-bread-icon'>mdi-home</MIcon>
@@ -24,7 +24,7 @@
                 <p>By<span style="margin-left: 0.25rem;font-weight: 600;color: #7367f0;text-decoration: none;">@_catalogItem.Brand</span></p>
                 <div class="d-flex flex-wrap">
                     <h4 style="font-size: 1.286rem;margin-right: 1rem;color: rgb(115, 103, 240);margin-bottom: 0.5rem;line-height: 1.82rem;">$@_catalogItem.Price</h4>
-                    <MDivider Vertical style="margin-right: 8px;"/>
+                    <MDivider Vertical style="margin-right: 8px;" />
                     <MRating style="display:inline;" Readonly Value="4.5" BackgroundColor="orange lighten-3" Color="orange" Dense></MRating>
                 </div>
                 <p style="line-height: 1.5rem;">
@@ -38,12 +38,28 @@
                 <MDivider class="mb-3 mt-3"></MDivider>
                 <div style="margin-bottom: 1.2rem;">
                     <h6 style="font-size: 1rem;font-family: inherit;font-weight: 500;line-height: 1.2;color: #5e5873;">@T("Colors")</h6>
+                    <MButtonGroup Mandatory Dense Tile Color="deep-purple accent-3">
+                        <MButton class="mx-2" Width="20" Height="20" MinWidth="20" Color="purple">
+                        </MButton>
+                        <MButton class="mx-2" Width="20" Height="20" MinWidth="20" Color="green">
+                        </MButton>
+                        <MButton class="mx-2" Width="20" Height="20" MinWidth="20" Color="orange">
+                        </MButton>
+                        <MButton class="mx-2" Width="20" Height="20" MinWidth="20" Color="red">
+                        </MButton>
+                        <MButton class="mx-2" Width="20" Height="20" MinWidth="20" Color="blue">
+                        </MButton>
+                    </MButtonGroup>
                 </div>
                 <MDivider class="mb-3 mt-3"></MDivider>
                 <div>
                     <MButton Depressed class="btn-primary">
                         <MIcon Left>add_shopping_cart</MIcon>
                         @T("ViewInCart")
+                    </MButton>
+                     <MButton Depressed >
+                        <MIcon Left>mdi-heart-outline</MIcon>
+                        @T("Wishlist")
                     </MButton>
                 </div>
             </MCol>

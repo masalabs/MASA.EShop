@@ -4,7 +4,8 @@
     "Remove": "Remove",
     "Shop": "Shop",
     "Sure": "Sure",
-    "Total": "Total"
+    "Total": "Total",
+    "Continue": "Continue"
   },
   "Basket": {
     "Address": "Address",
@@ -22,18 +23,27 @@
     "ExpirationDate": "Expiration Date",
     "Free": "Free",
     "Options": "Options",
-    "PayNow": "Pay Now",
+    "SaveAndDeliver": "Save and Deliver Here",
+    "DeliverTo": "Deliver To This Address",
     "PlaceOrder": "Place Order",
     "PriceDetails": "Price Details",
     "Qty": "Qty",
     "SecurityCode": "Security Code",
-    "ShippingAddress": "Shipping Address",
+    "NewAddress": "Add New Address",
+    "NewAddressMsg": "Be sure to check \"Deliver to this address\" when you have finished",
     "State": "State",
     "TotalMRP": "Total MRP",
     "ZipCode": "Zip Code"
   },
+  "Payment": {
+    "PaymentOptions": "Payment Options",
+    "PaymentOptionsMsg": "Be sure to click on correct payment option",
+    "PriceDetails": "Price Details",
+    "AddGiftCard": "Add Gift Card"
+  },
   "Catalog": {
     "AddToCart": "Add To Cart",
+    "Wishlist": "Wishlist",
     "Available": "Available",
     "Brand": "Brand",
     "CatalogDetails": "Catalog Details",
@@ -69,8 +79,15 @@
     "SMSRegister": "SMS Register",
     "SMSRetrieve": "SMS Retrieve",
     "ToRegister": "No account? Registered account",
-    "UserName": "UserName",
-    "WelcomeRegister": "Welcome to register"
+    "UserName": "Phone/UserName/Email",
+    "WelcomeRegister": "Welcome to register",
+    "RegisterPassword": "Please enter the login password",
+    "ConfirmRegisterPassword": "Please confirm the login password",
+    "ChangeCode": "Change",
+    "Agreement": "User Application Registration Agreement",
+    "AgreementMsg": "Agree to apply for registration of masa series product agreement",
+    "PWDLogin": "Password Login",
+    "SMSLogin": "SMS Login"
   },
   "Order": {}
 }

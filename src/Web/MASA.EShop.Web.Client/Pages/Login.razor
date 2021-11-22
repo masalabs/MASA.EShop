@@ -8,22 +8,53 @@
         <MCol Md="5" Align="AlignTypes.Center" style="text-align: center;">
             <img style="width:80%;" src="https://picsum.photos/id/11/500/300" />
             <MCard class="mt-5 pt-0">
-                <MCardText>
-                    <MTextField class="input-group--focused mr-2"
-                                Label="@T("UserName")" @bind-Value="_userName"></MTextField>
-                    <MTextField class="input-group--focused mr-2"
-                                Label="@T("Password")" @bind-Value="_password"
-                                AppendIcon="@(_showPwd ? "mdi-eye" : "mdi-eye-off")"
-                                Type="@(_showPwd ? "text" : "password")"
-                                Hint="At least 8 characters"
-                                Counter="true"
-                                OnAppendClick="() => _showPwd = !_showPwd"></MTextField>
-                    <MButton Small Text class="float-right" OnClick="()=>{ _forgetPwdDialog = true; }">@T("ForgetPassword")</MButton>
-                    <MButton Color="primary" Block OnClick="LoginHandler">@T("Login")</MButton>
-                    <div style="display:flex;justify-content:flex-end;">
-                        <MButton Small Text OnClick="()=>{ _registerDialog = true; }">@T("ToRegister")</MButton>
-                    </div>
-                </MCardText>
+                <MTabs @bind-Value="_loginTabIndex"
+                       Centered>
+                    <MTab Value="0">
+                        @T("PWDLogin")
+                    </MTab>
+
+                    <MTab Value="1">
+                        @T("SMSLogin")
+                    </MTab>
+                </MTabs>
+                <MTabsItems Value="_loginTabIndex">
+                    <MTabItem Value="0">
+                        <MCardText>
+                            <MTextField class="input-group--focused mr-2" Label="@T("UserName")" @bind-Value="_userName"></MTextField>
+                            <MTextField class="input-group--focused mr-2"
+                                        Label="@T("Password")" @bind-Value="_password"
+                                        AppendIcon="@(_showPwd ? "mdi-eye" : "mdi-eye-off")"
+                                        Type="@(_showPwd ? "text" : "password")"
+                                        Hint="At least 8 characters"
+                                        Counter="true"
+                                        OnAppendClick="() => _showPwd = !_showPwd"></MTextField>
+                            <MButton Small Text class="float-right" OnClick="()=>{ _forgetPwdDialog = true; }">@T("ForgetPassword")</MButton>
+                        </MCardText>
+                    </MTabItem>
+                    <MTabItem Value="1">
+                        <MCardText>
+                            <MTextField TValue="string" class="input-group--focused mr-2" Label="@T("Phone")" Placeholder="@T("PhoneHolder")"></MTextField>
+                            <MTextField Label="@T("Code")" Placeholder="@T("CodeHolder")" TValue="string">
+                                <AppendContent>
+                                    <MButton Outlined>
+                                        @T("GetCode")
+                                    </MButton>
+                                </AppendContent>
+                            </MTextField>
+                        </MCardText>
+                    </MTabItem>
+                </MTabsItems>
+                <MCardActions>
+                    <MRow NoGutters>
+                        <MCol Md="12">
+                            <MButton Color="primary" Block OnClick="LoginHandler">@T("Login")</MButton>
+                        </MCol>
+                        <MCol Md="12" class="text-right">
+                            <MButton Small Text OnClick="()=>{ _registerDialog = true; }">@T("ToRegister")</MButton>
+                        </MCol>
+                    </MRow>
+                </MCardActions>
             </MCard>
         </MCol>
     </MRow>
@@ -49,14 +80,14 @@
                     <MTabItem Value="0">
                         <MCard Flat>
                             <MCardText>
-                                <MRow>
+                                <MRow NoGutters>
                                     <MCol Cols="12">
                                         <MTextField Label="@T("Phone")" Placeholder="@T("PhoneHolder")" TValue="string"></MTextField>
                                     </MCol>
                                     <MCol Cols="12">
                                         <MTextField Label="@T("Code")" Placeholder="@T("CodeHolder")" TValue="string">
                                             <AppendContent>
-                                                <MButton Block>
+                                                <MButton Outlined>
                                                     @T("GetCode")
                                                 </MButton>
                                             </AppendContent>
@@ -112,20 +143,76 @@
                 <MTabsItems Value="_registerTabIndex">
                     <MTabItem Value="0">
                         <MCard Flat>
-                            <MCardText>todo</MCardText>
+                            <MCardText>
+                                <MRow NoGutters>
+                                    <MCol Cols="12">
+                                        <MTextField Placeholder="@T("PhoneHolder")" TValue="string" PrependIcon="mdi-phone"></MTextField>
+                                    </MCol>
+                                    <MCol Cols="12">
+                                        <MTextField TValue="string" Placeholder="@T("RegisterPassword")" PrependIcon="mdi-lock" Type="password" Hint="At least 8 characters" Counter="true"></MTextField>
+                                    </MCol>
+                                    <MCol Cols="12">
+                                        <MTextField TValue="string" Placeholder="@T("ConfirmRegisterPassword")" PrependIcon="mdi-lock" Type="password" Hint="At least 8 characters" Counter="true"></MTextField>
+                                    </MCol>
+                                    <MCol Cols="12">
+                                        <MTextField Label="@T("Code")" Placeholder="@T("CodeHolder")" TValue="string">
+                                            <AppendContent>
+                                                <MButton Outlined>
+                                                    @T("GetCode")
+                                                </MButton>
+                                            </AppendContent>
+                                        </MTextField>
+                                    </MCol>
+                                </MRow>
+                            </MCardText>
                         </MCard>
                     </MTabItem>
                     <MTabItem Value="1">
                         <MCard Flat>
-                            <MCardText>todo</MCardText>
+                            <MCardText>
+                                <MRow NoGutters>
+                                    <MCol Cols="12">
+                                        <MTextField Placeholder="@T("EmailHolder")" TValue="string" PrependIcon="mdi-email"></MTextField>
+                                    </MCol>
+                                    <MCol Cols="12">
+                                        <MTextField TValue="string" Placeholder="@T("RegisterPassword")" PrependIcon="mdi-lock" Type="password" Hint="At least 8 characters" Counter="true"></MTextField>
+                                    </MCol>
+                                    <MCol Cols="12">
+                                        <MTextField TValue="string" Placeholder="@T("ConfirmRegisterPassword")" PrependIcon="mdi-lock" Type="password" Hint="At least 8 characters" Counter="true"></MTextField>
+                                    </MCol>
+                                    <MCol Cols="12">
+                                        <MTextField Label="@T("Code")" Placeholder="@T("CodeHolder")" TValue="string">
+                                            <AppendContent>
+                                                <MImage Width="100" Height="33" Src="https://tse1-mm.cn.bing.net/th/id/R-C.79a78eba70b41c99b3000d0cf5f5352d?rik=1LJg2oJDhVBc8Q&riu=http%3a%2f%2fwww.xiaobaixitong.com%2fd%2ffile%2fhelp%2f2018-08-06%2ff15ce5d652d8da38e9e0e384f35b39d7.png&ehk=9Piy2qOJgEjmFI%2f3BdqQyrGoTM%2b8OSxmfFfnFrzQnzg%3d&risl=&pid=ImgRaw&r=0" />
+                                            </AppendContent>
+                                            <AppendOuterContent>
+                                                <MButton Outlined>
+                                                    @T("ChangeCode")
+                                                </MButton>
+                                            </AppendOuterContent>
+                                        </MTextField>
+                                    </MCol>
+                                </MRow>
+                            </MCardText>
                         </MCard>
                     </MTabItem>
                 </MTabsItems>
             </MCardText>
             <MCardActions>
-                <MButton Color="primary" Block OnClick="() => _registerDialog = false">
-                    @T("Register")
-                </MButton>
+                <MRow NoGutters>
+                    <MCol Md="12">
+                        <MCheckbox>
+                            <LabelContent>
+                                @T("AgreementMsg")<a target="_blank" href="/">《@T("Agreement")》</a>
+                            </LabelContent>
+                        </MCheckbox>
+                    </MCol>
+                    <MCol Md="12">
+                        <MButton Color="primary" Block OnClick="() => _registerDialog = false">
+                            @T("Register")
+                        </MButton>
+                    </MCol>
+                </MRow>
             </MCardActions>
         </MCard>
     </ChildContent>

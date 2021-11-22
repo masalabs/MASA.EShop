@@ -1,0 +1,98 @@
+﻿@page "/basket/payment"
+@inherits EShopPageBase
+
+<PageTitle>Basket Payment</PageTitle>
+
+<div class="head-bread">
+    <h2 class="auto-width">@T("Checkout","Basket")</h2>
+    <MDivider Vertical />
+    <MBreadcrumbs Large class="auto-width" TItem="BreadcrumbItem">
+        <MBreadcrumbsItem Href="/catalog">
+            <MIcon Large class='head-bread-icon'>mdi-home</MIcon>
+        </MBreadcrumbsItem>
+        <MBreadcrumbsItem Text="@T("Checkout","Basket")"></MBreadcrumbsItem>
+    </MBreadcrumbs>
+</div>
+
+<MStepper AltLabels>
+    <MStepperHeader>
+        <MStepperStep Step="1" Complete>
+            Cart
+        </MStepperStep>
+        <MDivider></MDivider>
+        <MStepperStep Step="2" Complete>
+            Address
+        </MStepperStep>
+        <MDivider></MDivider>
+        <MStepperStep Step="3" Complete>
+            Payment
+        </MStepperStep>
+    </MStepperHeader>
+</MStepper>
+
+<MRow class="mt-2">
+    <MCol Md="9">
+        <MCard>
+            <MCardTitle>
+                @T("PaymentOptions")
+            </MCardTitle>
+            <MCardSubtitle>
+                @T("PaymentOptionsMsg")
+            </MCardSubtitle>
+
+            <MRadioGroup @bind-Value="_payOptions">
+                <MCardText>
+                    <MRadio Label="US Unlocked Debit Card 12XX XXXX XXXX 0000" Value="1"></MRadio>
+                    <MTextField Dense Solo TValue="string" Style="width:500px;">
+                        <PrependContent>
+                            <MLabel style="width:100px;">Enter CVV:</MLabel>
+                        </PrependContent>
+                        <AppendOuterContent>
+                            <MButton class="primary" style="margin-top: -5px;">@T("Continue","Base")</MButton>
+                        </AppendOuterContent>
+                    </MTextField>
+                </MCardText>
+                <MDivider Class="mx-4"></MDivider>
+                <MCardText>
+                    <MRadio Label="Credit/Debit/ATM Card" Value="2"></MRadio>
+                    <MRadio Label="Net Banking" Value="3"></MRadio>
+                    <MRadio Label="EMI (Easy Installment)" Value="4"></MRadio>
+                    <MRadio Label="Cash On Delivery" Value="5"></MRadio>
+                </MCardText>
+            </MRadioGroup>
+
+            <MDivider Class="mx-4"></MDivider>
+            <MCardActions>
+                <MButton Text>
+                    <MIcon Left>mdi-plus</MIcon>
+                    @T("AddGiftCard")
+                </MButton>
+            </MCardActions>
+        </MCard>
+    </MCol>
+    <MCol Md="3">
+        <MCard>
+            <MCardTitle>
+                John Doe
+            </MCardTitle>
+            <MCardText>
+                <MList Dense>
+                    <MListItem>
+                        <MListItemTitle>Price of 3 items</MListItemTitle>
+                        <MListItemTitle class="text-right"> $699.30 </MListItemTitle>
+                    </MListItem>
+                    <MListItem>
+                        <MListItemTitle>Delivery Charges</MListItemTitle>
+                        <MListItemTitle class="text-right">Free</MListItemTitle>
+                    </MListItem>
+                    <MDivider Class="mx-4"></MDivider>
+                    <MListItem>
+                        <MListItemTitle>Amount Payable</MListItemTitle>
+                        <MListItemTitle class="text-right"> $699.30</MListItemTitle>
+                    </MListItem>
+                </MList>
+            </MCardText>
+        </MCard>
+    </MCol>
+</MRow>
+

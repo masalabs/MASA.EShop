@@ -20,7 +20,7 @@ public partial class MainLayout
     private async void Logout()
     {
         await ProtectedSessionStore.DeleteAsync("user");
-        Navigation("/");
+        Navigation("/login");
     }
 
     private void ChangeLanguage()

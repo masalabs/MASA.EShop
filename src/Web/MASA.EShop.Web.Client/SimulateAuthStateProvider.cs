@@ -4,6 +4,7 @@ public class SimulateAuthStateProvider : AuthenticationStateProvider
 {
     //https://docs.microsoft.com/zh-cn/aspnet/core/blazor/security/?view=aspnetcore-5.0#expose-the-authentication-state-as-a-cascading-parameter
     //https://code-maze.com/authenticationstateprovider-blazor-webassembly/
+    //if Use ProtectedLocalStorage throw System.Security.Cryptography.CryptographicException: The key was not found in the key ring. For more
     private readonly ProtectedSessionStorage _protectedSessionStore;
 
     public SimulateAuthStateProvider(ProtectedSessionStorage protectedSessionStore)

@@ -85,10 +85,20 @@
                                         </MListItem>
                                     </MCardText>
                                     <MCardActions class="pa-0">
-                                        <MButton Block Tile Depressed class="primary rounded-b-sm" OnClick="(e)=>AddToCart(item)" Disabled="@(!IsAuthenticated)">
-                                            <MIcon Left>mdi-cart</MIcon>
-                                            @T("AddToCart")
-                                        </MButton>
+                                        <MRow NoGutters>
+                                            <MCol Lg="6" Md="12" Sm="12">
+                                                <MButton Block Tile Depressed class="rounded-b-sm" OnClick='()=>{ _wishListIcon="mdi-heart";} '>
+                                                    <MIcon Left>@(_wishListIcon)</MIcon>
+                                                    @T("Wishlist")
+                                                </MButton>
+                                            </MCol>
+                                            <MCol Lg="6" Md="12" Sm="12">
+                                                <MButton Block Tile Depressed class="primary rounded-b-sm" OnClick="(e)=>AddToCart(item)" Disabled="@(!IsAuthenticated)">
+                                                    <MIcon Left>mdi-cart</MIcon>
+                                                    @T("AddToCart")
+                                                </MButton>
+                                            </MCol>
+                                        </MRow>
                                     </MCardActions>
                                 </MCard>
                             </MHover>

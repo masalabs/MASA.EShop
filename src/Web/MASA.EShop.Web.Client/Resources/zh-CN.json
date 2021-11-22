@@ -4,7 +4,8 @@
     "Remove": "删除",
     "Shop": "店铺",
     "Sure": "确定",
-    "Total": "总计"
+    "Total": "总计",
+    "Continue": "继续"
   },
   "Basket": {
     "Address": "地址",
@@ -22,17 +23,26 @@
     "ExpirationDate": "有效期",
     "Free": "包邮",
     "Options": "选项",
-    "PayNow": "付款",
+    "SaveAndDeliver": "保存并派送到地址",
+    "DeliverTo": "派送到这个地址",
     "PlaceOrder": "下单",
     "PriceDetails": "价格详情",
     "Qty": "数量",
     "SecurityCode": "安全代码",
-    "ShippingAddress": "运输地址",
+    "NewAddress": "新增地址",
+    "NewAddressMsg": "地址填写完请点击下方的 \"保存并派送到地址\" 按钮",
     "State": "区",
     "TotalMRP": "总费用",
     "ZipCode": "邮政编码"
   },
+  "Payment": {
+    "PaymentOptions": "支付选项",
+    "PaymentOptionsMsg": "确保点击正确的付款选项",
+    "PriceDetails": "价格详情",
+    "AddGiftCard": "添加购物卡"
+  },
   "Catalog": {
+    "Wishlist": "购物清单",
     "AddToCart": "添加到购物车",
     "Available": "可用",
     "Brand": "品牌",
@@ -69,8 +79,15 @@
     "SMSRegister": "短信注册",
     "SMSRetrieve": "短信找回",
     "ToRegister": "没有账号? 去注册",
-    "UserName": "用户名",
-    "WelcomeRegister": "欢迎注册"
+    "UserName": "手机号/用户名/邮箱",
+    "WelcomeRegister": "欢迎注册",
+    "RegisterPassword": "请输入登录密码",
+    "ConfirmRegisterPassword": "请确认登录密码",
+    "ChangeCode": "换一换",
+    "Agreement": "用户申请注册协议",
+    "AgreementMsg": "同意申请注册MASA系列产品协议",
+    "PWDLogin": "密码登录",
+    "SMSLogin": "短信登录"
   },
   "Order": {}
 }

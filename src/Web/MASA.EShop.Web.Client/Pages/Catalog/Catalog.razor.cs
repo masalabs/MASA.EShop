@@ -7,6 +7,7 @@ public partial class Catalog : EShopPageBase
     private CatalogOptinsModel _catalogOptinsModel = new() { Type = -1, Brand = -1 };
     private List<CatalogBrand> _brands = new();
     private List<CatalogType> _types = new();
+    private string _wishListIcon = "mdi-heart-outline";
 
     protected override string PageName { get; set; } = "Catalog";
 

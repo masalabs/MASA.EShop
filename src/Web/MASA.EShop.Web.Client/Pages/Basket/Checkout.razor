@@ -19,86 +19,114 @@
         <MStepperStep Step="1" Complete>
             Cart
         </MStepperStep>
-
         <MDivider></MDivider>
-
         <MStepperStep Step="2" Complete>
             Address
         </MStepperStep>
-
         <MDivider></MDivider>
-
         <MStepperStep Step="3">
-            End
+            Payment
         </MStepperStep>
     </MStepperHeader>
 </MStepper>
 
-<MContainer>
-    <MForm Model="_shipAddressViewModel" EnableDataAnnotationsValidation>
-        <h2 class="mb-4"> @T("ShippingAddress")</h2>
-        <MRow>
-            <MCol Md="6">
-                <MTextField @bind-Value="_shipAddressViewModel.Street"
-                            Label="@T("Address")"
-                            Placeholder="@T("Address")"
-                            Outlined
-                            Dense></MTextField>
-            </MCol>
-            <MCol Md="6">
-                <MTextField @bind-Value="_shipAddressViewModel.City"
-                            Label="@T("City")"
-                            Placeholder="@T("City")"
-                            Outlined
-                            Dense></MTextField>
-            </MCol>
-            <MCol Md="6">
-                <MTextField @bind-Value="_shipAddressViewModel.State"
-                            Label="@T("State")"
-                            Placeholder="@T("State")"
-                            Outlined
-                            Dense></MTextField>
-            </MCol>
-            <MCol Md="6">
-                <MTextField @bind-Value="_shipAddressViewModel.CardNumber"
-                            Label="@T("CardNumber")"
-                            Placeholder="000000000000000"
-                            Outlined
-                            Dense></MTextField>
-            </MCol>
-            <MCol Md="6">
-                <MTextField @bind-Value="_shipAddressViewModel.CardHolderName"
-                            Label="@T("CardName")"
-                            Placeholder="@T("CardName")"
-                            Outlined
-                            Dense></MTextField>
-            </MCol>
-            <MCol Md="6">
-                <MTextField @bind-Value="_shipAddressViewModel.CardExpiration"
-                            Label="@T("ExpirationDate")"
-                            Placeholder="MM/YY"
-                            Outlined
-                            Dense></MTextField>
-            </MCol>
-            <MCol Md="6">
-                <MTextField @bind-Value="_shipAddressViewModel.CardSecurityCode"
-                            Label="@T("SecurityCode")"
-                            Placeholder="000"
-                            Outlined
-                            Dense></MTextField>
-            </MCol>
-            <MCol Md="6">
-                <MTextField @bind-Value="_shipAddressViewModel.ZipCode"
-                            Label="@T("ZipCode")"
-                            Placeholder="@T("ZipCode")"
-                            Outlined
-                            Dense></MTextField>
-            </MCol>
-        </MRow>
-        <MRow Justify="JustifyTypes.End">
-            <MButton class="primary" Click="()=>SubmitOrder(context)">
-                @T("PayNow")
-            </MButton>
-        </MRow>
-    </MForm>
-</MContainer>
+<MRow class="mt-2">
+    <MCol Md="9">
+        <MCard>
+            <MCardTitle>
+                @T("NewAddress")
+            </MCardTitle>
+            <MCardSubtitle>
+                @T("NewAddressMsg")
+            </MCardSubtitle>
+            <MCardText>
+                <MForm Model="_shipAddressViewModel" EnableDataAnnotationsValidation>
+                    <MRow>
+                        <MCol Md="6">
+                            <MTextField @bind-Value="_shipAddressViewModel.Street"
+                                        Label="@T("Address")"
+                                        Placeholder="@T("Address")"
+                                        Outlined
+                                        Dense></MTextField>
+                        </MCol>
+                        <MCol Md="6">
+                            <MTextField @bind-Value="_shipAddressViewModel.City"
+                                        Label="@T("City")"
+                                        Placeholder="@T("City")"
+                                        Outlined
+                                        Dense></MTextField>
+                        </MCol>
+                        <MCol Md="6">
+                            <MTextField @bind-Value="_shipAddressViewModel.State"
+                                        Label="@T("State")"
+                                        Placeholder="@T("State")"
+                                        Outlined
+                                        Dense></MTextField>
+                        </MCol>
+                        <MCol Md="6">
+                            <MTextField @bind-Value="_shipAddressViewModel.CardNumber"
+                                        Label="@T("CardNumber")"
+                                        Placeholder="000000000000000"
+                                        Outlined
+                                        Dense></MTextField>
+                        </MCol>
+                        <MCol Md="6">
+                            <MTextField @bind-Value="_shipAddressViewModel.CardHolderName"
+                                        Label="@T("CardName")"
+                                        Placeholder="@T("CardName")"
+                                        Outlined
+                                        Dense></MTextField>
+                        </MCol>
+                        <MCol Md="6">
+                            <MTextField @bind-Value="_shipAddressViewModel.CardExpiration"
+                                        Label="@T("ExpirationDate")"
+                                        Placeholder="MM/YY"
+                                        Outlined
+                                        Dense></MTextField>
+                        </MCol>
+                        <MCol Md="6">
+                            <MTextField @bind-Value="_shipAddressViewModel.CardSecurityCode"
+                                        Label="@T("SecurityCode")"
+                                        Placeholder="000"
+                                        Outlined
+                                        Dense></MTextField>
+                        </MCol>
+                        <MCol Md="6">
+                            <MTextField @bind-Value="_shipAddressViewModel.ZipCode"
+                                        Label="@T("ZipCode")"
+                                        Placeholder="@T("ZipCode")"
+                                        Outlined
+                                        Dense></MTextField>
+                        </MCol>
+                    </MRow>
+                    <MRow>
+                        <MCol>
+                            <MButton class="primary" Click="()=>SubmitOrder(context)">
+                                @T("SaveAndDeliver")
+                            </MButton>
+                        </MCol>
+                    </MRow>
+                </MForm>
+            </MCardText>
+        </MCard>
+    </MCol>
+    <MCol Md="3">
+        <MCard>
+            <MCardTitle>
+                John Doe
+            </MCardTitle>
+            <MCardText>
+                <p class="mt-1 mb-1">9447 Glen Eagles Drive</p>
+                <p class="mt-1 mb-1">Lewis Center, OH 43035</p>
+                <p class="mt-2 mb-2">UTC-5: Eastern Standard Time (EST)</p>
+                <p class="mt-1 mb-1">202-555-0140</p>
+            </MCardText>
+            <MCardActions>
+                <MButton class="primary" Block>
+                    @T("DeliverTo")
+                </MButton>
+            </MCardActions>
+        </MCard>
+    </MCol>
+</MRow>
+
