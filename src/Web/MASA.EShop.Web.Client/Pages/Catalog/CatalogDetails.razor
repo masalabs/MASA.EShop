@@ -2,14 +2,14 @@
 @inherits EShopPageBase
 
 <div class="head-bread">
-    <h2 class="auto-width">@T("CatalogDetails")</h2>
+    <h2 class="auto-width">@T("Catalog.CatalogDetails")</h2>
     <MDivider Vertical />
     <MBreadcrumbs Large class="auto-width" TItem="BreadcrumbItem">
         <MBreadcrumbsItem Disabled="false">
             <MIcon Large class='head-bread-icon'>mdi-home</MIcon>
         </MBreadcrumbsItem>
-        <MBreadcrumbsItem Href="/catalog">@T("Shop","Base")</MBreadcrumbsItem>
-        <MBreadcrumbsItem Text="@T("CatalogDetails")"></MBreadcrumbsItem>
+        <MBreadcrumbsItem Href="/catalog">@T("Base.Shop")</MBreadcrumbsItem>
+        <MBreadcrumbsItem Text="@T("Catalog.CatalogDetails")"></MBreadcrumbsItem>
     </MBreadcrumbs>
 </div>
 
@@ -28,16 +28,16 @@
                     <MRating style="display:inline;" Readonly Value="4.5" BackgroundColor="orange lighten-3" Color="orange" Dense></MRating>
                 </div>
                 <p style="line-height: 1.5rem;">
-                    @T("Available") - <span style="color: #28c76f">@T("InStock")</span>
+                    @T("Catalog.Available") - <span style="color: #28c76f">@T("Catalog.InStock")</span>
                 </p>
                 <p>
                     @_catalogItem.Description
                 </p>
-                <div style="margin-bottom:1rem;"><MIcon class="details-icon">add_shopping_cart</MIcon><span class="catalog-details-span">@T("FreeShip")</span></div>
-                <div style="margin-bottom:1rem;"><MIcon class="details-icon">attach_money</MIcon><span class="catalog-details-span">@T("EMI")</span></div>
+                <div style="margin-bottom:1rem;"><MIcon class="details-icon">add_shopping_cart</MIcon><span class="catalog-details-span">@T("Catalog.FreeShip")</span></div>
+                <div style="margin-bottom:1rem;"><MIcon class="details-icon">attach_money</MIcon><span class="catalog-details-span">@T("Catalog.EMI")</span></div>
                 <MDivider class="mb-3 mt-3"></MDivider>
                 <div style="margin-bottom: 1.2rem;">
-                    <h6 style="font-size: 1rem;font-family: inherit;font-weight: 500;line-height: 1.2;color: #5e5873;">@T("Colors")</h6>
+                    <h6 style="font-size: 1rem;font-family: inherit;font-weight: 500;line-height: 1.2;color: #5e5873;">@T("Catalog.Colors")</h6>
                     <MButtonGroup Mandatory Dense Tile Color="deep-purple accent-3">
                         <MButton class="mx-2" Width="20" Height="20" MinWidth="20" Color="purple">
                         </MButton>
@@ -55,11 +55,11 @@
                 <div>
                     <MButton Depressed class="btn-primary">
                         <MIcon Left>add_shopping_cart</MIcon>
-                        @T("ViewInCart")
+                        @T("Catalog.ViewInCart")
                     </MButton>
                     <MButton Depressed>
                         <MIcon Left>mdi-heart-outline</MIcon>
-                        @T("Wishlist")
+                        @T("Catalog.Wishlist")
                     </MButton>
                     <MButton Depressed Width="40" MinWidth="40">
                         <MIcon>mdi-share-variant</MIcon>
@@ -86,8 +86,8 @@
         </MRow>
         <MRow>
             <MSheet Class="mx-auto" style="width:100%;">
-                <h4 style="margin-bottom: 0.5rem;font-size: 1.286rem;text-align:center;">@T("RelatedProducts")</h4>
-                <p style="line-height: 1.5rem;margin-bottom: 0;margin-top: 0;text-align:center;">@T("RelatedMessage")</p>
+                <h4 style="margin-bottom: 0.5rem;font-size: 1.286rem;text-align:center;">@T("Catalog.RelatedProducts")</h4>
+                <p style="line-height: 1.5rem;margin-bottom: 0;margin-top: 0;text-align:center;">@T("Catalog.RelatedMessage")</p>
                 <MSlideGroup ShowArrows="@(true)" Class="pa-4">
                     @foreach (var item in Enumerable.Range(1, 10))
                     {

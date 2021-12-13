@@ -184,7 +184,7 @@ public class OrderingProcessActor : Actor, IOrderingProcessActor, IRemindable
             case StockConfirmedReminder: return OnStockConfirmedSimulatedWorkDone();
             case StockRejectedReminder:
                 {
-                    var rejectedProductIds = JsonSerializer.Deserialize<List<int>>(Encoding.UTF8.GetString(state));
+                    var rejectedProductIds = JsonSerializer.Deserialize<List<int>>(Encoding.UTF8.GetString(state)) ?? new List<int>();
                     return OnStockRejectedSimulatedWorkDone(rejectedProductIds);
                 }
         }

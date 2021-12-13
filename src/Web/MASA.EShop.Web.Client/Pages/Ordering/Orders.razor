@@ -11,12 +11,12 @@
         <MBreadcrumbsItem Disabled="false">
             <MIcon Large class='head-bread-icon'>mdi-account</MIcon>
         </MBreadcrumbsItem>
-        <MBreadcrumbsItem Text="我的订单"></MBreadcrumbsItem>
+        <MBreadcrumbsItem Text="@T("Order.My")"></MBreadcrumbsItem>
     </MBreadcrumbs>
 </div>
 
 <MRow Style="background-color:#7367f0" class="mt-1">
-    <MCol class="pl-10" Md="12">订单列表</MCol>
+    <MCol class="pl-10" Md="12">@T("Order.List")</MCol>
 </MRow>
 
 <MRow>
@@ -52,7 +52,7 @@
 
 <MNavigationDrawer Absolute Temporary Right @bind-Value="_detailDialog" Width="600" class="pa-3">
     <MRow>
-        <MCol Md="@("auto")">订单编号:@_order.OrderNumber</MCol>
+        <MCol Md="@("auto")">@T("Order.Number"):@_order.OrderNumber</MCol>
         <MSpacer></MSpacer>
         <MCol Md="@("auto")"><MIcon OnClick="()=>{ _detailDialog = false;}">mdi-close</MIcon></MCol>
     </MRow>
@@ -96,26 +96,26 @@
                     {
                         <MList>
                             <MListItem Dense>
-                                <MListItemTitle>商品名称:</MListItemTitle>
+                                <MListItemTitle>@T("Catalog.Name"):</MListItemTitle>
                                 <MListItemSubtitle Class="text-right">
                                     @orderItem.ProductName
                                 </MListItemSubtitle>
                             </MListItem>
                             <MListItem Dense>
-                                <MListItemTitle>颜色:</MListItemTitle>
+                                <MListItemTitle>@T("Catalog.Colors"):</MListItemTitle>
                                 <MListItemSubtitle Class="text-right">
                                     <MButton class="mx-2" Fab Width="20" Height="20" Color="grey">
                                     </MButton>
                                 </MListItemSubtitle>
                             </MListItem>
                             <MListItem Dense>
-                                <MListItemTitle>购买数量:</MListItemTitle>
+                                <MListItemTitle>@T("Basket.Qty"):</MListItemTitle>
                                 <MListItemSubtitle Class="text-right">
                                     @orderItem.Units 个/只
                                 </MListItemSubtitle>
                             </MListItem>
                             <MListItem Dense>
-                                <MListItemTitle>合计金额:</MListItemTitle>
+                                <MListItemTitle>@T("Base.Total"):</MListItemTitle>
                                 <MListItemSubtitle Class="text-right">
                                     <span>￥</span> @orderItem.GetFormattedTotal()
                                 </MListItemSubtitle>
@@ -130,37 +130,37 @@
                 <MCardText>
                     <MList Class="transparent pa-0">
                         <MListItem Dense style="min-height:28px;">
-                            <MListItemSubtitle style="flex: none;width: 100px;">订单状态:</MListItemSubtitle>
+                            <MListItemSubtitle style="flex: none;width: 100px;">@T("Order.State"):</MListItemSubtitle>
                             <MListItemSubtitle>
                                 @_order.Status
                             </MListItemSubtitle>
                         </MListItem>
                         <MListItem Dense style="min-height:28px;">
-                            <MListItemSubtitle style="flex: none;width: 100px;">下单时间:</MListItemSubtitle>
+                            <MListItemSubtitle style="flex: none;width: 100px;">@T("Order.Time"):</MListItemSubtitle>
                             <MListItemSubtitle>
                                 @_order.GetFormattedOrderDate()
                             </MListItemSubtitle>
                         </MListItem>
                         <MListItem Dense style="min-height:28px;">
-                            <MListItemSubtitle style="flex: none;width: 100px;">支付时间:</MListItemSubtitle>
+                            <MListItemSubtitle style="flex: none;width: 100px;">@T("Order.PaymentTime"):</MListItemSubtitle>
                             <MListItemSubtitle>
                                 @_order.GetFormattedOrderDate()
                             </MListItemSubtitle>
                         </MListItem>
                         <MListItem Dense style="min-height:28px;">
-                            <MListItemSubtitle style="flex: none;width: 100px;">收获地址:</MListItemSubtitle>
+                            <MListItemSubtitle style="flex: none;width: 100px;">@T("Order.ReceiveAddress"):</MListItemSubtitle>
                             <MListItemSubtitle>
                                 @_order.Country @_order.City @_order.Street
                             </MListItemSubtitle>
                         </MListItem>
                         <MListItem Dense style="min-height:28px;">
-                            <MListItemSubtitle style="flex: none;width: 100px;">收货人:</MListItemSubtitle>
+                            <MListItemSubtitle style="flex: none;width: 100px;">@T("Consignee"):</MListItemSubtitle>
                             <MListItemSubtitle>
                                 叶子
                             </MListItemSubtitle>
                         </MListItem>
                         <MListItem Dense style="min-height:28px;">
-                            <MListItemSubtitle style="flex: none;width: 100px;">收货人电话:</MListItemSubtitle>
+                            <MListItemSubtitle style="flex: none;width: 100px;">@T("ConsigneePhone"):</MListItemSubtitle>
                             <MListItemSubtitle>
                                 18000000000
                             </MListItemSubtitle>
@@ -172,11 +172,11 @@
         <MCol Md="12" Class="pt-1 pb-2">
             <MCard>
                 <MCardText>
-                    <span style="color:#989595;">发货状态:未发货</span>
+                    <span style="color:#989595;">@T("Order.ShipStatus")</span>
                 </MCardText>
             </MCard>
         </MCol>
     </MRow>
 
-    <MButton class="mt-6" Color="red" Outlined Block>取消订单</MButton>
+    <MButton class="mt-6" Color="red" Outlined Block>@T("Order.CancelOrder")</MButton>
 </MNavigationDrawer>

@@ -11,7 +11,7 @@ public class HttpClientAuthorizationDelegatingHandler : DelegatingHandler
 
     protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
     {
-        var authorizationHeader = _httpContextAccessor.HttpContext
+        var authorizationHeader = _httpContextAccessor.HttpContext?
             .Request.Headers["Authorization"];
 
         request.Headers.Add("x-requestid", Guid.NewGuid().ToString());
@@ -31,12 +31,15 @@ public class HttpClientAuthorizationDelegatingHandler : DelegatingHandler
         return await base.SendAsync(request, cancellationToken);
     }
 
-    async Task<string> GetToken()
+    async Task<string?> GetToken()
     {
         const string ACCESS_TOKEN = "access_token";
-
-        return await _httpContextAccessor.HttpContext
-            .GetTokenAsync(ACCESS_TOKEN);
+        var httpContext = _httpContextAccessor.HttpContext;
+        if (httpContext == null)
+        {
+            return null;
+        }
+        return await httpContext.GetTokenAsync(ACCESS_TOKEN);
     }
 }
 

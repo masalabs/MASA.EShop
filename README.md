@@ -1,4 +1,5 @@
 [中](README.zh-CN.md) | EN
+
 # <center>MASA.EShop</center>
 
 # Introduction
@@ -13,7 +14,7 @@ MASA.EShop
 │   ├── components                           dapr local components directory
 │   │   ├── pubsub.yaml                      pub/sub config file
 │   │   └── statestore.yaml                  state management config file
-├── src                                      
+├── src
 │   ├── Api
 │   │   └── MASA.EShop.Api.Open              BFF Layer, provide API to Web.Client
 │   ├── Contracts                            Common contracts，like Event Class
@@ -37,14 +38,14 @@ MASA.EShop
 ├── .gitignore
 ├── LICENSE
 ├── .dockerignore
-└── README.md                                
+└── README.md
 ```
 
 ## Project Structure
 
 ![Project Structure](img/eshop.png)
 
-## Project Architecture(Update later)
+## Project Architecture
 
 ![架构图](img/eshop-architectureks.png)
 
@@ -109,6 +110,7 @@ app.Run();
 `MASA.Contrib.Service.MinimalAPIs` based on `MASA.BuildingBlocks`:
 
 Program.cs
+
 ```C#
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Services.AddServices(builder);
@@ -116,6 +118,7 @@ app.Run();
 ```
 
 HelloService.cs
+
 ```C#
 public class HelloService : ServiceBase
 {
@@ -129,7 +132,7 @@ public class HelloService : ServiceBase
 #### Dapr
 
 The official Dapr implementation, MASA.Contrib references the Event section.
- 
+
 More Dapr content reference: https://docs.microsoft.com/zh-cn/dotnet/architecture/dapr-for-net-developers/
 
 1. Add Dapr
@@ -190,7 +193,7 @@ public interface IOrderingProcessActor : IActor
 {
 ```
 
-3. Implement `IOrderingProcessActor` and inherit the `Actor` class. The sample project also implements the `IRemindable` interface, and 'RegisterReminderAsync' method. 
+3. Implement `IOrderingProcessActor` and inherit the `Actor` class. The sample project also implements the `IRemindable` interface, and 'RegisterReminderAsync' method.
 
 ```C#
 public class OrderingProcessActor : Actor, IOrderingProcessActor, IRemindable
@@ -253,7 +256,7 @@ public async Task DemoHandleAsync(DemoEvent @event)
 
 #### IntegrationEventBus
 
-Cross-Process event, In-Process event also supported when `EventBus` is added. 
+Cross-Process event, In-Process event also supported when `EventBus` is added.
 
 1. Add IntegrationEventBus
 
@@ -412,6 +415,7 @@ Both In-Process and Cross-Process events are supported.
 2. Define DomainCommand(In-Process)
 
 To verify payment command, you need to inherit DomainCommand or DomainQuery<>
+
 ```C#
 public class OrderStatusChangedToValidatedCommand : DomainCommand
 {
@@ -543,16 +547,16 @@ builder.Services
 
 ```yaml
 dapr-placement:
-  image: 'daprio/dapr:1.4.0'
+  image: "daprio/dapr:1.4.0"
 ```
 
 `docker-compose.override.yml` add command and port mapping.
 
 ```yaml
 dapr-placement:
-  command: ['./placement', '-port', '50000', '-log-level', 'debug']
+  command: ["./placement", "-port", "50000", "-log-level", "debug"]
   ports:
-    - '50000:50000'
+    - "50000:50000"
 ```
 
 `ordering.dapr` service add command

@@ -4,13 +4,13 @@
 <PageTitle>Basket Payment</PageTitle>
 
 <div class="head-bread">
-    <h2 class="auto-width">@T("Checkout","Basket")</h2>
+    <h2 class="auto-width">@T("Basket.Checkout")</h2>
     <MDivider Vertical />
     <MBreadcrumbs Large class="auto-width" TItem="BreadcrumbItem">
         <MBreadcrumbsItem Href="/catalog">
             <MIcon Large class='head-bread-icon'>mdi-home</MIcon>
         </MBreadcrumbsItem>
-        <MBreadcrumbsItem Text="@T("Checkout","Basket")"></MBreadcrumbsItem>
+        <MBreadcrumbsItem Text="@T("Basket.Checkout")"></MBreadcrumbsItem>
     </MBreadcrumbs>
 </div>
 
@@ -38,10 +38,10 @@
     <MCol Md="9">
         <MCard>
             <MCardTitle>
-                @T("PaymentOptions")
+                @T("Payment.PaymentOptions")
             </MCardTitle>
             <MCardSubtitle>
-                @T("PaymentOptionsMsg")
+                @T("Payment.PaymentOptionsMsg")
             </MCardSubtitle>
 
             <MRadioGroup @bind-Value="_payOptions">
@@ -52,7 +52,7 @@
                             <MLabel style="width:100px;">Enter CVV:</MLabel>
                         </PrependContent>
                         <AppendOuterContent>
-                            <MButton class="primary" style="margin-top: -5px;">@T("Continue","Base")</MButton>
+                            <MButton class="primary" style="margin-top: -5px;">@T("Base.Continue")</MButton>
                         </AppendOuterContent>
                     </MTextField>
                 </MCardText>
@@ -69,7 +69,7 @@
             <MCardActions>
                 <MButton Text>
                     <MIcon Left>mdi-plus</MIcon>
-                    @T("AddGiftCard")
+                    @T("Payment.AddGiftCard")
                 </MButton>
             </MCardActions>
         </MCard>

@@ -24,21 +24,21 @@ public class OrdersCommandHandler
     }
 
     [EventHandler]
-    public async Task CancelOrderAsync(OrderCancelCommand command)
+    public async Task CancelOrderAsync(CancelOrderCommand command)
     {
         var orderingProcessActor = await GetOrderingProcessActorAsync(command.OrderNumber);
         await orderingProcessActor.Cancel();
     }
 
     [EventHandler]
-    public async Task ShipOrderAsync(OrderShipCommand command)
+    public async Task ShipOrderAsync(ShipOrderCommand command)
     {
         var orderingProcessActor = await GetOrderingProcessActorAsync(command.OrderNumber);
         await orderingProcessActor.Ship();
     }
 
     [EventHandler]
-    public async Task UpdateOrderAsync(OrderUpdateCommand command)
+    public async Task UpdateOrderAsync(UpdateOrderCommand command)
     {
         var order = await _orderRepository.GetOrderByIdAsync(command.OrderId);
         if (order != null)

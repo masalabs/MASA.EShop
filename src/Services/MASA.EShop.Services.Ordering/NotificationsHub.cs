@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.SignalR;
-
-namespace MASA.EShop.Services.Ordering
+﻿namespace MASA.EShop.Services.Ordering
 {
     //[Authorize]
     public class NotificationsHub : Hub

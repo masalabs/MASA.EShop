@@ -35,7 +35,7 @@ public static class CardExpirationDate
         return false;
     }
 
-    public static ValidationResult Validate(string value, ValidationContext context)
+    public static ValidationResult? Validate(string value, ValidationContext context)
     {
         if (!TryParse(value, out _))
         {

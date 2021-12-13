@@ -2,13 +2,11 @@
 
 namespace MASA.EShop.Web.Client.Pages;
 
-public delegate string Localizer(string text, string? page = null);
+public delegate string Localizer(string text);
 
 public class EShopPageBase : PageBase
 {
     private Localizer _localizer = default!;
-
-    protected virtual string PageName { get; set; } = "Base";
 
     [Inject]
     protected I18n I18n { get; set; } = default!;
@@ -19,9 +17,9 @@ public class EShopPageBase : PageBase
         {
             if (_localizer == null)
             {
-                _localizer = (key, page) =>
+                _localizer = (key) =>
                 {
-                    I18n.GetLang(I18n.CurrentLanguage)[page ?? PageName].TryGetValue(key, out string? value);
+                    var value = I18n.T(key);
                     return value ?? "";
                 };
             }
@@ -53,7 +51,7 @@ public class EShopPageBase : PageBase
         await AuthenticationStateTask.ContinueWith(task =>
         {
             User = task.Result.User;
-            IsAuthenticated = User.Identity.IsAuthenticated;
+            IsAuthenticated = User.Identity?.IsAuthenticated ?? false;
         });
     }
 

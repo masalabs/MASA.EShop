@@ -15,7 +15,7 @@ public class OrderingService : ServiceBase
     {
         try
         {
-            var orderCanelCommand = new OrderCancelCommand
+            var orderCanelCommand = new CancelOrderCommand
             {
                 OrderNumber = orderNumber
             };
@@ -32,7 +32,7 @@ public class OrderingService : ServiceBase
     {
         try
         {
-            var orderShipCommand = new OrderShipCommand
+            var orderShipCommand = new ShipOrderCommand
             {
                 OrderNumber = orderNumber
             };

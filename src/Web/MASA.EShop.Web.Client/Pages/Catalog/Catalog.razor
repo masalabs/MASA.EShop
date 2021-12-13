@@ -4,24 +4,24 @@
 <PageTitle>Catalog</PageTitle>
 
 <div class="head-bread">
-    <h2 class="auto-width">@T("Shop","Base")</h2>
+    <h2 class="auto-width">@T("Base.Shop")</h2>
     <MDivider Vertical />
     <MBreadcrumbs Large class="auto-width" TItem="BreadcrumbItem">
         <MBreadcrumbsItem Disabled="false">
             <MIcon Large class='head-bread-icon'>mdi-home</MIcon>
         </MBreadcrumbsItem>
-        <MBreadcrumbsItem Text="@T("Shop","Base")"></MBreadcrumbsItem>
+        <MBreadcrumbsItem Text="@T("Base.Shop")"></MBreadcrumbsItem>
     </MBreadcrumbs>
 </div>
 <MRow NoGutters>
     <MCol Md="2">
         <MContainer>
             <div>
-                <h6 style="margin-bottom: 1.75rem;display: block!important;font-size: 1rem;font-family: inherit;font-weight: 500;color: #5e5873;">@T("Filters")</h6>
+                <h6 style="margin-bottom: 1.75rem;display: block!important;font-size: 1rem;font-family: inherit;font-weight: 500;color: #5e5873;">@T("Catalog.Filters")</h6>
             </div>
             <MCard Elevation=2>
                 <MCardText>
-                    <h4>@T("Brand")</h4>
+                    <h4>@T("Catalog.Brand")</h4>
                     <MRadioGroup @bind-Value="_catalogOptinsModel.Brand">
                         @foreach (var brand in _brands)
                         {
@@ -31,7 +31,7 @@
                         }
                     </MRadioGroup>
 
-                    <h4>@T("Type")</h4>
+                    <h4>@T("Catalog.Type")</h4>
                     <MRadioGroup @bind-Value="_catalogOptinsModel.Type">
                         @foreach (var type in _types)
                         {
@@ -47,9 +47,9 @@
     <MCol>
         <MContainer>
             <div style="font-weight: 500;color: rgb(94, 88, 115);font-size: 1rem;margin-bottom: 1.75rem;">
-                @_catalogViewModel.Count @T("SearchResult")
+                @_catalogViewModel.Count @T("Catalog.SearchResult")
             </div>
-            <MTextField TValue="string" Solo Label="@T("SearchProduct")" Placeholder="@T("SearchKey")" AppendIcon="search" OnAppendClick="LoadItemsAsync"></MTextField>
+            <MTextField TValue="string" Solo Label="@T("Catalog.SearchProduct")" Placeholder="@T("Catalog.SearchKey")" AppendIcon="search" OnAppendClick="LoadItemsAsync"></MTextField>
             @if (_catalogViewModel.Count > 0)
             {
                 <MRow>
@@ -89,13 +89,13 @@
                                             <MCol Lg="6" Md="12" Sm="12">
                                                 <MButton Block Tile Depressed class="rounded-b-sm" OnClick='AddWishList'>
                                                     <MIcon Left Color="@(_wishIconColor)">@(_wishListIcon)</MIcon>
-                                                    @T("Wishlist")
+                                                    @T("Catalog.Wishlist")
                                                 </MButton>
                                             </MCol>
                                             <MCol Lg="6" Md="12" Sm="12">
                                                 <MButton Block Tile Depressed class="primary rounded-b-sm" OnClick="(e)=>AddToCart(item)" Disabled="@(!IsAuthenticated)">
                                                     <MIcon Left>mdi-cart</MIcon>
-                                                    @T("AddToCart")
+                                                    @T("Catalog.AddToCart")
                                                 </MButton>
                                             </MCol>
                                         </MRow>

@@ -51,13 +51,23 @@ app.MapFallbackToPage("/_Host");
 
 #region I18n
 
-LocaleProvider.SetLocale("zh-CN");
+//app.UseRequestLocalization(opts =>
+//{
+//    var supportedCultures = new List<CultureInfo>
+//    {
+//        new CultureInfo("en-US"),
+//        new CultureInfo("zh-CN")
+//    };
+//    opts.SupportedCultures = supportedCultures;
+//    opts.SupportedUICultures = supportedCultures;
+//});
+
 var langfileNames = new string[] { "en-US.json", "zh-CN.json" };
 langfileNames.ForEach(langFileName =>
 {
     var path = Path.Combine(app.Environment.ContentRootPath, "Resources", langFileName);
     var json = File.ReadAllText(path);
-    I18n.AddLang(Path.GetFileNameWithoutExtension(path), JsonSerializer.Deserialize<Dictionary<string, Dictionary<string, string>>>(json));
+    I18n.AddLang(Path.GetFileNameWithoutExtension(path), JsonSerializer.Deserialize<Dictionary<string, string>>(json));
 });
 
 #endregion

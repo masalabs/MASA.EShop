@@ -12,28 +12,28 @@ public class OrderStatusEventHandler
     [EventHandler]
     public async Task OrderStatusChangedToSubmitted(OrderStatusChangedToSubmittedEvent integrationEvent)
     {
-        await _eventBus.PublishAsync(new OrderUpdateCommand(integrationEvent.OrderId,
+        await _eventBus.PublishAsync(new UpdateOrderCommand(integrationEvent.OrderId,
             integrationEvent.OrderStatus, "", integrationEvent.BuyerName));
     }
 
     [EventHandler]
     public async Task OrderStatusChangedToPaid(OrderStatusChangedToPaidIntegrationEvent integrationEvent)
     {
-        await _eventBus.PublishAsync(new OrderUpdateCommand(integrationEvent.OrderId,
+        await _eventBus.PublishAsync(new UpdateOrderCommand(integrationEvent.OrderId,
             integrationEvent.OrderStatus, integrationEvent.Description, integrationEvent.BuyerName));
     }
 
     [EventHandler]
     public async Task OrderStatusChangedToShipped(OrderStatusChangedToShippedEvent integrationEvent)
     {
-        await _eventBus.PublishAsync(new OrderUpdateCommand(integrationEvent.OrderId,
+        await _eventBus.PublishAsync(new UpdateOrderCommand(integrationEvent.OrderId,
             integrationEvent.OrderStatus, integrationEvent.Description, integrationEvent.BuyerName));
     }
 
     [EventHandler]
     public async Task OrderStatusChangedToCancelled(OrderStatusChangedToCancelledEvent integrationEvent)
     {
-        await _eventBus.PublishAsync(new OrderUpdateCommand(integrationEvent.OrderId,
+        await _eventBus.PublishAsync(new UpdateOrderCommand(integrationEvent.OrderId,
             integrationEvent.OrderStatus, integrationEvent.Description, integrationEvent.BuyerName));
     }
 
@@ -42,14 +42,14 @@ public class OrderStatusEventHandler
     [EventHandler]
     public async Task OrderStatusChangedToAwaitingStockValidation(OrderStatusChangedToAwaitingStockValidationEvent integrationEvent)
     {
-        await _eventBus.PublishAsync(new OrderUpdateCommand(integrationEvent.OrderId,
+        await _eventBus.PublishAsync(new UpdateOrderCommand(integrationEvent.OrderId,
             integrationEvent.OrderStatus, integrationEvent.Description, integrationEvent.BuyerName));
     }
 
     [EventHandler]
     public async Task OrderStatusChangedToValidated(OrderStatusChangedToValidatedIntegrationEvent integrationEvent)
     {
-        await _eventBus.PublishAsync(new OrderUpdateCommand(integrationEvent.OrderId,
+        await _eventBus.PublishAsync(new UpdateOrderCommand(integrationEvent.OrderId,
             integrationEvent.OrderStatus, integrationEvent.Description, integrationEvent.BuyerName));
     }
 }

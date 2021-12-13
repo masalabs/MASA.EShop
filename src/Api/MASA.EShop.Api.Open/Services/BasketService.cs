@@ -55,7 +55,7 @@ public class BasketService : ServiceBase
         return Results.Accepted();
     }
 
-    public async Task DeleteBasketByIdAsync(string userId)
+    public Task DeleteBasketByIdAsync(string userId)
     {
         throw new NotImplementedException();
     }

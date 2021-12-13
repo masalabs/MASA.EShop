@@ -4,6 +4,6 @@
     {
         public string ApiGatewayUrlExternal { get; set; } = default!;
 
-        public string OrderHubUrl { get; set; }
-    }                    
+        public string OrderHubUrl { get; set; } = default!;
+    }
 }

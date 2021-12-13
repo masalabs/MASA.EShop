@@ -20,7 +20,12 @@ public class CatalogService : ServiceBase
 
     public async Task<IResult> GetItemsAsync(int typeId = -1, int brandId = -1, int pageSize = 10, int pageIndex = 0)
     {
-        return Results.Ok(await _catalogCaller.GetCatalogItemsAsync(pageIndex, pageSize, brandId, typeId));
+        var data = await _catalogCaller.GetCatalogItemsAsync(pageIndex, pageSize, brandId, typeId);
+        if (data is null)
+        {
+            return Results.BadRequest("No Data");
+        }
+        return Results.Ok(data);
     }
 
     public async Task<IResult> GetCatalogBrandsAsync()

@@ -12,7 +12,13 @@ public class OrdersQueryHandler
     [EventHandler]
     public async Task OrderQueryAsync(OrderQuery query)
     {
-        query.Result = await _orderRepository.GetOrderByOrderNumberAsync(query.OrderNumber);
+        var order = await _orderRepository.GetOrderByOrderNumberAsync(query.OrderNumber);
+        if (order is null)
+        {
+            //Service drop
+            order = new Entities.Order();
+        }
+        query.Result = order;
     }
 
     [EventHandler]

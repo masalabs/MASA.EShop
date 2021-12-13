@@ -4,13 +4,13 @@
 <PageTitle>Basket Check Out</PageTitle>
 
 <div class="head-bread">
-    <h2 class="auto-width">@T("Checkout")</h2>
+    <h2 class="auto-width">@T("Basket.Checkout")</h2>
     <MDivider Vertical />
     <MBreadcrumbs Large class="auto-width" TItem="BreadcrumbItem">
         <MBreadcrumbsItem Href="/catalog">
             <MIcon Large class='head-bread-icon'>mdi-home</MIcon>
         </MBreadcrumbsItem>
-        <MBreadcrumbsItem Text="@T("Checkout")"></MBreadcrumbsItem>
+        <MBreadcrumbsItem Text="@T("Basket.Checkout")"></MBreadcrumbsItem>
     </MBreadcrumbs>
 </div>
 
@@ -38,67 +38,67 @@
     <MCol Md="9">
         <MCard>
             <MCardTitle>
-                @T("NewAddress")
+                @T("Basket.NewAddress")
             </MCardTitle>
             <MCardSubtitle>
-                @T("NewAddressMsg")
+                @T("Basket.NewAddressMsg")
             </MCardSubtitle>
             <MCardText>
                 <MForm Model="_shipAddressFormModel" EnableDataAnnotationsValidation>
                     <MRow>
                         <MCol Md="6">
                             <MTextField @bind-Value="_shipAddressFormModel.Street"
-                                        Label="@T("Address")"
-                                        Placeholder="@T("Address")"
+                                        Label="@T("Basket.Address")"
+                                        Placeholder="@T("Basket.Address")"
                                         Outlined
                                         Dense></MTextField>
                         </MCol>
                         <MCol Md="6">
                             <MTextField @bind-Value="_shipAddressFormModel.City"
-                                        Label="@T("City")"
-                                        Placeholder="@T("City")"
+                                        Label="@T("Basket.City")"
+                                        Placeholder="@T("Basket.City")"
                                         Outlined
                                         Dense></MTextField>
                         </MCol>
                         <MCol Md="6">
                             <MTextField @bind-Value="_shipAddressFormModel.State"
-                                        Label="@T("State")"
-                                        Placeholder="@T("State")"
+                                        Label="@T("Basket.State")"
+                                        Placeholder="@T("Basket.State")"
                                         Outlined
                                         Dense></MTextField>
                         </MCol>
                         <MCol Md="6">
                             <MTextField @bind-Value="_shipAddressFormModel.CardNumber"
-                                        Label="@T("CardNumber")"
+                                        Label="@T("Basket.CardNumber")"
                                         Placeholder="000000000000000"
                                         Outlined
                                         Dense></MTextField>
                         </MCol>
                         <MCol Md="6">
                             <MTextField @bind-Value="_shipAddressFormModel.CardHolderName"
-                                        Label="@T("CardName")"
-                                        Placeholder="@T("CardName")"
+                                        Label="@T("Basket.CardName")"
+                                        Placeholder="@T("Basket.CardName")"
                                         Outlined
                                         Dense></MTextField>
                         </MCol>
                         <MCol Md="6">
                             <MTextField @bind-Value="_shipAddressFormModel.CardExpiration"
-                                        Label="@T("ExpirationDate")"
+                                        Label="@T("Basket.ExpirationDate")"
                                         Placeholder="MM/YY"
                                         Outlined
                                         Dense></MTextField>
                         </MCol>
                         <MCol Md="6">
                             <MTextField @bind-Value="_shipAddressFormModel.CardSecurityCode"
-                                        Label="@T("SecurityCode")"
+                                        Label="@T("Basket.SecurityCode")"
                                         Placeholder="000"
                                         Outlined
                                         Dense></MTextField>
                         </MCol>
                         <MCol Md="6">
                             <MTextField @bind-Value="_shipAddressFormModel.ZipCode"
-                                        Label="@T("ZipCode")"
-                                        Placeholder="@T("ZipCode")"
+                                        Label="@T("Basket.ZipCode")"
+                                        Placeholder="@T("Basket.ZipCode")"
                                         Outlined
                                         Dense></MTextField>
                         </MCol>
@@ -106,7 +106,7 @@
                     <MRow>
                         <MCol Class="text-right">
                             <MButton class="primary" Click="()=>SubmitOrder(context)">
-                                @T("SaveAndDeliver")
+                                @T("Basket.SaveAndDeliver")
                             </MButton>
                         </MCol>
                     </MRow>
@@ -127,7 +127,7 @@
             </MCardText>
             <MCardActions>
                 <MButton class="primary" Block Click="()=>SubmitShipedOrder()">
-                    @T("DeliverTo")
+                    @T("Basket.DeliverTo")
                 </MButton>
             </MCardActions>
         </MCard>

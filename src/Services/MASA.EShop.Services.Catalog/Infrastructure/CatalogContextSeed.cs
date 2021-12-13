@@ -66,7 +66,7 @@ public class CatalogContextSeed
         return File.ReadAllLines(csvFileCatalogBrands)
             .Skip(1) // skip header row
             .SelectTry(x => CreateCatalogBrand(x))
-            .OnCaughtException(ex => { logger.LogError(ex, "EXCEPTION ERROR: {Message}", ex.Message); return null; })
+            .OnCaughtException(ex => { logger.LogError(ex, "EXCEPTION ERROR: {Message}", ex.Message); return new CatalogBrand(); })
             .Where(x => x != null);
     }
 
@@ -117,7 +117,7 @@ public class CatalogContextSeed
         return File.ReadAllLines(csvFileCatalogTypes)
             .Skip(1) // skip header row
             .SelectTry(x => CreateCatalogType(x))
-            .OnCaughtException(ex => { logger.LogError(ex, "EXCEPTION ERROR: {Message}", ex.Message); return null; })
+            .OnCaughtException(ex => { logger.LogError(ex, "EXCEPTION ERROR: {Message}", ex.Message); return new CatalogType(); })
             .Where(x => x != null);
     }
 
@@ -179,7 +179,7 @@ public class CatalogContextSeed
             .Skip(1) // skip header row
             .Select(row => Regex.Split(row, ",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)"))
             .SelectTry(column => CreateCatalogItem(column, csvheaders, catalogTypeIdLookup, catalogBrandIdLookup))
-            .OnCaughtException(ex => { logger.LogError(ex, "EXCEPTION ERROR: {Message}", ex.Message); return null; })
+            .OnCaughtException(ex => { logger.LogError(ex, "EXCEPTION ERROR: {Message}", ex.Message); return new CatalogItem(); })
             .Where(x => x != null);
     }
 
@@ -335,7 +335,7 @@ public class CatalogContextSeed
         };
     }
 
-    private string[] GetHeaders(string csvfile, string[] requiredHeaders, string[] optionalHeaders = null)
+    private string[] GetHeaders(string csvfile, string[] requiredHeaders, string[]? optionalHeaders = null)
     {
         string[] csvheaders = File.ReadLines(csvfile).First().ToLowerInvariant().Split(',');
 

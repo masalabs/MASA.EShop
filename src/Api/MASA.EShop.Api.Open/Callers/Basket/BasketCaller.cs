@@ -28,6 +28,10 @@ public class BasketCaller : HttpClientCaller
     public async Task RemoveItemAsync(string userId, int productId)
     {
         var currentBasket = await GetBasketAsync(userId);
+        if (currentBasket == null)
+        {
+            return;
+        }
         var basketItem = currentBasket.Items.FirstOrDefault(x => x.ProductId == productId);
         if (basketItem != null)
         {
@@ -47,8 +51,17 @@ public class BasketCaller : HttpClientCaller
 
         // Step 1: Get the item from catalog
         var item = await _catalogCaller.GetCatalogById(newItem.CatalogItemId);
+        if (item is null)
+        {
+            //Service drop and log
+            return;
+        }
         // Step 2: Get current basket status
         var currentBasket = await GetBasketAsync(userId);
+        if (currentBasket == null)
+        {
+            currentBasket = new UserBasket(userId, new List<BasketItem>());
+        }
         // Step 3: Merge current status with new product
         var itemIndex = currentBasket.Items.FindIndex(a => a.ProductId == item.Id);
         if (itemIndex == -1)
@@ -65,9 +78,9 @@ public class BasketCaller : HttpClientCaller
         var response = await CallerProvider.PostAsJsonAsync(_updateBasketUrl, currentBasket);
     }
 
-    public async Task<UserBasket> GetBasketAsync(string userId)
+    public async Task<UserBasket?> GetBasketAsync(string userId)
     {
-        return await CallerProvider.GetFromJsonAsync<UserBasket>($"{_getBasketUrl}{userId}");
+        return await CallerProvider.GetFromJsonAsync<UserBasket>($"{_getBasketUrl}{userId}") ?? new UserBasket(userId, new List<BasketItem>());
     }
 
     public Task<UserBasket> UpdateBasketAsync(UserBasket basket)

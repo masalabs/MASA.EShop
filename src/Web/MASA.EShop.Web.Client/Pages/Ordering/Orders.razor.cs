@@ -4,7 +4,7 @@
 public partial class Orders : EShopPageBase, IAsyncDisposable
 {
 
-    private HubConnection hubConnection;
+    private HubConnection hubConnection = default!;
     private readonly List<DataTableHeader<OrderSummary>> _headers = new List<DataTableHeader<OrderSummary>> {
         new (){ Text= "IMAGE",Sortable= false,Value= nameof(OrderSummary.PictureName)},
         new (){ Text= "PRODUCT NAME",Sortable= false,Align= "center",Value= nameof(OrderSummary.ProductName)},
@@ -21,8 +21,6 @@ public partial class Orders : EShopPageBase, IAsyncDisposable
             });
     private bool _detailDialog = false;
 
-    protected override string PageName { get; set; } = "Order";
-
     [Inject]
     private OrderService _orderService { get; set; } = default!;
 
@@ -38,7 +36,7 @@ public partial class Orders : EShopPageBase, IAsyncDisposable
                     {
                         options.AccessTokenProvider = () =>
                         {
-                            return Task.FromResult("masa");
+                            return Task.FromResult<string?>("masa");
                         };
                     }
                 )
@@ -63,7 +61,7 @@ public partial class Orders : EShopPageBase, IAsyncDisposable
 
     private async Task LoadOrders()
     {
-        _orders = await _orderService.GetMyOrders(User.Identity.Name);
+        _orders = await _orderService.GetMyOrders(User.Identity?.Name ?? "");
     }
 
     private async Task CancelOrder(int orderNumber)
@@ -88,8 +86,20 @@ public partial class Orders : EShopPageBase, IAsyncDisposable
 
     private async void ShowDetails(int orderNumber)
     {
+        var name = User.Identity?.Name;
+        if (string.IsNullOrEmpty(name))
+        {
+            Navigation("login");
+            return;
+        }
+        var order = await _orderService.GetOrder(name, orderNumber);
+        if (order == null)
+        {
+            Message("Not Found");
+            return;
+        }
         _detailDialog = true;
-        _order = await _orderService.GetOrder(User.Identity.Name, orderNumber);
+        _order = order;
     }
 
     private string GetStatusColor(string status)

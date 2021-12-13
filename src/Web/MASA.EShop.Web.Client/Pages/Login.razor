@@ -1,7 +1,7 @@
 ﻿@page "/login"
 @inherits EShopPageBase
 
-<PageTitle>@T("Login")</PageTitle>
+<PageTitle>@T("Login.Login")</PageTitle>
 
 <MContainer class="justify-center align-center">
     <MRow Justify="JustifyTypes.Center" Align="AlignTypes.Center">
@@ -11,34 +11,34 @@
                 <MTabs @bind-Value="_loginTabIndex"
                        Centered>
                     <MTab Value="0">
-                        @T("PWDLogin")
+                        @T("Login.PWDLogin")
                     </MTab>
 
                     <MTab Value="1">
-                        @T("SMSLogin")
+                        @T("Login.SMSLogin")
                     </MTab>
                 </MTabs>
                 <MTabsItems Value="_loginTabIndex">
                     <MTabItem Value="0">
                         <MCardText>
-                            <MTextField class="input-group--focused mr-2" Label="@T("UserName")" @bind-Value="_userName"></MTextField>
+                            <MTextField class="input-group--focused mr-2" Label="@T("Login.UserName")" @bind-Value="_userName"></MTextField>
                             <MTextField class="input-group--focused mr-2"
-                                        Label="@T("Password")" @bind-Value="_password"
+                                        Label="@T("Login.Password")" @bind-Value="_password"
                                         AppendIcon="@(_showPwd ? "mdi-eye" : "mdi-eye-off")"
                                         Type="@(_showPwd ? "text" : "password")"
                                         Hint="At least 8 characters"
                                         Counter="true"
                                         OnAppendClick="() => _showPwd = !_showPwd"></MTextField>
-                            <MButton Small Text class="float-right" OnClick="()=>{ _forgetPwdDialog = true; }">@T("ForgetPassword")</MButton>
+                            <MButton Small Text class="float-right" OnClick="()=>{ _forgetPwdDialog = true; }">@T("Login.ForgetPassword")</MButton>
                         </MCardText>
                     </MTabItem>
                     <MTabItem Value="1">
                         <MCardText>
-                            <MTextField TValue="string" class="input-group--focused mr-2" Label="@T("Phone")" Placeholder="@T("PhoneHolder")"></MTextField>
-                            <MTextField Label="@T("Code")" Placeholder="@T("CodeHolder")" TValue="string">
+                            <MTextField TValue="string" class="input-group--focused mr-2" Label="@T("Login.Phone")" Placeholder="@T("Login.PhoneHolder")"></MTextField>
+                            <MTextField Label="@T("Login.Code")" Placeholder="@T("Login.CodeHolder")" TValue="string">
                                 <AppendContent>
                                     <MButton Outlined>
-                                        @T("GetCode")
+                                        @T("Login.GetCode")
                                     </MButton>
                                 </AppendContent>
                             </MTextField>
@@ -48,10 +48,10 @@
                 <MCardActions>
                     <MRow NoGutters>
                         <MCol Md="12">
-                            <MButton Color="primary" Block OnClick="LoginHandler">@T("Login")</MButton>
+                            <MButton Color="primary" Block OnClick="LoginHandler">@T("Login.Login")</MButton>
                         </MCol>
                         <MCol Md="12" class="text-right">
-                            <MButton Small Text OnClick="()=>{ _registerDialog = true; }">@T("ToRegister")</MButton>
+                            <MButton Small Text OnClick="()=>{ _registerDialog = true; }">@T("Login.ToRegister")</MButton>
                         </MCol>
                     </MRow>
                 </MCardActions>
@@ -69,11 +69,11 @@
                 <MTabs @bind-Value="_forgetPwdTabIndex"
                        Centered>
                     <MTab Value="0">
-                        @T("SMSRetrieve")
+                        @T("Login.SMSRetrieve")
                     </MTab>
 
                     <MTab Value="1">
-                        @T("EmailRetrieve")
+                        @T("Login.EmailRetrieve")
                     </MTab>
                 </MTabs>
                 <MTabsItems Value="_forgetPwdTabIndex">
@@ -82,13 +82,13 @@
                             <MCardText>
                                 <MRow NoGutters>
                                     <MCol Cols="12">
-                                        <MTextField Label="@T("Phone")" Placeholder="@T("PhoneHolder")" TValue="string"></MTextField>
+                                        <MTextField Label="@T("Login.Phone")" Placeholder="@T("Login.PhoneHolder")" TValue="string"></MTextField>
                                     </MCol>
                                     <MCol Cols="12">
-                                        <MTextField Label="@T("Code")" Placeholder="@T("CodeHolder")" TValue="string">
+                                        <MTextField Label="@T("Login.Code")" Placeholder="@T("Login.CodeHolder")" TValue="string">
                                             <AppendContent>
                                                 <MButton Outlined>
-                                                    @T("GetCode")
+                                                    @T("Login.GetCode")
                                                 </MButton>
                                             </AppendContent>
                                         </MTextField>
@@ -102,7 +102,7 @@
                             <MCardText>
                                 <MRow>
                                     <MCol Cols="12">
-                                        <MTextField Label="@T("Email")" Placeholder="@T("EmailHolder")" TValue="string"></MTextField>
+                                        <MTextField Label="@T("Login.Email")" Placeholder="@T("Login.EmailHolder")" TValue="string"></MTextField>
                                     </MCol>
                                 </MRow>
                             </MCardText>
@@ -112,7 +112,7 @@
             </MCardText>
             <MCardActions>
                 <MButton Color="primary" Block OnClick="() => _forgetPwdDialog = false">
-                    @T("Sure","Base")
+                    @T("Base.Sure")
                 </MButton>
             </MCardActions>
         </MCard>
@@ -125,18 +125,18 @@
     <ChildContent>
         <MCard>
             <MCardTitle>
-                <span class="text-h5">@T("WelcomeRegister")</span>
+                <span class="text-h5">@T("Login.WelcomeRegister")</span>
             </MCardTitle>
             <MCardSubtitle>
-                @T("LoginNow")
+                @T("Login.LoginNow")
             </MCardSubtitle>
             <MCardText>
                 <MTabs @bind-Value="_registerTabIndex" Centered>
                     <MTab Value="0">
-                        @T("SMSRegister")
+                        @T("Login.SMSRegister")
                     </MTab>
                     <MTab Value="1">
-                        @T("EmailRegister")
+                        @T("Login.EmailRegister")
                     </MTab>
                 </MTabs>
 
@@ -146,19 +146,19 @@
                             <MCardText>
                                 <MRow NoGutters>
                                     <MCol Cols="12">
-                                        <MTextField Placeholder="@T("PhoneHolder")" TValue="string" PrependIcon="mdi-phone"></MTextField>
+                                        <MTextField Placeholder="@T("Login.PhoneHolder")" TValue="string" PrependIcon="mdi-phone"></MTextField>
                                     </MCol>
                                     <MCol Cols="12">
-                                        <MTextField TValue="string" Placeholder="@T("RegisterPassword")" PrependIcon="mdi-lock" Type="password" Hint="At least 8 characters" Counter="true"></MTextField>
+                                        <MTextField TValue="string" Placeholder="@T("Login.RegisterPassword")" PrependIcon="mdi-lock" Type="password" Hint="At least 8 characters" Counter="true"></MTextField>
                                     </MCol>
                                     <MCol Cols="12">
-                                        <MTextField TValue="string" Placeholder="@T("ConfirmRegisterPassword")" PrependIcon="mdi-lock" Type="password" Hint="At least 8 characters" Counter="true"></MTextField>
+                                        <MTextField TValue="string" Placeholder="@T("Login.ConfirmRegisterPassword")" PrependIcon="mdi-lock" Type="password" Hint="At least 8 characters" Counter="true"></MTextField>
                                     </MCol>
                                     <MCol Cols="12">
-                                        <MTextField Label="@T("Code")" Placeholder="@T("CodeHolder")" TValue="string">
+                                        <MTextField Label="@T("Login.Code")" Placeholder="@T("Login.CodeHolder")" TValue="string">
                                             <AppendContent>
                                                 <MButton Outlined>
-                                                    @T("GetCode")
+                                                    @T("Login.GetCode")
                                                 </MButton>
                                             </AppendContent>
                                         </MTextField>
@@ -172,22 +172,22 @@
                             <MCardText>
                                 <MRow NoGutters>
                                     <MCol Cols="12">
-                                        <MTextField Placeholder="@T("EmailHolder")" TValue="string" PrependIcon="mdi-email"></MTextField>
+                                        <MTextField Placeholder="@T("Login.EmailHolder")" TValue="string" PrependIcon="mdi-email"></MTextField>
                                     </MCol>
                                     <MCol Cols="12">
-                                        <MTextField TValue="string" Placeholder="@T("RegisterPassword")" PrependIcon="mdi-lock" Type="password" Hint="At least 8 characters" Counter="true"></MTextField>
+                                        <MTextField TValue="string" Placeholder="@T("Login.RegisterPassword")" PrependIcon="mdi-lock" Type="password" Hint="At least 8 characters" Counter="true"></MTextField>
                                     </MCol>
                                     <MCol Cols="12">
-                                        <MTextField TValue="string" Placeholder="@T("ConfirmRegisterPassword")" PrependIcon="mdi-lock" Type="password" Hint="At least 8 characters" Counter="true"></MTextField>
+                                        <MTextField TValue="string" Placeholder="@T("Login.ConfirmRegisterPassword")" PrependIcon="mdi-lock" Type="password" Hint="At least 8 characters" Counter="true"></MTextField>
                                     </MCol>
                                     <MCol Cols="12">
-                                        <MTextField Label="@T("Code")" Placeholder="@T("CodeHolder")" TValue="string">
+                                        <MTextField Label="@T("Login.Code")" Placeholder="@T("Login.CodeHolder")" TValue="string">
                                             <AppendContent>
                                                 <MImage Width="100" Height="33" Src="./img/code/CheckCode.jpg" />
                                             </AppendContent>
                                             <AppendOuterContent>
                                                 <MButton Outlined>
-                                                    @T("ChangeCode")
+                                                    @T("Login.ChangeCode")
                                                 </MButton>
                                             </AppendOuterContent>
                                         </MTextField>
@@ -203,13 +203,13 @@
                     <MCol Md="12">
                         <MCheckbox>
                             <LabelContent>
-                                @T("AgreementMsg")<a target="_blank" href="/">《@T("Agreement")》</a>
+                                @T("Login.AgreementMsg")<a target="_blank" href="/">《@T("Login.Agreement")》</a>
                             </LabelContent>
                         </MCheckbox>
                     </MCol>
                     <MCol Md="12">
                         <MButton Color="primary" Block OnClick="() => _registerDialog = false">
-                            @T("Register")
+                            @T("Login.Register")
                         </MButton>
                     </MCol>
                 </MRow>

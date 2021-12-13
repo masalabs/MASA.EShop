@@ -4,13 +4,13 @@
 <PageTitle>Basket</PageTitle>
 
 <div class="head-bread">
-    <h2 class="auto-width">@T("Checkout")</h2>
+    <h2 class="auto-width">@T("Basket.Checkout")</h2>
     <MDivider Vertical />
     <MBreadcrumbs Large class="auto-width" TItem="BreadcrumbItem">
         <MBreadcrumbsItem Disabled="false" Href="/catalog">
             <MIcon Large class='head-bread-icon'>mdi-home</MIcon>
         </MBreadcrumbsItem>
-        <MBreadcrumbsItem Text="@T("Checkout")"></MBreadcrumbsItem>
+        <MBreadcrumbsItem Text="@T("Basket.Checkout")"></MBreadcrumbsItem>
     </MBreadcrumbs>
 </div>
 
@@ -58,7 +58,7 @@
                                             By <span style="margin-left: 0.25rem;color: #7367f0;">Lonsid</span>
                                         </div>
                                         <MRating class="ml-n2" Value="4" Readonly BackgroundColor="orange lighten-3" Color="orange" Small></MRating>
-                                        <span style="margin-bottom: 1rem!important;color: #28c76f;">@T("InStock")</span>
+                                        <span style="margin-bottom: 1rem!important;color: #28c76f;">@T("Basket.InStock")</span>
                                         <MRow Dense>
                                             <MCol Md="@("auto")" Class="mt-2">Qty: </MCol>
                                             <MCol Md="@("auto")"><MTextField style="width:100px;" Label="Qty" Solo Dense Value="@item.Quantity"></MTextField></MCol>
@@ -75,16 +75,16 @@
                                         <h4 style="color: #7367f0;margin-bottom: 0;font-size: 1.286rem;">@item.GetFormattedTotalPrice()</h4>
                                         <p style="margin-top: 0.75rem;line-height: 1.5rem;">
                                             <span class="pa-1" style="font-size: 85%;color: #28c76f;background-color: rgba(40,199,111,.12);border-radius: 10rem;">
-                                                @T("FreeShip","Catalog")
+                                                @T("Catalog.FreeShip")
                                             </span>
                                         </p>
                                         <MButton Block Depressed class="mt-2" OnClick="()=>RemoveItemAsync(item.ProductId)">
                                             <MIcon Left>mdi-close</MIcon>
-                                            @T("Remove","Base")
+                                            @T("Base.Remove")
                                         </MButton>
                                         <MButton Block Depressed class="primary mt-2">
                                             <MIcon Left>mdi-heart-outline</MIcon>
-                                            @T("Wishlist","Catalog")
+                                            @T("Catalog.Wishlist")
                                         </MButton>
                                     </MCol>
                                 </MRow>
@@ -97,46 +97,46 @@
     </MCol>
     <MCol Md="4">
         <MCard>
-            <MSubheader>@T("Options")</MSubheader>
+            <MSubheader>@T("Basket.Options")</MSubheader>
             <MCardText class="pb-0">
-                <MTextField TValue="string" class="coupons" Dense Label="@T("Coupons")">
+                <MTextField TValue="string" class="coupons" Dense Label="@T("Basket.Coupons")">
                     <AppendContent>
-                        <span class="input-group-text text-primary cursor-pointer">@T("Apply")</span>
+                        <span class="input-group-text text-primary cursor-pointer">@T("Basket.Apply")</span>
                     </AppendContent>
                 </MTextField>
                 <MDivider></MDivider>
                 <MListItem>
                     <MListItemTitle class="title">
-                        @T("PriceDetails")
+                        @T("Basket.PriceDetails")
                     </MListItemTitle>
                 </MListItem>
                 <MList Dense>
                     <MListItem>
-                        <MListItemTitle>@T("TotalMRP")</MListItemTitle>
+                        <MListItemTitle>@T("Basket.TotalMRP")</MListItemTitle>
                         <MListItemTitle class="text-right"> $598 </MListItemTitle>
                     </MListItem>
                     <MListItem>
-                        <MListItemTitle>@T("Discount")</MListItemTitle>
+                        <MListItemTitle>@T("Basket.Discount")</MListItemTitle>
                         <MListItemTitle class="text-right"> -25$ </MListItemTitle>
                     </MListItem>
                     <MListItem>
-                        <MListItemTitle>@T("EstimatedTax")</MListItemTitle>
+                        <MListItemTitle>@T("Basket.EstimatedTax")</MListItemTitle>
                         <MListItemTitle class="text-right"> $1.3 </MListItemTitle>
                     </MListItem>
                     <MListItem>
-                        <MListItemTitle>@T("DeliveryCharges")</MListItemTitle>
-                        <MListItemTitle class="text-right"> @T("Free") </MListItemTitle>
+                        <MListItemTitle>@T("Basket.DeliveryCharges")</MListItemTitle>
+                        <MListItemTitle class="text-right"> @T("Basket.Free") </MListItemTitle>
                     </MListItem>
                 </MList>
                 <MDivider></MDivider>
                 <MListItem>
-                    <MListItemTitle class="title"> @T("Total")</MListItemTitle>
+                    <MListItemTitle class="title"> @T("Basket.Total")</MListItemTitle>
                     <MListItemTitle class="text-right title"><span>$</span>@_userBasket.GetFormattedTotalPrice()</MListItemTitle>
                 </MListItem>
             </MCardText>
             <MCardActions>
                 <MButton Block class="primary" OnClick='NavToCheckout'>
-                    @T("PlaceOrder")
+                    @T("Basket.PlaceOrder")
                 </MButton>
             </MCardActions>
         </MCard>

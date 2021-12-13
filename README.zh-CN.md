@@ -1,9 +1,10 @@
 中 | [EN](README.md)
+
 # <center>MASA.EShop</center>
 
 # 介绍
 
-基于eShopOnDapr的`.Net Core`分布式应用程序示例，由[MASA.BuildingBlocks](https://github.com/masastack/MASA.BuildingBlocks), [MASA.Contrib](https://github.com/masastack/MASA.Contrib), [MASA.Utils](https://github.com/masastack/MASA.Utils),[Dapr](https://github.com/dapr/dapr)提供支持。
+基于 eShopOnDapr 的`.Net Core`分布式应用程序示例，由[MASA.BuildingBlocks](https://github.com/masastack/MASA.BuildingBlocks), [MASA.Contrib](https://github.com/masastack/MASA.Contrib), [MASA.Utils](https://github.com/masastack/MASA.Utils),[Dapr](https://github.com/dapr/dapr)提供支持。
 
 ## 目录结构
 
@@ -44,7 +45,7 @@ MASA.EShop
 
 ![结构图](img/eshop.png)
 
-## 项目架构（待更新）
+## 项目架构
 
 ![架构图](img/eshop-architectureks.png)
 
@@ -541,16 +542,16 @@ docker-compose.yml 中增加 dapr 服务;
 
 ```yaml
 dapr-placement:
-  image: 'daprio/dapr:1.4.0'
+  image: "daprio/dapr:1.4.0"
 ```
 
 docker-compose.override.yml 中增加具体命令和端口映射
 
 ```yaml
 dapr-placement:
-  command: ['./placement', '-port', '50000', '-log-level', 'debug']
+  command: ["./placement", "-port", "50000", "-log-level", "debug"]
   ports:
-    - '50000:50000'
+    - "50000:50000"
 ```
 
 对应的 ordering.dapr 服务上增加命令

@@ -24,7 +24,7 @@ public class CatalogCaller : HttpClientCaller
         _getAllTypesUrl = $"{prefix}types";
     }
 
-    public async Task<CatalogData> GetCatalogItemsAsync(int pageIndex, int pageSize, int brandId = -1, int typeId = -1)
+    public async Task<CatalogData?> GetCatalogItemsAsync(int pageIndex, int pageSize, int brandId = -1, int typeId = -1)
     {
         var queryArguments = new Dictionary<string, string?>()
         {
@@ -34,7 +34,7 @@ public class CatalogCaller : HttpClientCaller
             { "pageSize", pageSize.ToString() }
         };
         var url = QueryHelpers.AddQueryString(_getCatalogItemsUrl, queryArguments);
-        return await CallerProvider.GetFromJsonAsync<CatalogData>(url) ?? new();
+        return await CallerProvider.GetFromJsonAsync<CatalogData>(url);
     }
     public async Task<IEnumerable<CatalogBrand>> GetBrandsAsync()
     {
@@ -46,9 +46,9 @@ public class CatalogCaller : HttpClientCaller
         return await CallerProvider.GetFromJsonAsync<IEnumerable<CatalogType>>(_getAllTypesUrl) ?? new List<CatalogType>();
     }
 
-    public async Task<CatalogItem> GetCatalogById(int Id)
+    public async Task<CatalogItem?> GetCatalogById(int Id)
     {
-        return await CallerProvider.GetFromJsonAsync<CatalogItem>($"{prefix}{Id}") ?? new();
+        return await CallerProvider.GetFromJsonAsync<CatalogItem>($"{prefix}{Id}");
     }
 }
 

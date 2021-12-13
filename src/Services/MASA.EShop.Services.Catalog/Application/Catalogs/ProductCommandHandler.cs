@@ -20,7 +20,7 @@ public class ProductCommandHandler
             CatalogTypeId = command.CatalogTypeId,
             Description = command.Description,
             Name = command.Name,
-            PictureFileName = command.PictureFileName,
+            PictureFileName = command.PictureFileName ?? "default.png",
             Price = command.Price
         };
         await _repository.AddAsync(catalogItem);

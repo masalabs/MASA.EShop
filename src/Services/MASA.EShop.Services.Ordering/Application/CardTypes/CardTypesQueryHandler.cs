@@ -10,7 +10,7 @@ public class CardTypesQueryHandler
     }
 
     [EventHandler]
-    public async Task OrderQueryAsync(CardTypesQuery query)
+    public async Task CardTypesQueryAsync(CardTypesQuery query)
     {
         query.Result = await _orderRepository.GetCardTypesAsync();
     }

@@ -11,9 +11,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MASA.Contrib.Service.MinimalAPIs" Version="0.0.7592" />
-    <PackageReference Include="MASA.Utils.Caller.HttpClient" Version="0.0.7849" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.11" />
+    <PackageReference Include="MASA.Contrib.Service.MinimalAPIs" Version="0.0.1497748401" />
+    <PackageReference Include="MASA.Utils.Caller.HttpClient" Version="0.0.1493976048" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
     <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.2.3" />

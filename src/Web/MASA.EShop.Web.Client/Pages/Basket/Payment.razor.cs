@@ -5,8 +5,6 @@ public partial class Payment : EShopPageBase
 {
     private int _payOptions = 1;
 
-    protected override string PageName { get; set; } = "Payment";
-
     [Inject]
     private BasketService _baksetService { get; set; } = default!;
 

@@ -9,8 +9,6 @@ public partial class Catalog : EShopPageBase
     private List<CatalogType> _types = new();
     private string _wishListIcon = "mdi-heart-outline", _wishIconColor = "black";
 
-    protected override string PageName { get; set; } = "Catalog";
-
     [Inject] //todo :change api open
     private CatalogService _catalogService { get; set; } = default!;
 
@@ -79,7 +77,7 @@ public partial class Catalog : EShopPageBase
         }
         catch (Exception ex)
         {
-            Message(ex.Message, BlazorComponent.AlertTypes.Error);
+            Message(ex.Message, AlertTypes.Error);
         }
     }
 

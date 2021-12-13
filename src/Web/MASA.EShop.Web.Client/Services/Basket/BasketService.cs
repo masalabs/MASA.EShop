@@ -35,9 +35,9 @@ public class BasketService : HttpClientCaller
         await CallerProvider.PutAsync($"{addItemUrl}/{userId}/{productId}", null);
     }
 
-    public async Task<UserBasket> GetBasketAsync(string userId)
+    public async Task<UserBasket?> GetBasketAsync(string userId)
     {
-        return await CallerProvider.GetFromJsonAsync<UserBasket>($"{getBasketUrl}{userId}");
+        return await CallerProvider.GetFromJsonAsync<UserBasket>($"{getBasketUrl}{userId}") ?? new UserBasket(userId, new List<BasketItem>());
     }
 
     public Task<UserBasket> UpdateBasketAsync(UserBasket basket)

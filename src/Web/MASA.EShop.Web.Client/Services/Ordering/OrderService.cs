@@ -28,9 +28,9 @@ public class OrderService : HttpClientCaller
         return await CallerProvider.GetFromJsonAsync<List<OrderSummary>>($"{getOrdersUrl}?userId={userId}") ?? new List<OrderSummary>();
     }
 
-    public async Task<Order> GetOrder(string userId, int orderNumber)
+    public async Task<Order?> GetOrder(string userId, int orderNumber)
     {
-        return await CallerProvider.GetFromJsonAsync<Order>($"{prefix}{userId}/{orderNumber}");
+        return await CallerProvider.GetFromJsonAsync<Order>($"{prefix}{userId}/{orderNumber}") ?? new Order();
     }
 
     public async Task ShipOrder(int orderNumber)

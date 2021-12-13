@@ -8,8 +8,6 @@ public partial class Login : EShopPageBase
     private StringNumber _registerTabIndex = 0, _forgetPwdTabIndex = 0, _loginTabIndex = 0;
     private bool _showPwd = false;
 
-    protected override string PageName { get; set; } = "Login";
-
     private async void LoginHandler()
     {
         if (_userName.Equals("masa") && _password.Equals("eshop"))

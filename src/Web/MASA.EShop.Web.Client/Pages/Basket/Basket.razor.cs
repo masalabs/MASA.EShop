@@ -5,8 +5,6 @@ public partial class Basket : EShopPageBase
 {
     private UserBasket _userBasket = new UserBasket("", new List<BasketItem>());
 
-    protected override string PageName { get; set; } = "Basket";
-
     [Inject]
     private BasketService _baksetService { get; set; } = default!;
 
@@ -21,7 +19,13 @@ public partial class Basket : EShopPageBase
         try
         {
             //User.Identity.Name
-            _userBasket = await _baksetService.GetBasketAsync("masa");
+            var userBasket = await _baksetService.GetBasketAsync("masa");
+            if (userBasket is null)
+            {
+                Message("Not Found");
+                return;
+            }
+            _userBasket = userBasket;
         }
         catch (Exception ex)
         {
@@ -33,7 +37,13 @@ public partial class Basket : EShopPageBase
     {
         try
         {
-            await _baksetService.RemoveItemAsync(User.Identity.Name, productId);
+            var name = User.Identity?.Name;
+            if (string.IsNullOrEmpty(name))
+            {
+                Navigation("/login");
+                return;
+            }
+            await _baksetService.RemoveItemAsync(name, productId);
             await LoadBasketAsync();
         }
         catch (Exception ex)
