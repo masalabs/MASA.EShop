@@ -49,4 +49,4 @@ services:
       dockerfile: src/Api/MASA.EShop.Api.Open/Dockerfile
 
   dapr-placement:
-    image: "daprio/dapr:1.4.0"
+    image: "daprio/dapr:1.5.1"

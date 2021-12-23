@@ -30,8 +30,8 @@ public class SimulateAuthStateProvider : AuthenticationStateProvider
         var user = new ClaimsPrincipal(identity);
         var authState = new AuthenticationState(user);
 
-        NotifyAuthenticationStateChanged(Task.FromResult(authState));
-
+        //NotifyAuthenticationStateChanged(Task.FromResult(authState));
+        await Task.Delay(200);
         return authState;
     }
 }

@@ -9,8 +9,8 @@
             <Authorized>
                 <MButton Icon Large OnClick='()=>Navigation("basket")'><MIcon>mdi-cart</MIcon></MButton>
                 <MMenu OffsetX Left OffsetY>
-                    <ActivatorContent Context="__">
-                        <MButton Icon Large @attributes="@__.Attrs"><MIcon>mdi-account-circle-outline</MIcon></MButton>
+                    <ActivatorContent Context="activator_context">
+                        <MButton Icon Large @attributes="@activator_context.Attrs"><MIcon>mdi-account-circle-outline</MIcon></MButton>
                     </ActivatorContent>
                     <ChildContent>
                         <MList Dense>
@@ -58,7 +58,7 @@
         </MContainer>
     </MMain>
 
-    <Message @bind-Visible="_message.Visible" Timeout="_message.Timeout" Type="_message.Type">
+    <Message @bind-Value="_message.Visible" Timeout="_message.Timeout" Type="_message.Type">
         @_message.Content
     </Message>
 </MApp>

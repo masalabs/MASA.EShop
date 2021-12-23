@@ -50,7 +50,7 @@
     </MCol>
 </MRow>
 
-<MNavigationDrawer Absolute Temporary Right @bind-Value="_detailDialog" Width="600" class="pa-3">
+<MNavigationDrawer Absolute Temporary Right @bind-Value=_detailDialog Width="600" class="pa-3">
     <MRow>
         <MCol Md="@("auto")">@T("Order.Number"):@_order.OrderNumber</MCol>
         <MSpacer></MSpacer>
@@ -154,13 +154,13 @@
                             </MListItemSubtitle>
                         </MListItem>
                         <MListItem Dense style="min-height:28px;">
-                            <MListItemSubtitle style="flex: none;width: 100px;">@T("Consignee"):</MListItemSubtitle>
+                            <MListItemSubtitle style="flex: none;width: 100px;">@T("Order.Consignee"):</MListItemSubtitle>
                             <MListItemSubtitle>
                                 叶子
                             </MListItemSubtitle>
                         </MListItem>
                         <MListItem Dense style="min-height:28px;">
-                            <MListItemSubtitle style="flex: none;width: 100px;">@T("ConsigneePhone"):</MListItemSubtitle>
+                            <MListItemSubtitle style="flex: none;width: 100px;">@T("Order.ConsigneePhone"):</MListItemSubtitle>
                             <MListItemSubtitle>
                                 18000000000
                             </MListItemSubtitle>
@@ -177,6 +177,5 @@
             </MCard>
         </MCol>
     </MRow>
-
-    <MButton class="mt-6" Color="red" Outlined Block>@T("Order.CancelOrder")</MButton>
+    <MButton class="mt-6" Color="red" Outlined Block>@T("Order.Cancel")</MButton>
 </MNavigationDrawer>

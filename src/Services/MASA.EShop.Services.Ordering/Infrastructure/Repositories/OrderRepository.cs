@@ -9,7 +9,7 @@ public class OrderRepository : IOrderRepository
     public OrderRepository(OrderingContext orderingContext)
     {
         _orderingContext = orderingContext ?? throw new ArgumentNullException(nameof(orderingContext));
-        _orderingContext.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+        //_orderingContext.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
     }
 
     public async Task<Order> AddOrGetOrderAsync(Order order)

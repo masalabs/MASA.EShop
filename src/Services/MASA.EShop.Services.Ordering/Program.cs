@@ -33,12 +33,11 @@ var app = builder.Services
             Description = "The Ordering Service HTTP API"
         });
     })
+    .AddMasaDbContext<OrderingContext>(dbOptions => dbOptions.UseSqlServer("Data Source=masa.eshop.services.eshop.database;uid=sa;pwd=P@ssw0rd;database=order"))
     .AddScoped<IOrderRepository, OrderRepository>()
     .AddDaprEventBus<IntegrationEventLogService>(options =>
     {
-        options.UseEventBus()
-               .UseUoW<OrderingContext>(dbOptions => dbOptions.UseSqlServer("Data Source=masa.eshop.services.eshop.database;uid=sa;pwd=P@ssw0rd;database=order"))
-               .UseEventLog<OrderingContext>();
+        options.UseEventBus().UseEventLog<OrderingContext>();
     })
     .AddResponseCompression(opts => //添加压缩中间件服务
     {

@@ -22,8 +22,8 @@ var app = builder.Services
     .AddDaprEventBus<IntegrationEventLogService>(options =>
     {
         options.UseEventBus()
-               .UseUoW<CatalogDbContext>(dbOptions => dbOptions.UseSqlServer("server=masa.eshop.services.eshop.database;uid=sa;pwd=P@ssw0rd;database=catalog"))
-               .UseEventLog<CatalogDbContext>();
+            .UseUoW<CatalogDbContext>(dbOptions => dbOptions.UseSqlServer("server=masa.eshop.services.eshop.database;uid=sa;pwd=P@ssw0rd;database=catalog"))
+            .UseEventLog<CatalogDbContext>();
     })
     .AddServices(builder);
 
@@ -48,5 +48,7 @@ app.UseEndpoints(endpoint =>
 {
     endpoint.MapSubscribeHandler();
 });
+
 app.Run();
+
 

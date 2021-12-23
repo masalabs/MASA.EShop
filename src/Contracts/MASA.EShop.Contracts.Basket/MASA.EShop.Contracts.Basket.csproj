@@ -8,7 +8,7 @@
 
 
 	<ItemGroup>
-		<PackageReference Include="MASA.Contrib.Dispatcher.IntegrationEvents.Dapr" Version="0.0.1497748401" />
+		<PackageReference Include="MASA.Contrib.Dispatcher.IntegrationEvents.Dapr" Version="0.0.1571847788" />
 	</ItemGroup>
 	
 </Project>

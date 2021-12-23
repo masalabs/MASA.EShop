@@ -21,6 +21,7 @@ builder.Services.AddScoped<I18n>();
 
 builder.Services.AddCallerService();
 
+
 // Add Authentication services
 builder.Services.AddAuthentication(options =>
 {
@@ -41,6 +42,9 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
+builder.Services.AddAuthentication();
+builder.Services.AddAuthorization();
+
 app.UseRouting();
 
 app.UseAuthentication();
@@ -51,23 +55,15 @@ app.MapFallbackToPage("/_Host");
 
 #region I18n
 
-//app.UseRequestLocalization(opts =>
-//{
-//    var supportedCultures = new List<CultureInfo>
-//    {
-//        new CultureInfo("en-US"),
-//        new CultureInfo("zh-CN")
-//    };
-//    opts.SupportedCultures = supportedCultures;
-//    opts.SupportedUICultures = supportedCultures;
-//});
-
 var langfileNames = new string[] { "en-US.json", "zh-CN.json" };
 langfileNames.ForEach(langFileName =>
 {
     var path = Path.Combine(app.Environment.ContentRootPath, "Resources", langFileName);
     var json = File.ReadAllText(path);
-    I18n.AddLang(Path.GetFileNameWithoutExtension(path), JsonSerializer.Deserialize<Dictionary<string, string>>(json));
+    I18n.AddLang(Path.GetFileNameWithoutExtension(path),
+        JsonSerializer.Deserialize<Dictionary<string, string>>(json),
+        langFileName.Contains("zh-CN")
+    );
 });
 
 #endregion

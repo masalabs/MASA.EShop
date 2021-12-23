@@ -9,6 +9,10 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["nuget.config", "."]
 COPY ["src/Services/MASA.EShop.Services.Ordering/MASA.EShop.Services.Ordering.csproj", "src/Services/MASA.EShop.Services.Ordering/"]
+COPY ["src/Contracts/MASA.EShop.Contracts.Basket/MASA.EShop.Contracts.Basket.csproj", "src/Contracts/MASA.EShop.Contracts.Basket/"]
+COPY ["src/Contracts/MASA.EShop.Contracts.Ordering/MASA.EShop.Contracts.Ordering.csproj", "src/Contracts/MASA.EShop.Contracts.Ordering/"]
+COPY ["src/Contracts/MASA.EShop.Contracts.Payment/MASA.EShop.Contracts.Payment.csproj", "src/Contracts/MASA.EShop.Contracts.Payment/"]
+COPY ["src/Contracts/MASA.EShop.Contracts.Catalog/MASA.EShop.Contracts.Catalog.csproj", "src/Contracts/MASA.EShop.Contracts.Catalog/"]
 RUN dotnet restore "src/Services/MASA.EShop.Services.Ordering/MASA.EShop.Services.Ordering.csproj"
 COPY . .
 WORKDIR "/src/src/Services/MASA.EShop.Services.Ordering"

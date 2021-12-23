@@ -11,11 +11,11 @@
 
   <ItemGroup>
     <PackageReference Include="Dapr.AspNetCore" Version="1.5.0" />
-    <PackageReference Include="MASA.Blazor" Version="0.2.7415" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.11" />
-    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="5.0.11" />
+    <PackageReference Include="MASA.Utils.Caller.HttpClient" Version="0.0.1604934905" />
+    <PackageReference Include="MASA.Blazor" Version="0.2.9202" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="6.0.1" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
-    <PackageReference Include="MASA.Utils.Caller.HttpClient" Version="0.0.1493976048" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,12 +25,6 @@
     <ProjectReference Include="..\..\Contracts\MASA.EShop.Contracts.Ordering\MASA.EShop.Contracts.Ordering.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="MASA.Blazor" Version="0.2.8633" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="6.0.0" />
-    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
-  </ItemGroup>
 	<ItemGroup>
 		<Folder Include="wwwroot\img\" />
 	</ItemGroup>

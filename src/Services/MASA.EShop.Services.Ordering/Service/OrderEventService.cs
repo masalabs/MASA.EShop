@@ -9,6 +9,7 @@ public class OrderEventService : ServiceBase
         IServiceCollection services,
         ILogger<OrderEventService> logger) : base(services)
     {
+        ArgumentNullException.ThrowIfNull(logger,nameof(logger));
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
 
         App.MapPost("/api/v1/orders/paymentsucceeded", OrderPaymentSucceeded);

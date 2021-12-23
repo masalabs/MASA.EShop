@@ -105,7 +105,7 @@
                     </MRow>
                     <MRow>
                         <MCol Class="text-right">
-                            <MButton class="primary" Click="()=>SubmitOrder(context)">
+                            <MButton class="primary" OnClick="()=>SubmitOrder(context)">
                                 @T("Basket.SaveAndDeliver")
                             </MButton>
                         </MCol>
@@ -126,7 +126,7 @@
                 <p class="mt-1 mb-1">@_shipAddressViewModel.CardNumber</p>
             </MCardText>
             <MCardActions>
-                <MButton class="primary" Block Click="()=>SubmitShipedOrder()">
+                <MButton class="primary" Block OnClick="SubmitShipedOrder">
                     @T("Basket.DeliverTo")
                 </MButton>
             </MCardActions>

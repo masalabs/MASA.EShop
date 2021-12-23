@@ -10,25 +10,17 @@ public class OrderingProcessActor : Actor, IOrderingProcessActor, IRemindable
     private const string StockRejectedReminder = "StockRejected";
 
     private readonly ILogger<OrderingProcessActor> _logger;
-    private readonly IServiceCollection _serviceCollection;
+    private readonly IIntegrationEventBus _integrationEventBus;
 
     private Guid OrderId => Guid.Parse(Id.GetId());
-
-    public IOrderRepository OrderRepository
-    {
-        get
-        {
-            return _serviceCollection.BuildServiceProvider().GetRequiredService<IOrderRepository>();
-        }
-    }
 
     public OrderingProcessActor(
         ActorHost host,
         ILogger<OrderingProcessActor> logger,
-        IServiceCollection serviceCollection) : base(host)
+        IIntegrationEventBus integrationEventBus) : base(host)
     {
         _logger = logger;
-        _serviceCollection = serviceCollection;
+        _integrationEventBus = integrationEventBus;
     }
 
     public async Task Submit(string userId, string userName, string street, string city,
@@ -70,13 +62,11 @@ public class OrderingProcessActor : Actor, IOrderingProcessActor, IRemindable
             TimeSpan.FromMilliseconds(-1));
 
         var modelOrder = Entities.Order.FromActorState(OrderId, order);
-        //Generate OrderNumber
-        modelOrder.OrderNumber = int.Parse(DateTimeOffset.Now.ToString("HHmmssfff"));
-        modelOrder = await OrderRepository.AddOrGetOrderAsync(modelOrder);
+        var addOrderCommand = new AddOrderCommand(modelOrder);
+        await _integrationEventBus.PublishAsync(addOrderCommand);
+        modelOrder = addOrderCommand.Result;
 
-        var integrationEventBus = _serviceCollection.BuildServiceProvider().GetRequiredService<IIntegrationEventBus>();
-
-        await integrationEventBus.PublishAsync(new OrderStatusChangedToSubmittedEvent(
+        await _integrationEventBus.PublishAsync(new OrderStatusChangedToSubmittedEvent(
             OrderId,
             OrderStatus.Submitted.Name,
             userId,
@@ -87,8 +77,7 @@ public class OrderingProcessActor : Actor, IOrderingProcessActor, IRemindable
             OrderStatus.Submitted.Name,
             userId,
             userName);
-        await integrationEventBus.PublishAsync(@event);
-        await integrationEventBus.CommitAsync();
+        await _integrationEventBus.PublishAsync(@event);
     }
 
     public async Task<bool> Cancel()
@@ -98,7 +87,6 @@ public class OrderingProcessActor : Actor, IOrderingProcessActor, IRemindable
         {
             _logger.LogWarning("Order with Id: {OrderId} cannot be cancelled because it doesn't exist",
                 OrderId);
-
             return false;
         }
 
@@ -106,22 +94,19 @@ public class OrderingProcessActor : Actor, IOrderingProcessActor, IRemindable
         {
             _logger.LogWarning("Order with Id: {OrderId} cannot be cancelled because it's in status {Status}",
                 OrderId, orderStatus.Value.Name);
-
             return false;
         }
 
         await StateManager.SetStateAsync(OrderStatusStateName, OrderStatus.Cancelled);
 
         var order = await StateManager.GetStateAsync<Order>(OrderDetailsStateName);
-
-        var integrationEventBus = _serviceCollection.BuildServiceProvider().GetRequiredService<IIntegrationEventBus>();
-        await integrationEventBus.PublishAsync(new OrderStatusChangedToCancelledEvent(
+        await _integrationEventBus.PublishAsync(new OrderStatusChangedToCancelledEvent(
            OrderId,
            OrderStatus.Cancelled.Name,
            $"The order was cancelled by buyer.",
            order.UserName));
 
-        await integrationEventBus.PublishAsync(new OrderStatusChangedToCancelledIntegrationEvent(
+        await _integrationEventBus.PublishAsync(new OrderStatusChangedToCancelledIntegrationEvent(
             OrderId,
             OrderStatus.Cancelled.Name,
             $"The order was cancelled by buyer.",
@@ -137,8 +122,7 @@ public class OrderingProcessActor : Actor, IOrderingProcessActor, IRemindable
         {
             var order = await StateManager.GetStateAsync<Order>(OrderDetailsStateName);
 
-            var integrationEventBus = _serviceCollection.BuildServiceProvider().GetRequiredService<IIntegrationEventBus>();
-            await integrationEventBus.PublishAsync(new OrderStatusChangedToShippedIntegrationEvent(
+            await _integrationEventBus.PublishAsync(new OrderStatusChangedToShippedIntegrationEvent(
                 OrderId,
                 OrderStatus.Shipped.Name,
                 "The order was shipped.",
@@ -157,7 +141,6 @@ public class OrderingProcessActor : Actor, IOrderingProcessActor, IRemindable
         {
             _logger.LogWarning("Order with Id: {OrderId} cannot be updated because it doesn't exist",
                 OrderId);
-
             return false;
         }
 
@@ -165,7 +148,6 @@ public class OrderingProcessActor : Actor, IOrderingProcessActor, IRemindable
         {
             _logger.LogWarning("Order with Id: {OrderId} is in status {Status} instead of expected status {ExpectedStatus}",
                 OrderId, orderStatus.Value.Name, expectedOrderStatus.Name);
-
             return false;
         }
 
@@ -200,8 +182,7 @@ public class OrderingProcessActor : Actor, IOrderingProcessActor, IRemindable
         {
             var order = await StateManager.GetStateAsync<Order>(OrderDetailsStateName);
 
-            var integrationEventBus = _serviceCollection.BuildServiceProvider().GetRequiredService<IIntegrationEventBus>();
-            await integrationEventBus.PublishAsync(new OrderStatusChangedToAwaitingStockValidationIntegrationEvent(
+            await _integrationEventBus.PublishAsync(new OrderStatusChangedToAwaitingStockValidationIntegrationEvent(
                 OrderId,
                 OrderStatus.AwaitingStockValidation.Name,
                 "Grace period elapsed; waiting for stock validation.",
@@ -214,8 +195,7 @@ public class OrderingProcessActor : Actor, IOrderingProcessActor, IRemindable
     public async Task OnStockConfirmedSimulatedWorkDone()
     {
         var order = await StateManager.GetStateAsync<Order>(OrderDetailsStateName);
-        var integrationEventBus = _serviceCollection.BuildServiceProvider().GetRequiredService<IIntegrationEventBus>();
-        await integrationEventBus.PublishAsync(new OrderStatusChangedToValidatedIntegrationEvent(
+        await _integrationEventBus.PublishAsync(new OrderStatusChangedToValidatedIntegrationEvent(
             OrderId,
             OrderStatus.Validated.Name,
             "All the items were confirmed with available stock.",
@@ -232,8 +212,7 @@ public class OrderingProcessActor : Actor, IOrderingProcessActor, IRemindable
             .Select(orderItem => orderItem.ProductName);
 
         var rejectedDescription = string.Join(", ", rejectedProductNames);
-        var integrationEventBus = _serviceCollection.BuildServiceProvider().GetRequiredService<IIntegrationEventBus>();
-        await integrationEventBus.PublishAsync(new OrderStatusChangedToCancelledIntegrationEvent(
+        await _integrationEventBus.PublishAsync(new OrderStatusChangedToCancelledIntegrationEvent(
             OrderId,
             OrderStatus.Cancelled.Name,
             $"The following product items don't have stock: ({rejectedDescription}).",
@@ -246,8 +225,7 @@ public class OrderingProcessActor : Actor, IOrderingProcessActor, IRemindable
         if (statusChanged)
         {
             var order = await StateManager.GetStateAsync<Order>(OrderDetailsStateName);
-            var integrationEventBus = _serviceCollection.BuildServiceProvider().GetRequiredService<IIntegrationEventBus>();
-            await integrationEventBus.PublishAsync(new OrderStatusChangedToPaidIntegrationEvent(
+            await _integrationEventBus.PublishAsync(new OrderStatusChangedToPaidIntegrationEvent(
                 OrderId,
                 OrderStatus.Paid.Name,
                 "The payment was performed at a simulated \"American Bank checking bank account ending on XX35071\"",
@@ -269,8 +247,7 @@ public class OrderingProcessActor : Actor, IOrderingProcessActor, IRemindable
         if (statusChanged)
         {
             var order = await StateManager.GetStateAsync<Order>(OrderDetailsStateName);
-            var integrationEventBus = _serviceCollection.BuildServiceProvider().GetRequiredService<IIntegrationEventBus>();
-            await integrationEventBus.PublishAsync(new OrderStatusChangedToCancelledIntegrationEvent(
+            await _integrationEventBus.PublishAsync(new OrderStatusChangedToCancelledIntegrationEvent(
                 OrderId,
                 OrderStatus.Cancelled.Name,
                 "The order was cancelled because payment failed.",

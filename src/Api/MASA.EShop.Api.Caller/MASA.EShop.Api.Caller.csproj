@@ -8,11 +8,11 @@
 
   <ItemGroup>
     <PackageReference Include="Dapr.Client" Version="1.5.0" />
-    <PackageReference Include="MASA.Utils.Caller.DaprClient" Version="0.0.1493976048" />
+    <PackageReference Include="MASA.Utils.Caller.DaprClient" Version="0.0.1604934905" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="6.0.0" />
-    <PackageReference Include="MASA.Utils.Caller.HttpClient" Version="0.0.1493976048" />
+    <PackageReference Include="MASA.Utils.Caller.HttpClient" Version="0.0.1604934905" />
   </ItemGroup>
 
 </Project>

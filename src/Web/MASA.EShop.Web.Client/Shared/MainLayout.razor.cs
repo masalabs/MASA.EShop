@@ -25,7 +25,7 @@ public partial class MainLayout
 
     private void ChangeLanguage()
     {
-        var changeLanguage = "";
+        string? changeLanguage;
         if (I18n.CurrentLanguage == "zh-CN")
         {
             changeLanguage = "en-US";

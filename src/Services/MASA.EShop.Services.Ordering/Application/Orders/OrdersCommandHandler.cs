@@ -31,6 +31,17 @@ public class OrdersCommandHandler
     }
 
     [EventHandler]
+    public async Task AddOrderAsync(AddOrderCommand command)
+    {
+        if (command.Order.OrderNumber == 0)
+        {
+            //Generate OrderNumber
+            command.Order.OrderNumber = int.Parse(DateTimeOffset.Now.ToString("HHmmssfff"));
+        }
+        command.Result = await _orderRepository.AddOrGetOrderAsync(command.Order);
+    }
+
+    [EventHandler]
     public async Task ShipOrderAsync(ShipOrderCommand command)
     {
         var orderingProcessActor = await GetOrderingProcessActorAsync(command.OrderNumber);

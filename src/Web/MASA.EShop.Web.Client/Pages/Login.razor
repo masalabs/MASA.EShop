@@ -3,13 +3,12 @@
 
 <PageTitle>@T("Login.Login")</PageTitle>
 
-<MContainer class="justify-center align-center">
+<MContainer>
     <MRow Justify="JustifyTypes.Center" Align="AlignTypes.Center">
-        <MCol Md="@("auto")" class="text-center">
-            <img style="width:400px;" src="https://picsum.photos/id/11/500/300" />
+        <MCol Md="@("auto")" class="d-flex align-center flex-column mt-12">
+            <MImage Width="400" src="https://picsum.photos/id/11/500/300" />
             <MCard class="mt-5 pt-0" Width="550">
-                <MTabs @bind-Value="_loginTabIndex"
-                       Centered>
+                <MTabs @bind-Value="_loginTabIndex" Centered>
                     <MTab Value="0">
                         @T("Login.PWDLogin")
                     </MTab>
@@ -18,7 +17,7 @@
                         @T("Login.SMSLogin")
                     </MTab>
                 </MTabs>
-                <MTabsItems Value="_loginTabIndex">
+                <MTabsItems @bind-Value="_loginTabIndex">
                     <MTabItem Value="0">
                         <MCardText>
                             <MTextField class="input-group--focused mr-2" Label="@T("Login.UserName")" @bind-Value="_userName"></MTextField>
@@ -60,14 +59,11 @@
     </MRow>
 </MContainer>
 
-
-<MDialog @bind-Value="_forgetPwdDialog"
-         Persistent Width="500">
+<MDialog @bind-Value="_forgetPwdDialog" Persistent Width="500">
     <ChildContent>
         <MCard>
             <MCardText>
-                <MTabs @bind-Value="_forgetPwdTabIndex"
-                       Centered>
+                <MTabs @bind-Value="_forgetPwdTabIndex" Centered>
                     <MTab Value="0">
                         @T("Login.SMSRetrieve")
                     </MTab>
@@ -76,7 +72,7 @@
                         @T("Login.EmailRetrieve")
                     </MTab>
                 </MTabs>
-                <MTabsItems Value="_forgetPwdTabIndex">
+                <MTabsItems @bind-Value="_forgetPwdTabIndex">
                     <MTabItem Value="0">
                         <MCard Flat>
                             <MCardText>
@@ -119,9 +115,7 @@
     </ChildContent>
 </MDialog>
 
-<MDialog @bind-Value="_registerDialog"
-         Persistent
-         Width="660">
+<MDialog @bind-Value="_registerDialog" Persistent Width="660">
     <ChildContent>
         <MCard>
             <MCardTitle>
@@ -140,7 +134,7 @@
                     </MTab>
                 </MTabs>
 
-                <MTabsItems Value="_registerTabIndex">
+                <MTabsItems @bind-Value="_registerTabIndex">
                     <MTabItem Value="0">
                         <MCard Flat>
                             <MCardText>
