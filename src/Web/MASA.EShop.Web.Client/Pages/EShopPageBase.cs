@@ -11,7 +11,7 @@ public class EShopPageBase : PageBase
     [Inject]
     protected I18n I18n { get; set; } = default!;
 
-    protected Localizer T
+    public Localizer T
     {
         get
         {
@@ -27,9 +27,9 @@ public class EShopPageBase : PageBase
         }
     }
 
-    protected bool IsAuthenticated;
+    public bool IsAuthenticated;
 
-    protected ClaimsPrincipal User { get; private set; } = default!;
+    public ClaimsPrincipal User { get; private set; } = default!;
 
     [CascadingParameter]
     protected Task<AuthenticationState> AuthenticationStateTask { get; set; } = default!;

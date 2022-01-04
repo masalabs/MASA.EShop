@@ -7,13 +7,19 @@ public partial class Catalog : EShopPageBase
     private CatalogOptinsModel _catalogOptinsModel = new() { Type = -1, Brand = -1 };
     private List<CatalogBrand> _brands = new();
     private List<CatalogType> _types = new();
-    private string _wishListIcon = "mdi-heart-outline", _wishIconColor = "black";
-
-    [Inject] //todo :change api open
-    private CatalogService _catalogService { get; set; } = default!;
+    private List<string> SortItems = new()
+    {
+        "Featured",
+        "Lowest",
+        "Highest"
+    };
+    private bool _show = false;
 
     [Inject]
-    private BasketService _baksetService { get; set; } = default!;
+    private CatalogService CatalogService { get; set; } = default!;
+
+    [Inject]
+    private BasketService BaksetService { get; set; } = default!;
 
     protected override async Task OnInitializedAsync()
     {
@@ -34,7 +40,7 @@ public partial class Catalog : EShopPageBase
 
         try
         {
-            brands.AddRange(await _catalogService.GetBrandsAsync());
+            brands.AddRange(await CatalogService.GetBrandsAsync());
         }
         catch
         {
@@ -53,7 +59,7 @@ public partial class Catalog : EShopPageBase
 
         try
         {
-            types.AddRange(await _catalogService.GetTypesAsync());
+            types.AddRange(await CatalogService.GetTypesAsync());
         }
         catch
         {
@@ -73,7 +79,7 @@ public partial class Catalog : EShopPageBase
     {
         try
         {
-            _catalogViewModel = await _catalogService.GetCatalogItemsAsync(_catalogOptinsModel.PageIndex, 9, _catalogOptinsModel.Brand, _catalogOptinsModel.Type);
+            _catalogViewModel = await CatalogService.GetCatalogItemsAsync(_catalogOptinsModel.PageIndex, 9, _catalogOptinsModel.Brand, _catalogOptinsModel.Type);
         }
         catch (Exception ex)
         {
@@ -85,29 +91,12 @@ public partial class Catalog : EShopPageBase
     {
         if (IsAuthenticated)
         {
-            await _baksetService.AddItemToBasketAsync("masa", item.Id);
+            await BaksetService.AddItemToBasketAsync("masa", item.Id);
             Navigation("basket");
         }
         else
         {
             Navigation("/");
-        }
-    }
-
-    /// <summary>
-    /// simulate add wishlist ui effect(bad with all element handle not specify element)
-    /// </summary>
-    private void AddWishList()
-    {
-        if (_wishIconColor == "black")
-        {
-            _wishListIcon = "mdi-heart";
-            _wishIconColor = "red";
-        }
-        else
-        {
-            _wishListIcon = "mdi-heart-outline";
-            _wishIconColor = "black";
         }
     }
 }

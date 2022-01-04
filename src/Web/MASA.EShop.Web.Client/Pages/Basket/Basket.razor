@@ -3,143 +3,62 @@
 
 <PageTitle>Basket</PageTitle>
 
-<div class="head-bread">
-    <h2 class="auto-width">@T("Basket.Checkout")</h2>
-    <MDivider Vertical />
-    <MBreadcrumbs Large class="auto-width" TItem="BreadcrumbItem">
-        <MBreadcrumbsItem Disabled="false" Href="/catalog">
-            <MIcon Large class='head-bread-icon'>mdi-home</MIcon>
-        </MBreadcrumbsItem>
-        <MBreadcrumbsItem Text="@T("Basket.Checkout")"></MBreadcrumbsItem>
+<div class="d-flex block-center pb-6 pt-1">
+    <div class="text-subtitle">
+        @T("Basket.Checkout")
+    </div>
+
+    <div class="mx-4 border-solid" style="height:16px;width:0.5px;" />
+
+    <MBreadcrumbs Linkage Class="pa-0">
+        <DividerContent>
+            <MIcon Small>mdi-chevron-right</MIcon>
+        </DividerContent>
+        <ChildContent>
+            <MBreadcrumbsItem Disabled="false" Href="/catalog">
+                <MIcon Small Color="primary">fas fa-home</MIcon>
+            </MBreadcrumbsItem>
+            <MBreadcrumbsItem Text="@T("Basket.Checkout")"></MBreadcrumbsItem>
+        </ChildContent>
     </MBreadcrumbs>
 </div>
 
-<MRow>
-    <MCol Md="12">
-        <MStepper AltLabels>
-            <MStepperHeader>
-                <MStepperStep Step="1" Complete>
-                    Cart
-                </MStepperStep>
-                <MDivider></MDivider>
-                <MStepperStep Step="2">
-                    Address
-                </MStepperStep>
-                <MDivider></MDivider>
-                <MStepperStep Step="3">
-                    Payment
-                </MStepperStep>
-                <MDivider></MDivider>
-                <MStepperStep Step="4">
-                    Completed
-                </MStepperStep>
-            </MStepperHeader>
-        </MStepper>
-    </MCol>
-</MRow>
-
-<MRow>
-    <MCol Md="8">
-        <MContainer>
-            <MRow>
-                @foreach (var item in _userBasket.Items)
-                {
-
-                    <MCol Md="12" class="mb-5">
-                        <MHover>
-                            <MCard @attributes="context.Attrs" Class="@($"{context.Class} {(context.Hover ? "on-hover" : "")}")" Elevation="@(context.Hover ? 12 : 2)">
-                                <MRow>
-                                    <MCol Md="3" Align="AlignTypes.Center" Class="pa-6 d-flex flex-column align-center">
-                                        <img src="@item.GetPictureUrl()" style="width:100%;height:auto;max-height:200px;" />
-                                    </MCol>
-                                    <MCol Md="6" Align="AlignTypes.Center" Class="pa-6 d-flex flex-column">
-                                        <h6 class="mb-0">@item.ProductName</h6>
-                                        <div style="margin: 0.3rem 0 0.5rem;font-weight: 400;font-size: .875rem;">
-                                            By <span style="margin-left: 0.25rem;color: #7367f0;">Lonsid</span>
-                                        </div>
-                                        <MRating class="ml-n2" Value="4" Readonly BackgroundColor="orange lighten-3" Color="orange" Small></MRating>
-                                        <span style="margin-bottom: 1rem!important;color: #28c76f;">@T("Basket.InStock")</span>
-                                        <MRow Dense>
-                                            <MCol Md="@("auto")" Class="mt-2">Qty: </MCol>
-                                            <MCol Md="@("auto")"><MTextField style="width:100px;" Label="Qty" Solo Dense Value="@item.Quantity"></MTextField></MCol>
-                                        </MRow>
-                                        <span style="color: #b9b9c3;margin-top: 1.2rem;margin-bottom: 0.25rem;">
-                                            Delivery by Thu, Oct 28
-                                        </span>
-                                        <div style="color:#28c76f">
-                                            3% off 1 offers Available
-                                        </div>
-                                    </MCol>
-                                    <MDivider Vertical />
-                                    <MCol Md="3" Align="AlignTypes.Center" Class="pa-6 d-flex flex-column align-center">
-                                        <h4 style="color: #7367f0;margin-bottom: 0;font-size: 1.286rem;">@item.GetFormattedTotalPrice()</h4>
-                                        <p style="margin-top: 0.75rem;line-height: 1.5rem;">
-                                            <span class="pa-1" style="font-size: 85%;color: #28c76f;background-color: rgba(40,199,111,.12);border-radius: 10rem;">
-                                                @T("Catalog.FreeShip")
-                                            </span>
-                                        </p>
-                                        <MButton Block Depressed class="mt-2" OnClick="()=>RemoveItemAsync(item.ProductId)">
-                                            <MIcon Left>mdi-close</MIcon>
-                                            @T("Base.Remove")
-                                        </MButton>
-                                        <MButton Block Depressed class="primary mt-2">
-                                            <MIcon Left>mdi-heart-outline</MIcon>
-                                            @T("Catalog.Wishlist")
-                                        </MButton>
-                                    </MCol>
-                                </MRow>
-                            </MCard>
-                        </MHover>
-                    </MCol>
-                }
-            </MRow>
-        </MContainer>
-    </MCol>
-    <MCol Md="4">
-        <MCard>
-            <MSubheader>@T("Basket.Options")</MSubheader>
-            <MCardText class="pb-0">
-                <MTextField TValue="string" class="coupons" Dense Label="@T("Basket.Coupons")">
-                    <AppendContent>
-                        <span class="input-group-text text-primary cursor-pointer">@T("Basket.Apply")</span>
-                    </AppendContent>
-                </MTextField>
-                <MDivider></MDivider>
-                <MListItem>
-                    <MListItemTitle class="title">
-                        @T("Basket.PriceDetails")
-                    </MListItemTitle>
-                </MListItem>
-                <MList Dense>
-                    <MListItem>
-                        <MListItemTitle>@T("Basket.TotalMRP")</MListItemTitle>
-                        <MListItemTitle class="text-right"> $598 </MListItemTitle>
-                    </MListItem>
-                    <MListItem>
-                        <MListItemTitle>@T("Basket.Discount")</MListItemTitle>
-                        <MListItemTitle class="text-right"> -25$ </MListItemTitle>
-                    </MListItem>
-                    <MListItem>
-                        <MListItemTitle>@T("Basket.EstimatedTax")</MListItemTitle>
-                        <MListItemTitle class="text-right"> $1.3 </MListItemTitle>
-                    </MListItem>
-                    <MListItem>
-                        <MListItemTitle>@T("Basket.DeliveryCharges")</MListItemTitle>
-                        <MListItemTitle class="text-right"> @T("Basket.Free") </MListItemTitle>
-                    </MListItem>
-                </MList>
-                <MDivider></MDivider>
-                <MListItem>
-                    <MListItemTitle class="title"> @T("Basket.Total")</MListItemTitle>
-                    <MListItemTitle class="text-right title"><span>$</span>@_userBasket.GetFormattedTotalPrice()</MListItemTitle>
-                </MListItem>
-            </MCardText>
-            <MCardActions>
-                <MButton Block class="primary" OnClick='NavToCheckout'>
-                    @T("Basket.PlaceOrder")
-                </MButton>
-            </MCardActions>
-        </MCard>
-    </MCol>
-
-</MRow>
+<MTabs @bind-Value="_curTab" SliderColor="transparent" class="pro-nav remover-ripple">
+    <MTab class="text-capitalize pa-0">
+        <ChildContent>
+            <span class="mtab-tab-line mtab-tab-linear-primary"></span>
+            <span class="rounded-circle mtab-tab-indicator mtab-tab-indicator-primary"></span>
+            <span class="mtab-tab-title">Card</span>
+        </ChildContent>
+    </MTab>
+    <MTab class="text-capitalize pa-0" Disabled="_addressDisabled">
+        <ChildContent>
+            <span class="mtab-tab-line @(_curTab.ToInt32()>0?"mtab-tab-linear-primary":"mtab-tab-linear-neutral")"></span>
+            <span class="rounded-circle mtab-tab-indicator @(_curTab.ToInt32()>0?"mtab-tab-indicator-primary":"mtab-tab-indicator-neutral")"></span>
+            <span class="mtab-tab-title">Address</span>
+        </ChildContent>
+    </MTab>
+    <MTab class="text-capitalize pa-0" Disabled="_paymentDisabled">
+        <ChildContent>
+            <span class="mtab-tab-line @(_curTab.ToInt32()>1?"mtab-tab-linear-primary":"mtab-tab-linear-neutral")"></span>
+            <span class="rounded-circle mtab-tab-indicator @(_curTab.ToInt32()>1?"mtab-tab-indicator-primary":"mtab-tab-indicator-neutral")"></span>
+            <span class="mtab-tab-title">Payment</span>
+        </ChildContent>
+    </MTab>
+</MTabs>
+<CascadingValue Value=this>
+    <MTabsItems Value="_curTab" class="pt-6 ml-n6">
+        <MTabItem>
+            <Cart @bind-Step="_curTab" @bind-Disabled="_addressDisabled"/>
+        </MTabItem>
+        <MTabItem class="pl-6">
+            <Checkout @bind-Step="_curTab" @bind-Disabled="_paymentDisabled" />
+        </MTabItem>
+        <MTabItem class="pl-6">
+            <Payment/>
+        </MTabItem>
+        <MTabItem class="pl-6">
+            <Success />
+        </MTabItem>
+    </MTabsItems>
+</CascadingValue>

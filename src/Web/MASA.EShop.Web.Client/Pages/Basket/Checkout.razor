@@ -1,59 +1,23 @@
-﻿@page "/basket/checkout"
-@inherits EShopPageBase
-
-<PageTitle>Basket Check Out</PageTitle>
-
-<div class="head-bread">
-    <h2 class="auto-width">@T("Basket.Checkout")</h2>
-    <MDivider Vertical />
-    <MBreadcrumbs Large class="auto-width" TItem="BreadcrumbItem">
-        <MBreadcrumbsItem Href="/catalog">
-            <MIcon Large class='head-bread-icon'>mdi-home</MIcon>
-        </MBreadcrumbsItem>
-        <MBreadcrumbsItem Text="@T("Basket.Checkout")"></MBreadcrumbsItem>
-    </MBreadcrumbs>
-</div>
-
-<MStepper AltLabels>
-    <MStepperHeader>
-        <MStepperStep Step="1" Complete>
-            Cart
-        </MStepperStep>
-        <MDivider></MDivider>
-        <MStepperStep Step="2" Complete>
-            Address
-        </MStepperStep>
-        <MDivider></MDivider>
-        <MStepperStep Step="3">
-            Payment
-        </MStepperStep>
-        <MDivider></MDivider>
-        <MStepperStep Step="4">
-            Completed
-        </MStepperStep>
-    </MStepperHeader>
-</MStepper>
-
-<MRow class="mt-2">
-    <MCol Md="9">
-        <MCard>
-            <MCardTitle>
-                @T("Basket.NewAddress")
+﻿<MRow style="height: calc(100vh - 204px);">
+    <MCol Md="8">
+        <MCard class="pa-2 fill-height d-flex flex-column justify-space-between">
+            <MCardTitle class="text-h6 neutral-lighten-1--text">
+                Add New Address
             </MCardTitle>
-            <MCardSubtitle>
-                @T("Basket.NewAddressMsg")
+            <MCardSubtitle class="text-body neutral-lighten-2--text">
+                Be sure to check "Deliver to this address" when you have finished
             </MCardSubtitle>
-            <MCardText>
-                <MForm Model="_shipAddressFormModel" EnableDataAnnotationsValidation>
+            <MCardText class="pl-4 pr-4 mt-2">
+                <MForm Model="_shipAddressFormModel" @bind-Value="_valid" @ref="_form" EnableDataAnnotationsValidation>
                     <MRow>
-                        <MCol Md="6">
+                        <MCol Md="6" class="pb-0">
                             <MTextField @bind-Value="_shipAddressFormModel.Street"
                                         Label="@T("Basket.Address")"
                                         Placeholder="@T("Basket.Address")"
                                         Outlined
                                         Dense></MTextField>
                         </MCol>
-                        <MCol Md="6">
+                        <MCol Md="6" class="pl-3">
                             <MTextField @bind-Value="_shipAddressFormModel.City"
                                         Label="@T("Basket.City")"
                                         Placeholder="@T("Basket.City")"
@@ -67,7 +31,7 @@
                                         Outlined
                                         Dense></MTextField>
                         </MCol>
-                        <MCol Md="6">
+                        <MCol Md="6" class="pl-3">
                             <MTextField @bind-Value="_shipAddressFormModel.CardNumber"
                                         Label="@T("Basket.CardNumber")"
                                         Placeholder="000000000000000"
@@ -81,7 +45,7 @@
                                         Outlined
                                         Dense></MTextField>
                         </MCol>
-                        <MCol Md="6">
+                        <MCol Md="6" class="pl-3">
                             <MTextField @bind-Value="_shipAddressFormModel.CardExpiration"
                                         Label="@T("Basket.ExpirationDate")"
                                         Placeholder="MM/YY"
@@ -95,7 +59,7 @@
                                         Outlined
                                         Dense></MTextField>
                         </MCol>
-                        <MCol Md="6">
+                        <MCol Md="6" class="pl-3">
                             <MTextField @bind-Value="_shipAddressFormModel.ZipCode"
                                         Label="@T("Basket.ZipCode")"
                                         Placeholder="@T("Basket.ZipCode")"
@@ -103,34 +67,31 @@
                                         Dense></MTextField>
                         </MCol>
                     </MRow>
-                    <MRow>
-                        <MCol Class="text-right">
-                            <MButton class="primary" OnClick="()=>SubmitOrder(context)">
-                                @T("Basket.SaveAndDeliver")
-                            </MButton>
-                        </MCol>
-                    </MRow>
                 </MForm>
             </MCardText>
+            <MCardActions class="d-flex justify-center mb-10">
+                <MButton Depressed Large Width="340" class="primary text-capitalize rounded-pill" OnClick="()=>SubmitOrder()">
+                    @T("Basket.SaveAndDeliver")
+                </MButton>
+            </MCardActions>
         </MCard>
     </MCol>
-    <MCol Md="3">
-        <MCard>
-            <MCardTitle>
+    <MCol Md="4">
+        <MCard class="pa-2 fill-height d-flex flex-column justify-space-between">
+            <MCardTitle class="text-h6">
                 John Doe
             </MCardTitle>
-            <MCardText>
-                <p class="mt-1 mb-1">@_shipAddressViewModel.State @_shipAddressViewModel.Street</p>
-                <p class="mt-1 mb-1">@_shipAddressViewModel.Country @_shipAddressViewModel.City</p>
-                <p class="mt-2 mb-2">UTC-5: Eastern Standard Time (EST)</p>
-                <p class="mt-1 mb-1">@_shipAddressViewModel.CardNumber</p>
+            <MCardText class="pl-4 pr-4 mt-2">
+                <p class="text-btn neutral-lighten-1--text mb-6">@_shipAddressViewModel.State @_shipAddressViewModel.Street</p>
+                <p class="text-btn neutral-lighten-1--text mb-6">@_shipAddressViewModel.Country @_shipAddressViewModel.City</p>
+                <p class="text-btn neutral-lighten-1--text mb-6">UTC-5: Eastern Standard Time (EST)</p>
+                <p class="text-btn neutral-lighten-1--text">@_shipAddressViewModel.CardNumber</p>
             </MCardText>
-            <MCardActions>
-                <MButton class="primary" Block OnClick="SubmitShipedOrder">
+            <MCardActions class="d-flex justify-center mb-10">
+                <MButton Depressed Large class="primary text-capitalize rounded-pill" Width="340" OnClick="SubmitShipedOrder">
                     @T("Basket.DeliverTo")
                 </MButton>
             </MCardActions>
         </MCard>
     </MCol>
 </MRow>
-

@@ -71,7 +71,8 @@ public class BasketCaller : HttpClientCaller
         else
         {
             var basketItem = currentBasket.Items.ElementAt(itemIndex);
-            currentBasket.Items[itemIndex] = basketItem with { Quantity = basketItem.Quantity + 1 };
+            basketItem.Quantity += 1;
+            currentBasket.Items[itemIndex] = basketItem;
         }
 
         // Step 4: Update basket

@@ -1,67 +1,12 @@
 ﻿@page "/login"
 @inherits EShopPageBase
+@layout EmptyLayout
 
 <PageTitle>@T("Login.Login")</PageTitle>
 
-<MContainer>
-    <MRow Justify="JustifyTypes.Center" Align="AlignTypes.Center">
-        <MCol Md="@("auto")" class="d-flex align-center flex-column mt-12">
-            <MImage Width="400" src="https://picsum.photos/id/11/500/300" />
-            <MCard class="mt-5 pt-0" Width="550">
-                <MTabs @bind-Value="_loginTabIndex" Centered>
-                    <MTab Value="0">
-                        @T("Login.PWDLogin")
-                    </MTab>
-
-                    <MTab Value="1">
-                        @T("Login.SMSLogin")
-                    </MTab>
-                </MTabs>
-                <MTabsItems @bind-Value="_loginTabIndex">
-                    <MTabItem Value="0">
-                        <MCardText>
-                            <MTextField class="input-group--focused mr-2" Label="@T("Login.UserName")" @bind-Value="_userName"></MTextField>
-                            <MTextField class="input-group--focused mr-2"
-                                        Label="@T("Login.Password")" @bind-Value="_password"
-                                        AppendIcon="@(_showPwd ? "mdi-eye" : "mdi-eye-off")"
-                                        Type="@(_showPwd ? "text" : "password")"
-                                        Hint="At least 8 characters"
-                                        Counter="true"
-                                        OnAppendClick="() => _showPwd = !_showPwd"></MTextField>
-                            <MButton Small Text class="float-right" OnClick="()=>{ _forgetPwdDialog = true; }">@T("Login.ForgetPassword")</MButton>
-                        </MCardText>
-                    </MTabItem>
-                    <MTabItem Value="1">
-                        <MCardText>
-                            <MTextField TValue="string" class="input-group--focused mr-2" Label="@T("Login.Phone")" Placeholder="@T("Login.PhoneHolder")"></MTextField>
-                            <MTextField Label="@T("Login.Code")" Placeholder="@T("Login.CodeHolder")" TValue="string">
-                                <AppendContent>
-                                    <MButton Outlined>
-                                        @T("Login.GetCode")
-                                    </MButton>
-                                </AppendContent>
-                            </MTextField>
-                        </MCardText>
-                    </MTabItem>
-                </MTabsItems>
-                <MCardActions>
-                    <MRow NoGutters>
-                        <MCol Md="12">
-                            <MButton Color="primary" Block OnClick="LoginHandler">@T("Login.Login")</MButton>
-                        </MCol>
-                        <MCol Md="12" class="text-right">
-                            <MButton Small Text OnClick="()=>{ _registerDialog = true; }">@T("Login.ToRegister")</MButton>
-                        </MCol>
-                    </MRow>
-                </MCardActions>
-            </MCard>
-        </MCol>
-    </MRow>
-</MContainer>
-
 <MDialog @bind-Value="_forgetPwdDialog" Persistent Width="500">
     <ChildContent>
-        <MCard>
+        <MCard class="pa-6">
             <MCardText>
                 <MTabs @bind-Value="_forgetPwdTabIndex" Centered>
                     <MTab Value="0">
@@ -107,7 +52,7 @@
                 </MTabsItems>
             </MCardText>
             <MCardActions>
-                <MButton Color="primary" Block OnClick="() => _forgetPwdDialog = false">
+                <MButton Color="primary" class="rounded-pill" Block OnClick="() => _forgetPwdDialog = false">
                     @T("Base.Sure")
                 </MButton>
             </MCardActions>
@@ -115,99 +60,65 @@
     </ChildContent>
 </MDialog>
 
-<MDialog @bind-Value="_registerDialog" Persistent Width="660">
-    <ChildContent>
-        <MCard>
-            <MCardTitle>
-                <span class="text-h5">@T("Login.WelcomeRegister")</span>
-            </MCardTitle>
-            <MCardSubtitle>
-                @T("Login.LoginNow")
-            </MCardSubtitle>
-            <MCardText>
-                <MTabs @bind-Value="_registerTabIndex" Centered>
-                    <MTab Value="0">
-                        @T("Login.SMSRegister")
-                    </MTab>
-                    <MTab Value="1">
-                        @T("Login.EmailRegister")
-                    </MTab>
-                </MTabs>
+<MRow Class="max-height ma-0">
+    <MCol Md=4 Sm=12 Class="neutral-lighten-5">
+        <image class="ml-12 mt-12" style="height:40px;" src="https://cdn.masastack.com/stack/images/logo/MASAStack/logo-h-en.png?x-oss-process=image/resize,w_200"></image>
+        <div class="d-flex pb-12" style="height: calc(100% - 88px);">
+            <div style="width:450px;" class="ma-auto">
+                <h3 class="neutral-lighten-1--text">让变化更简单</h3>
+                <div class="mt-12 neutral-lighten-1--text">
+                    让变化更简单，让视觉更美好，让体验更丰富，欢迎来到MASA产品系列。
+                </div>
+                <image class="mt-12" src="/img/login/left.svg"></image>
+            </div>
+        </div>
+    </MCol>
+    <MCol Md=8 Sm=12 Class="fill-lighten-1 block-center">
+        <MCard Width=510 Height=680 Class="mx-auto my-auto">
+            <div style="height:60px;"></div>
+            <div class="mt-2 mx-auto text-center" style="width:420px;">
+                <MAvatar Size=80>
+                    <MImage Src="/img/avatar/avatar.jpg">
+                    </MImage>
+                </MAvatar>
+                <h5 class="mt-2 mb-12">Welcome to MASA.EShop! 👋</h5>
 
-                <MTabsItems @bind-Value="_registerTabIndex">
-                    <MTabItem Value="0">
-                        <MCard Flat>
-                            <MCardText>
-                                <MRow NoGutters>
-                                    <MCol Cols="12">
-                                        <MTextField Placeholder="@T("Login.PhoneHolder")" TValue="string" PrependIcon="mdi-phone"></MTextField>
-                                    </MCol>
-                                    <MCol Cols="12">
-                                        <MTextField TValue="string" Placeholder="@T("Login.RegisterPassword")" PrependIcon="mdi-lock" Type="password" Hint="At least 8 characters" Counter="true"></MTextField>
-                                    </MCol>
-                                    <MCol Cols="12">
-                                        <MTextField TValue="string" Placeholder="@T("Login.ConfirmRegisterPassword")" PrependIcon="mdi-lock" Type="password" Hint="At least 8 characters" Counter="true"></MTextField>
-                                    </MCol>
-                                    <MCol Cols="12">
-                                        <MTextField Label="@T("Login.Code")" Placeholder="@T("Login.CodeHolder")" TValue="string">
-                                            <AppendContent>
-                                                <MButton Outlined>
-                                                    @T("Login.GetCode")
-                                                </MButton>
-                                            </AppendContent>
-                                        </MTextField>
-                                    </MCol>
-                                </MRow>
-                            </MCardText>
-                        </MCard>
-                    </MTabItem>
-                    <MTabItem Value="1">
-                        <MCard Flat>
-                            <MCardText>
-                                <MRow NoGutters>
-                                    <MCol Cols="12">
-                                        <MTextField Placeholder="@T("Login.EmailHolder")" TValue="string" PrependIcon="mdi-email"></MTextField>
-                                    </MCol>
-                                    <MCol Cols="12">
-                                        <MTextField TValue="string" Placeholder="@T("Login.RegisterPassword")" PrependIcon="mdi-lock" Type="password" Hint="At least 8 characters" Counter="true"></MTextField>
-                                    </MCol>
-                                    <MCol Cols="12">
-                                        <MTextField TValue="string" Placeholder="@T("Login.ConfirmRegisterPassword")" PrependIcon="mdi-lock" Type="password" Hint="At least 8 characters" Counter="true"></MTextField>
-                                    </MCol>
-                                    <MCol Cols="12">
-                                        <MTextField Label="@T("Login.Code")" Placeholder="@T("Login.CodeHolder")" TValue="string">
-                                            <AppendContent>
-                                                <MImage Width="100" Height="33" Src="./img/code/CheckCode.jpg" />
-                                            </AppendContent>
-                                            <AppendOuterContent>
-                                                <MButton Outlined>
-                                                    @T("Login.ChangeCode")
-                                                </MButton>
-                                            </AppendOuterContent>
-                                        </MTextField>
-                                    </MCol>
-                                </MRow>
-                            </MCardText>
-                        </MCard>
-                    </MTabItem>
-                </MTabsItems>
-            </MCardText>
-            <MCardActions>
-                <MRow NoGutters>
-                    <MCol Md="12">
-                        <MCheckbox>
-                            <LabelContent>
-                                @T("Login.AgreementMsg")<a target="_blank" href="/">《@T("Login.Agreement")》</a>
-                            </LabelContent>
-                        </MCheckbox>
-                    </MCol>
-                    <MCol Md="12">
-                        <MButton Color="primary" Block OnClick="() => _registerDialog = false">
-                            @T("Login.Register")
-                        </MButton>
-                    </MCol>
-                </MRow>
-            </MCardActions>
+                <MTextField Label="@T("Login.UserName")"
+                            Placeholder="john@example.com"
+                            Outlined @bind-Value="_userName"
+                            HideDetails="@("auto")">
+                </MTextField>
+                <MTextField Class="mt-10"
+                            Label="@T("Login.Password")" @bind-Value="_password"
+                            AppendIcon="@(_showPwd ? "mdi-eye" : "mdi-eye-off")"
+                            Type="@(_showPwd ? "text" : "password")"
+                            Hint="At least 8 characters"
+                            Counter="true"
+                            OnAppendClick="() => _showPwd = !_showPwd"
+                            Outlined
+                            HideDetails="@("auto")">
+                </MTextField>
+                <span class="d-flex justify-end mt-1 text-caption hover-pointer" @onclick="()=>{ _forgetPwdDialog = true; }">
+                    @T("Login.ForgetPassword")
+                </span>
+                <MButton Class="mt-11 rounded-4 text-btn white--text" Height=46 Width=340 Color="primary" OnClick="LoginHandler">@T("Login.Login")</MButton>
+
+                <div class="my-6">
+                    <span class="text-btn">New on our platform? &nbsp;</span>
+                    <span class="primary--text hover-pointer">@T("Login.ToRegister")</span>
+                </div>
+                <div class="d-flex block-center">
+                    <div style="height:0.5px;width:152px;" class="neutral-lighten-5"></div>
+                    <span class="text-caption mx-4">or login with</span>
+                    <div style="height:0.5px;width:152px;" class="neutral-lighten-5"></div>
+                </div>
+                <div class="mt-4">
+                    <MIcon Size=24 Color="neutral-lighten-2" OnClick="()=>{}">fab fa-codepen</MIcon>
+                    <MIcon Size=24 Color="neutral-lighten-2" Class="ml-6" OnClick="()=>{}">fab fa-github</MIcon>
+                    <MIcon Size=24 Color="neutral-lighten-2" Class="ml-6" OnClick="()=>{}">fab fa-twitter</MIcon>
+                    <MIcon Size=24 Color="neutral-lighten-2" Class="ml-6" OnClick="()=>{}">fab fa-instagram</MIcon>
+                </div>
+            </div>
         </MCard>
-    </ChildContent>
-</MDialog>
+    </MCol>
+</MRow>

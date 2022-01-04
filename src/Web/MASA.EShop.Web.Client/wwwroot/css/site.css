@@ -30,13 +30,3 @@ body {
     line-height: 1.2;
     color: #5e5873;
 }
-
-.coupons.m-text-field > .m-input__control > .m-input__slot:before {
-    border-color: transparent;
-    border-style: hidden;
-}
-
-.coupons.m-text-field > .m-input__control > .m-input__slot:after {
-    border-color: transparent;
-    border-style: hidden;
-}

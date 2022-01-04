@@ -4,8 +4,8 @@ public partial class Login : EShopPageBase
 {
     private string _userName = "masa";
     private string _password = "eshop";
-    private bool _registerDialog = false, _forgetPwdDialog = false;
-    private StringNumber _registerTabIndex = 0, _forgetPwdTabIndex = 0, _loginTabIndex = 0;
+    private bool _forgetPwdDialog;
+    private StringNumber _forgetPwdTabIndex = 0;
     private bool _showPwd = false;
 
     private async void LoginHandler()

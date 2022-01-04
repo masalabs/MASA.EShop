@@ -2,9 +2,9 @@
 @inherits LayoutComponentBase
 
 <MApp>
-    <MAppBar Flat Fixed Color="white" Class="m-bar--underline full-width">
+    <MAppBar Elevation=0 App MaxHeight=60 Class="px-3 rounded-b-4 white mx-auto" Style="width:90%;">
         <span>MASA EShop</span>
-        <MSpacer></MSpacer>
+        <MSpacer />
         <AuthorizeView>
             <Authorized>
                 <MButton Icon Large OnClick='()=>Navigation("basket")'><MIcon>mdi-cart</MIcon></MButton>
@@ -50,8 +50,8 @@
             @(I18n.CurrentLanguage == "zh-CN"?"EN": "中")
         </MButton>
     </MAppBar>
-    <MMain>
-        <MContainer Fluid>
+    <MMain Class="fill-lighten-1">
+        <MContainer Fluid style="width: 90%;">
             <CascadingValue Value="this">
                 @Body
             </CascadingValue>

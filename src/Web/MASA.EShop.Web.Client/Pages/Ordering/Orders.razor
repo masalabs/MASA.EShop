@@ -4,23 +4,31 @@
 
 <PageTitle>Orders</PageTitle>
 
-<div class="head-bread">
-    <h2 class="auto-width">个人中心</h2>
-    <MDivider Vertical />
-    <MBreadcrumbs Large class="auto-width" TItem="BreadcrumbItem">
-        <MBreadcrumbsItem Disabled="false">
-            <MIcon Large class='head-bread-icon'>mdi-account</MIcon>
-        </MBreadcrumbsItem>
-        <MBreadcrumbsItem Text="@T("Order.My")"></MBreadcrumbsItem>
+<div class="d-flex block-center pb-6 pt-1">
+    <div class="text-subtitle">
+        @T("Base.MyCenter")
+    </div>
+
+    <div class="mx-4 border-solid" style="height:16px;width:0.5px;" />
+
+    <MBreadcrumbs Linkage Class="pa-0">
+        <DividerContent>
+            <MIcon Small>mdi-chevron-right</MIcon>
+        </DividerContent>
+        <ChildContent>
+            <MBreadcrumbsItem Disabled="false" Href="/catalog">
+                <MIcon Small Color="primary">fas fa-home</MIcon>
+            </MBreadcrumbsItem>
+            <MBreadcrumbsItem Text="@T("Order.My")"></MBreadcrumbsItem>
+        </ChildContent>
     </MBreadcrumbs>
 </div>
 
-<MRow Style="background-color:#7367f0" class="mt-1">
-    <MCol class="pl-10" Md="12">@T("Order.List")</MCol>
-</MRow>
-
-<MRow>
-    <MCol Md="12">
+<MCard>
+    <MCardTitle>
+        <h6>@T("Order.List")</h6>
+    </MCardTitle>
+    <MCardText>
         <MDataTable TItem="OrderSummary" Headers="_headers" Loading="_loading" Items="_orders">
             <ItemColContent>
                 @if (context.Header.Text == "")
@@ -36,7 +44,7 @@
                 }
                 else if (context.Header.Value == nameof(OrderSummary.PictureName))
                 {
-                    <img style="width:41px;height:47px;" src="@context.Item.GetPictureUrl()" />
+                    <img style="width:48px;height:48px;margin-top:4px;" src="@context.Item.GetPictureUrl()" />
                 }
                 else
                 {
@@ -46,16 +54,18 @@
             <NoDataContent>
                 No Order
             </NoDataContent>
-        </MDataTable>
-    </MCol>
-</MRow>
+        </MDataTable> 
+    </MCardText>
+</MCard>
 
-<MNavigationDrawer Absolute Temporary Right @bind-Value=_detailDialog Width="600" class="pa-3">
-    <MRow>
-        <MCol Md="@("auto")">@T("Order.Number"):@_order.OrderNumber</MCol>
+<MNavigationDrawer Fixed Temporary Right @bind-Value=_detailDialog Width="600" class="pa-3">
+    <MToolbar Absolute Elevation=0 class="px-3 full-width mx-n3">
+        <span>@T("Order.Number"):@_order.OrderNumber</span>
         <MSpacer></MSpacer>
-        <MCol Md="@("auto")"><MIcon OnClick="()=>{ _detailDialog = false;}">mdi-close</MIcon></MCol>
-    </MRow>
+        <MButton Icon OnClick="()=>{ _detailDialog = false;}">
+            <MIcon >mdi-close</MIcon>
+        </MButton>
+    </MToolbar>
     <MRow>
         <MCol Md="12" Class="pt-2 pb-1">
             <MCard>

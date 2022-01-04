@@ -1,20 +1,39 @@
-﻿namespace MASA.EShop.Web.Client.Pages.Basket;
+﻿using MASA.Blazor;
 
-[Authorize]
-public partial class Checkout : EShopPageBase
+namespace MASA.EShop.Web.Client.Pages.Basket;
+
+public partial class Checkout : ComponentBase
 {
+    private bool _valid = true;
+    private MForm _form = default!;
     private ShipAddressViewModel _shipAddressViewModel = new(), _shipAddressFormModel = new();
-
     [Inject]
-    private BasketService _baksetService { get; set; } = default!;
+    private BasketService BaksetService { get; set; } = default!;
+
+    [Parameter]
+    public StringNumber Step { get; set; } = default!;
+
+    [Parameter]
+    public EventCallback<StringNumber> StepChanged { get; set; }
+
+    [Parameter]
+    public bool Disabled { get; set; }
+
+    [Parameter]
+    public EventCallback<bool> DisabledChanged { get; set; }
+
+    [CascadingParameter]
+    private Basket Basket { get; set; } = default!;
+
+    public Localizer T { get; set; } = default!;
 
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
-
-        if (IsAuthenticated)
+        T = Basket.T;
+        if (Basket.IsAuthenticated)
         {
-            var claims = User.Claims.ToDictionary(c => c.Type, c => c.Value);
+            var claims = Basket.User.Claims.ToDictionary(c => c.Type, c => c.Value);
             claims.TryGetValue("address_street", out string? address_street);
             claims.TryGetValue("address_city", out string? address_city);
             claims.TryGetValue("address_state", out string? address_state);
@@ -26,7 +45,7 @@ public partial class Checkout : EShopPageBase
 
             _shipAddressFormModel = new ShipAddressViewModel
             {
-                Buyer = User?.Identity?.Name ?? "",
+                Buyer = Basket.User?.Identity?.Name ?? "",
                 Street = address_street ?? "",
                 City = address_city ?? "",
                 State = address_state ?? "",
@@ -39,7 +58,7 @@ public partial class Checkout : EShopPageBase
 
             _shipAddressViewModel = new ShipAddressViewModel
             {
-                Buyer = User?.Identity?.Name ?? "",
+                Buyer = Basket.User?.Identity?.Name ?? "",
                 Street = "Science Park Road",
                 City = "Hang Zhou",
                 ZipCode = "23333",
@@ -53,10 +72,10 @@ public partial class Checkout : EShopPageBase
         }
     }
 
-    private async Task SubmitOrder(EditContext context)
+    private async Task SubmitOrder()
     {
-        var success = context.Validate();
-        if (success)
+        await _form.ValidateAsync();
+        if (_valid)
         {
             await BasketCheckout(_shipAddressFormModel);
         }
@@ -82,12 +101,13 @@ public partial class Checkout : EShopPageBase
                                     CardExpirationDate.Parse(model.CardExpiration),
                                     model.CardSecurityCode, 1, model.Buyer, Guid.NewGuid());
 
-            await _baksetService.CheckoutAsync(basketCheckout);
-            Navigation("/basket/payment");
+            await BaksetService.CheckoutAsync(basketCheckout);
+            await StepChanged.InvokeAsync(2);
+            await DisabledChanged.InvokeAsync(false);
         }
         catch (Exception e)
         {
-            Message(e.Message, AlertTypes.Error);
+            Basket.Message(e.Message, AlertTypes.Error);
         }
     }
 }

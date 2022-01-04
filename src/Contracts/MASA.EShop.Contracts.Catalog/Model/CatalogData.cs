@@ -2,6 +2,10 @@
 
 public class CatalogData
 {
+    public string SortType { get; set; } = "Featured";
+
+    public string Search { get; set; } = "";
+
     public int Count { get; set; }
 
     public IEnumerable<CatalogItem> Items { get; set; } = Enumerable.Empty<CatalogItem>();

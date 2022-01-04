@@ -1,17 +1,18 @@
 ﻿namespace MASA.EShop.Web.Client.Pages.Basket;
 
-[Authorize]
-public partial class Payment : EShopPageBase
+public partial class Payment : ComponentBase
 {
     private int _payOptions = 1;
 
-    [Inject]
-    private BasketService _baksetService { get; set; } = default!;
+    [CascadingParameter]
+    protected Basket Basket { get; set; } = default!;
+
+    public Localizer T { get; set; } = default!;
 
     protected override async Task OnInitializedAsync()
     {
+        T = Basket.T;
         await base.OnInitializedAsync();
-
     }
 }
 
