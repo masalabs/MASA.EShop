@@ -16,6 +16,7 @@ MASA.EShop
 │   │   └── statestore.yaml                  state management config file
 ├── src
 │   ├── Api
+│   │   ├── MASA.EShop.Api.Caller            Caller package
 │   │   └── MASA.EShop.Api.Open              BFF Layer, provide API to Web.Client
 │   ├── Contracts                            Common contracts，like Event Class
 │   │   ├── MASA.EShop.Contracts.Basket
@@ -52,45 +53,47 @@ MASA.EShop
 ## Getting started
 
 - Preparation
-
+  
   - Docker
   - VS 2022
   - .Net 6.0
   - Dapr
 
 - Startup
-
+  
   - VS 2022(Recommended)
-
+    
     Set docker-compose as start project, press `Ctrl + F5` to start.
-
+    
     ![vs-run](img/vs_run.png)
-
+    
     After startup, you can see the container view.
-
+    
     ![vs-result](img/vs_result.png)
-
+  
   - CLI
-
+    
     Run the command in the project root directory.
-
+    
     ```
     docker-compose build
     docker-compose up
     ```
-
+    
     After startup, the output is as follows.
-
+    
     ![cli-result](img/cli_result.png)
-
+  
   - VS Code (Todo)
 
 - Display after startup(Update later)
-
+  
   Baseket Service: http://localhost:8081/swagger/index.html  
   Catalog Service: http://localhost:8082/swagger/index.html  
   Ordering Service: http://localhost:8083/swagger/index.html  
   Payment Service: http://localhost:8084/swagger/index.html
+  Admin Web: empty
+  Client Web: http://localhost:8090/catalog
 
 ## Features
 
@@ -264,9 +267,9 @@ Cross-Process event, In-Process event also supported when `EventBus` is added.
 builder.Services
     .AddDaprEventBus<IntegrationEventLogService>();
 //   .AddDaprEventBus<IntegrationEventLogService>(options=>{
-//    	//todo
-//   	options.UseEventBus();//Add EventBus
-//	});
+//        //todo
+//       options.UseEventBus();//Add EventBus
+//    });
 ```
 
 2. Define Event
@@ -324,9 +327,9 @@ More CQRS content reference：https://docs.microsoft.com/en-us/azure/architectur
 ```c#
 public class CatalogItemQuery : Query<List<CatalogItem>>
 {
-	public string Name { get; set; } = default!;
+    public string Name { get; set; } = default!;
 
-	public override List<CatalogItem> Result { get; set; } = default!;
+    public override List<CatalogItem> Result { get; set; } = default!;
 }
 ```
 
@@ -352,7 +355,7 @@ public class CatalogQueryHandler
 ```C#
 IEventBus eventBus;// DI is recommended
 await eventBus.PublishAsync(new CatalogItemQuery(){
-	Name = "Rolex"
+    Name = "Rolex"
 });
 ```
 
@@ -363,7 +366,7 @@ await eventBus.PublishAsync(new CatalogItemQuery(){
 ```c#
 public class CreateCatalogItemCommand : Command
 {
-	public string Name { get; set; } = default!;
+    public string Name { get; set; } = default!;
 
     //todo
 }
@@ -478,9 +481,9 @@ public class OrderPaymentFailedDomainEvent : IntegrationDomainEvent
 ```c#
 public class PaymentDomainService : DomainService
 {
-	private readonly ILogger<PaymentDomainService> _logger;
+    private readonly ILogger<PaymentDomainService> _logger;
 
-	public PaymentDomainService(IDomainEventBus eventBus, ILogger<PaymentDomainService> logger) : base(eventBus)
+    public PaymentDomainService(IDomainEventBus eventBus, ILogger<PaymentDomainService> logger) : base(eventBus)
         => _logger = logger;
 
     public async Task StatusChangedAsync(Aggregate.Payment payment)
@@ -531,12 +534,11 @@ builder.Services
 
 ```C#
 builder.Services
-.AddDaprEventBus<IntegrationEventLogService>(options =>
-{
-    options.UseEventBus()
-           .UseUoW<OrderingContext>(dbOptions => dbOptions.UseSqlServer("Data Source=masa.eshop.services.eshop.database;uid=sa;pwd=P@ssw0rd;database=order"))
-           .UseEventLog<OrderingContext>();
-});
+    .AddMasaDbContext<OrderingContext>(dbOptions => dbOptions.UseSqlServer("Data Source=masa.eshop.services.eshop.database;uid=sa;pwd=P@ssw0rd;database=order"))
+    .AddDaprEventBus<IntegrationEventLogService>(options =>
+    {
+        options.UseEventBus().UseEventLog<OrderingContext>();
+    })
 ```
 
 3. Use [CQRS](####CQRS)

@@ -16,6 +16,7 @@ MASA.EShop
 │   │   └── statestore.yaml                  状态管理配置文件
 ├── src                                      源文件目录
 │   ├── Api
+│   │   ├── MASA.EShop.Api.Caller            Caller调用封装
 │   │   └── MASA.EShop.Api.Open              BFF层，提供接口给Web.Client
 │   ├── Contracts                            公用元素提取，如服务间通信的Event Class
 │   │   ├── MASA.EShop.Contracts.Basket
@@ -87,10 +88,12 @@ MASA.EShop
 
 - 启动效果
 
-  Baseket Service: http://localhost:8081/swagger/index.html  
-  Catalog Service: http://localhost:8082/swagger/index.html  
-  Ordering Service: http://localhost:8083/swagger/index.html  
-  Payment Service: http://localhost:8084/swagger/index.html
+  Baseket Service: http://localhost:8081/swagger/index.html
+  Catalog Service: http://localhost:8082/swagger/index.html
+  Ordering Service: http://localhost:8083/swagger/index.html
+  Payment Service: http://localhost:8084/swagger/index.html 
+  Admin Web: empty 
+  Client Web: http://localhost:8090/catalog
 
 ## 特性
 
@@ -526,12 +529,11 @@ builder.Services
 
 ```C#
 builder.Services
-.AddDaprEventBus<IntegrationEventLogService>(options =>
-{
-    options.UseEventBus()
-           .UseUoW<OrderingContext>(dbOptions => dbOptions.UseSqlServer("Data Source=masa.eshop.services.eshop.database;uid=sa;pwd=P@ssw0rd;database=order"))
-           .UseEventLog<OrderingContext>();
-});
+    .AddMasaDbContext<OrderingContext>(dbOptions => dbOptions.UseSqlServer("Data Source=masa.eshop.services.eshop.database;uid=sa;pwd=P@ssw0rd;database=order"))
+    .AddDaprEventBus<IntegrationEventLogService>(options =>
+    {
+        options.UseEventBus().UseEventLog<OrderingContext>();
+    })
 ```
 
 3. 使用[CQRS](####CQRS)
