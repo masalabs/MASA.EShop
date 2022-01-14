@@ -7,6 +7,12 @@
 <MDialog @bind-Value="_forgetPwdDialog" Persistent Width="500">
     <ChildContent>
         <MCard class="pa-6">
+            <MCardTitle class="pa-0">
+                <MSpacer></MSpacer>
+                <MButton Icon OnClick="() => _forgetPwdDialog = false">
+                    <MIcon>mdi-close</MIcon>
+                </MButton>
+            </MCardTitle>
             <MCardText>
                 <MTabs @bind-Value="_forgetPwdTabIndex" Centered>
                     <MTab Value="0">
@@ -82,25 +88,24 @@
                     </MImage>
                 </MAvatar>
                 <h5 class="mt-2 mb-12">Welcome to MASA.EShop! 👋</h5>
-
-                <MTextField Label="@T("Login.UserName")"
+                <MTextField Label="@T("Login.UserName")" HideDetails="@("auto")"
                             Placeholder="john@example.com"
-                            Outlined @bind-Value="_userName"
-                            HideDetails="@("auto")">
+                            Outlined @bind-Value="_userName">
                 </MTextField>
                 <MTextField Class="mt-10"
                             Label="@T("Login.Password")" @bind-Value="_password"
                             AppendIcon="@(_showPwd ? "mdi-eye" : "mdi-eye-off")"
                             Type="@(_showPwd ? "text" : "password")"
                             Hint="At least 8 characters"
-                            Counter="true"
                             OnAppendClick="() => _showPwd = !_showPwd"
-                            Outlined
-                            HideDetails="@("auto")">
+                            Outlined HideDetails="@("auto")">
                 </MTextField>
-                <span class="d-flex justify-end mt-1 text-caption hover-pointer" @onclick="()=>{ _forgetPwdDialog = true; }">
-                    @T("Login.ForgetPassword")
-                </span>
+                <div class="d-flex justify-end mt-1">
+                    <span class="text-caption hover-pointer" @onclick="()=>{ _forgetPwdDialog = true; }">
+                        @T("Login.ForgetPassword")
+                    </span>
+                </div>
+
                 <MButton Class="mt-11 rounded-4 text-btn white--text" Height=46 Width=340 Color="primary" OnClick="LoginHandler">@T("Login.Login")</MButton>
 
                 <div class="my-6">

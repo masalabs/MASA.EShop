@@ -3,20 +3,29 @@
 
 <MApp>
     <MAppBar Elevation=0 App MaxHeight=60 Class="px-3 rounded-b-4 white mx-auto" Style="width:90%;">
-        <span>MASA EShop</span>
+        <img src="/img/svg/logo-en.svg" />
         <MSpacer />
         <AuthorizeView>
             <Authorized>
-                <MButton Icon Large OnClick='()=>Navigation("basket")'><MIcon>mdi-cart</MIcon></MButton>
                 <MMenu OffsetX Left OffsetY>
                     <ActivatorContent Context="activator_context">
                         <MButton Icon Large @attributes="@activator_context.Attrs"><MIcon>mdi-account-circle-outline</MIcon></MButton>
                     </ActivatorContent>
                     <ChildContent>
                         <MList Dense>
+                            <MListItem Link OnClick='()=>Navigation("basket")'>
+                                <MListItemIcon>
+                                    <MIcon>mdi-cart</MIcon>
+                                </MListItemIcon>
+                                <MListItemContent>
+                                    <MListItemTitle>
+                                        购物车
+                                    </MListItemTitle>
+                                </MListItemContent>
+                            </MListItem>
                             <MListItem Link OnClick='()=>Navigation("orders")'>
                                 <MListItemIcon>
-                                    <MIcon>mdi-bell</MIcon>
+                                    <MIcon>mdi-receipt</MIcon>
                                 </MListItemIcon>
                                 <MListItemContent>
                                     <MListItemTitle>
@@ -51,7 +60,7 @@
         </MButton>
     </MAppBar>
     <MMain Class="fill-lighten-1">
-        <MContainer Fluid style="width: 90%;">
+        <MContainer Fluid style="width: 90%;" class="px-0">
             <CascadingValue Value="this">
                 @Body
             </CascadingValue>

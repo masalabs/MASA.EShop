@@ -1,7 +1,7 @@
 ﻿@page "/basket"
 @inherits EShopPageBase
 
-<PageTitle>Basket</PageTitle>
+<PageTitle>@T("Basket.Cart")</PageTitle>
 
 <div class="d-flex block-center pb-6 pt-1">
     <div class="text-subtitle">
@@ -10,12 +10,12 @@
 
     <div class="mx-4 border-solid" style="height:16px;width:0.5px;" />
 
-    <MBreadcrumbs Linkage Class="pa-0">
+    <MBreadcrumbs Class="pa-0">
         <DividerContent>
             <MIcon Small>mdi-chevron-right</MIcon>
         </DividerContent>
         <ChildContent>
-            <MBreadcrumbsItem Disabled="false" Href="/catalog">
+            <MBreadcrumbsItem Disabled="false" Href="/">
                 <MIcon Small Color="primary">fas fa-home</MIcon>
             </MBreadcrumbsItem>
             <MBreadcrumbsItem Text="@T("Basket.Checkout")"></MBreadcrumbsItem>
@@ -28,21 +28,21 @@
         <ChildContent>
             <span class="mtab-tab-line mtab-tab-linear-primary"></span>
             <span class="rounded-circle mtab-tab-indicator mtab-tab-indicator-primary"></span>
-            <span class="mtab-tab-title">Card</span>
+            <span class="mtab-tab-title">@T("Basket.Cart")</span>
         </ChildContent>
     </MTab>
     <MTab class="text-capitalize pa-0" Disabled="_addressDisabled">
         <ChildContent>
             <span class="mtab-tab-line @(_curTab.ToInt32()>0?"mtab-tab-linear-primary":"mtab-tab-linear-neutral")"></span>
             <span class="rounded-circle mtab-tab-indicator @(_curTab.ToInt32()>0?"mtab-tab-indicator-primary":"mtab-tab-indicator-neutral")"></span>
-            <span class="mtab-tab-title">Address</span>
+            <span class="mtab-tab-title">@T("Basket.Address")</span>
         </ChildContent>
     </MTab>
     <MTab class="text-capitalize pa-0" Disabled="_paymentDisabled">
         <ChildContent>
             <span class="mtab-tab-line @(_curTab.ToInt32()>1?"mtab-tab-linear-primary":"mtab-tab-linear-neutral")"></span>
             <span class="rounded-circle mtab-tab-indicator @(_curTab.ToInt32()>1?"mtab-tab-indicator-primary":"mtab-tab-indicator-neutral")"></span>
-            <span class="mtab-tab-title">Payment</span>
+            <span class="mtab-tab-title">@T("Basket.Payment")</span>
         </ChildContent>
     </MTab>
 </MTabs>

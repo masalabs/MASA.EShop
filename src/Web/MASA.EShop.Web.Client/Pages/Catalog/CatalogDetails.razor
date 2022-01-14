@@ -1,20 +1,22 @@
 ﻿@page "/catalog/details/{id:int}"
 @inherits EShopPageBase
 
+<PageTitle>@T("Catalog.CatalogDetails")</PageTitle>
+
 <div class="d-flex block-center pb-6 pt-1">
     <div class="text-subtitle">
-        
+        @T("Catalog.CatalogDetails")
     </div>
     <div class="mx-4 border-solid" style="height:16px;width:0.5px;" />
-    <MBreadcrumbs Linkage Class="pa-0">
+    <MBreadcrumbs Class="pa-0">
         <DividerContent>
             <MIcon Small>mdi-chevron-right</MIcon>
         </DividerContent>
         <ChildContent>
-            <MBreadcrumbsItem Disabled="false" Href="/catalog">
+            <MBreadcrumbsItem Disabled="false" Href="/">
                 <MIcon Small Color="primary">fas fa-home</MIcon>
             </MBreadcrumbsItem>
-            <MBreadcrumbsItem Href="">@T("Catalog.CatalogDetails")</MBreadcrumbsItem>
+            <MBreadcrumbsItem>@T("Catalog.CatalogDetails")</MBreadcrumbsItem>
         </ChildContent>
     </MBreadcrumbs>
 </div>

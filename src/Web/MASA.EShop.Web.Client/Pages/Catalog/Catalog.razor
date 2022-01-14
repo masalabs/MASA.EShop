@@ -1,7 +1,8 @@
 ﻿@page "/catalog"
+@page "/"
 @inherits EShopPageBase
 
-<PageTitle>Catalog</PageTitle>
+<PageTitle>@T("Catalog")</PageTitle>
 
 <MCard Elevation=0 Class="rounded-4 pa-6 mr-3" Style="min-width:300px;width=300px;float:left;">
     <h6>@T("Catalog.Filters")</h6>
@@ -70,13 +71,13 @@
                         </MCardText>
                         <MRow NoGutters>
                             <MCol Lg="6" Md="12" Sm="12">
-                                <MButton Block Tile Depressed class="rounded-bl-xl" OnClick='()=>item.Favorite=!item.Favorite' style="height:56px;line-height: 56px;">
+                                <MButton Block Tile Depressed class="rounded-bl-xl" OnClick='()=>item.Favorite=!item.Favorite' style="height:48px;">
                                     <MIcon Size=24  Left Color="@(item.Favorite?"error":"neutral")">@(item.Favorite?"mdi-heart":"mdi-heart-outline")</MIcon>
                                     @T("Catalog.Wishlist")
                                 </MButton>
                             </MCol>
                             <MCol Lg="6" Md="12" Sm="12">
-                                <MButton Block Tile Depressed class="primary rounded-br-xl" OnClick="(e)=>AddToCart(item)" Disabled="@(!IsAuthenticated)" style="height:56px;line-height: 56px;">
+                                <MButton Block Tile Depressed class="primary rounded-br-xl" OnClick="(e)=>AddToCart(item)" Disabled="@(!IsAuthenticated)" style="height:48px;">
                                     <MIcon Size=24  Left>mdi-cart-outline</MIcon>
                                     @T("Catalog.AddToCart")
                                 </MButton>

@@ -2,7 +2,7 @@
 @inherits EShopPageBase
 @implements IAsyncDisposable
 
-<PageTitle>Orders</PageTitle>
+<PageTitle>@T("Order")</PageTitle>
 
 <div class="d-flex block-center pb-6 pt-1">
     <div class="text-subtitle">
@@ -11,12 +11,12 @@
 
     <div class="mx-4 border-solid" style="height:16px;width:0.5px;" />
 
-    <MBreadcrumbs Linkage Class="pa-0">
+    <MBreadcrumbs Class="pa-0">
         <DividerContent>
             <MIcon Small>mdi-chevron-right</MIcon>
         </DividerContent>
         <ChildContent>
-            <MBreadcrumbsItem Disabled="false" Href="/catalog">
+            <MBreadcrumbsItem Disabled="false" Href="/">
                 <MIcon Small Color="primary">fas fa-home</MIcon>
             </MBreadcrumbsItem>
             <MBreadcrumbsItem Text="@T("Order.My")"></MBreadcrumbsItem>
@@ -58,7 +58,7 @@
     </MCardText>
 </MCard>
 
-<MNavigationDrawer Fixed Temporary Right @bind-Value=_detailDialog Width="600" class="pa-3">
+<MNavigationDrawer Fixed Temporary Right Value=_detailDialog Width="600" class="pa-3">
     <MToolbar Absolute Elevation=0 class="px-3 full-width mx-n3">
         <span>@T("Order.Number"):@_order.OrderNumber</span>
         <MSpacer></MSpacer>

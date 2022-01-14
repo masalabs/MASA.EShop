@@ -34,7 +34,7 @@
         </MSheet>
     </MCol>
     <MCol Md="4">
-        <MCard class="pa-2 fill-height">
+        <MCard class="pa-2 fill-height d-flex flex-column justify-space-between">
             <MCardTitle class="text-h6 neutral-lighten-1--text">
                 John Doe
             </MCardTitle>
@@ -55,6 +55,11 @@
                     </MListItem>
                 </MList>
             </MCardText>
+            <MCardActions class="d-flex justify-center mb-10">
+                <MButton Large Depressed Width="340" class="primary text-capitalize rounded-pill" OnClick='()=>{ Basket.Navigation("orders"); }'>
+                    @T("Payment.Completed")
+                </MButton>
+            </MCardActions>
         </MCard>
     </MCol>
 </MRow>

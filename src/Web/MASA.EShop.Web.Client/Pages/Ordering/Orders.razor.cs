@@ -98,8 +98,9 @@ public partial class Orders : EShopPageBase, IAsyncDisposable
             Message("Not Found");
             return;
         }
-        _detailDialog = true;
         _order = order;
+        _detailDialog = true;
+        StateHasChanged();
     }
 
     private string GetStatusColor(string status)

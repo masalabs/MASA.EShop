@@ -91,8 +91,8 @@ MASA.EShop
   Baseket Service: http://localhost:8081/swagger/index.html  
   Catalog Service: http://localhost:8082/swagger/index.html  
   Ordering Service: http://localhost:8083/swagger/index.html  
-  Payment Service: http://localhost:8084/swagger/index.html
-  Admin Web: empty
+  Payment Service: http://localhost:8084/swagger/index.html   
+  Admin Web: empty   
   Client Web: http://localhost:8090/catalog
 
 ## Features
