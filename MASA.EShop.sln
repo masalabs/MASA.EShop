@@ -55,8 +55,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MASA.EShop.Contracts.Basket
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MASA.EShop.Contracts.Catalog", "src\Contracts\MASA.EShop.Contracts.Catalog\MASA.EShop.Contracts.Catalog.csproj", "{CF77B98C-21AD-4899-9710-10D9D084F235}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MASA.EShop.Api.Caller", "src\Api\MASA.EShop.Api.Caller\MASA.EShop.Api.Caller.csproj", "{37E4BAB8-4D9E-4C4E-9FC8-AC74BB59433B}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -115,10 +113,6 @@ Global
 		{CF77B98C-21AD-4899-9710-10D9D084F235}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF77B98C-21AD-4899-9710-10D9D084F235}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF77B98C-21AD-4899-9710-10D9D084F235}.Release|Any CPU.Build.0 = Release|Any CPU
-		{37E4BAB8-4D9E-4C4E-9FC8-AC74BB59433B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{37E4BAB8-4D9E-4C4E-9FC8-AC74BB59433B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{37E4BAB8-4D9E-4C4E-9FC8-AC74BB59433B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{37E4BAB8-4D9E-4C4E-9FC8-AC74BB59433B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -141,7 +135,6 @@ Global
 		{E5D5B899-C770-4BF8-80D7-4BB2488B7B76} = {71EE3624-9C22-4DD3-AF00-247BEFAA0E0E}
 		{70737D60-3478-4756-A1C3-C26A41D66C73} = {71EE3624-9C22-4DD3-AF00-247BEFAA0E0E}
 		{CF77B98C-21AD-4899-9710-10D9D084F235} = {71EE3624-9C22-4DD3-AF00-247BEFAA0E0E}
-		{37E4BAB8-4D9E-4C4E-9FC8-AC74BB59433B} = {17D1CFBB-FAFE-4EA2-94E7-BB2ACE0ABF70}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1FD6FCD1-A350-4541-A9CA-1549339C78EC}

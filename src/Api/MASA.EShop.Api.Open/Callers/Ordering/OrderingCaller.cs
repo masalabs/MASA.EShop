@@ -1,12 +1,12 @@
 ﻿namespace MASA.EShop.Api.Open.Callers.Ordering;
 
-public class OrderingCaller : HttpClientCaller
+public class OrderingCaller : HttpClientCallerBase
 {
     private readonly ILogger<OrderingCaller> _logger;
 
-    private readonly string _getOrdersUrl = "";
-    private readonly string _cancelOrderUrl = "";
-    private readonly string _shipOrderUrl = "";
+    private readonly string _getOrdersUrl;
+    private readonly string _cancelOrderUrl;
+    private readonly string _shipOrderUrl;
     private string prefix = "/api/v1/orders/";
 
     public OrderingCaller(
@@ -24,12 +24,12 @@ public class OrderingCaller : HttpClientCaller
 
     public async Task<List<OrderSummary>> GetMyOrders(string userId)
     {
-        return await CallerProvider.GetFromJsonAsync<List<OrderSummary>>($"{_getOrdersUrl}?userId={userId}") ?? new List<OrderSummary>();
+        return await CallerProvider.GetAsync<List<OrderSummary>>($"{_getOrdersUrl}?userId={userId}") ?? new List<OrderSummary>();
     }
 
     public async Task<Order?> GetOrder(string userId, int orderNumber)
     {
-        return await CallerProvider.GetFromJsonAsync<Order>($"{prefix}{userId}/{orderNumber}") ?? new Order();
+        return await CallerProvider.GetAsync<Order>($"{prefix}{userId}/{orderNumber}") ?? new Order();
     }
 
     public async Task<bool> ShipOrder(int orderNumber)
@@ -68,5 +68,7 @@ public class OrderingCaller : HttpClientCaller
         }
         return result;
     }
+
+    protected override string BaseAddress { get; set; }
 }
 

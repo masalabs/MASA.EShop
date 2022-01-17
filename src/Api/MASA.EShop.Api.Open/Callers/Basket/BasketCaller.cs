@@ -1,6 +1,6 @@
 ﻿namespace MASA.EShop.Api.Open.Callers.Basket;
 
-public class BasketCaller : HttpClientCaller
+public class BasketCaller : HttpClientCallerBase
 {
     private string _getBasketUrl;
     private readonly string _updateBasketUrl;
@@ -36,7 +36,7 @@ public class BasketCaller : HttpClientCaller
         if (basketItem != null)
         {
             currentBasket.Items.Remove(basketItem);
-            var response = await CallerProvider.PostAsJsonAsync(_updateBasketUrl, currentBasket);
+            var response = await CallerProvider.PostAsync(_updateBasketUrl, currentBasket);
         }
     }
 
@@ -76,12 +76,12 @@ public class BasketCaller : HttpClientCaller
         }
 
         // Step 4: Update basket
-        var response = await CallerProvider.PostAsJsonAsync(_updateBasketUrl, currentBasket);
+        var response = await CallerProvider.PostAsync(_updateBasketUrl, currentBasket);
     }
 
     public async Task<UserBasket?> GetBasketAsync(string userId)
     {
-        return await CallerProvider.GetFromJsonAsync<UserBasket>($"{_getBasketUrl}{userId}") ?? new UserBasket(userId, new List<BasketItem>());
+        return await CallerProvider.GetAsync<UserBasket>($"{_getBasketUrl}{userId}") ?? new UserBasket(userId, new List<BasketItem>());
     }
 
     public Task<UserBasket> UpdateBasketAsync(UserBasket basket)
@@ -91,7 +91,7 @@ public class BasketCaller : HttpClientCaller
 
     public async Task<bool> CheckoutAsync(BasketCheckout basketCheckout)
     {
-        var response = await CallerProvider.PostAsJsonAsync(_checkoutUrl, basketCheckout);
+        var response = await CallerProvider.PostAsync(_checkoutUrl, basketCheckout);
 
         try
         {
@@ -104,5 +104,7 @@ public class BasketCaller : HttpClientCaller
         }
         return false;
     }
+
+    protected override string BaseAddress { get; set; }
 }
 

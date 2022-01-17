@@ -1,6 +1,6 @@
 ﻿namespace MASA.EShop.Web.Client.Services.Ordering;
 
-public class OrderService : HttpClientCaller
+public class OrderService : HttpClientCallerBase
 {
     private readonly IServiceProvider _serviceProvider;
     private readonly string getOrdersUrl = "";
@@ -18,19 +18,19 @@ public class OrderService : HttpClientCaller
         shipOrderUrl = $"{prefix}ship";
     }
 
-    public override DelegatingHandler CreateHttpMessageHandler()
+    protected override IHttpClientBuilder UseHttpClient()
     {
-        return _serviceProvider.GetRequiredService<HttpClientAuthorizationDelegatingHandler>();
+        return base.UseHttpClient().AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>();
     }
 
     public async Task<List<OrderSummary>> GetMyOrders(string userId)
     {
-        return await CallerProvider.GetFromJsonAsync<List<OrderSummary>>($"{getOrdersUrl}?userId={userId}") ?? new List<OrderSummary>();
+        return await CallerProvider.GetAsync<List<OrderSummary>>($"{getOrdersUrl}?userId={userId}") ?? new List<OrderSummary>();
     }
 
     public async Task<Order?> GetOrder(string userId, int orderNumber)
     {
-        return await CallerProvider.GetFromJsonAsync<Order>($"{prefix}{userId}/{orderNumber}") ?? new Order();
+        return await CallerProvider.GetAsync<Order>($"{prefix}{userId}/{orderNumber}") ?? new Order();
     }
 
     public async Task ShipOrder(int orderNumber)
@@ -54,5 +54,7 @@ public class OrderService : HttpClientCaller
         var response = await CallerProvider.PutAsync($"{cancelOrderUrl}/{orderNumber}", null);
         response.EnsureSuccessStatusCode();
     }
+
+    protected override string BaseAddress { get; set; }
 }
 

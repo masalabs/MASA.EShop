@@ -1,8 +1,6 @@
-﻿using Microsoft.AspNetCore.WebUtilities;
+﻿namespace MASA.EShop.Api.Open.Callers.Catalog;
 
-namespace MASA.EShop.Api.Open.Callers.Catalog;
-
-public class CatalogCaller : HttpClientCaller
+public class CatalogCaller : HttpClientCallerBase
 {
     private readonly ILogger<CatalogCaller> _logger;
 
@@ -34,21 +32,23 @@ public class CatalogCaller : HttpClientCaller
             { "pageSize", pageSize.ToString() }
         };
         var url = QueryHelpers.AddQueryString(_getCatalogItemsUrl, queryArguments);
-        return await CallerProvider.GetFromJsonAsync<CatalogData>(url);
+        return await CallerProvider.GetAsync<CatalogData>(url);
     }
     public async Task<IEnumerable<CatalogBrand>> GetBrandsAsync()
     {
-        return await CallerProvider.GetFromJsonAsync<IEnumerable<CatalogBrand>>(_getAllBrandsUrl) ?? new List<CatalogBrand>();
+        return await CallerProvider.GetAsync<IEnumerable<CatalogBrand>>(_getAllBrandsUrl) ?? new List<CatalogBrand>();
     }
 
     public async Task<IEnumerable<CatalogType>> GetTypesAsync()
     {
-        return await CallerProvider.GetFromJsonAsync<IEnumerable<CatalogType>>(_getAllTypesUrl) ?? new List<CatalogType>();
+        return await CallerProvider.GetAsync<IEnumerable<CatalogType>>(_getAllTypesUrl) ?? new List<CatalogType>();
     }
 
     public async Task<CatalogItem?> GetCatalogById(int Id)
     {
-        return await CallerProvider.GetFromJsonAsync<CatalogItem>($"{prefix}{Id}");
+        return await CallerProvider.GetAsync<CatalogItem>($"{prefix}{Id}");
     }
+
+    protected override string BaseAddress { get; set; }
 }
 

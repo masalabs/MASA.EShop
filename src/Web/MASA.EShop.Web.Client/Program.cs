@@ -19,7 +19,7 @@ builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddTransient<HttpClientAuthorizationDelegatingHandler>();
 builder.Services.AddScoped<I18n>();
 
-builder.Services.AddCallerService();
+builder.Services.AddCaller();
 
 
 // Add Authentication services

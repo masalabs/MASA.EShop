@@ -11,8 +11,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MASA.Contrib.Service.MinimalAPIs" Version="0.0.1571847788" />
-    <PackageReference Include="MASA.Utils.Caller.HttpClient" Version="0.0.1604934905" />
+    <PackageReference Include="MASA.Contrib.Service.MinimalAPIs" Version="0.0.1685760477" />
+    <PackageReference Include="MASA.Utils.Caller.HttpClient" Version="0.0.1696296713" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.1" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
@@ -23,7 +23,6 @@
     <ProjectReference Include="..\..\Contracts\MASA.EShop.Contracts.Basket\MASA.EShop.Contracts.Basket.csproj" />
     <ProjectReference Include="..\..\Contracts\MASA.EShop.Contracts.Catalog\MASA.EShop.Contracts.Catalog.csproj" />
     <ProjectReference Include="..\..\Contracts\MASA.EShop.Contracts.Ordering\MASA.EShop.Contracts.Ordering.csproj" />
-    <ProjectReference Include="..\MASA.EShop.Api.Caller\MASA.EShop.Api.Caller.csproj" />
   </ItemGroup>
 
 </Project>

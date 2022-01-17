@@ -1,6 +1,6 @@
 ﻿namespace MASA.EShop.Web.Client.Services.Basket;
 
-public class BasketService : HttpClientCaller
+public class BasketService : HttpClientCallerBase
 {
     private readonly IServiceProvider _serviceProvider;
     private string getBasketUrl;
@@ -20,9 +20,9 @@ public class BasketService : HttpClientCaller
         checkoutUrl = $"{prefix}checkout";
     }
 
-    public override DelegatingHandler CreateHttpMessageHandler()
+    protected override IHttpClientBuilder UseHttpClient()
     {
-        return _serviceProvider.GetRequiredService<HttpClientAuthorizationDelegatingHandler>();
+        return base.UseHttpClient().AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>();
     }
 
     public async Task RemoveItemAsync(string userId, int productId)
@@ -37,7 +37,7 @@ public class BasketService : HttpClientCaller
 
     public async Task<UserBasket?> GetBasketAsync(string userId)
     {
-        return await CallerProvider.GetFromJsonAsync<UserBasket>($"{getBasketUrl}{userId}") ?? new UserBasket(userId, new List<BasketItem>());
+        return await CallerProvider.GetAsync<UserBasket>($"{getBasketUrl}{userId}") ?? new UserBasket(userId, new List<BasketItem>());
     }
 
     public Task<UserBasket> UpdateBasketAsync(UserBasket basket)
@@ -47,8 +47,10 @@ public class BasketService : HttpClientCaller
 
     public async Task CheckoutAsync(BasketCheckout basketCheckout)
     {
-        var response = await CallerProvider.PostAsJsonAsync(checkoutUrl, basketCheckout);
+        var response = await CallerProvider.PostAsync(checkoutUrl, basketCheckout);
         response.EnsureSuccessStatusCode();
     }
+
+    protected override string BaseAddress { get; set; }
 }
 
