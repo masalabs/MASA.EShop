@@ -1,6 +1,6 @@
-﻿using PageBase = MASA.Blazor.PageBase;
+﻿using PageBase = Masa.Blazor.PageBase;
 
-namespace MASA.EShop.Web.Client.Pages;
+namespace Masa.EShop.Web.Client.Pages;
 
 public delegate string Localizer(string text);
 

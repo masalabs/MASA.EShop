@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Web.Client.Pages.Ordering;
+﻿namespace Masa.EShop.Web.Client.Pages.Ordering;
 
 [Authorize]
 public partial class Orders : EShopPageBase, IAsyncDisposable

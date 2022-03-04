@@ -7,7 +7,7 @@ var app = builder.Services
     {
         options.SwaggerDoc("v1", new OpenApiInfo
         {
-            Title = "MASA EShop - Basket HTTP API",
+            Title = "Masa EShop - Basket HTTP API",
             Version = "v1",
             Description = "The Basket Service HTTP API"
         });
@@ -24,6 +24,6 @@ app.UseEndpoints(endpoints =>
 
 app.UseSwagger().UseSwaggerUI(c =>
 {
-    c.SwaggerEndpoint("/swagger/v1/swagger.json", "MASA EShop Service HTTP API v1");
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Masa EShop Service HTTP API v1");
 });
 app.Run();

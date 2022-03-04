@@ -8,7 +8,7 @@
     }
   },
   "profiles": {
-    "MASA.EShop.Web.Client": {
+    "Masa.EShop.Web.Client": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {

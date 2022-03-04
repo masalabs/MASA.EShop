@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Web.Client.Pages;
+﻿namespace Masa.EShop.Web.Client.Pages;
 
 [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
 [IgnoreAntiforgeryToken]

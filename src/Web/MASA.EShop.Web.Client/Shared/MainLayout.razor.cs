@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Web.Client.Shared;
+﻿namespace Masa.EShop.Web.Client.Shared;
 
 public partial class MainLayout
 {

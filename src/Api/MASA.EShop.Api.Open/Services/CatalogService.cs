@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Api.Open.Services;
+﻿namespace Masa.EShop.Api.Open.Services;
 
 public class CatalogService : ServiceBase
 {

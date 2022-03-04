@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Services.Ordering.Application.CardTypes;
+﻿namespace Masa.EShop.Services.Ordering.Application.CardTypes;
 
 public class CardTypesQueryHandler
 {

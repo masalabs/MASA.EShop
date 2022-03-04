@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Services.Payment.Application.Payments;
+﻿namespace Masa.EShop.Services.Payment.Application.Payments;
 
 public class PaymentCommandHandler 
 {

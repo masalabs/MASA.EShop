@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Services.Ordering.Infrastructure.EntityConfigurations;
+﻿namespace Masa.EShop.Services.Ordering.Infrastructure.EntityConfigurations;
 
 class CardTypeEntityTypeConfiguration : IEntityTypeConfiguration<CardType>
 {

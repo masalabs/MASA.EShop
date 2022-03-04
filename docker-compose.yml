@@ -1,52 +1,47 @@
-version: '3.4'
+version: "3.4"
 
 services:
   masa.eshop.services.basket:
     image: ${DOCKER_REGISTRY-}masaeshopservicesbasket
     build:
       context: .
-      dockerfile: src/Services/MASA.EShop.Services.Basket/Dockerfile
+      dockerfile: src/Services/Masa.EShop.Services.Basket/Dockerfile
 
   masa.eshop.services.catalog:
     image: ${DOCKER_REGISTRY-}masaeshopservicescatalog
     build:
       context: .
-      dockerfile: src/Services/MASA.EShop.Services.Catalog/Dockerfile
-
+      dockerfile: src/Services/Masa.EShop.Services.Catalog/Dockerfile
 
   masa.eshop.services.ordering:
     image: ${DOCKER_REGISTRY-}masaeshopservicesordering
     build:
       context: .
-      dockerfile: src/Services/MASA.EShop.Services.Ordering/Dockerfile
-
+      dockerfile: src/Services/Masa.EShop.Services.Ordering/Dockerfile
 
   masa.eshop.services.payment:
     image: ${DOCKER_REGISTRY-}masaeshopservicespayment
     build:
       context: .
-      dockerfile: src/Services/MASA.EShop.Services.Payment/Dockerfile
-
+      dockerfile: src/Services/Masa.EShop.Services.Payment/Dockerfile
 
   #masa.eshop.web.admin:
   #  image: ${DOCKER_REGISTRY-}masaeshopwebadmin
   #  build:
   #    context: .
-  #    dockerfile: src/Web/MASA.EShop.Web.Admin/Dockerfile
-
+  #    dockerfile: src/Web/Masa.EShop.Web.Admin/Dockerfile
 
   masa.eshop.web.client:
     image: ${DOCKER_REGISTRY-}masaeshopwebclient
     build:
       context: .
-      dockerfile: src/Web/MASA.EShop.Web.Client/Dockerfile
-
+      dockerfile: src/Web/Masa.EShop.Web.Client/Dockerfile
 
   masa.eshop.api.open:
     image: ${DOCKER_REGISTRY-}masaeshopapiopen
     build:
       context: .
-      dockerfile: src/Api/MASA.EShop.Api.Open/Dockerfile
+      dockerfile: src/Api/Masa.EShop.Api.Open/Dockerfile
 
   dapr-placement:
     image: "daprio/dapr:1.5.1"

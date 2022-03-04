@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Services.Payment.Infrastructure.Middleware;
+﻿namespace Masa.EShop.Services.Payment.Infrastructure.Middleware;
 
 public class GlobalExceptionMiddleware
 {

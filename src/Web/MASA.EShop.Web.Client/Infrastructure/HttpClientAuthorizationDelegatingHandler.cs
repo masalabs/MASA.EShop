@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Web.Client.Infrastructure;
+﻿namespace Masa.EShop.Web.Client.Infrastructure;
 
 public class HttpClientAuthorizationDelegatingHandler : DelegatingHandler
 {

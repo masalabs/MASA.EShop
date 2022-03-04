@@ -12,12 +12,12 @@
 
   <ItemGroup>
     <PackageReference Include="Dapr.Actors.AspNetCore" Version="1.5.0" />
-    <PackageReference Include="MASA.Contrib.Data.Uow.EF" Version="0.0.1571847788" />
-    <PackageReference Include="MASA.Contrib.Dispatcher.Events" Version="0.0.1571847788" />
-    <PackageReference Include="MASA.Contrib.Dispatcher.IntegrationEvents.Dapr" Version="0.0.1571847788" />
-    <PackageReference Include="MASA.Contrib.Dispatcher.IntegrationEvents.EventLogs.EF" Version="0.0.1571847788" />
-    <PackageReference Include="MASA.Contrib.ReadWriteSpliting.CQRS" Version="0.0.1571847788" />
-    <PackageReference Include="MASA.Contrib.Service.MinimalAPIs" Version="0.0.1571847788" />
+    <PackageReference Include="Masa.Contrib.Data.Uow.EF" Version="0.3.0" />
+    <PackageReference Include="Masa.Contrib.Dispatcher.Events" Version="0.3.0" />
+    <PackageReference Include="Masa.Contrib.Dispatcher.IntegrationEvents.Dapr" Version="0.3.0" />
+    <PackageReference Include="Masa.Contrib.Dispatcher.IntegrationEvents.EventLogs.EF" Version="0.3.0" />
+    <PackageReference Include="Masa.Contrib.ReadWriteSpliting.Cqrs" Version="0.3.0" />
+    <PackageReference Include="Masa.Contrib.Service.MinimalAPIs" Version="0.3.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -28,10 +28,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Contracts\MASA.EShop.Contracts.Basket\MASA.EShop.Contracts.Basket.csproj" />
-    <ProjectReference Include="..\..\Contracts\MASA.EShop.Contracts.Catalog\MASA.EShop.Contracts.Catalog.csproj" />
-    <ProjectReference Include="..\..\Contracts\MASA.EShop.Contracts.Ordering\MASA.EShop.Contracts.Ordering.csproj" />
-    <ProjectReference Include="..\..\Contracts\MASA.EShop.Contracts.Payment\MASA.EShop.Contracts.Payment.csproj" />
+    <ProjectReference Include="..\..\Contracts\Masa.EShop.Contracts.Basket\Masa.EShop.Contracts.Basket.csproj" />
+    <ProjectReference Include="..\..\Contracts\Masa.EShop.Contracts.Catalog\Masa.EShop.Contracts.Catalog.csproj" />
+    <ProjectReference Include="..\..\Contracts\Masa.EShop.Contracts.Ordering\Masa.EShop.Contracts.Ordering.csproj" />
+    <ProjectReference Include="..\..\Contracts\Masa.EShop.Contracts.Payment\Masa.EShop.Contracts.Payment.csproj" />
   </ItemGroup>
 
 </Project>

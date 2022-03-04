@@ -1,41 +1,41 @@
 [中](README.zh-CN.md) | EN
 
-# <center>MASA.EShop</center>
+# <center>Masa.EShop</center>
 
 # Introduction
 
-A sample `.NET Core` distributed application based on eShopOnDapr, powered by [MASA.BuildingBlocks](https://github.com/masastack/MASA.BuildingBlocks), [MASA.Contrib](https://github.com/masastack/MASA.Contrib), [MASA.Utils](https://github.com/masastack/MASA.Utils),[Dapr](https://github.com/dapr/dapr).
+A sample `.NET Core` distributed application based on eShopOnDapr, powered by [Masa.BuildingBlocks](https://github.com/masastack/Masa.BuildingBlocks), [Masa.Contrib](https://github.com/masastack/Masa.Contrib), [Masa.Utils](https://github.com/masastack/Masa.Utils),[Dapr](https://github.com/dapr/dapr).
 
 ## Directory Structure
 
 ```
-MASA.EShop
+Masa.EShop
 ├── dapr
 │   ├── components                           dapr local components directory
 │   │   ├── pubsub.yaml                      pub/sub config file
 │   │   └── statestore.yaml                  state management config file
 ├── src
 │   ├── Api
-│   │   ├── MASA.EShop.Api.Caller            Caller package
-│   │   └── MASA.EShop.Api.Open              BFF Layer, provide API to Web.Client
+│   │   ├── Masa.EShop.Api.Caller            Caller package
+│   │   └── Masa.EShop.Api.Open              BFF Layer, provide API to Web.Client
 │   ├── Contracts                            Common contracts，like Event Class
-│   │   ├── MASA.EShop.Contracts.Basket
-│   │   ├── MASA.EShop.Contracts.Catalog
-│   │   ├── MASA.EShop.Contracts.Ordering
-│   │   └── MASA.EShop.Contracts.Payment
+│   │   ├── Masa.EShop.Contracts.Basket
+│   │   ├── Masa.EShop.Contracts.Catalog
+│   │   ├── Masa.EShop.Contracts.Ordering
+│   │   └── Masa.EShop.Contracts.Payment
 │   ├── Services
-│   │   ├── MASA.EShop.Services.Basket
-│   │   ├── MASA.EShop.Services.Catalog
-│   │   ├── MASA.EShop.Services.Ordering
-│   │   └── MASA.EShop.Services.Payment
+│   │   ├── Masa.EShop.Services.Basket
+│   │   ├── Masa.EShop.Services.Catalog
+│   │   ├── Masa.EShop.Services.Ordering
+│   │   └── Masa.EShop.Services.Payment
 │   ├── Web
-│   │   ├── MASA.EShop.Web.Admin
-│   │   └── MASA.EShop.Web.Client
+│   │   ├── Masa.EShop.Web.Admin
+│   │   └── Masa.EShop.Web.Client
 ├── test
-|   └── MASA.EShop.Services.Catalog.Tests
+|   └── Masa.EShop.Services.Catalog.Tests
 ├── docker-compose
-│   ├── MASA.EShop.Web.Admin
-│   └── MASA.EShop.Web.Client
+│   ├── Masa.EShop.Web.Admin
+│   └── Masa.EShop.Web.Client
 ├── .gitignore
 ├── LICENSE
 ├── .dockerignore
@@ -53,46 +53,46 @@ MASA.EShop
 ## Getting started
 
 - Preparation
-  
+
   - Docker
   - VS 2022
   - .Net 6.0
   - Dapr
 
 - Startup
-  
+
   - VS 2022(Recommended)
-    
+
     Set docker-compose as start project, press `Ctrl + F5` to start.
-    
+
     ![vs-run](img/vs_run.png)
-    
+
     After startup, you can see the container view.
-    
+
     ![vs-result](img/vs_result.png)
-  
+
   - CLI
-    
+
     Run the command in the project root directory.
-    
+
     ```
     docker-compose build
     docker-compose up
     ```
-    
+
     After startup, the output is as follows.
-    
+
     ![cli-result](img/cli_result.png)
-  
+
   - VS Code (Todo)
 
 - Display after startup(Update later)
-  
+
   Baseket Service: http://localhost:8081/swagger/index.html  
   Catalog Service: http://localhost:8082/swagger/index.html  
   Ordering Service: http://localhost:8083/swagger/index.html  
-  Payment Service: http://localhost:8084/swagger/index.html   
-  Admin Web: empty   
+  Payment Service: http://localhost:8084/swagger/index.html  
+  Admin Web: empty  
   Client Web: http://localhost:8090/catalog
 
 ## Features
@@ -110,7 +110,7 @@ app.MapGet("/api/v1/helloworld", ()=>"Hello World");
 app.Run();
 ```
 
-`MASA.Contrib.Service.MinimalAPIs` based on `MASA.BuildingBlocks`:
+`Masa.Contrib.Service.MinimalAPIs` based on `Masa.BuildingBlocks`:
 
 Program.cs
 
@@ -130,11 +130,11 @@ public class HelloService : ServiceBase
 }
 ```
 
-> The `ServiceBase` class (like ControllerBase) provided by `MASA.BuildingBlocks` is used to define Service class (like Controller), maintains the route registry in the constructor. The `AddServices(builder)` method will auto register all the service classes to DI. Service inherited from ServiceBase is `similar to singleton pattern`. Such as `Repostory`, should be injected with the `FromService`.
+> The `ServiceBase` class (like ControllerBase) provided by `Masa.BuildingBlocks` is used to define Service class (like Controller), maintains the route registry in the constructor. The `AddServices(builder)` method will auto register all the service classes to DI. Service inherited from ServiceBase is `similar to singleton pattern`. Such as `Repostory`, should be injected with the `FromService`.
 
 #### Dapr
 
-The official Dapr implementation, MASA.Contrib references the Event section.
+The official Dapr implementation, Masa.Contrib references the Event section.
 
 More Dapr content reference: https://docs.microsoft.com/zh-cn/dotnet/architecture/dapr-for-net-developers/
 
@@ -505,12 +505,12 @@ public class PaymentDomainService : DomainService
 
 ## Service Description
 
-#### MASA.EShop.Services.Basket
+#### Masa.EShop.Services.Basket
 
 1. Add [MinimalAPI](####MinimalAPI)
 2. Add and use [Dapr](####Dapr)
 
-#### MASA.EShop.Services.Catalog
+#### Masa.EShop.Services.Catalog
 
 1. Add [MinimalAPI](####MinimalAPI)
 2. Add [DaprEventBus](####IntegrationEventBus)
@@ -527,7 +527,7 @@ builder.Services
 
 3. Use [CQRS](####CQRS)
 
-#### MASA.EShop.Services.Ordering
+#### Masa.EShop.Services.Ordering
 
 1. Add [MinimalAPI](####MinimalAPI)
 2. Add [DaprEventBus](####IntegrationEventBus)
@@ -567,7 +567,7 @@ dapr-placement:
 "-placement-host-address", "dapr-placement:50000"
 ```
 
-#### MASA.EShop.Services.Payment
+#### Masa.EShop.Services.Payment
 
 1. Add [MinimalAPI](####MinimalAPI)
 2. Add [DomainEventBus](####DDD)
@@ -595,27 +595,27 @@ Update later
 # Nuget Package Introduction
 
 ```c#
-Install-Package MASA.Contrib.Service.MinimalAPIs //MinimalAPI
+Install-Package Masa.Contrib.Service.MinimalAPIs //MinimalAPI
 ```
 
 ```c#
-Install-Package MASA.Contrib.Dispatcher.Events //In-Process event
+Install-Package Masa.Contrib.Dispatcher.Events //In-Process event
 ```
 
 ```c#
-Install-Package MASA.Contrib.Dispatcher.IntegrationEvents.Dapr //Cross-Process event
-Install-Package MASA.Contrib.Dispatcher.IntegrationEvents.EventLogs.EF //Local message table
+Install-Package Masa.Contrib.Dispatcher.IntegrationEvents.Dapr //Cross-Process event
+Install-Package Masa.Contrib.Dispatcher.IntegrationEvents.EventLogs.EF //Local message table
 ```
 
 ```c#
-Install-Package MASA.Contrib.Data.UoW.EF //EF UoW
+Install-Package Masa.Contrib.Data.UoW.EF //EF UoW
 ```
 
 ```c#
-Install-Package MASA.Contrib.ReadWriteSpliting.CQRS //CQRS
+Install-Package Masa.Contrib.ReadWriteSpliting.Cqrs //CQRS
 ```
 
 ```c#
-Install-Package MASA.BuildingBlocks.DDD.Domain //DDD相关实现
-Install-Package MASA.Contrib.DDD.Domain.Repository.EF //Repository实现
+Install-Package Masa.BuildingBlocks.Ddd.Domain //DDD相关实现
+Install-Package Masa.Contrib.Ddd.Domain.Repository.EF //Repository实现
 ```

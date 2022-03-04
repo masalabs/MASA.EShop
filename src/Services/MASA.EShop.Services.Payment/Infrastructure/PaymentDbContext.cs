@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Services.Payment.Infrastructure;
+﻿namespace Masa.EShop.Services.Payment.Infrastructure;
 
 public class PaymentDbContext : IntegrationEventLogContext
 {

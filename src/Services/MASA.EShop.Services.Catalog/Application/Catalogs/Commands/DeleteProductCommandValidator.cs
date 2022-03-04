@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Services.Catalog.Application.Catalogs.Commands;
+﻿namespace Masa.EShop.Services.Catalog.Application.Catalogs.Commands;
 
 public class DeleteProductCommandValidator : AbstractValidator<DeleteProductCommand>
 {

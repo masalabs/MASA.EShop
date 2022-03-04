@@ -1,6 +1,6 @@
-﻿using OrderItem = MASA.EShop.Services.Ordering.Entities.OrderItem;
+﻿using OrderItem = Masa.EShop.Services.Ordering.Entities.OrderItem;
 
-namespace MASA.EShop.Services.Ordering.Infrastructure.EntityConfigurations;
+namespace Masa.EShop.Services.Ordering.Infrastructure.EntityConfigurations;
 
 class OrderItemEntityTypeConfiguration : IEntityTypeConfiguration<OrderItem>
 {

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace MASA.EShop.Services.Ordering.Migrations
+namespace Masa.EShop.Services.Ordering.Migrations
 {
     public partial class init : Migration
     {
@@ -35,8 +35,10 @@ namespace MASA.EShop.Services.Ordering.Migrations
                     State = table.Column<int>(type: "int", nullable: false),
                     TimesSent = table.Column<int>(type: "int", nullable: false),
                     CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ModificationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TransactionId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    TransactionId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -92,6 +94,16 @@ namespace MASA.EShop.Services.Ordering.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "index_state_modificationtime",
+                table: "IntegrationEventLog",
+                columns: new[] { "State", "ModificationTime" });
+
+            migrationBuilder.CreateIndex(
+                name: "index_state_timessent_modificationtime",
+                table: "IntegrationEventLog",
+                columns: new[] { "State", "TimesSent", "ModificationTime" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_orderItems_OrderId",

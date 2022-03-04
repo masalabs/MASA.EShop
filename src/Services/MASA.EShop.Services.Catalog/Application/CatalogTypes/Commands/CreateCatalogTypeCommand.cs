@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Services.Catalog.Application.CatalogTypes.Commands.CreateCatalogType;
+﻿namespace Masa.EShop.Services.Catalog.Application.CatalogTypes.Commands.CreateCatalogType;
 
 public record CreateCatalogTypeCommand : Command
 {

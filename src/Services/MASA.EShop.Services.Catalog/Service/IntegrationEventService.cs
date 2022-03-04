@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Services.Catalog.Service;
+﻿namespace Masa.EShop.Services.Catalog.Service;
 
 public class IntegrationEventService : ServiceBase
 {

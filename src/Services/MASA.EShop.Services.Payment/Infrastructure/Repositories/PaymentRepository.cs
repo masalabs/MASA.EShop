@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Services.Payment.Infrastructure.Repositories;
+﻿namespace Masa.EShop.Services.Payment.Infrastructure.Repositories;
 
 public class PaymentRepository : Repository<PaymentDbContext, Domain.Aggregate.Payment>, IPaymentRepository
 {

@@ -8,20 +8,20 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["nuget.config", "."]
-COPY ["src/Services/MASA.EShop.Services.Ordering/MASA.EShop.Services.Ordering.csproj", "src/Services/MASA.EShop.Services.Ordering/"]
-COPY ["src/Contracts/MASA.EShop.Contracts.Basket/MASA.EShop.Contracts.Basket.csproj", "src/Contracts/MASA.EShop.Contracts.Basket/"]
-COPY ["src/Contracts/MASA.EShop.Contracts.Ordering/MASA.EShop.Contracts.Ordering.csproj", "src/Contracts/MASA.EShop.Contracts.Ordering/"]
-COPY ["src/Contracts/MASA.EShop.Contracts.Payment/MASA.EShop.Contracts.Payment.csproj", "src/Contracts/MASA.EShop.Contracts.Payment/"]
-COPY ["src/Contracts/MASA.EShop.Contracts.Catalog/MASA.EShop.Contracts.Catalog.csproj", "src/Contracts/MASA.EShop.Contracts.Catalog/"]
-RUN dotnet restore "src/Services/MASA.EShop.Services.Ordering/MASA.EShop.Services.Ordering.csproj"
+COPY ["src/Services/Masa.EShop.Services.Ordering/Masa.EShop.Services.Ordering.csproj", "src/Services/Masa.EShop.Services.Ordering/"]
+COPY ["src/Contracts/Masa.EShop.Contracts.Basket/Masa.EShop.Contracts.Basket.csproj", "src/Contracts/Masa.EShop.Contracts.Basket/"]
+COPY ["src/Contracts/Masa.EShop.Contracts.Ordering/Masa.EShop.Contracts.Ordering.csproj", "src/Contracts/Masa.EShop.Contracts.Ordering/"]
+COPY ["src/Contracts/Masa.EShop.Contracts.Payment/Masa.EShop.Contracts.Payment.csproj", "src/Contracts/Masa.EShop.Contracts.Payment/"]
+COPY ["src/Contracts/Masa.EShop.Contracts.Catalog/Masa.EShop.Contracts.Catalog.csproj", "src/Contracts/Masa.EShop.Contracts.Catalog/"]
+RUN dotnet restore "src/Services/Masa.EShop.Services.Ordering/Masa.EShop.Services.Ordering.csproj"
 COPY . .
-WORKDIR "/src/src/Services/MASA.EShop.Services.Ordering"
-RUN dotnet build "MASA.EShop.Services.Ordering.csproj" -c Release -o /app/build
+WORKDIR "/src/src/Services/Masa.EShop.Services.Ordering"
+RUN dotnet build "Masa.EShop.Services.Ordering.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "MASA.EShop.Services.Ordering.csproj" -c Release -o /app/publish
+RUN dotnet publish "Masa.EShop.Services.Ordering.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "MASA.EShop.Services.Ordering.dll"]
+ENTRYPOINT ["dotnet", "Masa.EShop.Services.Ordering.dll"]

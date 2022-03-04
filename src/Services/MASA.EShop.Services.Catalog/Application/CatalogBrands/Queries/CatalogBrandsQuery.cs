@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Services.Catalog.Application.CatalogBrands.Queries;
+﻿namespace Masa.EShop.Services.Catalog.Application.CatalogBrands.Queries;
 
 public record CatalogBrandsQuery : Query<IList<CatalogBrand>>
 {

@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Api.Open
+﻿namespace Masa.EShop.Api.Open
 {
     public class Settings
     {

@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Services.Ordering.Application.Orders.Queries;
+﻿namespace Masa.EShop.Services.Ordering.Application.Orders.Queries;
 
 public record class OrdersQuery : Query<IEnumerable<OrderSummary>>
 {

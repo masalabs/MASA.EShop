@@ -1,4 +1,4 @@
-using MASA.Utils.Caller.Core;
+using Masa.Utils.Caller.Core;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,7 +26,7 @@ var app = builder.Services
     {
         options.SwaggerDoc("v1", new OpenApiInfo
         {
-            Title = "MASA EShop - HTTP API",
+            Title = "Masa EShop - HTTP API",
             Version = "v1",
             Description = "The EShop Service HTTP API",
             License = new OpenApiLicense() { Name = "MIT", Url = new Uri("https://opensource.org/licenses/MIT") }
@@ -59,7 +59,7 @@ var app = builder.Services
 
 app.UseSwagger().UseSwaggerUI(c =>
 {
-    c.SwaggerEndpoint("/swagger/v1/swagger.json", "MASA EShop Service HTTP API v1");
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Masa EShop Service HTTP API v1");
 });
 
 app.UseAuthentication();

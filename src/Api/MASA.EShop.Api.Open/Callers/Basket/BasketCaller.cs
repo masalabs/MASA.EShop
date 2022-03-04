@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Api.Open.Callers.Basket;
+﻿namespace Masa.EShop.Api.Open.Callers.Basket;
 
 public class BasketCaller : HttpClientCallerBase
 {

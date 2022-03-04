@@ -8,18 +8,18 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["nuget.config", "."]
-COPY ["src/Services/MASA.EShop.Services.Basket/MASA.EShop.Services.Basket.csproj", "src/Services/MASA.EShop.Services.Basket/"]
-COPY ["src/Contracts/MASA.EShop.Contracts.Basket/MASA.EShop.Contracts.Basket.csproj", "src/Contracts/MASA.EShop.Contracts.Basket/"]
-COPY ["src/Contracts/MASA.EShop.Contracts.Ordering/MASA.EShop.Contracts.Ordering.csproj", "src/Contracts/MASA.EShop.Contracts.Ordering/"]
-RUN dotnet restore "src/Services/MASA.EShop.Services.Basket/MASA.EShop.Services.Basket.csproj"
+COPY ["src/Services/Masa.EShop.Services.Basket/Masa.EShop.Services.Basket.csproj", "src/Services/Masa.EShop.Services.Basket/"]
+COPY ["src/Contracts/Masa.EShop.Contracts.Basket/Masa.EShop.Contracts.Basket.csproj", "src/Contracts/Masa.EShop.Contracts.Basket/"]
+COPY ["src/Contracts/Masa.EShop.Contracts.Ordering/Masa.EShop.Contracts.Ordering.csproj", "src/Contracts/Masa.EShop.Contracts.Ordering/"]
+RUN dotnet restore "src/Services/Masa.EShop.Services.Basket/Masa.EShop.Services.Basket.csproj"
 COPY . .
-WORKDIR "/src/src/Services/MASA.EShop.Services.Basket"
-RUN dotnet build "MASA.EShop.Services.Basket.csproj" -c Release -o /app/build
+WORKDIR "/src/src/Services/Masa.EShop.Services.Basket"
+RUN dotnet build "Masa.EShop.Services.Basket.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "MASA.EShop.Services.Basket.csproj" -c Release -o /app/publish
+RUN dotnet publish "Masa.EShop.Services.Basket.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "MASA.EShop.Services.Basket.dll"]
+ENTRYPOINT ["dotnet", "Masa.EShop.Services.Basket.dll"]

@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Services.Payment.Infrastructure.Extensions;
+﻿namespace Masa.EShop.Services.Payment.Infrastructure.Extensions;
 
 public static class HostExtensions
 {

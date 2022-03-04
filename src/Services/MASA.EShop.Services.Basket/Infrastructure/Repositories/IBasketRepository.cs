@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Services.Basket.Infrastructure.Repositories;
+﻿namespace Masa.EShop.Services.Basket.Infrastructure.Repositories;
 
 public interface IBasketRepository
 {

@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Services.Ordering.Domain.Events;
+﻿namespace Masa.EShop.Services.Ordering.Domain.Events;
 
 public class OrderStatusEventHandler
 {

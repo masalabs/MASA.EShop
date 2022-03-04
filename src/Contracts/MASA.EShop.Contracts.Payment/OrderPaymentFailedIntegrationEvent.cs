@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Contracts.Payment;
+﻿namespace Masa.EShop.Contracts.Payment;
 
 public record OrderPaymentFailedIntegrationEvent(Guid OrderId) : IntegrationEvent
 {

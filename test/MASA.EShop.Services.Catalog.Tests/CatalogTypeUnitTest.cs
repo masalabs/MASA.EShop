@@ -1,9 +1,9 @@
 using FluentValidation;
-using MASA.BuildingBlocks.Dispatcher.Events;
-using MASA.EShop.Services.Catalog.Application.CatalogTypes.Commands.CreateCatalogType;
-using MASA.EShop.Services.Catalog.Domain.Repositories;
+using Masa.BuildingBlocks.Dispatcher.Events;
+using Masa.EShop.Services.Catalog.Application.CatalogTypes.Commands.CreateCatalogType;
+using Masa.EShop.Services.Catalog.Domain.Repositories;
 
-namespace MASA.EShop.Services.Catalog.Tests;
+namespace Masa.EShop.Services.Catalog.Tests;
 [TestClass]
 public class CatalogTypeUnitTest
 {

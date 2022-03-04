@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Services.Payment.Service;
+﻿namespace Masa.EShop.Services.Payment.Service;
 
 public class IntegrationEventService : ServiceBase
 {

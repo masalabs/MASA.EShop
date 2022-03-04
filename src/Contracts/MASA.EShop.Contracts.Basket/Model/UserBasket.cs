@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Contracts.Basket.Model.Web;
+﻿namespace Masa.EShop.Contracts.Basket.Model.Web;
 
 public record UserBasket(string BuyerId, List<BasketItem> Items)
 {

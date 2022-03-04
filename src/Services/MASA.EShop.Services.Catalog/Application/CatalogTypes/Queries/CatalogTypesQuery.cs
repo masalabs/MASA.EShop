@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Services.Catalog.Application.CatalogTypes.Queries;
+﻿namespace Masa.EShop.Services.Catalog.Application.CatalogTypes.Queries;
 
 public record CatalogTypesQuery : Query<IList<CatalogType>>
 {

@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Services.Catalog.Application.Catalogs.Queries;
+﻿namespace Masa.EShop.Services.Catalog.Application.Catalogs.Queries;
 
 public record ProductQuery : Query<CatalogItem>
 {

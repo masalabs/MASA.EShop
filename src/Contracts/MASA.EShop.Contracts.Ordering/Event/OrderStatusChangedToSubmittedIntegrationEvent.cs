@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Contracts.Ordering.Event;
+﻿namespace Masa.EShop.Contracts.Ordering.Event;
 
 public record OrderStatusChangedToSubmittedIntegrationEvent(Guid OrderId, string OrderStatus,
         string BuyerId, string BuyerName) : IntegrationEvent

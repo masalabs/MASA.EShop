@@ -12,14 +12,14 @@
 
   <ItemGroup>
     <PackageReference Include="Dapr.AspNetCore" Version="1.5.0" />
-    <PackageReference Include="MASA.Contrib.Service.MinimalAPIs" Version="0.0.1571847788" />
+    <PackageReference Include="Masa.Contrib.Service.MinimalAPIs" Version="0.3.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Contracts\MASA.EShop.Contracts.Basket\MASA.EShop.Contracts.Basket.csproj" />
-    <ProjectReference Include="..\..\Contracts\MASA.EShop.Contracts.Ordering\MASA.EShop.Contracts.Ordering.csproj" />
+    <ProjectReference Include="..\..\Contracts\Masa.EShop.Contracts.Basket\Masa.EShop.Contracts.Basket.csproj" />
+    <ProjectReference Include="..\..\Contracts\Masa.EShop.Contracts.Ordering\Masa.EShop.Contracts.Ordering.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Services.Payment.Application.Payments.Commands;
+﻿namespace Masa.EShop.Services.Payment.Application.Payments.Commands;
 
 public record OrderPaymentSucceededDomainEvent : OrderPaymentSucceededIntegrationEvent, IIntegrationDomainEvent
 {

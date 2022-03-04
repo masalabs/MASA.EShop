@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Services.Catalog.Domain.Entities;
+﻿namespace Masa.EShop.Services.Catalog.Domain.Entities;
 
 public class CatalogItem
 {

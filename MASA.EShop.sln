@@ -11,15 +11,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{FBA2B0C9-9C0
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{E99CDF1E-C951-4F4F-9483-F18F18A0BE2B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MASA.EShop.Services.Catalog.Tests", "test\MASA.EShop.Services.Catalog.Tests\MASA.EShop.Services.Catalog.Tests.csproj", "{E63BA32D-F441-4C9B-BFE5-F824188FF6A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Masa.EShop.Services.Catalog.Tests", "test\MASA.EShop.Services.Catalog.Tests\Masa.EShop.Services.Catalog.Tests.csproj", "{E63BA32D-F441-4C9B-BFE5-F824188FF6A1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MASA.EShop.Services.Catalog", "src\Services\MASA.EShop.Services.Catalog\MASA.EShop.Services.Catalog.csproj", "{856C92CF-BA51-4AD4-B2ED-7BDE696018FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Masa.EShop.Services.Catalog", "src\Services\MASA.EShop.Services.Catalog\Masa.EShop.Services.Catalog.csproj", "{856C92CF-BA51-4AD4-B2ED-7BDE696018FB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MASA.EShop.Services.Basket", "src\Services\MASA.EShop.Services.Basket\MASA.EShop.Services.Basket.csproj", "{76CA2B55-D896-40BA-AF99-097D3018178A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Masa.EShop.Services.Basket", "src\Services\MASA.EShop.Services.Basket\Masa.EShop.Services.Basket.csproj", "{76CA2B55-D896-40BA-AF99-097D3018178A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MASA.EShop.Services.Ordering", "src\Services\MASA.EShop.Services.Ordering\MASA.EShop.Services.Ordering.csproj", "{29593945-0A6F-4DD6-97A9-22B830CAF5ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Masa.EShop.Services.Ordering", "src\Services\MASA.EShop.Services.Ordering\Masa.EShop.Services.Ordering.csproj", "{29593945-0A6F-4DD6-97A9-22B830CAF5ED}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MASA.EShop.Services.Payment", "src\Services\MASA.EShop.Services.Payment\MASA.EShop.Services.Payment.csproj", "{73DC9EA0-2761-4C24-9964-D4F582E0580F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Masa.EShop.Services.Payment", "src\Services\MASA.EShop.Services.Payment\Masa.EShop.Services.Payment.csproj", "{73DC9EA0-2761-4C24-9964-D4F582E0580F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_", "_", "{434080A1-4D8F-47E4-A7CC-4C2B26552A7D}"
 	ProjectSection(SolutionItems) = preProject
@@ -31,7 +31,7 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{17D1CFBB-FAFE-4EA2-94E7-BB2ACE0ABF70}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MASA.EShop.Api.Open", "src\Api\MASA.EShop.Api.Open\MASA.EShop.Api.Open.csproj", "{FB2C9D9B-A62A-4C9E-A7AF-64CA7315B40C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Masa.EShop.Api.Open", "src\Api\MASA.EShop.Api.Open\Masa.EShop.Api.Open.csproj", "{FB2C9D9B-A62A-4C9E-A7AF-64CA7315B40C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dapr", "dapr", "{EC8191FD-14E5-498D-8D7A-719A2544FD68}"
 EndProject
@@ -43,17 +43,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "components", "components", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Contracts", "Contracts", "{71EE3624-9C22-4DD3-AF00-247BEFAA0E0E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MASA.EShop.Contracts.Payment", "src\Contracts\MASA.EShop.Contracts.Payment\MASA.EShop.Contracts.Payment.csproj", "{66318E56-1E11-4EF1-88FF-8AEBEF7310E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Masa.EShop.Contracts.Payment", "src\Contracts\MASA.EShop.Contracts.Payment\Masa.EShop.Contracts.Payment.csproj", "{66318E56-1E11-4EF1-88FF-8AEBEF7310E0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MASA.EShop.Web.Admin", "src\Web\MASA.EShop.Web.Admin\MASA.EShop.Web.Admin.csproj", "{ADF22E60-D628-464C-BFD4-2083311919D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Masa.EShop.Web.Admin", "src\Web\MASA.EShop.Web.Admin\Masa.EShop.Web.Admin.csproj", "{ADF22E60-D628-464C-BFD4-2083311919D4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MASA.EShop.Web.Client", "src\Web\MASA.EShop.Web.Client\MASA.EShop.Web.Client.csproj", "{FA45B321-2E90-492B-BDAC-D2A0061755BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Masa.EShop.Web.Client", "src\Web\MASA.EShop.Web.Client\Masa.EShop.Web.Client.csproj", "{FA45B321-2E90-492B-BDAC-D2A0061755BA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MASA.EShop.Contracts.Ordering", "src\Contracts\MASA.EShop.Contracts.Ordering\MASA.EShop.Contracts.Ordering.csproj", "{E5D5B899-C770-4BF8-80D7-4BB2488B7B76}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Masa.EShop.Contracts.Ordering", "src\Contracts\MASA.EShop.Contracts.Ordering\Masa.EShop.Contracts.Ordering.csproj", "{E5D5B899-C770-4BF8-80D7-4BB2488B7B76}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MASA.EShop.Contracts.Basket", "src\Contracts\MASA.EShop.Contracts.Basket\MASA.EShop.Contracts.Basket.csproj", "{70737D60-3478-4756-A1C3-C26A41D66C73}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Masa.EShop.Contracts.Basket", "src\Contracts\MASA.EShop.Contracts.Basket\Masa.EShop.Contracts.Basket.csproj", "{70737D60-3478-4756-A1C3-C26A41D66C73}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MASA.EShop.Contracts.Catalog", "src\Contracts\MASA.EShop.Contracts.Catalog\MASA.EShop.Contracts.Catalog.csproj", "{CF77B98C-21AD-4899-9710-10D9D084F235}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Masa.EShop.Contracts.Catalog", "src\Contracts\MASA.EShop.Contracts.Catalog\Masa.EShop.Contracts.Catalog.csproj", "{CF77B98C-21AD-4899-9710-10D9D084F235}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

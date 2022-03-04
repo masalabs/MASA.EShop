@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Services.Catalog.Application.CatalogTypes;
+﻿namespace Masa.EShop.Services.Catalog.Application.CatalogTypes;
 
 public class CatalogTypeQueryHandler
 {

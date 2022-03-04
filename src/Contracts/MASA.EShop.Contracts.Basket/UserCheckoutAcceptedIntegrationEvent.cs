@@ -1,6 +1,6 @@
-﻿using MASA.EShop.Contracts.Basket.Model.BFF;
+﻿using Masa.EShop.Contracts.Basket.Model.BFF;
 
-namespace MASA.EShop.Contracts.Basket
+namespace Masa.EShop.Contracts.Basket
 {
     public record UserCheckoutAcceptedIntegrationEvent(
             string UserId,

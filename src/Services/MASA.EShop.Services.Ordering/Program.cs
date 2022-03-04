@@ -1,4 +1,4 @@
-using MASA.EShop.Services.Ordering;
+using Masa.EShop.Services.Ordering;
 using Microsoft.AspNetCore.Http.Connections;
 using Microsoft.AspNetCore.ResponseCompression;
 
@@ -28,7 +28,7 @@ var app = builder.Services
     {
         options.SwaggerDoc("v1", new OpenApiInfo
         {
-            Title = "MASA EShop - Ordering HTTP API",
+            Title = "Masa EShop - Ordering HTTP API",
             Version = "v1",
             Description = "The Ordering Service HTTP API"
         });
@@ -50,7 +50,7 @@ app.UseResponseCompression();
 
 app.UseSwagger().UseSwaggerUI(c =>
 {
-    c.SwaggerEndpoint("/swagger/v1/swagger.json", "MASA EShop Service HTTP API v1");
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Masa EShop Service HTTP API v1");
 });
 
 app.MigrateDbContext<OrderingContext>((context, services) =>

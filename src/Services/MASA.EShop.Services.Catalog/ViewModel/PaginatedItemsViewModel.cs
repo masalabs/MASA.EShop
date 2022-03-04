@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Services.Catalog.ViewModel;
+﻿namespace Masa.EShop.Services.Catalog.ViewModel;
 
 public class PaginatedItemsViewModel<TEntity> where TEntity : class
 {

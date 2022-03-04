@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Services.Catalogs.Application.CatalogBrands;
+﻿namespace Masa.EShop.Services.Catalogs.Application.CatalogBrands;
 
 public class CatalogBrandQueryHandler
 {

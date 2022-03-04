@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Services.Ordering.Application.CardTypes.Queries;
+﻿namespace Masa.EShop.Services.Ordering.Application.CardTypes.Queries;
 
 public record class CardTypesQuery : Query<IEnumerable<CardType>>
 {

@@ -1,41 +1,41 @@
 中 | [EN](README.md)
 
-# <center>MASA.EShop</center>
+# <center>Masa.EShop</center>
 
 # 介绍
 
-基于 eShopOnDapr 的`.Net Core`分布式应用程序示例，由[MASA.BuildingBlocks](https://github.com/masastack/MASA.BuildingBlocks), [MASA.Contrib](https://github.com/masastack/MASA.Contrib), [MASA.Utils](https://github.com/masastack/MASA.Utils),[Dapr](https://github.com/dapr/dapr)提供支持。
+基于 eShopOnDapr 的`.Net Core`分布式应用程序示例，由[Masa.BuildingBlocks](https://github.com/masastack/Masa.BuildingBlocks), [Masa.Contrib](https://github.com/masastack/Masa.Contrib), [Masa.Utils](https://github.com/masastack/Masa.Utils),[Dapr](https://github.com/dapr/dapr)提供支持。
 
 ## 目录结构
 
 ```
-MASA.EShop
+Masa.EShop
 ├── dapr
 │   ├── components                           dapr本地组件定义目录
 │   │   ├── pubsub.yaml                      发布订阅配置文件
 │   │   └── statestore.yaml                  状态管理配置文件
 ├── src                                      源文件目录
 │   ├── Api
-│   │   ├── MASA.EShop.Api.Caller            Caller调用封装
-│   │   └── MASA.EShop.Api.Open              BFF层，提供接口给Web.Client
+│   │   ├── Masa.EShop.Api.Caller            Caller调用封装
+│   │   └── Masa.EShop.Api.Open              BFF层，提供接口给Web.Client
 │   ├── Contracts                            公用元素提取，如服务间通信的Event Class
-│   │   ├── MASA.EShop.Contracts.Basket
-│   │   ├── MASA.EShop.Contracts.Catalog
-│   │   ├── MASA.EShop.Contracts.Ordering
-│   │   └── MASA.EShop.Contracts.Payment
+│   │   ├── Masa.EShop.Contracts.Basket
+│   │   ├── Masa.EShop.Contracts.Catalog
+│   │   ├── Masa.EShop.Contracts.Ordering
+│   │   └── Masa.EShop.Contracts.Payment
 │   ├── Services                             服务拆分
-│   │   ├── MASA.EShop.Services.Basket
-│   │   ├── MASA.EShop.Services.Catalog
-│   │   ├── MASA.EShop.Services.Ordering
-│   │   └── MASA.EShop.Services.Payment
+│   │   ├── Masa.EShop.Services.Basket
+│   │   ├── Masa.EShop.Services.Catalog
+│   │   ├── Masa.EShop.Services.Ordering
+│   │   └── Masa.EShop.Services.Payment
 │   ├── Web
-│   │   ├── MASA.EShop.Web.Admin
-│   │   └── MASA.EShop.Web.Client
+│   │   ├── Masa.EShop.Web.Admin
+│   │   └── Masa.EShop.Web.Client
 ├── test
-|   └── MASA.EShop.Services.Catalog.Tests
+|   └── Masa.EShop.Services.Catalog.Tests
 ├── docker-compose                          docker-compose 服务配置
-│   ├── MASA.EShop.Web.Admin
-│   └── MASA.EShop.Web.Client
+│   ├── Masa.EShop.Web.Admin
+│   └── Masa.EShop.Web.Client
 ├── .gitignore                               git提交的忽略文件
 ├── LICENSE                                  项目许可
 ├── .dockerignore                            docker构建的忽略文件
@@ -88,7 +88,7 @@ MASA.EShop
 
 - 启动效果
 
-  Baseket Service: http://localhost:8081/swagger/index.html   
+  Baseket Service: http://localhost:8081/swagger/index.html  
   Catalog Service: http://localhost:8082/swagger/index.html  
   Ordering Service: http://localhost:8083/swagger/index.html  
   Payment Service: http://localhost:8084/swagger/index.html  
@@ -110,7 +110,7 @@ app.MapGet("/api/v1/helloworld", ()=>"Hello World");
 app.Run();
 ```
 
-`MASA.Contrib.Service.MinimalAPIs`对 Minimal API 进一步封装, 修改代码为:
+`Masa.Contrib.Service.MinimalAPIs`对 Minimal API 进一步封装, 修改代码为:
 
 ```C#
 var builder = WebApplication.CreateBuilder(args);
@@ -130,7 +130,7 @@ public class HelloService : ServiceBase
 
 #### Dapr
 
-官方 Dapr 使用介绍，MASA.Contrib 封装的 Dapr 实现参考了 Event 部分
+官方 Dapr 使用介绍，Masa.Contrib 封装的 Dapr 实现参考了 Event 部分
 
 更多 Dapr 内容参考:https://docs.microsoft.com/zh-cn/dotnet/architecture/dapr-for-net-developers/
 
@@ -500,12 +500,12 @@ public class PaymentDomainService : DomainService
 
 ## 服务说明
 
-#### MASA.EShop.Services.Basket
+#### Masa.EShop.Services.Basket
 
 1. 添加[MinimalAPI](####MinimalAPI)
 2. 添加、使用[Dapr](####Dapr)
 
-#### MASA.EShop.Services.Catalog
+#### Masa.EShop.Services.Catalog
 
 1. 添加[MinimalAPI](####MinimalAPI)
 2. 添加[DaprEventBus](####IntegrationEventBus)
@@ -522,7 +522,7 @@ builder.Services
 
 3. 使用[CQRS](####CQRS)
 
-#### MASA.EShop.Services.Ordering
+#### Masa.EShop.Services.Ordering
 
 1. 添加[MinimalAPI](####MinimalAPI)
 2. 添加[DaprEventBus](####IntegrationEventBus)
@@ -562,7 +562,7 @@ dapr-placement:
 "-placement-host-address", "dapr-placement:50000"
 ```
 
-#### MASA.EShop.Services.Payment
+#### Masa.EShop.Services.Payment
 
 1. 添加[MinimalAPI](####MinimalAPI)
 2. 添加[DomainEventBus](####DDD)
@@ -590,27 +590,27 @@ builder.Services
 # Nuget 包介绍
 
 ```c#
-Install-Package MASA.Contrib.Service.MinimalAPIs //MinimalAPI使用
+Install-Package Masa.Contrib.Service.MinimalAPIs //MinimalAPI使用
 ```
 
 ```c#
-Install-Package MASA.Contrib.Dispatcher.Events //发送进程内消息
+Install-Package Masa.Contrib.Dispatcher.Events //发送进程内消息
 ```
 
 ```c#
-Install-Package MASA.Contrib.Dispatcher.IntegrationEvents.Dapr //发送跨进程消息使用
-Install-Package MASA.Contrib.Dispatcher.IntegrationEvents.EventLogs.EF //记录跨进程消息日志
+Install-Package Masa.Contrib.Dispatcher.IntegrationEvents.Dapr //发送跨进程消息使用
+Install-Package Masa.Contrib.Dispatcher.IntegrationEvents.EventLogs.EF //记录跨进程消息日志
 ```
 
 ```c#
-Install-Package MASA.Contrib.Data.UoW.EF //工作单元，确保事务的一致性
+Install-Package Masa.Contrib.Data.UoW.EF //工作单元，确保事务的一致性
 ```
 
 ```c#
-Install-Package MASA.Contrib.ReadWriteSpliting.CQRS //CQRS实现
+Install-Package Masa.Contrib.ReadWriteSpliting.Cqrs //CQRS实现
 ```
 
 ```c#
-Install-Package MASA.BuildingBlocks.DDD.Domain //DDD相关实现
-Install-Package MASA.Contribs.DDD.Domain.Repository.EF //Repository实现
+Install-Package Masa.BuildingBlocks.Ddd.Domain //DDD相关实现
+Install-Package Masa.Contribs.Ddd.Domain.Repository.EF //Repository实现
 ```

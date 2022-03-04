@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Contracts.Catalog.Event;
+﻿namespace Masa.EShop.Contracts.Catalog.Event;
 
 public record OrderStockConfirmedIntegrationEvent(Guid OrderId) : IntegrationEvent
 {

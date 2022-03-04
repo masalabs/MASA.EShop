@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Services.Ordering
+﻿namespace Masa.EShop.Services.Ordering
 {
     //[Authorize]
     public class NotificationsHub : Hub

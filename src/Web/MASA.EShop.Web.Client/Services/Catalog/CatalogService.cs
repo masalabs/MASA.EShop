@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Web.Client.Services.Catalog;
+﻿namespace Masa.EShop.Web.Client.Services.Catalog;
 
 public class CatalogService : HttpClientCallerBase
 {

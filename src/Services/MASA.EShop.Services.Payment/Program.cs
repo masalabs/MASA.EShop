@@ -11,7 +11,7 @@ var app = builder.Services
     {
         options.SwaggerDoc("v1", new OpenApiInfo
         {
-            Title = "MASA EShop - Payment HTTP API",
+            Title = "Masa EShop - Payment HTTP API",
             Version = "v1",
             Description = "The Payment Service HTTP API"
         });
@@ -32,7 +32,7 @@ app.MigrateDbContext<PaymentDbContext>((context, services) =>
 
 app.UseSwagger().UseSwaggerUI(c =>
 {
-    c.SwaggerEndpoint("/swagger/v1/swagger.json", "MASA EShop Service HTTP API v1");
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Masa EShop Service HTTP API v1");
 });
 
 app.UseRouting();

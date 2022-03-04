@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Contracts.Basket.Model;
+﻿namespace Masa.EShop.Contracts.Basket.Model;
 
 public record BasketCheckout(
     string Street,

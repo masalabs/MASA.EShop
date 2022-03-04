@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Services.Payment.Application.Middleware;
+﻿namespace Masa.EShop.Services.Payment.Application.Middleware;
 
 public class ValidatorMiddleware<TEvent> : IMiddleware<TEvent>
     where TEvent : notnull, IEvent

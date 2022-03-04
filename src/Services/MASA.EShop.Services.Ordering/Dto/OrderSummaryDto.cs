@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Services.Ordering.Dto;
+﻿namespace Masa.EShop.Services.Ordering.Dto;
 
 public class OrderSummaryDto
 {

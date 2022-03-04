@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Contracts.Catalog.Event;
+﻿namespace Masa.EShop.Contracts.Catalog.Event;
 
 public record OrderStockRejectedIntegrationEvent(Guid OrderId,
         List<ConfirmedOrderStockItem> OrderStockItems) : IntegrationEvent

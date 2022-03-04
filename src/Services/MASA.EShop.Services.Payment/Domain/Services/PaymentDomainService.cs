@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Services.Payment.Domain.Services;
+﻿namespace Masa.EShop.Services.Payment.Domain.Services;
 
 public class PaymentDomainService : DomainService
 {

@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Services.Catalog.Application.Catalogs.Commands.CreateProduct;
+﻿namespace Masa.EShop.Services.Catalog.Application.Catalogs.Commands.CreateProduct;
 
 public class ProductCommandHandler
 {

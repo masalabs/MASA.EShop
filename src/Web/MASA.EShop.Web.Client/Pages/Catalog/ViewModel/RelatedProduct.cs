@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Web.Client.Pages.Catalog.ViewModel;
+﻿namespace Masa.EShop.Web.Client.Pages.Catalog.ViewModel;
 
 public class RelatedProduct
 {

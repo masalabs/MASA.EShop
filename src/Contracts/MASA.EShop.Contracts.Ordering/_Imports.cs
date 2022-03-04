@@ -1,1 +1,1 @@
-﻿global using MASA.Contrib.Dispatcher.IntegrationEvents.Dapr;
+﻿global using Masa.Contrib.Dispatcher.IntegrationEvents.Dapr;

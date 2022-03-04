@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Services.Basket.Service;
+﻿namespace Masa.EShop.Services.Basket.Service;
 
 public class BasketService : ServiceBase
 {

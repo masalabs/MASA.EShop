@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Services.Ordering.Application.Orders;
+﻿namespace Masa.EShop.Services.Ordering.Application.Orders;
 
 public class OrdersCommandHandler
 {

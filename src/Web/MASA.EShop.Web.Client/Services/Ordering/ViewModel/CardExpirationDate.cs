@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Web.Client.Services.Ordering.ViewModel;
+﻿namespace Masa.EShop.Web.Client.Services.Ordering.ViewModel;
 
 public static class CardExpirationDate
 {

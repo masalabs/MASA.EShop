@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Web.Client;
+﻿namespace Masa.EShop.Web.Client;
 
 public class SimulateAuthStateProvider : AuthenticationStateProvider
 {

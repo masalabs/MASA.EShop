@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Services.Catalog.Dto;
+﻿namespace Masa.EShop.Services.Catalog.Dto;
 public class CatalogItemDto
 {
     public int id { get; set; }

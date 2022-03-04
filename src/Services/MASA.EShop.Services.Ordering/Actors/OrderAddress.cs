@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Services.Ordering.Actors;
+﻿namespace Masa.EShop.Services.Ordering.Actors;
 
 public class OrderAddress
 {

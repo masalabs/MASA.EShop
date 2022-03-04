@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Services.Catalog.Domain.Repositories;
+﻿namespace Masa.EShop.Services.Catalog.Domain.Repositories;
 
 public interface ICatalogTypeRepository
 {

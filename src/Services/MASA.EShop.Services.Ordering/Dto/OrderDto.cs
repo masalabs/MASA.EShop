@@ -1,6 +1,6 @@
-﻿using Order = MASA.EShop.Services.Ordering.Entities.Order;
+﻿using Order = Masa.EShop.Services.Ordering.Entities.Order;
 
-namespace MASA.EShop.Services.Ordering.Dto;
+namespace Masa.EShop.Services.Ordering.Dto;
 
 public class OrderDto
 {

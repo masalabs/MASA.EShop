@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Services.Ordering.Service;
+﻿namespace Masa.EShop.Services.Ordering.Service;
 
 public class OrderingService : ServiceBase
 {

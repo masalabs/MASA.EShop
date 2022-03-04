@@ -1,7 +1,7 @@
-﻿using Order = MASA.EShop.Services.Ordering.Entities.Order;
-using OrderItem = MASA.EShop.Services.Ordering.Entities.OrderItem;
+﻿using Order = Masa.EShop.Services.Ordering.Entities.Order;
+using OrderItem = Masa.EShop.Services.Ordering.Entities.OrderItem;
 
-namespace MASA.EShop.Services.Ordering.Infrastructure;
+namespace Masa.EShop.Services.Ordering.Infrastructure;
 
 public class OrderingContext : IntegrationEventLogContext
 {

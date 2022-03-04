@@ -1,4 +1,4 @@
-namespace MASA.EShop.Web.Admin.Data
+namespace Masa.EShop.Web.Admin.Data
 {
     public class WeatherForecast
     {

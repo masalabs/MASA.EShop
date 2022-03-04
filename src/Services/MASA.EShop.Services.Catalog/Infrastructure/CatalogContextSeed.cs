@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Services.Catalog.Infrastructure;
+﻿namespace Masa.EShop.Services.Catalog.Infrastructure;
 
 public class CatalogContextSeed
 {

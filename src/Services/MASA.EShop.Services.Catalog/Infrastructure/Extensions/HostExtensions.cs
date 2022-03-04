@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Services.Catalog.Infrastructure.Extensions;
+﻿namespace Masa.EShop.Services.Catalog.Infrastructure.Extensions;
 
 public static class HostExtensions
 {

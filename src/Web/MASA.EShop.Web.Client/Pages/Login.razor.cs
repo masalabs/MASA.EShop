@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Web.Client.Pages;
+﻿namespace Masa.EShop.Web.Client.Pages;
 
 public partial class Login : EShopPageBase
 {

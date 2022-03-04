@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Services.Catalog.Infrastructure.EntityConfigurations;
+﻿namespace Masa.EShop.Services.Catalog.Infrastructure.EntityConfigurations;
 
 class CatalogTypeEntityTypeConfiguration
     : IEntityTypeConfiguration<CatalogType>

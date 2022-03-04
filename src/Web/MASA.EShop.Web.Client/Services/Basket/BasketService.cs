@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Web.Client.Services.Basket;
+﻿namespace Masa.EShop.Web.Client.Services.Basket;
 
 public class BasketService : HttpClientCallerBase
 {

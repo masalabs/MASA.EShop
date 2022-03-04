@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Web.Client.Services.Ordering;
+﻿namespace Masa.EShop.Web.Client.Services.Ordering;
 
 public class OrderService : HttpClientCallerBase
 {

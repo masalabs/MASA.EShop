@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Web.Client.Pages.Catalog;
+﻿namespace Masa.EShop.Web.Client.Pages.Catalog;
 
 public partial class CatalogDetails : EShopPageBase
 {

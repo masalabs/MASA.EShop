@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MASA.EShop.Contracts.Basket.Model.BFF;
+namespace Masa.EShop.Contracts.Basket.Model.BFF;
 
 public class CustomerBasket
 {

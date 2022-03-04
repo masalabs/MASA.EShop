@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Contracts.Ordering.Model;
+﻿namespace Masa.EShop.Contracts.Ordering.Model;
 
 public record OrderSummary(
         Guid Id,

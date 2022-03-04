@@ -1,6 +1,6 @@
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddMasaBlazor(new MASA.Blazor.MasaBlazorOptions()
+builder.Services.AddMasaBlazor(new Masa.Blazor.MasaBlazorOptions()
 {
     Theme = new ThemeOptions()
     {
@@ -17,10 +17,9 @@ builder.Services.Configure<Settings>(builder.Configuration);
 
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddTransient<HttpClientAuthorizationDelegatingHandler>();
-builder.Services.AddScoped<I18n>();
 
 builder.Services.AddCaller();
-
+builder.Services.AddMasaI18nForServer("Resources");
 
 // Add Authentication services
 builder.Services.AddAuthentication(options =>

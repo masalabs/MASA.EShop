@@ -8,7 +8,7 @@
     }
   },
   "profiles": {
-    "MASA.EShop.Services.Catalog": {
+    "Masa.EShop.Services.Catalog": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",

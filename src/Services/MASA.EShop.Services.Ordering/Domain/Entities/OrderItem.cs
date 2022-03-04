@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Services.Ordering.Entities;
+﻿namespace Masa.EShop.Services.Ordering.Entities;
 
 public class OrderItem
 {

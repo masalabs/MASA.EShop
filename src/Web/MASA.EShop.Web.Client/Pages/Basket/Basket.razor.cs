@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Web.Client.Pages.Basket;
+﻿namespace Masa.EShop.Web.Client.Pages.Basket;
 
 [Authorize]
 public partial class Basket : EShopPageBase

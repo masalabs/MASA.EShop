@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Services.Ordering.Domain.Events;
+﻿namespace Masa.EShop.Services.Ordering.Domain.Events;
 
 public record OrderStatusChangedToSubmittedEvent(Guid OrderId, string OrderStatus,
         string BuyerId, string BuyerName) : Event;

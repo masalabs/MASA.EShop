@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Services.Catalog.Application.Catalogs;
+﻿namespace Masa.EShop.Services.Catalog.Application.Catalogs;
 
 public class ProductQueryHandler
 {

@@ -1,4 +1,4 @@
-﻿namespace MASA.EShop.Services.Payment.Domain.Aggregate;
+﻿namespace Masa.EShop.Services.Payment.Domain.Aggregate;
 
 public class Payment : AuditAggregateRoot<Guid, Guid>
 {
