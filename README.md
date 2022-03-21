@@ -619,3 +619,11 @@ Install-Package Masa.Contrib.ReadWriteSpliting.Cqrs //CQRS
 Install-Package Masa.BuildingBlocks.Ddd.Domain //DDD相关实现
 Install-Package Masa.Contrib.Ddd.Domain.Repository.EF //Repository实现
 ```
+
+
+
+## Interactive
+
+| QQ group                                        | WX public account                                            | WX Customer Service                                          |
+| ----------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ![masa.blazor-qq](img/masa.blazor-qq-group.png) | ![masa.blazor-weixin](img/masa.blazor-wechat-public-account.png) | ![masa.blazor-weixin](img/masa.blazor-wechat-customer-service.png) |

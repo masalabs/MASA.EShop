@@ -6,6 +6,8 @@
 
 基于 eShopOnDapr 的`.Net Core`分布式应用程序示例，由[Masa.BuildingBlocks](https://github.com/masastack/Masa.BuildingBlocks), [Masa.Contrib](https://github.com/masastack/Masa.Contrib), [Masa.Utils](https://github.com/masastack/Masa.Utils),[Dapr](https://github.com/dapr/dapr)提供支持。
 
+
+
 ## 目录结构
 
 ```
@@ -42,6 +44,8 @@ Masa.EShop
 └── README.md                                项目说明文件
 ```
 
+
+
 ## 项目结构
 
 ![结构图](img/eshop.png)
@@ -49,6 +53,8 @@ Masa.EShop
 ## 项目架构
 
 ![架构图](img/eshop-architectureks.png)
+
+
 
 ## 快速入门
 
@@ -94,6 +100,8 @@ Masa.EShop
   Payment Service: http://localhost:8084/swagger/index.html  
   Admin Web: empty  
   Client Web: http://localhost:8090/catalog
+
+
 
 ## 特性
 
@@ -498,6 +506,8 @@ public class PaymentDomainService : DomainService
 }
 ```
 
+
+
 ## 服务说明
 
 #### Masa.EShop.Services.Basket
@@ -583,9 +593,13 @@ builder.Services
 
 4. 使用[DDD](####DDD)
 
+
+
 # 功能介绍
 
 待补充
+
+
 
 # Nuget 包介绍
 
@@ -614,3 +628,11 @@ Install-Package Masa.Contrib.ReadWriteSpliting.Cqrs //CQRS实现
 Install-Package Masa.BuildingBlocks.Ddd.Domain //DDD相关实现
 Install-Package Masa.Contribs.Ddd.Domain.Repository.EF //Repository实现
 ```
+
+
+
+## 交流
+
+| QQ group                                        | WX public account                                            | WX Customer Service                                          |
+| ----------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ![masa.blazor-qq](img/masa.blazor-qq-group.png) | ![masa.blazor-weixin](img/masa.blazor-wechat-public-account.png) | ![masa.blazor-weixin](img/masa.blazor-wechat-customer-service.png) |
