@@ -1,6 +1,6 @@
 ﻿namespace Masa.EShop.Services.Catalog.Infrastructure;
 
-public class CatalogDbContext : IntegrationEventLogContext
+public class CatalogDbContext : MasaDbContext
 {
     public DbSet<CatalogItem> CatalogItems { get; set; } = null!;
 

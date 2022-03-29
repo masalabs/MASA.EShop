@@ -1,7 +1,3 @@
-using Masa.EShop.Services.Ordering;
-using Microsoft.AspNetCore.Http.Connections;
-using Microsoft.AspNetCore.ResponseCompression;
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddActors(options =>
@@ -35,10 +31,7 @@ var app = builder.Services
     })
     .AddMasaDbContext<OrderingContext>(dbOptions => dbOptions.UseSqlServer("Data Source=masa.eshop.services.eshop.database;uid=sa;pwd=P@ssw0rd;database=order"))
     .AddScoped<IOrderRepository, OrderRepository>()
-    .AddDaprEventBus<IntegrationEventLogService>(options =>
-    {
-        options.UseEventBus().UseEventLog<OrderingContext>();
-    })
+    .AddDaprEventBus<IntegrationEventLogService>(options => options.UseEventBus().UseEventLog<OrderingContext>())
     .AddResponseCompression(opts => //添加压缩中间件服务
     {
         opts.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(

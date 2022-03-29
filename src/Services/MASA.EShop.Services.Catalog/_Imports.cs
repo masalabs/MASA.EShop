@@ -27,6 +27,7 @@ global using Masa.EShop.Services.Catalog.Infrastructure.Extensions;
 global using Masa.EShop.Services.Catalog.Infrastructure.Repositories;
 global using Masa.EShop.Services.Catalog.ViewModel;
 global using Masa.Utils.Data.EntityFrameworkCore;
+global using Masa.Utils.Data.EntityFrameworkCore.SqlServer;
 global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.EntityFrameworkCore;
 global using Microsoft.EntityFrameworkCore.Metadata.Builders;
