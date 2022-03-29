@@ -3,7 +3,7 @@ using OrderItem = Masa.EShop.Services.Ordering.Entities.OrderItem;
 
 namespace Masa.EShop.Services.Ordering.Infrastructure;
 
-public class OrderingContext : IntegrationEventLogContext
+public class OrderingContext : MasaDbContext
 {
     public const string DEFAULT_SCHEMA = "ordering";
 

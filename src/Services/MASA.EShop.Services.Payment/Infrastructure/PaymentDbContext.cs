@@ -1,6 +1,6 @@
 ﻿namespace Masa.EShop.Services.Payment.Infrastructure;
 
-public class PaymentDbContext : IntegrationEventLogContext
+public class PaymentDbContext : MasaDbContext
 {
     public DbSet<Domain.Aggregate.Payment> Payments { get; set; } = null!;
 

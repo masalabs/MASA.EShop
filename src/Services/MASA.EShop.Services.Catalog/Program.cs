@@ -21,9 +21,9 @@ var app = builder.Services
     .AddScoped<ICatalogBrandRepository, CatalogBrandRepository>()
     .AddDaprEventBus<IntegrationEventLogService>(options =>
     {
-        options.UseEventBus()
-            .UseUoW<CatalogDbContext>(dbOptions => dbOptions.UseSqlServer("server=masa.eshop.services.eshop.database;uid=sa;pwd=P@ssw0rd;database=catalog"))
-            .UseEventLog<CatalogDbContext>();
+        options.UseEventLog<CatalogDbContext>()
+               .UseEventBus()
+               .UseUoW<CatalogDbContext>(dbOptions => dbOptions.UseSqlServer("server=masa.eshop.services.eshop.database;uid=sa;pwd=P@ssw0rd;database=catalog"));
     })
     .AddServices(builder);
 

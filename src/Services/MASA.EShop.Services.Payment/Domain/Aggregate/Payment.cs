@@ -1,6 +1,6 @@
 ﻿namespace Masa.EShop.Services.Payment.Domain.Aggregate;
 
-public class Payment : AuditAggregateRoot<Guid, Guid>
+public class Payment : AuditAggregateRoot<Guid, Guid>, ISoftDelete
 {
     public bool Succeeded { get; protected set; }
 

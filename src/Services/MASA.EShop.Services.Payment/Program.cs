@@ -5,7 +5,6 @@ var app = builder.Services
     {
         options.RegisterValidatorsFromAssemblyContaining<Program>();
     })
-    .AddTransient(typeof(IMiddleware<>), typeof(ValidatorMiddleware<>))
     .AddEndpointsApiExplorer()
     .AddSwaggerGen(options =>
     {
@@ -18,10 +17,9 @@ var app = builder.Services
     })
     .AddDomainEventBus(options =>
     {
-        options.UseEventBus()
+        options.UseDaprEventBus<IntegrationEventLogService>(options => options.UseEventLog<PaymentDbContext>())
+               .UseEventBus(eventBuilder => eventBuilder.UseMiddleware(typeof(ValidatorMiddleware<>)))
                .UseUoW<PaymentDbContext>(dbOptions => dbOptions.UseSqlServer("server=masa.eshop.services.eshop.database;uid=sa;pwd=P@ssw0rd;database=payment"))
-               .UseDaprEventBus<IntegrationEventLogService>()
-               .UseEventLog<PaymentDbContext>()
                .UseRepository<PaymentDbContext>();
     })
     .AddServices(builder);

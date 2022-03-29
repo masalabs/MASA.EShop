@@ -24,8 +24,10 @@ global using Masa.EShop.Services.Payment.Infrastructure;
 global using Masa.EShop.Services.Payment.Infrastructure.Extensions;
 global using Masa.EShop.Services.Payment.Service;
 global using Masa.Utils.Data.EntityFrameworkCore;
+global using Masa.Utils.Data.EntityFrameworkCore.SqlServer;
 global using Masa.Utils.Models.Config;
 global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.EntityFrameworkCore;
 global using Microsoft.Extensions.Options;
 global using Microsoft.OpenApi.Models;
+
