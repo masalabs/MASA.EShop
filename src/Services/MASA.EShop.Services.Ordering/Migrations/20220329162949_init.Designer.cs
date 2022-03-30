@@ -9,10 +9,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Masa.EShop.Services.Ordering.Migrations
+namespace MASA.EShop.Services.Ordering.Migrations
 {
     [DbContext(typeof(OrderingContext))]
-    [Migration("20220304051319_init")]
+    [Migration("20220329162949_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -47,11 +47,10 @@ namespace Masa.EShop.Services.Ordering.Migrations
                     b.Property<DateTime>("ModificationTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken()
+                    b.Property<string>("RowVersion")
                         .IsRequired()
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("rowversion");
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
 
                     b.Property<int>("State")
                         .HasColumnType("int");
@@ -63,6 +62,8 @@ namespace Masa.EShop.Services.Ordering.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
+
+                    b.HasIndex(new[] { "EventId", "RowVersion" }, "index_eventid_version");
 
                     b.HasIndex(new[] { "State", "ModificationTime" }, "index_state_modificationtime");
 
