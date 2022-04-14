@@ -1,0 +1,97 @@
+﻿<MRow style="height: calc(100vh - 204px);">
+    <MCol Md="8">
+        <MCard class="pa-2 fill-height d-flex flex-column justify-space-between">
+            <MCardTitle class="text-h6 neutral-lighten-1--text">
+                Add New Address
+            </MCardTitle>
+            <MCardSubtitle class="text-body neutral-lighten-2--text">
+                Be sure to check "Deliver to this address" when you have finished
+            </MCardSubtitle>
+            <MCardText class="pl-4 pr-4 mt-2">
+                <MForm Model="_shipAddressFormModel" @bind-Value="_valid" @ref="_form" EnableDataAnnotationsValidation>
+                    <MRow>
+                        <MCol Md="6" class="pb-0">
+                            <MTextField @bind-Value="_shipAddressFormModel.Street"
+                                        Label="@T("Basket.Address")"
+                                        Placeholder="@T("Basket.Address")"
+                                        Outlined
+                                        Dense></MTextField>
+                        </MCol>
+                        <MCol Md="6" class="pl-3">
+                            <MTextField @bind-Value="_shipAddressFormModel.City"
+                                        Label="@T("Basket.City")"
+                                        Placeholder="@T("Basket.City")"
+                                        Outlined
+                                        Dense></MTextField>
+                        </MCol>
+                        <MCol Md="6">
+                            <MTextField @bind-Value="_shipAddressFormModel.State"
+                                        Label="@T("Basket.State")"
+                                        Placeholder="@T("Basket.State")"
+                                        Outlined
+                                        Dense></MTextField>
+                        </MCol>
+                        <MCol Md="6" class="pl-3">
+                            <MTextField @bind-Value="_shipAddressFormModel.CardNumber"
+                                        Label="@T("Basket.CardNumber")"
+                                        Placeholder="000000000000000"
+                                        Outlined
+                                        Dense></MTextField>
+                        </MCol>
+                        <MCol Md="6">
+                            <MTextField @bind-Value="_shipAddressFormModel.CardHolderName"
+                                        Label="@T("Basket.CardName")"
+                                        Placeholder="@T("Basket.CardName")"
+                                        Outlined
+                                        Dense></MTextField>
+                        </MCol>
+                        <MCol Md="6" class="pl-3">
+                            <MTextField @bind-Value="_shipAddressFormModel.CardExpiration"
+                                        Label="@T("Basket.ExpirationDate")"
+                                        Placeholder="MM/YY"
+                                        Outlined
+                                        Dense></MTextField>
+                        </MCol>
+                        <MCol Md="6">
+                            <MTextField @bind-Value="_shipAddressFormModel.CardSecurityCode"
+                                        Label="@T("Basket.SecurityCode")"
+                                        Placeholder="000"
+                                        Outlined
+                                        Dense></MTextField>
+                        </MCol>
+                        <MCol Md="6" class="pl-3">
+                            <MTextField @bind-Value="_shipAddressFormModel.ZipCode"
+                                        Label="@T("Basket.ZipCode")"
+                                        Placeholder="@T("Basket.ZipCode")"
+                                        Outlined
+                                        Dense></MTextField>
+                        </MCol>
+                    </MRow>
+                </MForm>
+            </MCardText>
+            <MCardActions class="d-flex justify-center mb-10">
+                <MButton Depressed Large Width="340" class="primary text-capitalize rounded-pill" OnClick="()=>SubmitOrder()">
+                    @T("Basket.SaveAndDeliver")
+                </MButton>
+            </MCardActions>
+        </MCard>
+    </MCol>
+    <MCol Md="4">
+        <MCard class="pa-2 fill-height d-flex flex-column justify-space-between">
+            <MCardTitle class="text-h6">
+                John Doe
+            </MCardTitle>
+            <MCardText class="pl-4 pr-4 mt-2">
+                <p class="text-btn neutral-lighten-1--text mb-6">@_shipAddressViewModel.State @_shipAddressViewModel.Street</p>
+                <p class="text-btn neutral-lighten-1--text mb-6">@_shipAddressViewModel.Country @_shipAddressViewModel.City</p>
+                <p class="text-btn neutral-lighten-1--text mb-6">UTC-5: Eastern Standard Time (EST)</p>
+                <p class="text-btn neutral-lighten-1--text">@_shipAddressViewModel.CardNumber</p>
+            </MCardText>
+            <MCardActions class="d-flex justify-center mb-10">
+                <MButton Depressed Large class="primary text-capitalize rounded-pill" Width="340" OnClick="SubmitShipedOrder">
+                    @T("Basket.DeliverTo")
+                </MButton>
+            </MCardActions>
+        </MCard>
+    </MCol>
+</MRow>

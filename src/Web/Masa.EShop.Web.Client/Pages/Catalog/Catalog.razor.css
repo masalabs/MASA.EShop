@@ -1,0 +1,10 @@
+﻿.card-img {
+    height: auto;
+    max-height:280px;
+    max-width:280px;
+}
+
+.primary .m-pagination__item .m-pagination__item--active {
+    background-color: #7367f0 !important;
+    border-color: #7367f0 !important;
+}
