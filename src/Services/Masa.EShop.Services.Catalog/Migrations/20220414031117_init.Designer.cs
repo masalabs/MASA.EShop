@@ -9,10 +9,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace MASA.EShop.Services.Catalog.Migrations
+namespace Masa.EShop.Services.Catalog.Migrations
 {
     [DbContext(typeof(CatalogDbContext))]
-    [Migration("20220329163018_init")]
+    [Migration("20220414031117_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
