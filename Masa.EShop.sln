@@ -31,29 +31,29 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "components", "components", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Contracts", "Contracts", "{71EE3624-9C22-4DD3-AF00-247BEFAA0E0E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasaEShop.Api.Open", "src\Api\Masa.EShop.Api.Open\MasaEShop.Api.Open.csproj", "{F156DF7B-6441-4C55-B9AE-C100A550B9C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Masa.EShop.Contracts.Basket", "src\Contracts\Masa.EShop.Contracts.Basket\Masa.EShop.Contracts.Basket.csproj", "{23181221-48EE-4748-B3B4-6C745ADFFADC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Masa.EShop.Contracts.Basket", "src\Contracts\Masa.EShop.Contracts.Basket\Masa.EShop.Contracts.Basket.csproj", "{23181221-48EE-4748-B3B4-6C745ADFFADC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Masa.EShop.Contracts.Catalog", "src\Contracts\Masa.EShop.Contracts.Catalog\Masa.EShop.Contracts.Catalog.csproj", "{33364A1D-8292-40CA-9FD3-E0982971EF82}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Masa.EShop.Contracts.Catalog", "src\Contracts\Masa.EShop.Contracts.Catalog\Masa.EShop.Contracts.Catalog.csproj", "{33364A1D-8292-40CA-9FD3-E0982971EF82}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Masa.EShop.Contracts.Ordering", "src\Contracts\Masa.EShop.Contracts.Ordering\Masa.EShop.Contracts.Ordering.csproj", "{B78CA2D9-2797-46A1-AD61-D8988EA7A517}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Masa.EShop.Contracts.Ordering", "src\Contracts\Masa.EShop.Contracts.Ordering\Masa.EShop.Contracts.Ordering.csproj", "{B78CA2D9-2797-46A1-AD61-D8988EA7A517}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Masa.EShop.Contracts.Payment", "src\Contracts\Masa.EShop.Contracts.Payment\Masa.EShop.Contracts.Payment.csproj", "{E7D30C79-BED4-4A12-89FD-56BD81A33AE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Masa.EShop.Contracts.Payment", "src\Contracts\Masa.EShop.Contracts.Payment\Masa.EShop.Contracts.Payment.csproj", "{E7D30C79-BED4-4A12-89FD-56BD81A33AE3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Masa.EShop.Services.Basket", "src\Services\Masa.EShop.Services.Basket\Masa.EShop.Services.Basket.csproj", "{87BA9E68-5567-4CA6-A1DB-05C4B4E4565F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Masa.EShop.Services.Basket", "src\Services\Masa.EShop.Services.Basket\Masa.EShop.Services.Basket.csproj", "{87BA9E68-5567-4CA6-A1DB-05C4B4E4565F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Masa.EShop.Services.Catalog", "src\Services\Masa.EShop.Services.Catalog\Masa.EShop.Services.Catalog.csproj", "{9D04BCEC-6EF1-4B9F-B69F-695E15AEF4ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Masa.EShop.Services.Catalog", "src\Services\Masa.EShop.Services.Catalog\Masa.EShop.Services.Catalog.csproj", "{9D04BCEC-6EF1-4B9F-B69F-695E15AEF4ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Masa.EShop.Services.Ordering", "src\Services\Masa.EShop.Services.Ordering\Masa.EShop.Services.Ordering.csproj", "{CE106846-5C28-43D4-8FB6-DF8577E048C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Masa.EShop.Services.Ordering", "src\Services\Masa.EShop.Services.Ordering\Masa.EShop.Services.Ordering.csproj", "{CE106846-5C28-43D4-8FB6-DF8577E048C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Masa.EShop.Services.Payment", "src\Services\Masa.EShop.Services.Payment\Masa.EShop.Services.Payment.csproj", "{BD03E983-6A01-415F-88A3-CEF3B3043090}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Masa.EShop.Services.Payment", "src\Services\Masa.EShop.Services.Payment\Masa.EShop.Services.Payment.csproj", "{BD03E983-6A01-415F-88A3-CEF3B3043090}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Masa.EShop.Web.Admin", "src\Web\Masa.EShop.Web.Admin\Masa.EShop.Web.Admin.csproj", "{E0DBDEF8-1431-4F2F-8956-884FE401C562}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Masa.EShop.Web.Admin", "src\Web\Masa.EShop.Web.Admin\Masa.EShop.Web.Admin.csproj", "{E0DBDEF8-1431-4F2F-8956-884FE401C562}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Masa.EShop.Web.Client", "src\Web\Masa.EShop.Web.Client\Masa.EShop.Web.Client.csproj", "{469E352C-99D7-4EE6-AF8C-40A75FB9B3E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Masa.EShop.Web.Client", "src\Web\Masa.EShop.Web.Client\Masa.EShop.Web.Client.csproj", "{469E352C-99D7-4EE6-AF8C-40A75FB9B3E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Masa.EShop.Services.Catalog.Tests", "test\Masa.EShop.Services.Catalog.Tests\Masa.EShop.Services.Catalog.Tests.csproj", "{8E5FB235-BBB6-4522-BEC0-D15B390E55BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Masa.EShop.Services.Catalog.Tests", "test\Masa.EShop.Services.Catalog.Tests\Masa.EShop.Services.Catalog.Tests.csproj", "{8E5FB235-BBB6-4522-BEC0-D15B390E55BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Masa.EShop.Api.Open", "src\Api\Masa.EShop.Api.Open\Masa.EShop.Api.Open.csproj", "{9C328539-9290-4711-8B07-FDA77B56012A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,10 +65,6 @@ Global
 		{45004002-64DA-47F6-95F6-C6A0583E2FF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45004002-64DA-47F6-95F6-C6A0583E2FF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45004002-64DA-47F6-95F6-C6A0583E2FF5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F156DF7B-6441-4C55-B9AE-C100A550B9C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F156DF7B-6441-4C55-B9AE-C100A550B9C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F156DF7B-6441-4C55-B9AE-C100A550B9C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F156DF7B-6441-4C55-B9AE-C100A550B9C5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{23181221-48EE-4748-B3B4-6C745ADFFADC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{23181221-48EE-4748-B3B4-6C745ADFFADC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23181221-48EE-4748-B3B4-6C745ADFFADC}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -113,6 +109,10 @@ Global
 		{8E5FB235-BBB6-4522-BEC0-D15B390E55BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E5FB235-BBB6-4522-BEC0-D15B390E55BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E5FB235-BBB6-4522-BEC0-D15B390E55BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C328539-9290-4711-8B07-FDA77B56012A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C328539-9290-4711-8B07-FDA77B56012A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C328539-9290-4711-8B07-FDA77B56012A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C328539-9290-4711-8B07-FDA77B56012A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -123,7 +123,6 @@ Global
 		{17D1CFBB-FAFE-4EA2-94E7-BB2ACE0ABF70} = {3EA83CF4-9F97-454A-928D-883CBCBA281B}
 		{C13BCBB4-FBED-4A72-9826-41375E0274E4} = {EC8191FD-14E5-498D-8D7A-719A2544FD68}
 		{71EE3624-9C22-4DD3-AF00-247BEFAA0E0E} = {3EA83CF4-9F97-454A-928D-883CBCBA281B}
-		{F156DF7B-6441-4C55-B9AE-C100A550B9C5} = {17D1CFBB-FAFE-4EA2-94E7-BB2ACE0ABF70}
 		{23181221-48EE-4748-B3B4-6C745ADFFADC} = {71EE3624-9C22-4DD3-AF00-247BEFAA0E0E}
 		{33364A1D-8292-40CA-9FD3-E0982971EF82} = {71EE3624-9C22-4DD3-AF00-247BEFAA0E0E}
 		{B78CA2D9-2797-46A1-AD61-D8988EA7A517} = {71EE3624-9C22-4DD3-AF00-247BEFAA0E0E}
@@ -135,6 +134,7 @@ Global
 		{E0DBDEF8-1431-4F2F-8956-884FE401C562} = {FBA2B0C9-9C0A-4244-9D35-F33DCA354BD7}
 		{469E352C-99D7-4EE6-AF8C-40A75FB9B3E5} = {FBA2B0C9-9C0A-4244-9D35-F33DCA354BD7}
 		{8E5FB235-BBB6-4522-BEC0-D15B390E55BD} = {F40A90B1-8B7C-4B53-9ACF-A32B3D557AC3}
+		{9C328539-9290-4711-8B07-FDA77B56012A} = {17D1CFBB-FAFE-4EA2-94E7-BB2ACE0ABF70}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1FD6FCD1-A350-4541-A9CA-1549339C78EC}
