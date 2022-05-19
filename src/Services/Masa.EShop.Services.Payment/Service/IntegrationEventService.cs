@@ -17,10 +17,10 @@ public class IntegrationEventService : ServiceBase
         [FromServices] IDomainEventBus domainEventBus,
         [FromServices] ILogger<IntegrationEventService> logger)
     {
-        logger.LogInformation("----- integration event: {IntegrationEventId} at {AppName} - ({@IntegrationEvent})", integrationEvent.Id, Program.AppName, integrationEvent);
+        logger.LogInformation("----- integration event: {IntegrationEventId} at {AppName} - ({@IntegrationEvent})", integrationEvent.GetEventId(), Program.AppName, integrationEvent);
 
         await domainEventBus.PublishAsync(
-            new OrderStatusChangedToValidatedCommand(integrationEvent.Id, integrationEvent.CreationTime)
+            new OrderStatusChangedToValidatedCommand(integrationEvent.GetEventId(), integrationEvent.GetCreationTime())
             {
                 OrderId = integrationEvent.OrderId
             });

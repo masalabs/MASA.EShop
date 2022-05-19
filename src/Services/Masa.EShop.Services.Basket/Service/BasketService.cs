@@ -77,7 +77,7 @@ public class BasketService : ServiceBase
     [Topic(DAPR_PUBSUB_NAME, nameof(OrderStatusChangedToSubmittedIntegrationEvent))]
     public async Task OrderStarted(OrderStatusChangedToSubmittedIntegrationEvent @event, [FromServices] IBasketRepository repository)
     {
-        _logger.LogInformation("----- Handling integration event: {IntegrationEventId} at {AppName} - ({@IntegrationEvent})", @event.Id, "Basket", @event);
+        _logger.LogInformation("----- Handling integration event: {IntegrationEventId} at {AppName} - ({@IntegrationEvent})", @event.GetEventId(), "Basket", @event);
 
         await repository.DeleteBasketAsync(@event.BuyerId);
     }

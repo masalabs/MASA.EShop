@@ -2,10 +2,12 @@
 global using FluentValidation;
 global using FluentValidation.AspNetCore;
 global using Masa.BuildingBlocks.Data.UoW;
-global using Masa.BuildingBlocks.Ddd.Domain.Entities.Auditing;
+global using Masa.BuildingBlocks.Ddd.Domain.Entities.Full;
 global using Masa.BuildingBlocks.Ddd.Domain.Events;
 global using Masa.BuildingBlocks.Ddd.Domain.Repositories;
 global using Masa.BuildingBlocks.Dispatcher.Events;
+global using Masa.Contrib.Data.EntityFrameworkCore;
+global using Masa.Contrib.Data.EntityFrameworkCore.SqlServer;
 global using Masa.Contrib.Data.UoW.EF;
 global using Masa.Contrib.Ddd.Domain;
 global using Masa.Contrib.Ddd.Domain.Events;
@@ -23,11 +25,8 @@ global using Masa.EShop.Services.Payment.Domain.Services;
 global using Masa.EShop.Services.Payment.Infrastructure;
 global using Masa.EShop.Services.Payment.Infrastructure.Extensions;
 global using Masa.EShop.Services.Payment.Service;
-global using Masa.Utils.Data.EntityFrameworkCore;
-global using Masa.Utils.Data.EntityFrameworkCore.SqlServer;
 global using Masa.Utils.Models.Config;
 global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.EntityFrameworkCore;
 global using Microsoft.Extensions.Options;
 global using Microsoft.OpenApi.Models;
-
