@@ -11,7 +11,6 @@ COPY ["nuget.config", "."]
 COPY ["src/Api/Masa.EShop.Api.Open/Masa.EShop.Api.Open.csproj", "src/Api/Masa.EShop.Api.Open/"]
 COPY ["src/Contracts/Masa.EShop.Contracts.Basket/Masa.EShop.Contracts.Basket.csproj", "src/Contracts/Masa.EShop.Contracts.Basket/"]
 COPY ["src/Contracts/Masa.EShop.Contracts.Ordering/Masa.EShop.Contracts.Ordering.csproj", "src/Contracts/Masa.EShop.Contracts.Ordering/"]
-COPY ["src/Api/Masa.EShop.Api.Caller/Masa.EShop.Api.Caller.csproj", "src/Api/Masa.EShop.Api.Caller/"]
 COPY ["src/Contracts/Masa.EShop.Contracts.Catalog/Masa.EShop.Contracts.Catalog.csproj", "src/Contracts/Masa.EShop.Contracts.Catalog/"]
 RUN dotnet restore "src/Api/Masa.EShop.Api.Open/Masa.EShop.Api.Open.csproj"
 COPY . .
