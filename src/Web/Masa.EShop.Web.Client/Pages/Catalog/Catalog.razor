@@ -1,0 +1,107 @@
+﻿@page "/catalog"
+@page "/"
+@inherits EShopPageBase
+
+<PageTitle>@T("Catalog")</PageTitle>
+
+<MCard Elevation=0 Class="rounded-4 pa-6 mr-3" Style="min-width:300px;width=300px;float:left;">
+    <h6>@T("Catalog.Filters")</h6>
+    <span class="text-btn neutral-lighten-4--text">@T("Catalog.Brand")</span>
+    <div class="border-b-solid mt-6 mb-12 pl-2">
+        <MRadioGroup @bind-Value="_catalogOptinsModel.Brand">
+            @foreach (var brand in _brands)
+            {
+                <div class="block-center" style="height:40px;">
+                    <MRadio Color="primary" @key="brand.Id"
+                        Label="@brand.Brand"
+                        Value="@brand.Id"></MRadio>
+                </div>
+            }
+        </MRadioGroup>
+    </div>
+    <span class="text-btn neutral-lighten-4--text">@T("Catalog.Type")</span>
+    <div class="mt-6 mb-6 pl-2">
+        <MRadioGroup @bind-Value="_catalogOptinsModel.Type">
+            @foreach (var type in _types)
+            {
+                <div class="block-center" style="height:40px;">
+                    <MRadio Color="primary" @key="type.Id"
+                        Label="@type.Type"
+                        Value="@type.Id"></MRadio>
+                </div>
+            }
+        </MRadioGroup>
+    </div>
+</MCard>
+
+<div class="mr-n3">
+    <MRow>
+        <MCol Md=4 Sm=12>
+            <MCard Elevation=0 Class="line px-6 py-1 block-between">
+                <h6>@_catalogViewModel.Count @T("Catalog.SearchResult")</h6>
+                <MSelect @bind-Value="_catalogViewModel.SortType" MinWidth="100"
+                    Flat Solo style="max-width:130px;" HideDetails="true"
+                    Items="@SortItems" OnChange="()=>{ _show = true;}"
+                    ItemText="u => u" TValue="string" TItem="string" TItemValue="string"
+                    ItemValue="u => u">
+                </MSelect>
+            </MCard>
+        </MCol>
+        <MCol Md=8 Sm=12>
+            <MTextField @bind-Value="_catalogViewModel.Search" Class="rounded-2 max-height" AppendIcon="search" OnAppendClick="LoadItemsAsync" HideDetails="@("auto")" Height=54 Flat Solo Placeholder="@T("Catalog.SearchKey")">
+            </MTextField>
+        </MCol>
+    </MRow>
+    <MRow>
+        @foreach (var item in _catalogViewModel.Items)
+        {
+            <MCol Md=4 Sm=12>
+                <div class="commodity">
+                    <MCard Class="rounded-4 content">
+                        <a href="/catalog/details/@item.Id">
+                            <MImage Height=320 Contain Src="@item.GetPictureUrl()" Class="hover-pointer"></MImage>
+                        </a>
+                        <MCardText Class="pa-3">
+                            <div class="block-between">
+                                <MRating Value="4" Size=20 Dense Readonly Length=5 Color="remind" BackgroundColor="remind"></MRating>
+                                <h6>$@item.Price</h6>
+                            </div>
+                            <div class="text-subtitle text-truncate my-1">@item.Name</div>
+                            <div class="text-truncate text-body3 neutral-lighten-2--text">@item.Description</div>
+                        </MCardText>
+                        <MRow NoGutters>
+                            <MCol Lg="6" Md="12" Sm="12">
+                                <MButton Block Tile Depressed class="rounded-bl-xl" OnClick='()=>item.Favorite=!item.Favorite' style="height:48px;">
+                                    <MIcon Size=24  Left Color="@(item.Favorite?"error":"neutral")">@(item.Favorite?"mdi-heart":"mdi-heart-outline")</MIcon>
+                                    @T("Catalog.Wishlist")
+                                </MButton>
+                            </MCol>
+                            <MCol Lg="6" Md="12" Sm="12">
+                                <MButton Block Tile Depressed class="primary rounded-br-xl" OnClick="(e)=>AddToCart(item)" Disabled="@(!IsAuthenticated)" style="height:48px;">
+                                    <MIcon Size=24  Left>mdi-cart-outline</MIcon>
+                                    @T("Catalog.AddToCart")
+                                </MButton>
+                            </MCol>
+                        </MRow>
+                    </MCard>
+                </div>
+            </MCol>
+        }
+    </MRow>
+</div>
+
+@if (_catalogViewModel.Count > 0)
+{
+    <MPagination Value="_catalogViewModel.PageIndex" Color="primary" Circle Length=@_catalogViewModel.PageCount Class="mt-4 elevation-0 ml300" ValueChanged="(v)=>OnPageIndexChangedAsync(v)" @bind-TotalVisible="_catalogViewModel.PageSize"></MPagination>
+}
+
+<MSnackbar @bind-Value="_show" Dark>
+    <ChildContent>
+        On the way!
+    </ChildContent>
+    <ActionContent>
+        <MButton Color="pink" Text OnClick="()=>{_show = false;}">
+            Close
+        </MButton>
+    </ActionContent>
+</MSnackbar>

@@ -1,0 +1,33 @@
+﻿@using Microsoft.AspNetCore.Components.Web
+@namespace Masa.EShop.Web.Client.Pages
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="~/" />
+    <link href="css/site.css" rel="stylesheet" />
+    <link href="_content/Masa.Blazor/css/masa-blazor.css" rel="stylesheet">
+    <link href="_content/Masa.Blazor/css/masa-extend-blazor.css" rel="stylesheet">
+    <!--icon file,import need to use-->
+    @* <link href="https://cdn.jsdelivr.net/npm/@("@mdi")/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+            <link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet"> *@
+    <link href="https://cdn.masastack.com/npm/@("@mdi")/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://cdn.masastack.com/npm/materialicons/materialicons.css" rel="stylesheet">
+    <link href="https://cdn.masastack.com/npm/fontawesome/v5.0.13/css/all.css" rel="stylesheet">
+
+    <link href="css/masa-blazor-pro.css" rel="stylesheet" />
+    <link href="Masa.EShop.Web.Client.styles.css" rel="stylesheet">
+    <component type="typeof(HeadOutlet)" render-mode="ServerPrerendered" />
+</head>
+<body>
+
+    @RenderBody()
+
+     <script src="_content/BlazorComponent/js/blazor-component.js"></script>
+     <script src="_framework/blazor.server.js"></script>
+</body>
+</html>

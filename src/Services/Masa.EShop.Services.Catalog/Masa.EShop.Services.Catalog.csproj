@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <DockerComposeProjectPath>..\..\..\docker-compose.dcproj</DockerComposeProjectPath>
+    <UserSecretsId>b9ad01e6-38c8-44ab-b8e7-365b67871309</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..\..</DockerfileContext>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Masa.Contrib.Data.EntityFrameworkCore.SqlServer" Version="$(MasaContribPackageVersion)" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="$(SwashbucklePackageVersion)" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="$(FluentValidationPackageVersion)" />
+    <PackageReference Include="Masa.BuildingBlocks.ReadWriteSpliting.Cqrs" Version="$(MasaContribPackageVersion)" />
+    <PackageReference Include="Masa.Contrib.Service.MinimalAPIs" Version="$(MasaContribPackageVersion)" />
+    <PackageReference Include="Masa.Contrib.Data.Uow.EF" Version="$(MasaContribPackageVersion)" />
+    <PackageReference Include="Masa.Contrib.Dispatcher.Events" Version="$(MasaContribPackageVersion)" />
+    <PackageReference Include="Masa.Contrib.Dispatcher.IntegrationEvents.Dapr" Version="$(MasaContribPackageVersion)" />
+    <PackageReference Include="Masa.Contrib.Dispatcher.IntegrationEvents.EventLogs.EF" Version="$(MasaContribPackageVersion)" />
+    <PackageReference Include="Masa.Contrib.ReadWriteSpliting.Cqrs" Version="$(MasaContribPackageVersion)" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="$(MicrosoftPackageVersion)" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="$(MicrosoftPackageVersion)">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="$(MicrosoftPackageVersion)" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="$(MicrosoftPackageVersion)">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="$(MicrosoftVisualStudioAzurePackageVersion)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Contracts\Masa.EShop.Contracts.Catalog\Masa.EShop.Contracts.Catalog.csproj" />
+    <ProjectReference Include="..\..\Contracts\Masa.EShop.Contracts.Ordering\Masa.EShop.Contracts.Ordering.csproj" />
+  </ItemGroup>
+
+</Project>

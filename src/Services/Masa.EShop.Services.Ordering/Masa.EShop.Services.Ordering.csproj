@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <DockerComposeProjectPath>..\..\..\docker-compose.dcproj</DockerComposeProjectPath>
+    <UserSecretsId>109e7d41-4f89-43b2-b239-83a88206b010</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..\..</DockerfileContext>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapr.Actors.AspNetCore" Version="$(DaprPackageVersion)" />
+    <PackageReference Include="Masa.Contrib.Data.EntityFrameworkCore.SqlServer" Version="$(MasaContribPackageVersion)" />
+    <PackageReference Include="Masa.Contrib.Data.Uow.EF" Version="$(MasaContribPackageVersion)" />
+    <PackageReference Include="Masa.Contrib.Dispatcher.Events" Version="$(MasaContribPackageVersion)" />
+    <PackageReference Include="Masa.Contrib.Dispatcher.IntegrationEvents.Dapr" Version="$(MasaContribPackageVersion)" />
+    <PackageReference Include="Masa.Contrib.Dispatcher.IntegrationEvents.EventLogs.EF" Version="$(MasaContribPackageVersion)" />
+    <PackageReference Include="Masa.Contrib.ReadWriteSpliting.Cqrs" Version="$(MasaContribPackageVersion)" />
+    <PackageReference Include="Masa.Contrib.Service.MinimalAPIs" Version="$(MasaContribPackageVersion)" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="$(MicrosoftPackageVersion)">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="$(MicrosoftPackageVersion)" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="$(MicrosoftVisualStudioAzurePackageVersion)" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="$(SwashbucklePackageVersion)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Contracts\Masa.EShop.Contracts.Basket\Masa.EShop.Contracts.Basket.csproj" />
+    <ProjectReference Include="..\..\Contracts\Masa.EShop.Contracts.Catalog\Masa.EShop.Contracts.Catalog.csproj" />
+    <ProjectReference Include="..\..\Contracts\Masa.EShop.Contracts.Ordering\Masa.EShop.Contracts.Ordering.csproj" />
+    <ProjectReference Include="..\..\Contracts\Masa.EShop.Contracts.Payment\Masa.EShop.Contracts.Payment.csproj" />
+  </ItemGroup>
+
+</Project>

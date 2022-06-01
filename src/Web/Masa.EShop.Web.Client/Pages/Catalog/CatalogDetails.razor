@@ -1,0 +1,125 @@
+﻿@page "/catalog/details/{id:int}"
+@inherits EShopPageBase
+
+<PageTitle>@T("Catalog.CatalogDetails")</PageTitle>
+
+<div class="d-flex block-center pb-6 pt-1">
+    <div class="text-subtitle">
+        @T("Catalog.CatalogDetails")
+    </div>
+    <div class="mx-4 border-solid" style="height:16px;width:0.5px;" />
+    <MBreadcrumbs Class="pa-0">
+        <DividerContent>
+            <MIcon Small>mdi-chevron-right</MIcon>
+        </DividerContent>
+        <ChildContent>
+            <MBreadcrumbsItem Disabled="false" Href="/">
+                <MIcon Small Color="primary">fas fa-home</MIcon>
+            </MBreadcrumbsItem>
+            <MBreadcrumbsItem>@T("Catalog.CatalogDetails")</MBreadcrumbsItem>
+        </ChildContent>
+    </MBreadcrumbs>
+</div>
+
+<MCard>
+    <MCardText>
+        <MRow style="min-height:580px;">
+            <MCol Md="5" Align="AlignTypes.Center" Class="d-flex flex-column align-center">
+                <img src="@_catalogItem.GetPictureUrl()" style="width: 460px;height:auto;" />
+                @*                <MImage src="@_catalogItem.GetPictureUrl()" AspectRatio="1" class="full-width" Height="@("auto")" />*@
+            </MCol>
+            <MCol Md="7" class="d-flex flex-column pa-12 pl-0">
+                <div class="mb-6">
+                    <h5 class="neutral-lighten-1--text">@_catalogItem.Name</h5>
+                    <p class="text-caption mb-0">By<span class="sample-green--text ml-2">@_catalogItem.Brand</span></p>
+                </div>
+                <div class="mb-6">
+                    <p class="mb-0 text-caption"> @T("Catalog.Available") - @T("Catalog.InStock")</p>
+                    <MRating Readonly Value="4.5" Size=20 Color="remind" BackgroundColor="remind" Dense></MRating>
+                    <h6 class="neutral--text">$@_catalogItem.Price</h6>
+                </div>
+                <p class="mb-6 text-body neutral-lighten-2--text justify-text-align">
+                    @_catalogItem.Description
+                </p>
+                <div class="mb-6 d-flex justify-space-between">
+                    <span class="text-body neutral-lighten-1--text">@T("Catalog.FreeShip")</span><span class="text-caption neutral-lighten-4--text">运费</span>
+                </div>
+                <MDivider></MDivider>
+                <div class="mb-6 mt-6 d-flex justify-space-between">
+                    <MButtonGroup Mandatory Dense Tile>
+                        <MButton Fab class="mx-2 rounded-circle ml-0 mr-0" Width="24" Height="24" MinWidth="24" Color="purple">
+                        </MButton>
+                        <MButton Fab class="mx-2 rounded-circle ml-3 mr-3" Width="24" Height="24" MinWidth="24" Color="green">
+                        </MButton>
+                        <MButton Fab class="mx-2 rounded-circle ml-0 mr-0" Width="24" Height="24" MinWidth="24" Color="orange">
+                        </MButton>
+                        <MButton Fab class="mx-2 rounded-circle ml-3 mr-3" Width="24" Height="24" MinWidth="24" Color="red">
+                        </MButton>
+                        <MButton Fab class="mx-2 rounded-circle ml-0 mr-0" Width="24" Height="24" MinWidth="24" Color="blue">
+                        </MButton>
+                    </MButtonGroup>
+                    <span class="text-caption neutral-lighten-4--text">@T("Catalog.Colors")</span>
+                </div>
+                <div class="flex-grow-1 d-flex align-end">
+                    <div class="d-flex align-center">
+                        <MButton MinWidth=100 Depressed Outlined class="primary--text rounded-pill">
+                            @T("Catalog.Wishlist")
+                        </MButton>
+                        <MButton Depressed class="primary ml-6 mr-6 rounded-pill">
+                            @T("Catalog.ViewInCart")
+                        </MButton>
+                        <MIcon Size=24 OnClick="()=>{}">mdi-share-variant</MIcon>
+                    </div>
+
+                </div>
+            </MCol>
+        </MRow>
+    </MCardText>
+</MCard>
+
+<MRow class="mt-6">
+    <MCol Md="4" Align="AlignTypes.Center" class="pa-15 d-flex flex-column align-center">
+        <MIcon class="primary--text">mdi-crown</MIcon>
+        <h5 class="neutral-lighten-1--text mt-2 mb-2"> 五级滤芯 </h5>
+        <p class="text-center text-body neutral-lighten-3--text"> 五级过滤，层层过滤，健康饮水 </p>
+    </MCol>
+    <MCol Md="4" Align="AlignTypes.Center" class="pa-15 d-flex flex-column align-center">
+        <MIcon class="primary--text">mdi-water</MIcon>
+        <h5 class="neutral-lighten-1--text mt-2 mb-2"> 阻菌龙头 </h5>
+        <p class="text-center text-body neutral-lighten-3--text"> 阻菌龙头呵护到口，确保最后一厘米的纯净，保证你入口放心水 </p>
+    </MCol>
+    <MCol Md="4" Align="AlignTypes.Center" class="pa-15 d-flex flex-column align-center">
+        <MIcon class="primary--text">mdi-cast-connected</MIcon>
+        <h5 class="neutral-lighten-1--text mt-2 mb-2"> 智能监控 </h5>
+        <p class="text-center text-body neutral-lighten-3--text"> 直观显示滤芯寿命，触摸控制方便快捷 </p>
+    </MCol>
+</MRow>
+<MRow class="mt-6">
+    <MSheet Class="mx-auto transparent">
+        <h5 class="text-center neutral-lighten-1--text">@T("Catalog.RelatedProducts")</h5>
+        <p class="text-center text-body neutral-lighten-3--text mb-0">@T("Catalog.RelatedMessage")</p>
+        <MSlideGroup ShowArrows="@(true)" class="mt-6 relate-group">
+            @foreach (var item in _relatedProducts)
+            {
+                <a class="pb-3">
+                    <MSlideItem>
+                        <MHover Context="hoverContext">
+                            <MCard @attributes="hoverContext.Attrs" Elevation="@(hoverContext.Hover ? 6 : 0)" RefBack="@context.Ref" Color="@("#f8f8f8")" class="ma-3 white" Height="428" Width="333" Click="@context.Toggle">
+                                <MImage Height=333 Width=333 Src="@item.ImgUrl" Class="hover-pointer"></MImage>
+                                <MDivider />
+                                <MCardText class="pa-3">
+                                    <div class="d-flex justify-space-between">
+                                        <MRating Value="@item.Rating" Size=20 Dense Readonly Length=5 Color="remind" BackgroundColor="remind"></MRating>
+                                        <h6>$@item.Price</h6>
+                                    </div>
+                                    <div class="text-subtitle text-truncate">@item.Name</div>
+                                    <div class="text-truncate text-body neutral-lighten-2--text">@item.Brand</div>
+                                </MCardText>
+                            </MCard>
+                        </MHover>
+                    </MSlideItem>
+                </a>
+            }
+        </MSlideGroup>
+    </MSheet>
+</MRow>

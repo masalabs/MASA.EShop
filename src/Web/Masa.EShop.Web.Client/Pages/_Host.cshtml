@@ -1,0 +1,9 @@
+﻿@page "/"
+@namespace Masa.EShop.Web.Client.Pages
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "_Layout";
+}
+@*ServerPrerendered change Server fixed <InvalidOperationException: JavaScript interop calls cannot be issued at this time>.
+    when GetAuthenticationStateAsync method call ProtectedSessionStorage*@
+<component type="typeof(App)" render-mode="Server" />

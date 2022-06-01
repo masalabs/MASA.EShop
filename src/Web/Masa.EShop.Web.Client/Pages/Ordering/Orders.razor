@@ -1,0 +1,191 @@
+﻿@page "/orders"
+@inherits EShopPageBase
+@implements IAsyncDisposable
+
+<PageTitle>@T("Order")</PageTitle>
+
+<div class="d-flex block-center pb-6 pt-1">
+    <div class="text-subtitle">
+        @T("Base.MyCenter")
+    </div>
+
+    <div class="mx-4 border-solid" style="height:16px;width:0.5px;" />
+
+    <MBreadcrumbs Class="pa-0">
+        <DividerContent>
+            <MIcon Small>mdi-chevron-right</MIcon>
+        </DividerContent>
+        <ChildContent>
+            <MBreadcrumbsItem Disabled="false" Href="/">
+                <MIcon Small Color="primary">fas fa-home</MIcon>
+            </MBreadcrumbsItem>
+            <MBreadcrumbsItem Text="@T("Order.My")"></MBreadcrumbsItem>
+        </ChildContent>
+    </MBreadcrumbs>
+</div>
+
+<MCard>
+    <MCardTitle>
+        <h6>@T("Order.List")</h6>
+    </MCardTitle>
+    <MCardText>
+        <MDataTable TItem="OrderSummary" Headers="_headers" Loading="_loading" Items="_orders">
+            <ItemColContent>
+                @if (context.Header.Text == "")
+                {
+                    <MIcon OnClick='()=>ShowDetails(context.Item.OrderNumber)'>mdi-view-grid</MIcon>
+                    <MIcon OnClick="()=>CancelOrder(context.Item.OrderNumber)" Disabled='(context.Item.Status == "Submitted")'>mdi-delete</MIcon>
+                }
+                else if (context.Header.Value == nameof(OrderSummary.Status))
+                {
+                    <MChip Small Outlined Color="@GetStatusColor(context.Item.Status)">
+                        @context.Item.Status
+                    </MChip>
+                }
+                else if (context.Header.Value == nameof(OrderSummary.PictureName))
+                {
+                    <img style="width:48px;height:48px;margin-top:4px;" src="@context.Item.GetPictureUrl()" />
+                }
+                else
+                {
+                    @context.Value
+                }
+            </ItemColContent>
+            <NoDataContent>
+                No Order
+            </NoDataContent>
+        </MDataTable> 
+    </MCardText>
+</MCard>
+
+<MNavigationDrawer Fixed Temporary Right Value=_detailDialog Width="600" class="pa-3">
+    <MToolbar Absolute Elevation=0 class="px-3 full-width mx-n3">
+        <span>@T("Order.Number"):@_order.OrderNumber</span>
+        <MSpacer></MSpacer>
+        <MButton Icon OnClick="()=>{ _detailDialog = false;}">
+            <MIcon >mdi-close</MIcon>
+        </MButton>
+    </MToolbar>
+    <MRow>
+        <MCol Md="12" Class="pt-2 pb-1">
+            <MCard>
+                <MCardText Style="text-align:center">
+                    <img src="@_order.GetPictureUrl()" style="max-width:500px;" />
+                </MCardText>
+                <MCardTitle>@_order.ProductName</MCardTitle>
+                <MCardSubtitle Style="color:red">两件99元！设计感强 简约又不单调</MCardSubtitle>
+            </MCard>
+        </MCol>
+        <MCol Md="12" Class="pt-1 pb-1">
+            <MCard>
+                <MCardText Style="font-size: 12px;">
+                    型号: YCB-04<br />
+                    机身材质: 金属<br />
+                    水温要求: 温热 冰 温热<br />
+                    制冷控制系统: 电子温控<br />
+                    有无显示屏: 有<br />
+                    电压: 220V<br />
+                    附加功能: 童锁<br />
+                    是否带储物空间: 是<br />
+                    智能类型: 其他智能涉水<br />
+                    批件批准文号: 浙（04）卫水字（2020）第0094号<br />
+                    是否可调温度: 是<br />
+                    出水位置: 顶置双出水龙头
+                </MCardText>
+            </MCard>
+        </MCol>
+        <MCol Md="12" Class="pt-1 pb-1">
+            <MCard>
+                <MCardText>
+                    <MRow>
+                        <MCol Md="@("auto")"><span style="font-size:18px;line-height: 1.5em;"><span>￥</span> @_order.GetFormattedTotal()</span></MCol>
+                        <MCol Md="@("auto")"><MDivider Vertical></MDivider></MCol>
+                        <MCol Md="@("auto")"><MRating Value="4" BackgroundColor="orange lighten-3" Color="orange" Dense></MRating></MCol>
+                    </MRow>
+                    @foreach (var orderItem in _order.OrderItems)
+                    {
+                        <MList>
+                            <MListItem Dense>
+                                <MListItemTitle>@T("Catalog.Name"):</MListItemTitle>
+                                <MListItemSubtitle Class="text-right">
+                                    @orderItem.ProductName
+                                </MListItemSubtitle>
+                            </MListItem>
+                            <MListItem Dense>
+                                <MListItemTitle>@T("Catalog.Colors"):</MListItemTitle>
+                                <MListItemSubtitle Class="text-right">
+                                    <MButton class="mx-2" Fab Width="20" Height="20" Color="grey">
+                                    </MButton>
+                                </MListItemSubtitle>
+                            </MListItem>
+                            <MListItem Dense>
+                                <MListItemTitle>@T("Basket.Qty"):</MListItemTitle>
+                                <MListItemSubtitle Class="text-right">
+                                    @orderItem.Units 个/只
+                                </MListItemSubtitle>
+                            </MListItem>
+                            <MListItem Dense>
+                                <MListItemTitle>@T("Base.Total"):</MListItemTitle>
+                                <MListItemSubtitle Class="text-right">
+                                    <span>￥</span> @orderItem.GetFormattedTotal()
+                                </MListItemSubtitle>
+                            </MListItem>
+                        </MList>
+                    }
+                </MCardText>
+            </MCard>
+        </MCol>
+        <MCol Md="12" Class="pt-1 pb-1">
+            <MCard>
+                <MCardText>
+                    <MList Class="transparent pa-0">
+                        <MListItem Dense style="min-height:28px;">
+                            <MListItemSubtitle style="flex: none;width: 100px;">@T("Order.State"):</MListItemSubtitle>
+                            <MListItemSubtitle>
+                                @_order.Status
+                            </MListItemSubtitle>
+                        </MListItem>
+                        <MListItem Dense style="min-height:28px;">
+                            <MListItemSubtitle style="flex: none;width: 100px;">@T("Order.Time"):</MListItemSubtitle>
+                            <MListItemSubtitle>
+                                @_order.GetFormattedOrderDate()
+                            </MListItemSubtitle>
+                        </MListItem>
+                        <MListItem Dense style="min-height:28px;">
+                            <MListItemSubtitle style="flex: none;width: 100px;">@T("Order.PaymentTime"):</MListItemSubtitle>
+                            <MListItemSubtitle>
+                                @_order.GetFormattedOrderDate()
+                            </MListItemSubtitle>
+                        </MListItem>
+                        <MListItem Dense style="min-height:28px;">
+                            <MListItemSubtitle style="flex: none;width: 100px;">@T("Order.ReceiveAddress"):</MListItemSubtitle>
+                            <MListItemSubtitle>
+                                @_order.Country @_order.City @_order.Street
+                            </MListItemSubtitle>
+                        </MListItem>
+                        <MListItem Dense style="min-height:28px;">
+                            <MListItemSubtitle style="flex: none;width: 100px;">@T("Order.Consignee"):</MListItemSubtitle>
+                            <MListItemSubtitle>
+                                叶子
+                            </MListItemSubtitle>
+                        </MListItem>
+                        <MListItem Dense style="min-height:28px;">
+                            <MListItemSubtitle style="flex: none;width: 100px;">@T("Order.ConsigneePhone"):</MListItemSubtitle>
+                            <MListItemSubtitle>
+                                18000000000
+                            </MListItemSubtitle>
+                        </MListItem>
+                    </MList>
+                </MCardText>
+            </MCard>
+        </MCol>
+        <MCol Md="12" Class="pt-1 pb-2">
+            <MCard>
+                <MCardText>
+                    <span style="color:#989595;">@T("Order.ShipStatus")</span>
+                </MCardText>
+            </MCard>
+        </MCol>
+    </MRow>
+    <MButton class="mt-6" Color="red" Outlined Block>@T("Order.Cancel")</MButton>
+</MNavigationDrawer>
