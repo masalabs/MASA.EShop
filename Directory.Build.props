@@ -1,9 +1,9 @@
 <Project>
   <PropertyGroup>
     <MicrosoftPackageVersion>6.0.0</MicrosoftPackageVersion>
-    <MasaUtilsPackageVersion>0.4.0-rc1</MasaUtilsPackageVersion>
-    <MasaContribPackageVersion>0.4.0-rc.2</MasaContribPackageVersion>
-    <MasaBlazorPackageVersion>0.3.0</MasaBlazorPackageVersion>
+    <MasaUtilsPackageVersion>0.4.0</MasaUtilsPackageVersion>
+    <MasaContribPackageVersion>0.4.0</MasaContribPackageVersion>
+    <MasaBlazorPackageVersion>0.4.0</MasaBlazorPackageVersion>
     <DaprPackageVersion>1.5.0</DaprPackageVersion>
     <SwashbucklePackageVersion>6.2.3</SwashbucklePackageVersion>
     <FluentValidationPackageVersion>10.3.6</FluentValidationPackageVersion>
