@@ -28,6 +28,8 @@ builder.Services.AddAuthentication(options =>
     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
 }).AddCookie(setup => setup.ExpireTimeSpan = TimeSpan.FromMinutes(60));
 
+builder.Services.AddMasaI18nForServer("Resources");
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -51,20 +53,5 @@ app.UseAuthorization();
 
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
-
-#region I18n
-
-var langfileNames = new string[] { "en-US.json", "zh-CN.json" };
-langfileNames.ForEach(langFileName =>
-{
-    var path = Path.Combine(app.Environment.ContentRootPath, "Resources", langFileName);
-    var json = File.ReadAllText(path);
-    I18n.AddLang(Path.GetFileNameWithoutExtension(path),
-        JsonSerializer.Deserialize<Dictionary<string, string>>(json),
-        langFileName.Contains("zh-CN")
-    );
-});
-
-#endregion
 
 app.Run();
