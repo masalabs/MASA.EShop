@@ -1,6 +1,6 @@
 ﻿namespace Masa.EShop.Services.Payment.Application.Payments;
 
-public class PaymentCommandHandler 
+public class PaymentCommandHandler
 {
     private readonly IOptionsMonitor<AppConfig> _appConfig = default!;
     private readonly IPaymentRepository _repository = default!;
@@ -16,7 +16,7 @@ public class PaymentCommandHandler
         _paymentDomainService = paymentDomainService;
     }
 
-    [EventHandler]
+    [Contrib.Dispatcher.Events.EventHandler]
     public async Task HandleAsync(OrderStatusChangedToValidatedCommand command)
     {
         //await Task.Delay(2000); // Simulation of pay

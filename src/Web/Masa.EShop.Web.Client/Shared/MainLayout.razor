@@ -56,7 +56,7 @@
             </NotAuthorized>
         </AuthorizeView>
         <MButton Text OnClick='()=>ChangeLanguage()' class="ml-2">
-            @(I18n.CurrentLanguage == "zh-CN"?"EN": "中")
+            @(I18n.Culture.Name == "zh-CN"?"EN": "中")
         </MButton>
     </MAppBar>
     <MMain Class="fill-lighten-1">

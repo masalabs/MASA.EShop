@@ -1,10 +1,8 @@
-﻿using PageBase = Masa.Blazor.PageBase;
-
-namespace Masa.EShop.Web.Client.Pages;
+﻿namespace Masa.EShop.Web.Client.Pages;
 
 public delegate string Localizer(string text);
 
-public class EShopPageBase : PageBase
+public class EShopPageBase : ComponentBase
 {
     private Localizer _localizer = default!;
 

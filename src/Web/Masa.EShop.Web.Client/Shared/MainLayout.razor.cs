@@ -1,4 +1,6 @@
-﻿namespace Masa.EShop.Web.Client.Shared;
+﻿using System.Globalization;
+
+namespace Masa.EShop.Web.Client.Shared;
 
 public partial class MainLayout
 {
@@ -26,7 +28,7 @@ public partial class MainLayout
     private void ChangeLanguage()
     {
         string? changeLanguage;
-        if (I18n.CurrentLanguage == "zh-CN")
+        if (I18n.Culture.Name == "zh-CN")
         {
             changeLanguage = "en-US";
         }
@@ -34,7 +36,7 @@ public partial class MainLayout
         {
             changeLanguage = "zh-CN";
         }
-        I18n.SetLang(changeLanguage);
+        I18n.SetCulture(new CultureInfo(changeLanguage));
     }
 
     #region Message
