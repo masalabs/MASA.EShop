@@ -6,7 +6,7 @@ builder.Services.AddMasaBlazor(new Masa.Blazor.MasaBlazorOptions()
     {
         Primary = "#7367f0"
     }
-});
+}).AddI18nForServer("Resources");
 
 //Add services to the container.
 builder.Services.AddRazorPages();
@@ -19,7 +19,6 @@ builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddTransient<HttpClientAuthorizationDelegatingHandler>();
 
 builder.Services.AddCaller();
-builder.Services.AddMasaI18nForServer("Resources");
 
 // Add Authentication services
 builder.Services.AddAuthentication(options =>
@@ -27,8 +26,6 @@ builder.Services.AddAuthentication(options =>
     options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
 }).AddCookie(setup => setup.ExpireTimeSpan = TimeSpan.FromMinutes(60));
-
-builder.Services.AddMasaI18nForServer("Resources");
 
 var app = builder.Build();
 

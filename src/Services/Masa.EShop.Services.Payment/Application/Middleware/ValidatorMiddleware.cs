@@ -1,6 +1,6 @@
 ﻿namespace Masa.EShop.Services.Payment.Application.Middleware;
 
-public class ValidatorMiddleware<TEvent> : IMiddleware<TEvent>
+public class ValidatorMiddleware<TEvent> : Middleware<TEvent>
     where TEvent : notnull, IEvent
 {
     private readonly ILogger<ValidatorMiddleware<TEvent>> _logger;
@@ -12,7 +12,7 @@ public class ValidatorMiddleware<TEvent> : IMiddleware<TEvent>
         _logger = logger;
     }
 
-    public async Task HandleAsync(TEvent action, EventHandlerDelegate next)
+    public override async Task HandleAsync(TEvent action, EventHandlerDelegate next)
     {
         var typeName = action.GetType().FullName;
 
