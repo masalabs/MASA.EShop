@@ -4,7 +4,7 @@
 
 # Introduction
 
-A sample `.NET Core` distributed application based on eShopOnDapr, powered by [Masa.BuildingBlocks](https://github.com/masastack/Masa.BuildingBlocks), [Masa.Contrib](https://github.com/masastack/Masa.Contrib), [Masa.Utils](https://github.com/masastack/Masa.Utils),[Dapr](https://github.com/dapr/dapr).
+A sample `.NET Core` distributed application based on eShopOnDapr, powered by [MASA.Framework](https://github.com/masastack/Masa.Framework), [Dapr](https://github.com/dapr/dapr).
 
 ## Directory Structure
 
