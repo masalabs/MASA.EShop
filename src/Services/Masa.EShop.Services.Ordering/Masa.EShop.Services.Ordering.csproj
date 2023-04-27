@@ -12,12 +12,12 @@
 
   <ItemGroup>
     <PackageReference Include="Dapr.Actors.AspNetCore" Version="$(DaprPackageVersion)" />
-    <PackageReference Include="Masa.Contrib.Data.EntityFrameworkCore.SqlServer" Version="$(MasaContribPackageVersion)" />
-    <PackageReference Include="Masa.Contrib.Data.Uow.EF" Version="$(MasaContribPackageVersion)" />
+    <PackageReference Include="Masa.Contrib.Data.EFCore.SqlServer" Version="$(MasaContribPackageVersion)" />
+    <PackageReference Include="Masa.Contrib.Data.Uow.EFCore" Version="$(MasaContribPackageVersion)" />
     <PackageReference Include="Masa.Contrib.Dispatcher.Events" Version="$(MasaContribPackageVersion)" />
     <PackageReference Include="Masa.Contrib.Dispatcher.IntegrationEvents.Dapr" Version="$(MasaContribPackageVersion)" />
-    <PackageReference Include="Masa.Contrib.Dispatcher.IntegrationEvents.EventLogs.EF" Version="$(MasaContribPackageVersion)" />
-    <PackageReference Include="Masa.Contrib.ReadWriteSpliting.Cqrs" Version="$(MasaContribPackageVersion)" />
+    <PackageReference Include="Masa.Contrib.Dispatcher.IntegrationEvents.EventLogs.EFCore" Version="$(MasaContribPackageVersion)" />
+    <PackageReference Include="Masa.Contrib.ReadWriteSplitting.Cqrs" Version="$(MasaContribPackageVersion)" />
     <PackageReference Include="Masa.Contrib.Service.MinimalAPIs" Version="$(MasaContribPackageVersion)" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="$(MicrosoftPackageVersion)">
       <PrivateAssets>all</PrivateAssets>

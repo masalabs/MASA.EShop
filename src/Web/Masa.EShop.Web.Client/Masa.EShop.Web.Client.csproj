@@ -12,7 +12,7 @@
   <ItemGroup>
     <PackageReference Include="Dapr.AspNetCore" Version="$(DaprPackageVersion)" />
     <PackageReference Include="Masa.Blazor" Version="$(MasaBlazorPackageVersion)" />
-    <PackageReference Include="Masa.Utils.Caller.HttpClient" Version="$(MasaUtilsPackageVersion)" />
+    <PackageReference Include="Masa.Contrib.Service.Caller.HttpClient" Version="$(MasaContribPackageVersion)" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="$(MicrosoftPackageVersion)" />
     <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="$(MicrosoftPackageVersion)" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="$(MicrosoftVisualStudioAzurePackageVersion)" />

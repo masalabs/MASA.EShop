@@ -31,8 +31,8 @@ var app = builder.Services
     })
     .AddMasaDbContext<OrderingContext>(dbOptions => dbOptions.UseSqlServer("Data Source=masa.eshop.services.eshop.database;uid=sa;pwd=P@ssw0rd;database=order"))
     .AddScoped<IOrderRepository, OrderRepository>()
-    .AddDaprEventBus<IntegrationEventLogService>(options => options.UseEventBus().UseEventLog<OrderingContext>())
-    .AddResponseCompression(opts => //添加压缩中间件服务
+    .AddIntegrationEventBus<IntegrationEventLogService>(options=>options.UseDapr().UseEventLog<OrderingContext>())
+    .AddResponseCompression(opts => 
     {
         opts.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(
             new[] { "application/octet-stream" });

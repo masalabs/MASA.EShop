@@ -1,9 +1,7 @@
-using Masa.Utils.Caller.Core;
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.Configure<Settings>(builder.Configuration);
-builder.Services.AddCaller();
+builder.Services.AddAutoRegistrationCaller();
 
 var identityUrl = "";
 builder.Services.AddAuthorization();

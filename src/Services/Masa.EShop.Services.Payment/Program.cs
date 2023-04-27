@@ -1,5 +1,3 @@
-
-
 var builder = WebApplication.CreateBuilder(args);
 
 var app = builder.Services
@@ -17,11 +15,12 @@ var app = builder.Services
             Description = "The Payment Service HTTP API"
         });
     })
+    .AddMasaDbContext<PaymentDbContext>(dbOptions => dbOptions.UseSqlServer("server=masa.eshop.services.eshop.database;uid=sa;pwd=P@ssw0rd;database=payment"))
     .AddDomainEventBus(options =>
     {
         options.UseIntegrationEventBus(dispatcherOptions => dispatcherOptions.UseDapr().UseEventLog<PaymentDbContext>())
                .UseEventBus(eventBuilder => eventBuilder.UseMiddleware(typeof(ValidatorMiddleware<>)))
-               .UseUoW<PaymentDbContext>(dbOptions => dbOptions.UseSqlServer("server=masa.eshop.services.eshop.database;uid=sa;pwd=P@ssw0rd;database=payment"))
+               .UseUoW<PaymentDbContext>()
                .UseRepository<PaymentDbContext>();
     })
     .AddServices(builder);

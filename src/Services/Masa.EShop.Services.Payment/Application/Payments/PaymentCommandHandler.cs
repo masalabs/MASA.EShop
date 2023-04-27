@@ -2,17 +2,14 @@
 
 public class PaymentCommandHandler
 {
-    private readonly IOptionsMonitor<AppConfig> _appConfig = default!;
     private readonly IPaymentRepository _repository = default!;
     private readonly PaymentDomainService _paymentDomainService = default!;
 
     public PaymentCommandHandler(
-        IOptionsMonitor<AppConfig> appConfig,
         IPaymentRepository repository,
         PaymentDomainService paymentDomainService)
     {
         _repository = repository;
-        _appConfig = appConfig;
         _paymentDomainService = paymentDomainService;
     }
 

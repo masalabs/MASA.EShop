@@ -5,7 +5,7 @@ var app = builder.Services
     {
         options.RegisterValidatorsFromAssemblyContaining<CatalogSettings>();
     })
-    .AddTransient(typeof(IMiddleware<>), typeof(ValidatorMiddleware<>))
+    .AddTransient(typeof(IEventMiddleware<>), typeof(ValidatorMiddleware<>))
     .AddEndpointsApiExplorer()
     .AddSwaggerGen(options =>
     {
@@ -19,11 +19,13 @@ var app = builder.Services
     .AddScoped<ICatalogItemRepository, CatalogItemRepository>()
     .AddScoped<ICatalogTypeRepository, CatalogTypeRepository>()
     .AddScoped<ICatalogBrandRepository, CatalogBrandRepository>()
-    .AddDaprEventBus<IntegrationEventLogService>(options =>
+    .AddMasaDbContext<CatalogDbContext>(dbOptions => dbOptions.UseSqlServer("server=masa.eshop.services.eshop.database;uid=sa;pwd=P@ssw0rd;database=catalog"))
+    .AddIntegrationEventBus<IntegrationEventLogService>(options =>
     {
-        options.UseEventLog<CatalogDbContext>()
+        options.UseDapr()
+               .UseEventLog<CatalogDbContext>()
                .UseEventBus()
-               .UseUoW<CatalogDbContext>(dbOptions => dbOptions.UseSqlServer("server=masa.eshop.services.eshop.database;uid=sa;pwd=P@ssw0rd;database=catalog"));
+               .UseUoW<CatalogDbContext>();
     })
     .AddServices(builder);
 

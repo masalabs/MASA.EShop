@@ -11,19 +11,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Masa.Contrib.Data.EntityFrameworkCore.SqlServer" Version="$(MasaContribPackageVersion)" />
+    <PackageReference Include="Masa.Contrib.Data.EFCore.SqlServer" Version="$(MasaContribPackageVersion)" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="$(SwashbucklePackageVersion)" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="$(FluentValidationPackageVersion)" />
     <PackageReference Include="Masa.BuildingBlocks.Ddd.Domain" Version="$(MasaContribPackageVersion)" />
-    <PackageReference Include="Masa.BuildingBlocks.ReadWriteSpliting.Cqrs" Version="$(MasaContribPackageVersion)" />
-    <PackageReference Include="Masa.Contrib.Data.Uow.EF" Version="$(MasaContribPackageVersion)" />
+    <PackageReference Include="Masa.BuildingBlocks.ReadWriteSplitting.Cqrs" Version="$(MasaContribPackageVersion)" />
+    <PackageReference Include="Masa.Contrib.Data.Uow.EFCore" Version="$(MasaContribPackageVersion)" />
     <PackageReference Include="Masa.Contrib.Dispatcher.Events" Version="$(MasaContribPackageVersion)" />
     <PackageReference Include="Masa.Contrib.Dispatcher.IntegrationEvents.Dapr" Version="$(MasaContribPackageVersion)" />
-    <PackageReference Include="Masa.Contrib.Dispatcher.IntegrationEvents.EventLogs.EF" Version="$(MasaContribPackageVersion)" />
-    <PackageReference Include="Masa.Contrib.ReadWriteSpliting.Cqrs" Version="$(MasaContribPackageVersion)" />
+    <PackageReference Include="Masa.Contrib.Dispatcher.IntegrationEvents.EventLogs.EFCore" Version="$(MasaContribPackageVersion)" />
+    <PackageReference Include="Masa.Contrib.ReadWriteSplitting.Cqrs" Version="$(MasaContribPackageVersion)" />
     <PackageReference Include="Masa.Contrib.Service.MinimalAPIs" Version="$(MasaContribPackageVersion)" />
     <PackageReference Include="Masa.Contrib.Ddd.Domain" Version="$(MasaContribPackageVersion)" />
-    <PackageReference Include="Masa.Contrib.Ddd.Domain.Repository.EF" Version="$(MasaContribPackageVersion)" />
+    <PackageReference Include="Masa.Contrib.Ddd.Domain.Repository.EFCore" Version="$(MasaContribPackageVersion)" />
     <PackageReference Include="Masa.Utils.Models.Config" Version="$(MasaUtilsPackageVersion)" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="$(MicrosoftPackageVersion)" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="$(MicrosoftVisualStudioAzurePackageVersion)" />

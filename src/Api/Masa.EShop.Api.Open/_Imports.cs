@@ -7,7 +7,7 @@ global using Masa.EShop.Contracts.Basket.Model;
 global using Masa.EShop.Contracts.Basket.Model.Web;
 global using Masa.EShop.Contracts.Catalog.Model;
 global using Masa.EShop.Contracts.Ordering.Model;
-global using Masa.Utils.Caller.HttpClient;
+global using Masa.Contrib.Service.Caller.HttpClient;
 global using Microsoft.AspNetCore.Authentication.JwtBearer;
 global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.AspNetCore.WebUtilities;
