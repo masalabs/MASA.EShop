@@ -5,7 +5,6 @@ var app = builder.Services
     {
         options.RegisterValidatorsFromAssemblyContaining<CatalogSettings>();
     })
-    .AddTransient(typeof(IEventMiddleware<>), typeof(ValidatorMiddleware<>))
     .AddEndpointsApiExplorer()
     .AddSwaggerGen(options =>
     {
@@ -24,7 +23,7 @@ var app = builder.Services
     {
         options.UseDapr()
                .UseEventLog<CatalogDbContext>()
-               .UseEventBus()
+               .UseEventBus(eventBusBuilder=>eventBusBuilder.UseMiddleware(typeof(ValidatorMiddleware<>)))
                .UseUoW<CatalogDbContext>();
     })
     .AddServices(builder);

@@ -1,6 +1,7 @@
 ﻿global using Dapr;
 global using FluentValidation;
 global using FluentValidation.AspNetCore;
+global using Masa.BuildingBlocks.Data.UoW;
 global using Masa.BuildingBlocks.Dispatcher.Events;
 global using Masa.BuildingBlocks.Dispatcher.IntegrationEvents;
 global using Masa.BuildingBlocks.ReadWriteSplitting.Cqrs.Commands;
@@ -35,5 +36,4 @@ global using System.Globalization;
 global using System.IO.Compression;
 global using System.Linq.Expressions;
 global using System.Text.RegularExpressions;
-global using Masa.BuildingBlocks.Data.UoW;
 

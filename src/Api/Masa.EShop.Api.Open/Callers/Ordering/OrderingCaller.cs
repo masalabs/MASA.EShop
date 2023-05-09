@@ -2,6 +2,8 @@
 
 public class OrderingCaller : HttpClientCallerBase
 {
+    protected override string Prefix { get; set; } = "/api/v1/orders/";
+
     private readonly ILogger<OrderingCaller> _logger;
 
     private readonly string _getOrdersUrl;
@@ -14,7 +16,6 @@ public class OrderingCaller : HttpClientCallerBase
         ILogger<OrderingCaller> logger) : base(serviceProvider)
     {
         BaseAddress = settings.Value.OrderingUrl;
-        Prefix = "/api/v1/orders/";
         _logger = logger;
         _getOrdersUrl = $"list";
         _cancelOrderUrl = $"cancel";
