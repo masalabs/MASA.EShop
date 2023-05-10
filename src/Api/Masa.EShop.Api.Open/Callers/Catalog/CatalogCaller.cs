@@ -15,7 +15,6 @@ public class CatalogCaller : HttpClientCallerBase
         ILogger<CatalogCaller> logger) : base(serviceProvider)
     {
         BaseAddress = settings.Value.CatalogUrl;
-        Name = nameof(CatalogCaller);
         _logger = logger;
         _getCatalogItemsUrl = $"{prefix}items";
         _getAllBrandsUrl = $"{prefix}brands";

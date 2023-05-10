@@ -12,7 +12,6 @@ public class BasketService : HttpClientCallerBase
     public BasketService(IServiceProvider serviceProvider, IOptions<Settings> settings) : base(serviceProvider)
     {
         _serviceProvider = serviceProvider;
-        Name = nameof(BasketService);
         BaseAddress = settings.Value.ApiGatewayUrlExternal;
         getBasketUrl = $"{prefix}";
         addItemUrl = $"{prefix}additem";
@@ -20,24 +19,24 @@ public class BasketService : HttpClientCallerBase
         checkoutUrl = $"{prefix}checkout";
     }
 
-    protected override IHttpClientBuilder UseHttpClient()
+    protected override void UseHttpClientPost(MasaHttpClientBuilder masaHttpClientBuilder)
     {
-        return base.UseHttpClient().AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>();
+        masaHttpClientBuilder.AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>();
     }
 
     public async Task RemoveItemAsync(string userId, int productId)
     {
-        await CallerProvider.PutAsync($"{removeItemUrl}/{userId}/{productId}", null);
+        await Caller.PutAsync($"{removeItemUrl}/{userId}/{productId}", null);
     }
 
     public async Task AddItemToBasketAsync(string userId, int productId)
     {
-        await CallerProvider.PutAsync($"{addItemUrl}/{userId}/{productId}", null);
+        await Caller.PutAsync($"{addItemUrl}/{userId}/{productId}", null);
     }
 
     public async Task<UserBasket?> GetBasketAsync(string userId)
     {
-        return await CallerProvider.GetAsync<UserBasket>($"{getBasketUrl}{userId}") ?? new UserBasket(userId, new List<BasketItem>());
+        return await Caller.GetAsync<UserBasket>($"{getBasketUrl}{userId}") ?? new UserBasket(userId, new List<BasketItem>());
     }
 
     public Task<UserBasket> UpdateBasketAsync(UserBasket basket)
@@ -47,7 +46,7 @@ public class BasketService : HttpClientCallerBase
 
     public async Task CheckoutAsync(BasketCheckout basketCheckout)
     {
-        var response = await CallerProvider.PostAsync(checkoutUrl, basketCheckout);
+        var response = await Caller.PostAsync(checkoutUrl, basketCheckout);
         response.EnsureSuccessStatusCode();
     }
 

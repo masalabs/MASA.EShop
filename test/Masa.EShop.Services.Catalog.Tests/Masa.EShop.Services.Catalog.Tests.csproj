@@ -8,8 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Masa.BuildingBlocks.Data.Uow" Version="$(MasaContribPackageVersion)" />
-    <PackageReference Include="Masa.BuildingBlocks.ReadWriteSpliting.Cqrs" Version="$(MasaContribPackageVersion)" />
+    <PackageReference Include="Masa.BuildingBlocks.Data.Uow" Version="$(MasaFrameworkPackageVersion)" />
+    <PackageReference Include="Masa.BuildingBlocks.ReadWriteSplitting.Cqrs" Version="$(MasaFrameworkPackageVersion)" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0-preview-20211130-02" />
     <PackageReference Include="Moq" Version="4.16.1" />
     <PackageReference Include="MSTest.TestAdapter" Version="2.2.8" />

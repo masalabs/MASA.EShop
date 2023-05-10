@@ -74,7 +74,7 @@ public partial class Checkout : ComponentBase
 
     private async Task SubmitOrder()
     {
-        await _form.ValidateAsync();
+        _form.Validate();
         if (_valid)
         {
             await BasketCheckout(_shipAddressFormModel);

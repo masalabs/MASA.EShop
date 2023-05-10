@@ -16,7 +16,6 @@ public class BasketCaller : HttpClientCallerBase
         CatalogCaller catalogCaller) : base(serviceProvider)
     {
         BaseAddress = settings.Value.BasketUrl;
-        Name = nameof(BasketCaller);
         _logger = logger;
         _catalogCaller = catalogCaller;
         var prefix = "/api/v1/basket/";

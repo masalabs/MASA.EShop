@@ -3,7 +3,7 @@
         <MVirtualScroll style="height: calc(100vh - 228px);" class="hidden-webkit-scrollbar pr-6 pl-6" Items="_userBasket.Items">
             <ItemContent>
                 <MHover Context="hoverContext" class="full-width mb-6" >
-                    <MCard Height="270" Class="@($"{hoverContext.Class} {(hoverContext.Hover ? "pro-elevation" : "")}")" @attributes="hoverContext.Attrs" Elevation="@(hoverContext.Hover ? 6 : 0)">
+                    <MCard Height="270" Class="@($"{(hoverContext.Hover ? "pro-elevation" : "")}")" @attributes="hoverContext.Attrs" Elevation="@(hoverContext.Hover ? 6 : 0)">
                         <MRow class="ma-0">
                             <MCol Md="@("auto")" Align="AlignTypes.Center" class="d-flex flex-column align-center">
                                 <MImage src="@context.GetPictureUrl()" Width='222' Height="222" />

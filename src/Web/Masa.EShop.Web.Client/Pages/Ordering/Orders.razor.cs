@@ -7,11 +7,11 @@ public partial class Orders : EShopPageBase, IAsyncDisposable
     private HubConnection hubConnection = default!;
     private readonly List<DataTableHeader<OrderSummary>> _headers = new List<DataTableHeader<OrderSummary>> {
         new (){ Text= "IMAGE",Sortable= false,Value= nameof(OrderSummary.PictureName)},
-        new (){ Text= "PRODUCT NAME",Sortable= false,Align= "center",Value= nameof(OrderSummary.ProductName)},
-        new (){ Text= "ORDER NUMBER", Align= "center",Sortable= false,Value= nameof(OrderSummary.OrderNumber)},
-        new (){ Text= "TOTAL", Value= nameof(OrderSummary.Total),Align= "end"},
-        new (){ Text= "DATE", Align= "center",Value= nameof(OrderSummary.Date)},
-        new (){ Text= "STATUS",Sortable= false,Align= "center", Value= nameof(OrderSummary.Status)},
+        new (){ Text= "PRODUCT NAME",Sortable= false,Align=  DataTableHeaderAlign.Center,Value= nameof(OrderSummary.ProductName)},
+        new (){ Text= "ORDER NUMBER", Align= DataTableHeaderAlign.Center,Sortable= false,Value= nameof(OrderSummary.OrderNumber)},
+        new (){ Text= "TOTAL", Value= nameof(OrderSummary.Total),Align=  DataTableHeaderAlign.End},
+        new (){ Text= "DATE", Align=  DataTableHeaderAlign.Center,Value= nameof(OrderSummary.Date)},
+        new (){ Text= "STATUS",Sortable= false,Align= DataTableHeaderAlign.Center, Value= nameof(OrderSummary.Status)},
         new (){ Text= "",Sortable= false, Value= nameof(OrderSummary.Id)}
     };
     private bool _loading = false;

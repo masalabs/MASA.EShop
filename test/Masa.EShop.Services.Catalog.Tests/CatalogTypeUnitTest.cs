@@ -21,7 +21,7 @@ public class CatalogTypeUnitTest
 
         Mock<IEventBus> eventBus = new();
         eventBus
-            .Setup(e => e.PublishAsync(It.IsAny<CreateCatalogTypeCommand>()))
+            .Setup(e => e.PublishAsync(It.IsAny<CreateCatalogTypeCommand>(),default))
             .Callback<CreateCatalogTypeCommand>(async cmd =>
             {
                 var result = new CreateCatalogTypeCommandValidator().Validate(createCatalogTypeCommand);

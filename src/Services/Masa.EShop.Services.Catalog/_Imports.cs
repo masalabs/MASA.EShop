@@ -1,14 +1,15 @@
 ﻿global using Dapr;
 global using FluentValidation;
 global using FluentValidation.AspNetCore;
+global using Masa.BuildingBlocks.Data.UoW;
 global using Masa.BuildingBlocks.Dispatcher.Events;
 global using Masa.BuildingBlocks.Dispatcher.IntegrationEvents;
-global using Masa.BuildingBlocks.ReadWriteSpliting.Cqrs.Commands;
-global using Masa.BuildingBlocks.ReadWriteSpliting.Cqrs.Queries;
-global using Masa.Contrib.Data.EntityFrameworkCore;
-global using Masa.Contrib.Data.UoW.EF;
+global using Masa.BuildingBlocks.ReadWriteSplitting.Cqrs.Commands;
+global using Masa.BuildingBlocks.ReadWriteSplitting.Cqrs.Queries;
+global using Masa.Contrib.Data.EFCore;
+global using Masa.Contrib.Data.UoW.EFCore;
 global using Masa.Contrib.Dispatcher.Events;
-global using Masa.Contrib.Dispatcher.IntegrationEvents.EventLogs.EF;
+global using Masa.Contrib.Dispatcher.IntegrationEvents.EventLogs.EFCore;
 global using Masa.Contrib.Service.MinimalAPIs;
 global using Masa.EShop.Contracts.Catalog.Event;
 global using Masa.EShop.Contracts.Ordering.Event;
@@ -35,3 +36,4 @@ global using System.Globalization;
 global using System.IO.Compression;
 global using System.Linq.Expressions;
 global using System.Text.RegularExpressions;
+

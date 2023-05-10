@@ -2,12 +2,13 @@
 
 public class OrderingCaller : HttpClientCallerBase
 {
+    protected override string Prefix { get; set; } = "/api/v1/orders/";
+
     private readonly ILogger<OrderingCaller> _logger;
 
     private readonly string _getOrdersUrl;
     private readonly string _cancelOrderUrl;
     private readonly string _shipOrderUrl;
-    private string prefix = "/api/v1/orders/";
 
     public OrderingCaller(
         IServiceProvider serviceProvider,
@@ -15,21 +16,20 @@ public class OrderingCaller : HttpClientCallerBase
         ILogger<OrderingCaller> logger) : base(serviceProvider)
     {
         BaseAddress = settings.Value.OrderingUrl;
-        Name = nameof(OrderingCaller);
         _logger = logger;
-        _getOrdersUrl = $"{prefix}list";
-        _cancelOrderUrl = $"{prefix}cancel";
-        _shipOrderUrl = $"{prefix}ship";
+        _getOrdersUrl = $"list";
+        _cancelOrderUrl = $"cancel";
+        _shipOrderUrl = $"ship";
     }
 
     public async Task<List<OrderSummary>> GetMyOrders(string userId)
     {
-        return await CallerProvider.GetAsync<List<OrderSummary>>($"{_getOrdersUrl}?userId={userId}") ?? new List<OrderSummary>();
+        return await Caller.GetAsync<List<OrderSummary>>($"{_getOrdersUrl}?userId={userId}") ?? new List<OrderSummary>();
     }
 
     public async Task<Order?> GetOrder(string userId, int orderNumber)
     {
-        return await CallerProvider.GetAsync<Order>($"{prefix}{userId}/{orderNumber}") ?? new Order();
+        return await Caller.GetAsync<Order>($"{userId}/{orderNumber}") ?? new Order();
     }
 
     public async Task<bool> ShipOrder(int orderNumber)
@@ -39,7 +39,7 @@ public class OrderingCaller : HttpClientCallerBase
             new KeyValuePair<string, string>("orderNumber",orderNumber.ToString())
         });
 
-        var response = await CallerProvider.PutAsync(_shipOrderUrl, stringContent);
+        var response = await Caller.PutAsync(_shipOrderUrl, stringContent);
         var result = true;
         try
         {
@@ -55,7 +55,7 @@ public class OrderingCaller : HttpClientCallerBase
 
     public async Task<bool> CancelOrder(int orderNumber)
     {
-        var response = await CallerProvider.PutAsync($"{_cancelOrderUrl}/{orderNumber}", null);
+        var response = await Caller.PutAsync($"{_cancelOrderUrl}/{orderNumber}", null);
         var result = true;
         try
         {
