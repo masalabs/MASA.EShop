@@ -23,7 +23,7 @@ var app = builder.Services
     {
         options.UseDapr()
                .UseEventLog<CatalogDbContext>()
-               .UseEventBus(eventBusBuilder=>eventBusBuilder.UseMiddleware(typeof(ValidatorMiddleware<>)))
+               .UseEventBus(eventBusBuilder => eventBusBuilder.UseMiddleware(typeof(ValidatorMiddleware<>)))
                .UseUoW<CatalogDbContext>();
     })
     .AddServices(builder);
