@@ -1,4 +1,6 @@
-﻿namespace Masa.EShop.Web.Client.Pages;
+﻿using Masa.Blazor;
+
+namespace Masa.EShop.Web.Client.Pages;
 
 public delegate string Localizer(string text);
 
@@ -41,8 +43,8 @@ public class EShopPageBase : ComponentBase
     [Inject]
     protected IOptions<Settings> Settings { get; set; } = default!;
 
-    [CascadingParameter]
-    protected MainLayout App { get; set; } = default!;
+    [Inject]
+    protected PopupService PopupService { get; set; } = default!;
 
     protected override async Task OnInitializedAsync()
     {
@@ -60,9 +62,9 @@ public class EShopPageBase : ComponentBase
 
     #region Message
 
-    public void Message(string content, AlertTypes type = default, int timeout = 3000)
+    public async Task MessageAsync(string content, AlertTypes type = default, int timeout = 3000)
     {
-        App.Message(content, type, timeout);
+        await PopupService.EnqueueSnackbarAsync(content, type, timeout: timeout);
     }
 
     #endregion

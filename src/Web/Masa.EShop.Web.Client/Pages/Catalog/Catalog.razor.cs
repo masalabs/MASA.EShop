@@ -83,7 +83,7 @@ public partial class Catalog : EShopPageBase
         }
         catch (Exception ex)
         {
-            Message(ex.Message, AlertTypes.Error);
+            await MessageAsync(ex.Message, AlertTypes.Error);
         }
     }
 

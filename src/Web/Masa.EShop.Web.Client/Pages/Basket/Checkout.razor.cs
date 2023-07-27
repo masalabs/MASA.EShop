@@ -107,7 +107,7 @@ public partial class Checkout : ComponentBase
         }
         catch (Exception e)
         {
-            Basket.Message(e.Message, AlertTypes.Error);
+            await Basket.MessageAsync(e.Message, AlertTypes.Error);
         }
     }
 }
