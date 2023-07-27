@@ -44,7 +44,7 @@ public class EShopPageBase : ComponentBase
     protected IOptions<Settings> Settings { get; set; } = default!;
 
     [Inject]
-    protected PopupService PopupService { get; set; } = default!;
+    protected IPopupService PopupService { get; set; } = default!;
 
     protected override async Task OnInitializedAsync()
     {
