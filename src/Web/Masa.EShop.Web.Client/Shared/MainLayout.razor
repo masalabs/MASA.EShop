@@ -61,14 +61,8 @@
     </MAppBar>
     <MMain Class="fill-lighten-1">
         <MContainer Fluid style="width: 90%;" class="px-0">
-            <CascadingValue Value="this">
                 @Body
-            </CascadingValue>
         </MContainer>
     </MMain>
-
-    <Message @bind-Value="_message.Visible" Timeout="_message.Timeout" Type="_message.Type">
-        @_message.Content
-    </Message>
 </MApp>
 

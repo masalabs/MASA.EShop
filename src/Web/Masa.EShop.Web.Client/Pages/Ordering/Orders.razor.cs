@@ -72,7 +72,7 @@ public partial class Orders : EShopPageBase, IAsyncDisposable
         }
         catch (Exception ex)
         {
-            Message(ex.Message, AlertTypes.Error);
+            await MessageAsync(ex.Message, AlertTypes.Error);
         }
     }
 
@@ -95,7 +95,7 @@ public partial class Orders : EShopPageBase, IAsyncDisposable
         var order = await _orderService.GetOrder(name, orderNumber);
         if (order == null)
         {
-            Message("Not Found");
+            await MessageAsync("Not Found");
             return;
         }
         _order = order;

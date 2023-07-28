@@ -17,7 +17,7 @@ public partial class Login : EShopPageBase
         }
         else
         {
-            Message("UserName Or Password Invalid");
+            await MessageAsync("UserName Or Password Invalid");
         }
     }
 }

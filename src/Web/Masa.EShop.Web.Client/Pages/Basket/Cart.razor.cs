@@ -41,14 +41,14 @@ public partial class Cart : ComponentBase
             var userBasket = await BaksetService.GetBasketAsync(name);
             if (userBasket is null)
             {
-                Basket.Message("Not Found", AlertTypes.Warning);
+                await Basket.MessageAsync("Not Found", AlertTypes.Warning);
                 return;
             }
             _userBasket = userBasket;
         }
         catch (Exception ex)
         {
-            Basket.Message(ex.Message, AlertTypes.Error);
+            await Basket.MessageAsync(ex.Message, AlertTypes.Error);
         }
     }
 
@@ -67,7 +67,7 @@ public partial class Cart : ComponentBase
         }
         catch (Exception ex)
         {
-            Basket.Message(ex.Message, AlertTypes.Error);
+            await Basket.MessageAsync(ex.Message, AlertTypes.Error);
         }
     }
 
@@ -75,7 +75,7 @@ public partial class Cart : ComponentBase
     {
         if (!_userBasket.Items.Any())
         {
-            Basket.Message("购物车中没有商品", AlertTypes.Warning);
+            await Basket.MessageAsync("购物车中没有商品", AlertTypes.Warning);
             return;
         }
         await StepChanged.InvokeAsync(1);

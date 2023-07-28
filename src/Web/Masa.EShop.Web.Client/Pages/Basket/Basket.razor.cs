@@ -28,13 +28,13 @@ public partial class Basket : EShopPageBase
             var userBasket = await BaksetService.GetBasketAsync(User.Identity.Name);
             if (userBasket is null)
             {
-                Message("Not Found");
+                await MessageAsync("Not Found");
                 return;
             }
         }
         catch (Exception ex)
         {
-            Message(ex.Message, AlertTypes.Error);
+            await MessageAsync(ex.Message, AlertTypes.Error);
         }
     }
 
